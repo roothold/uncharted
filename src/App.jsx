@@ -123,15 +123,15 @@ export default function UnchartedSite() {
     window.scrollTo(0, 0);
   }, [page]);
 
-  if (page === "contact") {
-    return <ContactPage onBack={() => setPage("home")} />;
-  }
-
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (page === "contact") {
+    return <ContactPage onBack={() => setPage("home")} />;
+  }
 
   const handleEmailSubmit = (e) => {
     e.preventDefault();
