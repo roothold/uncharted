@@ -226,16 +226,7 @@ export default function UnchartedSite() {
             ))}
           </div>
 
-          {/* Sub-copy */}
-          <div className="fade-up-4" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-            <p style={{ fontSize: "0.85rem", color: "rgba(26,26,26,0.45)", maxWidth: "400px", lineHeight: 1.7 }}>
-              Uncharted is the intelligence layer for founders and operators building the next generation of companies.
-            </p>
-            <div style={{ height: "40px", width: "1px", backgroundColor: "rgba(26,26,26,0.12)" }} />
-            <div className="mono" style={{ fontSize: "0.72rem", color: "rgba(26,26,26,0.4)", letterSpacing: "0.06em" }}>
-              EST. 2017 · BALTIMORE
-            </div>
-          </div>
+
         </div>
       </section>
 
