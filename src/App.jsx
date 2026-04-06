@@ -36,7 +36,7 @@ function FloatingSquiggles() {
 function Change50Logo() {
   return (
     <div className="inline-flex items-center gap-2">
-      <div style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "1.6rem", letterSpacing: "-0.03em", color: "#FAFAFA" }}>
+      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.6rem", letterSpacing: "-0.03em", color: "#FAFAFA" }}>
         Change
         <span style={{ color: "#F4F482" }}>50</span>
       </div>
@@ -129,10 +129,10 @@ export default function UnchartedSite() {
   };
 
   return (
-    <div style={{ fontFamily: "'Poppins', sans-serif", backgroundColor: "#FAFAFA", color: "#1A1A1A", overflowX: "hidden" }}>
+    <div style={{ fontFamily: "'DM Sans', sans-serif", backgroundColor: "#FAFAFA", color: "#1A1A1A", overflowX: "hidden" }}>
       {/* Google Fonts */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=DM+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         ::selection { background: #F4F482; color: #1A1A1A; }
@@ -193,7 +193,7 @@ export default function UnchartedSite() {
           </div>
 
           {/* Headline */}
-          <h1 className="fade-up-2" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "clamp(2.8rem, 6.5vw, 6rem)", lineHeight: 1.02, letterSpacing: "-0.03em", marginBottom: "3.5rem", maxWidth: "860px" }}>
+          <h1 className="fade-up-2" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(2.8rem, 6.5vw, 6rem)", lineHeight: 1.02, letterSpacing: "-0.03em", marginBottom: "3.5rem", maxWidth: "860px" }}>
             What do you want<br />
             to <span className="squiggle-underline">launch</span> today?
           </h1>
@@ -213,7 +213,7 @@ export default function UnchartedSite() {
                 <div className="mono" style={{ fontSize: "0.68rem", letterSpacing: "0.12em", color: selectedCard === card.id ? card.accent : "#1A1A1A", opacity: selectedCard === card.id ? 1 : 0.45, marginBottom: "1.25rem", textTransform: "uppercase" }}>
                   {card.number} / {card.tag}
                 </div>
-                <h3 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.15rem", lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: "0.75rem", whiteSpace: "pre-line", color: selectedCard === card.id ? "#FAFAFA" : "#1A1A1A" }}>
+                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.15rem", lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: "0.75rem", whiteSpace: "pre-line", color: selectedCard === card.id ? "#FAFAFA" : "#1A1A1A" }}>
                   {card.title}
                 </h3>
                 <p style={{ fontSize: "0.82rem", lineHeight: 1.6, color: selectedCard === card.id ? "rgba(250,250,250,0.65)" : "rgba(26,26,26,0.55)", marginBottom: "1.5rem" }}>
@@ -252,7 +252,7 @@ export default function UnchartedSite() {
                 <span style={{ width: "28px", height: "1px", backgroundColor: "rgba(250,250,250,0.3)", display: "inline-block" }}></span>
                 The Thesis
               </div>
-              <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 3.5vw, 3.2rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "#FAFAFA", marginBottom: "2rem" }}>
+              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 3.5vw, 3.2rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "#FAFAFA", marginBottom: "2rem" }}>
                 Future-proofing starts<br />
                 <span style={{ color: "#F4F482" }}>here.</span>
               </h2>
@@ -273,7 +273,7 @@ export default function UnchartedSite() {
                 { value: "7+", label: "Years Building" },
               ].map((stat) => (
                 <div key={stat.label} style={{ padding: "2.5rem 2rem", backgroundColor: "#1A1A1A" }}>
-                  <div style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "2.4rem", letterSpacing: "-0.04em", color: "#FAFAFA", marginBottom: "0.4rem" }}>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "2.4rem", letterSpacing: "-0.04em", color: "#FAFAFA", marginBottom: "0.4rem" }}>
                     {stat.value}
                   </div>
                   <div className="mono" style={{ fontSize: "0.7rem", color: "rgba(250,250,250,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -295,7 +295,7 @@ export default function UnchartedSite() {
                 <span style={{ width: "28px", height: "1px", backgroundColor: "rgba(26,26,26,0.3)", display: "inline-block" }}></span>
                 Portfolio
               </div>
-              <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 3.5vw, 3rem)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 3.5vw, 3rem)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
                 Launched Through<br />Uncharted
               </h2>
             </div>
@@ -335,7 +335,7 @@ export default function UnchartedSite() {
 
                     {/* Letter mark */}
                     <div style={{ width: "52px", height: "52px", borderRadius: "4px", backgroundColor: item.stealth ? "rgba(250,250,250,0.06)" : item.accentColor, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.75rem", transition: "transform 0.3s ease", transform: hoveredPortfolio === item.id ? "rotate(-5deg)" : "rotate(0deg)", border: item.stealth ? "1px solid rgba(250,250,250,0.1)" : "none" }}>
-                      <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "1.4rem", color: item.stealth ? "rgba(250,250,250,0.3)" : item.id === "stealth" ? "#FAFAFA" : "#1A1A1A" }}>
+                      <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.4rem", color: item.stealth ? "rgba(250,250,250,0.3)" : item.id === "stealth" ? "#FAFAFA" : "#1A1A1A" }}>
                         {item.letter}
                       </span>
                     </div>
@@ -343,7 +343,7 @@ export default function UnchartedSite() {
                     <div className="mono" style={{ fontSize: "0.68rem", color: item.stealth ? "rgba(250,250,250,0.25)" : "rgba(26,26,26,0.4)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
                       {item.category}
                     </div>
-                    <h3 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.02em", marginBottom: "0.75rem", color: item.stealth ? "rgba(250,250,250,0.6)" : "#1A1A1A" }}>
+                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.02em", marginBottom: "0.75rem", color: item.stealth ? "rgba(250,250,250,0.6)" : "#1A1A1A" }}>
                       {item.name}
                     </h3>
                     <p style={{ fontSize: "0.83rem", lineHeight: 1.65, color: item.stealth ? "rgba(250,250,250,0.3)" : "rgba(26,26,26,0.55)", marginBottom: "2rem" }}>
@@ -383,7 +383,7 @@ export default function UnchartedSite() {
               <div className="mono" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", color: "rgba(250,250,250,0.3)", textTransform: "uppercase", marginBottom: "1.5rem" }}>
                 Uncharted Network Initiative
               </div>
-              <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 3vw, 2.75rem)", letterSpacing: "-0.03em", lineHeight: 1.1, color: "#FAFAFA", marginBottom: "1.5rem" }}>
+              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 3vw, 2.75rem)", letterSpacing: "-0.03em", lineHeight: 1.1, color: "#FAFAFA", marginBottom: "1.5rem" }}>
                 Empowering the Next Generation of Global Founders.
               </h2>
               <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(250,250,250,0.5)", marginBottom: "1.5rem" }}>
@@ -392,7 +392,7 @@ export default function UnchartedSite() {
               <div style={{ display: "flex", gap: "2.5rem", marginTop: "2.5rem" }}>
                 {[["Global", "Network"], ["Exclusive", "Access"], ["Direct", "Capital"]].map(([top, bot]) => (
                   <div key={top}>
-                    <div style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: "#F4F482", marginBottom: "0.2rem" }}>{top}</div>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: "#F4F482", marginBottom: "0.2rem" }}>{top}</div>
                     <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(250,250,250,0.3)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{bot}</div>
                   </div>
                 ))}
@@ -404,7 +404,7 @@ export default function UnchartedSite() {
               <div className="mono" style={{ fontSize: "0.68rem", letterSpacing: "0.12em", color: "rgba(250,250,250,0.3)", textTransform: "uppercase", marginBottom: "1.25rem" }}>
                 Join the Network
               </div>
-              <h3 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.02em", color: "#FAFAFA", marginBottom: "0.75rem" }}>
+              <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.02em", color: "#FAFAFA", marginBottom: "0.75rem" }}>
                 Let's build something<br />extraordinary.
               </h3>
               <p style={{ fontSize: "0.82rem", lineHeight: 1.7, color: "rgba(250,250,250,0.4)", marginBottom: "2rem" }}>
@@ -426,9 +426,9 @@ export default function UnchartedSite() {
                     onChange={e => setEmail(e.target.value)}
                     placeholder="your@email.com"
                     required
-                    style={{ backgroundColor: "rgba(250,250,250,0.05)", color: "#FAFAFA", padding: "0.85rem 1.1rem", borderRadius: "2px", fontSize: "0.9rem", width: "100%", fontFamily: "'Poppins', sans-serif" }}
+                    style={{ backgroundColor: "rgba(250,250,250,0.05)", color: "#FAFAFA", padding: "0.85rem 1.1rem", borderRadius: "2px", fontSize: "0.9rem", width: "100%", fontFamily: "'DM Sans', sans-serif" }}
                   />
-                  <button type="submit" style={{ backgroundColor: "#F4F482", color: "#1A1A1A", padding: "0.85rem 1.5rem", fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase", transition: "transform 0.15s ease", textAlign: "center" }}
+                  <button type="submit" style={{ backgroundColor: "#F4F482", color: "#1A1A1A", padding: "0.85rem 1.5rem", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase", transition: "transform 0.15s ease", textAlign: "center" }}
                     onMouseEnter={e => e.target.style.transform = "translateY(-1px)"}
                     onMouseLeave={e => e.target.style.transform = "translateY(0)"}
                   >
