@@ -454,22 +454,22 @@ export default function UnchartedSite() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "2.5rem" }}>
             <div>
               <div style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600, fontSize: "1.1rem", letterSpacing: "-0.01em", color: "#FAFAFA", marginBottom: "0.6rem" }}>Uncharted</div>
-              <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(250,250,250,0.25)", letterSpacing: "0.08em" }}>
+              <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(250,250,250,0.55)", letterSpacing: "0.08em" }}>
                 VENTURES + STUDIO + INTELLIGENCE LAYER
               </div>
             </div>
             <div style={{ display: "flex", gap: "2rem" }}>
               {["Studio", "Portfolio", "Change50"].map(link => (
-                <a key={link} href={`#${link.toLowerCase()}`} style={{ fontSize: "0.78rem", color: "rgba(250,250,250,0.3)", textDecoration: "none", letterSpacing: "0.04em", transition: "color 0.2s ease" }}
+                <a key={link} href={`#${link.toLowerCase()}`} style={{ fontSize: "0.78rem", color: "rgba(250,250,250,0.6)", textDecoration: "none", letterSpacing: "0.04em", transition: "color 0.2s ease" }}
                   onMouseEnter={e => e.target.style.color = "#F4F482"}
-                  onMouseLeave={e => e.target.style.color = "rgba(250,250,250,0.3)"}
+                  onMouseLeave={e => e.target.style.color = "rgba(250,250,250,0.6)"}
                 >
                   {link}
                 </a>
               ))}
-              <button onClick={() => setPage("contact")} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.78rem", color: "rgba(250,250,250,0.3)", letterSpacing: "0.04em", padding: 0, transition: "color 0.2s ease" }}
+              <button onClick={() => setPage("contact")} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.78rem", color: "rgba(250,250,250,0.6)", letterSpacing: "0.04em", padding: 0, transition: "color 0.2s ease" }}
                 onMouseEnter={e => e.target.style.color = "#F4F482"}
-                onMouseLeave={e => e.target.style.color = "rgba(250,250,250,0.3)"}
+                onMouseLeave={e => e.target.style.color = "rgba(250,250,250,0.6)"}
               >
                 Contact
               </button>
@@ -477,12 +477,12 @@ export default function UnchartedSite() {
           </div>
 
           {/* Terminal line */}
-          <div style={{ borderTop: "1px solid rgba(250,250,250,0.05)", paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div className="mono terminal-cursor" style={{ fontSize: "0.72rem", color: "rgba(250,250,250,0.2)", letterSpacing: "0.06em" }}>
+          <div style={{ borderTop: "1px solid rgba(250,250,250,0.1)", paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div className="mono terminal-cursor" style={{ fontSize: "0.72rem", color: "rgba(250,250,250,0.5)", letterSpacing: "0.06em" }}>
               uncharted.ventures ~ $ ready to build
             </div>
-            <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(250,250,250,0.2)", letterSpacing: "0.06em" }}>
-              © 2025 UNCHARTED · ALL RIGHTS RESERVED
+            <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(250,250,250,0.5)", letterSpacing: "0.06em" }}>
+              © 2026 UNCHARTED VENTURES LLC · ALL RIGHTS RESERVED
             </div>
           </div>
         </div>

@@ -83,7 +83,7 @@ export default function ContactPage({ onBack }) {
                 { label: "General", value: "hello@uncharted.ventures", href: "mailto:hello@uncharted.ventures" },
                 { label: "Founders", value: "founders@uncharted.ventures", href: "mailto:founders@uncharted.ventures" },
                 { label: "Investors", value: "capital@uncharted.ventures", href: "mailto:capital@uncharted.ventures" },
-                { label: "Location", value: "Baltimore, MD", href: null },
+
               ].map(item => (
                 <div key={item.label} className="contact-card" style={{ padding: "1.1rem 1.25rem", border: "1px solid rgba(26,26,26,0.08)", borderRadius: "4px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <span className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{item.label}</span>
@@ -226,7 +226,7 @@ export default function ContactPage({ onBack }) {
             uncharted.ventures ~ $ contact
           </div>
           <div className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.3)", letterSpacing: "0.06em" }}>
-            © 2025 UNCHARTED
+            © 2026 UNCHARTED VENTURES LLC
           </div>
         </div>
       </div>
