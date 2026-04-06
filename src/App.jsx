@@ -81,6 +81,8 @@ const PORTFOLIO = [
     status: "Active",
     accentColor: "#F4F482",
     letter: "S",
+    url: "https://www.sweetkiwi.com",
+    stealth: false,
   },
   {
     id: "surplus",
@@ -91,16 +93,20 @@ const PORTFOLIO = [
     status: "Scaling",
     accentColor: "#E2F3F5",
     letter: "S",
+    url: "https://www.surpluspods.com",
+    stealth: false,
   },
   {
-    id: "cineastra",
-    name: "Cineastra",
-    category: "Entertainment / Tech",
-    description: "Next-gen entertainment technology platform connecting creators and audiences.",
-    stat: "Beta: Live",
-    status: "Alpha",
+    id: "stealth",
+    name: "Stealth",
+    category: "Unannounced",
+    description: "Something new is being built inside Uncharted. Details coming soon.",
+    stat: "Coming Soon",
+    status: "Stealth",
     accentColor: "#1A1A1A",
-    letter: "C",
+    letter: "?",
+    url: null,
+    stealth: true,
   },
 ];
 
@@ -227,7 +233,7 @@ export default function UnchartedSite() {
             </p>
             <div style={{ height: "40px", width: "1px", backgroundColor: "rgba(26,26,26,0.12)" }} />
             <div className="mono" style={{ fontSize: "0.72rem", color: "rgba(26,26,26,0.4)", letterSpacing: "0.06em" }}>
-              EST. 2021 · BALTIMORE
+              EST. 2017 · BALTIMORE
             </div>
           </div>
         </div>
@@ -264,7 +270,7 @@ export default function UnchartedSite() {
                 { value: "3+", label: "Ventures Launched" },
                 { value: "$2M+", label: "Capital Deployed" },
                 { value: "50+", label: "Network Founders" },
-                { value: "4", label: "Years Building" },
+                { value: "7+", label: "Years Building" },
               ].map((stat) => (
                 <div key={stat.label} style={{ padding: "2.5rem 2rem", backgroundColor: "#1A1A1A" }}>
                   <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "2.4rem", letterSpacing: "-0.04em", color: "#FAFAFA", marginBottom: "0.4rem" }}>
@@ -294,52 +300,71 @@ export default function UnchartedSite() {
               </h2>
             </div>
             <div className="mono" style={{ fontSize: "0.72rem", color: "rgba(26,26,26,0.35)", letterSpacing: "0.06em", paddingBottom: "4px" }}>
-              2021 — PRESENT
+              2017 — PRESENT
             </div>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
-            {PORTFOLIO.map((item) => (
-              <div
-                key={item.id}
-                className="portfolio-card card-hover"
-                onMouseEnter={() => setHoveredPortfolio(item.id)}
-                onMouseLeave={() => setHoveredPortfolio(null)}
-                style={{ padding: "2.25rem", borderRadius: "4px", backgroundColor: "#FAFAFA", position: "relative", overflow: "hidden" }}
-              >
-                {/* Status tag */}
-                <div className="status-tag mono" style={{ position: "absolute", top: "1.25rem", right: "1.25rem", backgroundColor: item.accentColor, color: item.id === "cineastra" ? "#FAFAFA" : "#1A1A1A", padding: "0.3rem 0.65rem", fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.1em", borderRadius: "2px", textTransform: "uppercase" }}>
-                  {item.stat}
-                </div>
+            {PORTFOLIO.map((item) => {
+              const CardWrapper = item.url ? "a" : "div";
+              const wrapperProps = item.url ? { href: item.url, target: "_blank", rel: "noopener noreferrer", style: { textDecoration: "none", color: "inherit", display: "block" } } : {};
+              return (
+                <CardWrapper key={item.id} {...wrapperProps}>
+                  <div
+                    className="portfolio-card card-hover"
+                    onMouseEnter={() => setHoveredPortfolio(item.id)}
+                    onMouseLeave={() => setHoveredPortfolio(null)}
+                    style={{
+                      padding: "2.25rem",
+                      borderRadius: "4px",
+                      backgroundColor: item.stealth ? "#111111" : "#FAFAFA",
+                      position: "relative",
+                      overflow: "hidden",
+                      height: "100%",
+                    }}
+                  >
+                    {/* Stealth noise overlay */}
+                    {item.stealth && (
+                      <div style={{ position: "absolute", inset: 0, backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")", opacity: 0.6, pointerEvents: "none" }} />
+                    )}
 
-                {/* Letter mark */}
-                <div style={{ width: "52px", height: "52px", borderRadius: "4px", backgroundColor: item.accentColor, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.75rem", transition: "transform 0.3s ease", transform: hoveredPortfolio === item.id ? "rotate(-5deg)" : "rotate(0deg)" }}>
-                  <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.4rem", color: item.id === "cineastra" ? "#FAFAFA" : "#1A1A1A" }}>
-                    {item.letter}
-                  </span>
-                </div>
+                    {/* Status tag */}
+                    <div className="status-tag mono" style={{ position: "absolute", top: "1.25rem", right: "1.25rem", backgroundColor: item.stealth ? "rgba(250,250,250,0.08)" : item.accentColor, color: item.stealth ? "rgba(250,250,250,0.5)" : item.id === "stealth" ? "#FAFAFA" : "#1A1A1A", padding: "0.3rem 0.65rem", fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.1em", borderRadius: "2px", textTransform: "uppercase", border: item.stealth ? "1px solid rgba(250,250,250,0.1)" : "none" }}>
+                      {item.stat}
+                    </div>
 
-                <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(26,26,26,0.4)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                  {item.category}
-                </div>
-                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>
-                  {item.name}
-                </h3>
-                <p style={{ fontSize: "0.83rem", lineHeight: 1.65, color: "rgba(26,26,26,0.55)", marginBottom: "2rem" }}>
-                  {item.description}
-                </p>
+                    {/* Letter mark */}
+                    <div style={{ width: "52px", height: "52px", borderRadius: "4px", backgroundColor: item.stealth ? "rgba(250,250,250,0.06)" : item.accentColor, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.75rem", transition: "transform 0.3s ease", transform: hoveredPortfolio === item.id ? "rotate(-5deg)" : "rotate(0deg)", border: item.stealth ? "1px solid rgba(250,250,250,0.1)" : "none" }}>
+                      <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.4rem", color: item.stealth ? "rgba(250,250,250,0.3)" : item.id === "stealth" ? "#FAFAFA" : "#1A1A1A" }}>
+                        {item.letter}
+                      </span>
+                    </div>
 
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-                    <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: item.status === "Active" ? "#22c55e" : item.status === "Scaling" ? "#3b82f6" : "#f59e0b" }} />
-                    <span className="mono" style={{ fontSize: "0.68rem", color: "rgba(26,26,26,0.45)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                      {item.status}
-                    </span>
+                    <div className="mono" style={{ fontSize: "0.68rem", color: item.stealth ? "rgba(250,250,250,0.25)" : "rgba(26,26,26,0.4)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
+                      {item.category}
+                    </div>
+                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.02em", marginBottom: "0.75rem", color: item.stealth ? "rgba(250,250,250,0.6)" : "#1A1A1A" }}>
+                      {item.name}
+                    </h3>
+                    <p style={{ fontSize: "0.83rem", lineHeight: 1.65, color: item.stealth ? "rgba(250,250,250,0.3)" : "rgba(26,26,26,0.55)", marginBottom: "2rem" }}>
+                      {item.description}
+                    </p>
+
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                        <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: item.stealth ? "rgba(250,250,250,0.2)" : item.status === "Active" ? "#22c55e" : item.status === "Scaling" ? "#3b82f6" : "#f59e0b" }} />
+                        <span className="mono" style={{ fontSize: "0.68rem", color: item.stealth ? "rgba(250,250,250,0.25)" : "rgba(26,26,26,0.45)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                          {item.status}
+                        </span>
+                      </div>
+                      {item.url && (
+                        <span style={{ fontSize: "0.78rem", fontWeight: 600, color: item.stealth ? "rgba(250,250,250,0.3)" : "#1A1A1A", letterSpacing: "0.02em" }}>→</span>
+                      )}
+                    </div>
                   </div>
-                  <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#1A1A1A", letterSpacing: "0.02em" }}>→</span>
-                </div>
-              </div>
-            ))}
+                </CardWrapper>
+              );
+            })}
           </div>
         </div>
       </section>
