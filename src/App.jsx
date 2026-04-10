@@ -187,9 +187,7 @@ export default function UnchartedSite() {
             <button onClick={() => setPage("contact")} className="nav-link" style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.82rem", fontWeight: 500, letterSpacing: "0.04em", color: "#1A1A1A", textTransform: "uppercase", padding: 0 }}>
               Contact
             </button>
-            <button onClick={() => setPage("contact")} style={{ backgroundColor: "#1A1A1A", color: "#FAFAFA", padding: "0.5rem 1.2rem", fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", border: "none", borderRadius: "2px", cursor: "pointer", transition: "background 0.2s ease" }}>
-              Apply →
-            </button>
+
           </div>
         </div>
       </nav>
