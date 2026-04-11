@@ -163,7 +163,7 @@ export default function App() {
           <p style={{ fontFamily:"'Poppins',sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"2rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
             Venture Studio · AI Tools · Est. 2017
           </p>
-          <h1 style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:"clamp(3rem, 10vw, 8.5rem)", lineHeight:1.0, color:C.ink, marginBottom:"2.5rem", maxWidth:"820px", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
+          <h1 style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:"clamp(2.4rem, 8vw, 6.8rem)", lineHeight:1.0, color:C.ink, marginBottom:"2.5rem", maxWidth:"820px", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
             We build and back<br />companies that last.
           </h1>
           <p style={{ fontFamily:"'Poppins',sans-serif", fontWeight:300, fontSize:"clamp(0.95rem, 2vw, 1.15rem)", lineHeight:1.85, color:C.inkMid, maxWidth:"500px", marginBottom:"3.5rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards" }}>
