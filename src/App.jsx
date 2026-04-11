@@ -7,6 +7,9 @@ const C = {
   ink:     "#0D0D0D",
   inkMid:  "#555555",
   inkSoft: "#888888",
+  accent:  "#C8512A",
+  accentHover: "#A83E1E",
+  accentSoft: "rgba(200,81,42,0.08)",
   gold:    "#B8962E",
   goldBg:  "rgba(184,150,46,0.07)",
   goldBorder: "rgba(184,150,46,0.35)",
@@ -57,7 +60,7 @@ export default function App() {
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         html { scroll-behavior:smooth; }
         body { -webkit-font-smoothing:antialiased; }
-        ::selection { background:${C.gold}; color:#fff; }
+        ::selection { background:${C.accent}; color:#fff; }
         @keyframes fadeUp   { from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);} }
         @keyframes fadeIn   { from{opacity:0;}to{opacity:1;} }
         @keyframes blink    { 50%{opacity:0;} }
@@ -65,9 +68,9 @@ export default function App() {
         .port-card { transition:transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease; }
         .port-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.07); }
         .cta-primary { transition:all 0.2s ease; }
-        .cta-primary:hover { background:#222 !important; transform:translateY(-2px); }
+        .cta-primary:hover { background:#A83E1E !important; transform:translateY(-2px); }
         .cta-ghost { transition:all 0.2s ease; }
-        .cta-ghost:hover { border-color:${C.gold} !important; color:${C.gold} !important; transform:translateY(-2px); }
+        .cta-ghost:hover { border-color:${C.accent} !important; color:${C.accent} !important; transform:translateY(-2px); }
       `}</style>
 
       {/* ── NAV ── */}
@@ -81,7 +84,7 @@ export default function App() {
               <a key={l} href={h} className="nav-link" style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.ink, textDecoration:"none" }}>{l}</a>
             ))}
             <button onClick={() => setPage("contact")} className="nav-link" style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.ink, background:"none", border:"none", cursor:"pointer", padding:0 }}>Contact</button>
-            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.ink, border:"none", borderRadius:"4px", padding:"0.55rem 1.4rem", cursor:"pointer", letterSpacing:"0.01em" }}>Work with us</button>
+            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.55rem 1.4rem", cursor:"pointer", letterSpacing:"0.01em" }}>Work with us</button>
           </div>
         </div>
       </nav>
@@ -99,7 +102,7 @@ export default function App() {
             Uncharted is a venture studio. We co-build companies with founders, give them access to AI tools that sharpen decisions, and help them grow from idea to traction.
           </p>
           <div style={{ display:"flex", gap:"1rem", opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
-            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.ink, border:"none", borderRadius:"4px", padding:"0.9rem 2.25rem", cursor:"pointer" }}>
+            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.9rem 2.25rem", cursor:"pointer" }}>
               Build with us
             </button>
             <button onClick={() => setPage("divine")} className="cta-ghost" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.88rem", color:C.inkMid, backgroundColor:"transparent", border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.9rem 2.25rem", cursor:"pointer" }}>
@@ -125,7 +128,7 @@ export default function App() {
               { n:"3", t:"Move faster than alone", d:"We compress the early-stage timeline. From idea validation to first revenue, our infrastructure removes the typical speed bumps." },
             ].map(item => (
               <div key={item.n}>
-                <div style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"3.5rem", color:C.border, lineHeight:1, marginBottom:"1.5rem" }}>{item.n}</div>
+                <div style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"3.5rem", color:C.accent, lineHeight:1, marginBottom:"1.5rem" }}>{item.n}</div>
                 <h3 style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"1rem", color:C.ink, marginBottom:"0.75rem" }}>{item.t}</h3>
                 <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.88rem", lineHeight:1.8, color:C.inkMid }}>{item.d}</p>
               </div>
@@ -185,7 +188,7 @@ export default function App() {
           </div>
           <div style={{ display:"flex", justifyContent:"center", gap:"0.5rem", marginTop:"3rem" }}>
             {QUOTES.map((_,i) => (
-              <button key={i} onClick={() => setActiveQuote(i)} style={{ width: activeQuote===i ? "24px" : "6px", height:"6px", borderRadius:"3px", backgroundColor: activeQuote===i ? C.ink : C.border, border:"none", cursor:"pointer", padding:0, transition:"all 0.3s ease" }} />
+              <button key={i} onClick={() => setActiveQuote(i)} style={{ width: activeQuote===i ? "24px" : "6px", height:"6px", borderRadius:"3px", backgroundColor: activeQuote===i ? C.accent : C.border, border:"none", cursor:"pointer", padding:0, transition:"all 0.3s ease" }} />
             ))}
           </div>
         </div>
@@ -206,7 +209,7 @@ export default function App() {
               Not a generic chatbot. Every response is shaped by founders who've built companies.
             </p>
             <div style={{ display:"flex", gap:"1rem" }}>
-              <button onClick={() => setPage("divine")} className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.ink, border:"none", borderRadius:"4px", padding:"0.85rem 2rem", cursor:"pointer" }}>
+              <button onClick={() => setPage("divine")} className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.85rem 2rem", cursor:"pointer" }}>
                 Try Divine free
               </button>
               <button onClick={() => setPage("divine")} className="cta-ghost" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.85rem", color:C.inkMid, backgroundColor:"transparent", border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.85rem 2rem", cursor:"pointer" }}>
@@ -242,7 +245,7 @@ export default function App() {
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"1rem", lineHeight:1.85, color:C.inkMid, marginBottom:"3rem" }}>
             Whether you have an idea, a company in motion, or expertise worth monetising — there's a place for you inside Uncharted.
           </p>
-          <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.92rem", color:"#fff", backgroundColor:C.ink, border:"none", borderRadius:"4px", padding:"1rem 2.75rem", cursor:"pointer" }}>
+          <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.92rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"1rem 2.75rem", cursor:"pointer" }}>
             Get in touch
           </button>
         </div>

@@ -5,6 +5,7 @@ const C = {
   bg:           "#FAFAFA",
   surface:      "#FFFFFF",
   ink:          "#111111",
+  accent:       "#C8512A",
   inkDim:       "rgba(17,17,17,0.65)",
   inkDimmer:    "rgba(17,17,17,0.45)",
   gold:         "#B8962E",
@@ -158,7 +159,7 @@ function QueryPortal() {
             onBlur={e => e.target.style.borderColor = C.border}
           />
           <button onClick={handleQuery} disabled={!selectedThinker || !query.trim() || loading}
-            style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", fontWeight:500, letterSpacing:"0.08em", color:"#fff", backgroundColor: (!selectedThinker || !query.trim() || loading) ? C.inkDimmer : C.ink, border:"none", borderRadius:"2px", padding:"0 1.5rem", cursor: (!selectedThinker || !query.trim() || loading) ? "not-allowed" : "pointer", textTransform:"uppercase", transition:"all 0.2s ease", minWidth:"90px" }}
+            style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", fontWeight:500, letterSpacing:"0.08em", color:"#fff", backgroundColor: (!selectedThinker || !query.trim() || loading) ? C.inkDimmer : C.accent, border:"none", borderRadius:"2px", padding:"0 1.5rem", cursor: (!selectedThinker || !query.trim() || loading) ? "not-allowed" : "pointer", textTransform:"uppercase", transition:"all 0.2s ease", minWidth:"90px" }}
           >{loading ? "···" : "Ask ✦"}</button>
         </div>
         <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.inkDimmer, letterSpacing:"0.06em" }}>
@@ -208,8 +209,8 @@ export default function DivinePage({ onBack }) {
               onMouseEnter={e => e.target.style.color = C.ink} onMouseLeave={e => e.target.style.color = C.inkDim}>For Founders</a>
             <a href="#thinkers" style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.78rem", color:C.inkDim, textDecoration:"none", transition:"color 0.2s" }}
               onMouseEnter={e => e.target.style.color = C.ink} onMouseLeave={e => e.target.style.color = C.inkDim}>For Thinkers</a>
-            <a href="#ask" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.7rem", fontWeight:500, letterSpacing:"0.08em", color:"#fff", backgroundColor:C.ink, borderRadius:"2px", padding:"0.5rem 1.1rem", textDecoration:"none", textTransform:"uppercase", transition:"background 0.2s" }}
-              onMouseEnter={e => e.target.style.backgroundColor="#333"} onMouseLeave={e => e.target.style.backgroundColor=C.ink}>Ask Now ✦</a>
+            <a href="#ask" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.7rem", fontWeight:500, letterSpacing:"0.08em", color:"#fff", backgroundColor:"#C8512A", borderRadius:"2px", padding:"0.5rem 1.1rem", textDecoration:"none", textTransform:"uppercase", transition:"background 0.2s" }}
+              onMouseEnter={e => e.target.style.backgroundColor="#A83E1E"} onMouseLeave={e => e.target.style.backgroundColor="#C8512A"}>Ask Now ✦</a>
           </div>
         </div>
       </nav>
@@ -231,9 +232,9 @@ export default function DivinePage({ onBack }) {
                 Divine gives founders direct, practical answers to their hardest business questions — drawn from the real experience of operators who've built companies.
               </p>
               <div style={{ display:"flex", gap:"1rem", flexWrap:"wrap", opacity:0, animation:"fadeUp 0.8s 0.45s forwards" }}>
-                <a href="#ask" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.85rem", letterSpacing:"0.04em", textDecoration:"none", color:"#fff", backgroundColor:C.ink, padding:"0.85rem 2rem", borderRadius:"2px", textTransform:"uppercase", transition:"all 0.2s ease", display:"inline-block" }}
-                  onMouseEnter={e => { e.target.style.backgroundColor="#333"; e.target.style.transform="translateY(-2px)"; }}
-                  onMouseLeave={e => { e.target.style.backgroundColor=C.ink; e.target.style.transform="translateY(0)"; }}>Try it free</a>
+                <a href="#ask" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.85rem", letterSpacing:"0.04em", textDecoration:"none", color:"#fff", backgroundColor:"#C8512A", padding:"0.85rem 2rem", borderRadius:"2px", textTransform:"uppercase", transition:"all 0.2s ease", display:"inline-block" }}
+                  onMouseEnter={e => { e.target.style.backgroundColor="#A83E1E"; e.target.style.transform="translateY(-2px)"; }}
+                  onMouseLeave={e => { e.target.style.backgroundColor="#C8512A"; e.target.style.transform="translateY(0)"; }}>Try it free</a>
                 <a href="#thinkers" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.85rem", letterSpacing:"0.04em", textDecoration:"none", color:C.gold, border:`1px solid ${C.goldBorder}`, padding:"0.85rem 2rem", borderRadius:"2px", transition:"all 0.2s ease", display:"inline-block" }}
                   onMouseEnter={e => { e.target.style.borderColor=C.gold; e.target.style.backgroundColor=C.goldDim; e.target.style.transform="translateY(-2px)"; }}
                   onMouseLeave={e => { e.target.style.borderColor=C.goldBorder; e.target.style.backgroundColor="transparent"; e.target.style.transform="translateY(0)"; }}>Become a Thinker →</a>

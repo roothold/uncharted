@@ -199,7 +199,7 @@ export default function ContactPage({ onBack }) {
                   <p className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.65)", letterSpacing: "0.06em" }}>
                     We respond within 2 business days.
                   </p>
-                  <button type="submit" className="submit-btn" style={{ backgroundColor: "#F4F482", color: "#1A1A1A", padding: "0.9rem 2rem", fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase" }}>
+                  <button type="submit" className="submit-btn" style={{ backgroundColor: "#C8512A", color: "#FFFFFF", padding: "0.9rem 2rem", fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase" }}>
                     Send Message →
                   </button>
                 </div>
