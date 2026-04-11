@@ -24,9 +24,40 @@ export default function ContactPage({ onBack }) {
   const [form, setForm]           = useState({ name:"", email:"", type:"", message:"" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError]           = useState(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.name && form.email && form.message) setSubmitted(true);
+    if (!form.name || !form.email || !form.message) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      // ── Replace YOUR_FORM_ID with your Formspree form ID ──────────────
+      // 1. Go to formspree.io → New Form → set email to michael@uncharted.ventures
+      // 2. Copy the 8-char ID from the form endpoint URL and paste below
+      const FORMSPREE_ID = "mgopgdba";
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method:  "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name:    form.name,
+          email:   form.email,
+          type:    form.type || "Not specified",
+          message: form.message,
+          _subject: `New contact from ${form.name} — Uncharted.ventures`,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await res.json();
+        setError(data?.errors?.[0]?.message || "Something went wrong. Please try again or email us directly.");
+      }
+    } catch {
+      setError("Network error. Please try again or email hello@uncharted.ventures directly.");
+    }
+    setSubmitting(false);
   };
 
   return (
@@ -163,10 +194,18 @@ export default function ContactPage({ onBack }) {
                   <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>
                     We respond within 2 business days.
                   </p>
-                  <button type="submit" className="submit-btn" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.9rem 2rem", cursor:"pointer" }}>
-                    Send message →
+                  <button type="submit" className="submit-btn" disabled={submitting}
+                    style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor: submitting ? "#e07a55" : C.accent, border:"none", borderRadius:"4px", padding:"0.9rem 2rem", cursor: submitting ? "not-allowed" : "pointer", minWidth:"180px" }}>
+                    {submitting ? "Sending..." : "Send message →"}
                   </button>
                 </div>
+
+                {/* Error */}
+                {error && (
+                  <div style={{ padding:"0.85rem 1rem", backgroundColor:"#fef2f2", border:"1px solid #fecaca", borderRadius:"4px", fontFamily:"'Poppins',sans-serif", fontWeight:300, fontSize:"0.82rem", color:"#991b1b", marginTop:"0.5rem" }}>
+                    {error}
+                  </div>
+                )}
               </form>
             )}
           </div>
