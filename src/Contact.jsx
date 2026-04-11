@@ -20,7 +20,7 @@ export default function ContactPage({ onBack }) {
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", backgroundColor: "#FAFAFA", color: "#1A1A1A", minHeight: "100vh" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; }
         ::selection { background: #F4F482; color: #1A1A1A; }
         .mono { font-family: 'DM Mono', monospace; }
@@ -69,7 +69,7 @@ export default function ContactPage({ onBack }) {
               Get In Touch
             </div>
 
-            <h1 className="fade-up-2" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: "1.5rem" }}>
+            <h1 className="fade-up-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 800, fontSize: "clamp(2.6rem, 5vw, 4.2rem)", lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: "1.5rem" }}>
               Let's build<br />something<br /><span style={{ color: "#1A1A1A", position: "relative" }}>extraordinary.<span style={{ position: "absolute", bottom: "-4px", left: 0, right: 0, height: "3px", background: "#F4F482", borderRadius: "2px" }} /></span>
             </h1>
 
@@ -121,11 +121,11 @@ export default function ContactPage({ onBack }) {
             {submitted ? (
               <div style={{ padding: "4rem 3rem", border: "1px solid rgba(26,26,26,0.16)", borderRadius: "4px", textAlign: "center" }}>
                 <div style={{ width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "#F4F482", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.5rem", fontSize: "1.4rem" }}>✓</div>
-                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.6rem", letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>Message received.</h3>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "2rem", letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>Message received.</h3>
                 <p style={{ fontSize: "0.88rem", color: "rgba(26,26,26,0.65)", lineHeight: 1.7, marginBottom: "2rem" }}>
                   We review every submission personally. You'll hear back from the Uncharted team within 2 business days.
                 </p>
-                <button onClick={onBack} style={{ backgroundColor: "#1A1A1A", color: "#FAFAFA", padding: "0.85rem 2rem", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.82rem", letterSpacing: "0.06em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase" }}>
+                <button onClick={onBack} style={{ backgroundColor: "#1A1A1A", color: "#FAFAFA", padding: "0.85rem 2rem", fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "0.82rem", letterSpacing: "0.06em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase" }}>
                   Back to Uncharted →
                 </button>
               </div>
@@ -199,7 +199,7 @@ export default function ContactPage({ onBack }) {
                   <p className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.65)", letterSpacing: "0.06em" }}>
                     We respond within 2 business days.
                   </p>
-                  <button type="submit" className="submit-btn" style={{ backgroundColor: "#F4F482", color: "#1A1A1A", padding: "0.9rem 2rem", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase" }}>
+                  <button type="submit" className="submit-btn" style={{ backgroundColor: "#F4F482", color: "#1A1A1A", padding: "0.9rem 2rem", fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase" }}>
                     Send Message →
                   </button>
                 </div>

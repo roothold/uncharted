@@ -16,7 +16,7 @@ const C = {
   green:        "#16a34a",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500;600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');`;
 
 const THINKERS = [
   { id:"2", name:"Michael Akindele", title:"Product · Brand · Venture Building", domains:["Product Strategy","Brand Building","Venture Design"], tier:"Prophecy", price:"$2.50" },
@@ -224,7 +224,7 @@ export default function DivinePage({ onBack }) {
 
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"5rem", alignItems:"center" }}>
             <div>
-              <h1 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2.8rem, 6vw, 6rem)", lineHeight:1.0, letterSpacing:"-0.04em", color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.15s forwards" }}>
+              <h1 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"clamp(3rem, 6.5vw, 6.5rem)", lineHeight:0.97, letterSpacing:"-0.02em", color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.15s forwards" }}>
                 Ask a hard<br />question.<br /><span style={{ color:C.gold }}>Get a real<br />answer.</span>
               </h1>
               <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"1.05rem", lineHeight:1.75, color:C.inkDim, maxWidth:"420px", marginBottom:"2.5rem", opacity:0, animation:"fadeUp 0.8s 0.3s forwards" }}>
@@ -262,7 +262,7 @@ export default function DivinePage({ onBack }) {
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"1fr 2fr", gap:"5rem", alignItems:"start" }}>
             <div>
-              <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(1.8rem, 3vw, 2.75rem)", lineHeight:1.1, letterSpacing:"-0.03em", color:C.ink, marginBottom:"1.25rem" }}>
+              <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"clamp(1.8rem, 3vw, 2.75rem)", lineHeight:1.1, letterSpacing:"-0.01em", color:C.ink, marginBottom:"1.25rem" }}>
                 Better answers than your smartest friend.
               </h2>
               <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.92rem", lineHeight:1.8, color:C.inkDim, marginBottom:"1rem" }}>
@@ -296,7 +296,7 @@ export default function DivinePage({ onBack }) {
             <div style={{ width:"24px", height:"1px", backgroundColor:C.gold }} />
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Try It Now · Live</span>
           </div>
-          <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(1.8rem, 3vw, 2.5rem)", letterSpacing:"-0.03em", color:C.ink, marginBottom:"2.5rem" }}>
+          <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"clamp(1.8rem, 3vw, 2.5rem)", letterSpacing:"-0.01em", color:C.ink, marginBottom:"2.5rem" }}>
             Ask your first question.
           </h2>
           <QueryPortal />
@@ -312,7 +312,7 @@ export default function DivinePage({ onBack }) {
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"5rem", alignItems:"start" }}>
             <div>
-              <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(1.8rem, 3vw, 2.75rem)", lineHeight:1.1, letterSpacing:"-0.03em", color:C.ink, marginBottom:"1.25rem" }}>
+              <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"clamp(1.8rem, 3vw, 2.75rem)", lineHeight:1.1, letterSpacing:"-0.01em", color:C.ink, marginBottom:"1.25rem" }}>
                 Your experience is<br />worth more than<br /><span style={{ color:C.gold }}>you're charging.</span>
               </h2>
               <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.92rem", lineHeight:1.8, color:C.inkDim, marginBottom:"1rem" }}>
@@ -324,7 +324,7 @@ export default function DivinePage({ onBack }) {
               <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:"1px", backgroundColor:C.border, marginBottom:"2rem" }}>
                 {[["70%","Your cut per answer"],["$2.50","Max per insight"],["0","Calls required"]].map(([v, l]) => (
                   <div key={l} style={{ padding:"1.5rem 1.25rem", backgroundColor:C.surface }}>
-                    <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"1.8rem", color:C.ink, letterSpacing:"-0.03em", marginBottom:"0.25rem" }}>{v}</div>
+                    <div style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"1.8rem", color:C.ink, letterSpacing:"-0.03em", marginBottom:"0.25rem" }}>{v}</div>
                     <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.inkDimmer, letterSpacing:"0.08em", textTransform:"uppercase" }}>{l}</div>
                   </div>
                 ))}

@@ -16,7 +16,7 @@ const C = {
   sectionAlt:   "#F2F2F2",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500;600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');`;
 
 const PORTFOLIO = [
   { id:"sweetkiwi", name:"Sweetkiwi", cat:"Consumer / Retail", url:"https://www.sweetkiwi.com", desc:"Better-for-you frozen yogurt brand. Built the brand, go-to-market strategy, and retail distribution from scratch.", status:"Active", metric:"ROC: 12.5%" },
@@ -78,7 +78,7 @@ function Hero({ setPage }) {
           <div style={{ width:"28px", height:"1px", backgroundColor:C.gold }} />
           <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Venture Studio · AI Tools · Est. 2017</span>
         </div>
-        <h1 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(3rem, 7.5vw, 7.5rem)", lineHeight:1.0, letterSpacing:"-0.04em", color:C.ink, marginBottom:"2rem", maxWidth:"900px", opacity:0, animation:"fadeUp 0.9s 0.2s forwards" }}>
+        <h1 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"clamp(3.2rem, 8vw, 8rem)", lineHeight:0.97, letterSpacing:"-0.02em", color:C.ink, marginBottom:"2rem", maxWidth:"900px", opacity:0, animation:"fadeUp 0.9s 0.2s forwards" }}>
           We build and back<br />companies that<br /><span style={{ color:C.gold }}>last.</span>
         </h1>
         <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"clamp(1rem, 1.8vw, 1.2rem)", lineHeight:1.75, color:C.inkDim, maxWidth:"560px", marginBottom:"3.5rem", opacity:0, animation:"fadeUp 0.9s 0.35s forwards" }}>
@@ -114,7 +114,7 @@ function StatsStrip() {
       <div style={{ maxWidth:"1360px", margin:"0 auto", display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:"1px", backgroundColor:C.border }}>
         {stats.map(([val, label]) => (
           <div key={label} style={{ padding:"2.5rem 2rem", backgroundColor:C.surface }}>
-            <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"2.2rem", color:C.ink, letterSpacing:"-0.03em", marginBottom:"0.3rem" }}>{val}</div>
+            <div style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"2.2rem", color:C.ink, letterSpacing:"-0.03em", marginBottom:"0.3rem" }}>{val}</div>
             <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkDimmer, letterSpacing:"0.12em", textTransform:"uppercase" }}>{label}</div>
           </div>
         ))}
@@ -134,7 +134,7 @@ function DivineSection({ setPage }) {
               <div style={{ width:"20px", height:"1px", backgroundColor:C.gold }} />
               <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.12em", color:C.gold, textTransform:"uppercase" }}>For Founders</span>
             </div>
-            <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(1.6rem, 2.5vw, 2.5rem)", lineHeight:1.1, letterSpacing:"-0.03em", color:C.ink, marginBottom:"1.25rem" }}>
+            <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"clamp(1.6rem, 2.5vw, 2.5rem)", lineHeight:1.1, letterSpacing:"-0.01em", color:C.ink, marginBottom:"1.25rem" }}>
               Get answers to your<br />hardest questions.
             </h2>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.92rem", lineHeight:1.8, color:C.inkDim, marginBottom:"2rem", maxWidth:"380px" }}>
@@ -155,7 +155,7 @@ function DivineSection({ setPage }) {
               <div style={{ width:"20px", height:"1px", backgroundColor:C.gold }} />
               <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.12em", color:C.gold, textTransform:"uppercase" }}>For Thinkers</span>
             </div>
-            <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(1.6rem, 2.5vw, 2.5rem)", lineHeight:1.1, letterSpacing:"-0.03em", color:C.ink, marginBottom:"1.25rem" }}>
+            <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"clamp(1.6rem, 2.5vw, 2.5rem)", lineHeight:1.1, letterSpacing:"-0.01em", color:C.ink, marginBottom:"1.25rem" }}>
               Earn from your<br />expertise.
             </h2>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.92rem", lineHeight:1.8, color:C.inkDim, marginBottom:"2rem", maxWidth:"380px" }}>
@@ -185,7 +185,7 @@ function Portfolio() {
               <div style={{ width:"24px", height:"1px", backgroundColor:C.gold }} />
               <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Companies We've Built</span>
             </div>
-            <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 3.5vw, 3rem)", letterSpacing:"-0.03em", lineHeight:1.1, color:C.ink }}>Our Portfolio</h2>
+            <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"clamp(2rem, 3.5vw, 3rem)", letterSpacing:"-0.03em", lineHeight:1.1, color:C.ink }}>Our Portfolio</h2>
           </div>
           <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkDimmer, letterSpacing:"0.1em" }}>2017 — PRESENT</span>
         </div>
@@ -203,7 +203,7 @@ function Portfolio() {
                     <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color: v.status === "Active" ? "#16a34a" : C.inkDimmer, letterSpacing:"0.1em", textTransform:"uppercase" }}>{v.status}</span>
                   </div>
                   <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.inkDimmer, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.4rem" }}>{v.cat}</div>
-                  <h3 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"1.5rem", letterSpacing:"-0.02em", color:C.ink, marginBottom:"0.75rem" }}>{v.name}</h3>
+                  <h3 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:700, fontSize:"1.5rem", letterSpacing:"-0.02em", color:C.ink, marginBottom:"0.75rem" }}>{v.name}</h3>
                   <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.83rem", lineHeight:1.7, color:C.inkDim, marginBottom:"2rem" }}>{v.desc}</p>
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                     <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color: v.status === "Active" ? C.gold : C.inkDimmer, letterSpacing:"0.08em" }}>{v.metric}</span>
