@@ -76,7 +76,7 @@ function QueryPortal() {
   };
 
   return (
-    <div style={{ display:"grid", gridTemplateColumns:"260px 1fr", gap:"2rem" }}>
+    <div className="divine-query-grid">
       {/* Selector */}
       <div>
         <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.72rem", color:C.inkSoft, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:"0.75rem" }}>Choose a framework</p>
@@ -177,6 +177,31 @@ export default function DivinePage({ onBack }) {
         .cta-ghost:hover { border-color:${C.accent} !important; color:${C.accent} !important; transform:translateY(-2px); }
         .use-card:hover { border-color:${C.accent} !important; }
         .step-row:hover { border-color:${C.ink} !important; }
+        /* ── Responsive ── */
+        .divine-hero-grid   { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+        .divine-how-grid    { display:grid; grid-template-columns:1fr 2fr; gap:5rem; align-items:start; }
+        .divine-how-3       { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:${C.border}; }
+        .divine-thinker-grid{ display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+        .divine-stat-3      { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:${C.border}; }
+        .divine-query-grid  { display:grid; grid-template-columns:260px 1fr; gap:2rem; }
+        .divine-use-grid    { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
+        .divine-px          { padding-left:3rem; padding-right:3rem; }
+        .divine-cta-row     { display:flex; gap:1rem; }
+        @media (max-width:900px) {
+          .divine-hero-grid    { grid-template-columns:1fr !important; gap:3rem !important; }
+          .divine-how-grid     { grid-template-columns:1fr !important; gap:2.5rem !important; }
+          .divine-how-3        { grid-template-columns:1fr !important; }
+          .divine-thinker-grid { grid-template-columns:1fr !important; gap:3rem !important; }
+          .divine-query-grid   { grid-template-columns:1fr !important; gap:1.5rem !important; }
+        }
+        @media (max-width:600px) {
+          .divine-use-grid  { grid-template-columns:1fr !important; }
+          .divine-stat-3    { grid-template-columns:1fr 1fr !important; }
+          .divine-px        { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .divine-cta-row   { flex-direction:column !important; }
+          .divine-cta-row a, .divine-cta-row button { width:100% !important; text-align:center !important; box-sizing:border-box; }
+          .divine-nav-links { display:none !important; }
+        }
       `}</style>
 
       {/* Nav */}
@@ -188,7 +213,7 @@ export default function DivinePage({ onBack }) {
             <span style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkSoft }}>v1.4</span>
           </div>
-          <div style={{ display:"flex", gap:"2rem", alignItems:"center" }}>
+          <div style={{ display:"flex", gap:"2rem", alignItems:"center" }} className="divine-nav-links">
             <a href="#founders" className="nav-link" style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, textDecoration:"none" }}>For Founders</a>
             <a href="#thinkers" className="nav-link" style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, textDecoration:"none" }}>For Thinkers</a>
             <a href="#ask" className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
@@ -197,8 +222,8 @@ export default function DivinePage({ onBack }) {
       </nav>
 
       {/* ── HERO ── */}
-      <section style={{ minHeight:"100vh", display:"flex", alignItems:"center", padding:"10rem 3rem 6rem" }}>
-        <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%", display:"grid", gridTemplateColumns:"1fr 1fr", gap:"5rem", alignItems:"center" }}>
+      <section style={{ minHeight:"100vh", display:"flex", alignItems:"center", padding:"10rem 3rem 6rem" }} className="divine-px">
+        <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%" }} className="divine-hero-grid">
           <div>
             <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
               AI Tool for Founders · Built by Uncharted
@@ -209,13 +234,13 @@ export default function DivinePage({ onBack }) {
             <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"1rem", lineHeight:1.85, color:C.inkMid, maxWidth:"420px", marginBottom:"3rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards" }}>
               Divine gives founders direct, practical answers to their hardest business questions — drawn from real operator experience.
             </p>
-            <div style={{ display:"flex", gap:"1rem", opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
+            <div className="divine-cta-row" style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
               <a href="#ask" className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Try it free</a>
               <a href="#thinkers" className="cta-ghost" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.88rem", color:C.inkMid, border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Become a Thinker →</a>
             </div>
           </div>
           {/* Use case grid */}
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"0.75rem", opacity:0, animation:"fadeUp 0.8s 0.3s forwards" }}>
+          <div className="divine-use-grid" style={{ opacity:0, animation:"fadeUp 0.8s 0.3s forwards" }}>
             {USE_CASES.map((uc, i) => (
               <div key={i} className="use-card" style={{ padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px", transition:"border-color 0.2s ease" }}>
                 <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.65rem", color:C.accent, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
@@ -229,10 +254,10 @@ export default function DivinePage({ onBack }) {
       <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} />
 
       {/* ── FOR FOUNDERS ── */}
-      <section id="founders" style={{ padding:"8rem 3rem" }}>
+      <section id="founders" style={{ padding:"8rem 3rem" }} className="divine-px">
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Founders</p>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 2fr", gap:"5rem", alignItems:"start" }}>
+          <div className="divine-how-grid">
             <div>
               <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3.2rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.25rem" }}>
                 Better answers than your smartest friend.
@@ -242,7 +267,7 @@ export default function DivinePage({ onBack }) {
               </p>
               <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft }}>$0.05 per question. No subscription.</p>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"1px", backgroundColor:C.border }}>
+            <div className="divine-how-3">
               {[
                 { n:"1", t:"Pick a thinker",    d:"Choose someone whose experience matches your problem." },
                 { n:"2", t:"Ask your question", d:"Be specific. More context = sharper answer." },
@@ -278,7 +303,7 @@ export default function DivinePage({ onBack }) {
       <section id="thinkers" style={{ padding:"8rem 3rem" }}>
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Thinkers · Monetise your experience</p>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"5rem", alignItems:"start" }}>
+          <div className="divine-thinker-grid">
             <div>
               <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3.2rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.25rem" }}>
                 Your experience is<br />worth more than<br /><em style={{ color:C.accent }}>you're charging.</em>
@@ -290,7 +315,7 @@ export default function DivinePage({ onBack }) {
                 Your rate is yours to set. Your knowledge compounds with every session.
               </p>
               {/* Stats */}
-              <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"1px", backgroundColor:C.border, marginBottom:"2.5rem" }}>
+              <div className="divine-stat-3" style={{ marginBottom:"2.5rem" }}>
                 {[["70%","Your cut"],["$2.50","Max per answer"],["0","Calls required"]].map(([v,l]) => (
                   <div key={l} style={{ padding:"1.5rem 1.25rem", backgroundColor:C.bg }}>
                     <div style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"2.2rem", color:C.ink, lineHeight:1, marginBottom:"0.25rem" }}>{v}</div>
@@ -325,7 +350,7 @@ export default function DivinePage({ onBack }) {
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop:`1px solid ${C.border}`, padding:"2rem 3rem" }}>
+      <footer style={{ borderTop:`1px solid ${C.border}`, padding:"2rem 3rem" }} className="divine-px">
         <div style={{ maxWidth:"1200px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1rem" }}>
             <span style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.95rem", color:C.ink }}>Divine</span>

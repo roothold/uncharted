@@ -47,6 +47,22 @@ export default function ContactPage({ onBack }) {
         .submit-btn:hover { background:${C.accentHover} !important; transform:translateY(-2px); }
         .contact-row { transition:border-color 0.2s, transform 0.2s; }
         .contact-row:hover { border-color:${C.ink} !important; }
+        /* ── Responsive ── */
+        .contact-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:7rem; align-items:start; }
+        .name-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .submit-row { display:flex; align-items:center; justify-content:space-between; padding-top:0.5rem; }
+        @media (max-width:900px) {
+          .contact-grid { grid-template-columns:1fr !important; gap:3rem !important; }
+          .sticky-left { position:static !important; top:auto !important; }
+        }
+        @media (max-width:600px) {
+          .name-grid { grid-template-columns:1fr !important; }
+          .submit-row { flex-direction:column !important; gap:1rem !important; align-items:stretch !important; }
+          .submit-row p { text-align:center; }
+          .submit-row button { width:100%; }
+          .px-contact { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .type-pills { flex-wrap:wrap; }
+        }
         @keyframes fadeUp { from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);} }
       `}</style>
 
@@ -62,11 +78,11 @@ export default function ContactPage({ onBack }) {
         </div>
       </nav>
 
-      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"9rem 3rem 6rem" }}>
-        <div style={{ display:"grid", gridTemplateColumns:"1fr 1.2fr", gap:"7rem", alignItems:"start" }}>
+      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"9rem 3rem 6rem" }} className="px-contact">
+        <div className="contact-grid">
 
           {/* Left */}
-          <div style={{ position:"sticky", top:"9rem" }}>
+          <div style={{ position:"sticky", top:"9rem" }} className="sticky-left">
             <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
               Get in touch
             </p>
@@ -123,7 +139,7 @@ export default function ContactPage({ onBack }) {
                 </div>
 
                 {/* Name + Email */}
-                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1rem" }}>
+                <div className="name-grid">
                   <div>
                     <label style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.5rem" }}>Name *</label>
                     <input type="text" className="field" value={form.name} onChange={e => setForm(f => ({ ...f, name:e.target.value }))} placeholder="Your name" required style={{ padding:"0.8rem 1rem", fontSize:"0.88rem" }} />
@@ -143,7 +159,7 @@ export default function ContactPage({ onBack }) {
                 </div>
 
                 {/* Submit */}
-                <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", paddingTop:"0.5rem" }}>
+                <div className="submit-row">
                   <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>
                     We respond within 2 business days.
                   </p>
