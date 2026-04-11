@@ -170,6 +170,8 @@ export default function DivinePage({ onBack }) {
         ::selection { background:${C.accent}; color:#fff; }
         @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
         @keyframes blink   { 50%{opacity:0;} }
+        .nav-outer { padding-left:3rem; padding-right:3rem; }
+        @media(max-width:600px){.nav-outer{padding-left:1.25rem!important;padding-right:1.25rem!important;}}
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
         .cta-primary { transition:all 0.2s ease; }
         .cta-primary:hover { background:${C.accentHover} !important; transform:translateY(-2px); }
@@ -205,7 +207,7 @@ export default function DivinePage({ onBack }) {
       `}</style>
 
       {/* Nav */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }}>
+      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }} className="nav-outer">
         <div style={{ maxWidth:"1200px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
             <button onClick={onBack} className="nav-link" style={{ background:"none", border:"none", cursor:"pointer", fontFamily:"'Poppins', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, padding:0 }}>← Uncharted</button>

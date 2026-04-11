@@ -73,6 +73,8 @@ export default function ContactPage({ onBack }) {
         .type-btn { transition:all 0.2s ease; border:1px solid ${C.border}; border-radius:4px; cursor:pointer; font-family:'Poppins',sans-serif; font-size:0.82rem; font-weight:500; padding:0.5rem 1rem; background:${C.bg}; color:${C.inkMid}; }
         .type-btn:hover { border-color:${C.ink}; color:${C.ink}; }
         .type-btn.active { border-color:${C.ink}; background:${C.ink}; color:#fff; }
+        .nav-outer { padding-left:3rem; padding-right:3rem; }
+        @media(max-width:600px){.nav-outer{padding-left:1.25rem!important;padding-right:1.25rem!important;}}
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
         .submit-btn { transition:all 0.2s ease; }
         .submit-btn:hover { background:${C.accentHover} !important; transform:translateY(-2px); }
@@ -98,7 +100,7 @@ export default function ContactPage({ onBack }) {
       `}</style>
 
       {/* Nav */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }}>
+      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }} className="nav-outer">
         <div style={{ maxWidth:"1200px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
             <span style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Uncharted</span>

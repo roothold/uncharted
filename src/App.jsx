@@ -95,7 +95,12 @@ export default function App() {
         @keyframes fadeUp { from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);} }
         @keyframes fadeIn { from{opacity:0;}to{opacity:1;} }
         @keyframes blink  { 50%{opacity:0;} }
-        .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
+        .nav-outer { padding-left:3rem; padding-right:3rem; }
+        @media (max-width:600px) {
+          .nav-outer { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .mobile-menu { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .hero-top { padding-top:7rem !important; padding-left:1.25rem !important; padding-right:1.25rem !important; }
+        }
         .port-card { transition:transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease; }
         .port-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.07); }
         .cta-primary { transition:all 0.2s ease; cursor:pointer; }
@@ -120,7 +125,7 @@ export default function App() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, padding:"0 3rem", backgroundColor: scrolled ? "rgba(255,255,255,0.97)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? `1px solid ${C.border}` : "none", transition:"all 0.4s ease" }}>
+      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, padding:"0 3rem", backgroundColor: scrolled ? "rgba(255,255,255,0.97)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? `1px solid ${C.border}` : "none", transition:"all 0.4s ease" }} className="nav-outer">
         <div style={{ maxWidth:"1200px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
             <span style={{ fontFamily:"'Poppins',sans-serif", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Uncharted</span>
@@ -158,7 +163,7 @@ export default function App() {
       </nav>
 
       {/* ── HERO ── */}
-      <section style={{ minHeight:"100vh", display:"flex", flexDirection:"column", justifyContent:"center", padding:"10rem 3rem 6rem" }} className="px-main">
+      <section style={{ minHeight:"100vh", display:"flex", flexDirection:"column", justifyContent:"center", padding:"10rem 3rem 6rem" }} className="px-main hero-top">
         <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%" }}>
           <p style={{ fontFamily:"'Poppins',sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"2rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
             Venture Studio · AI Tools · Est. 2017
