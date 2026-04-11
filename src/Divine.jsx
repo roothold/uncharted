@@ -13,7 +13,7 @@ const C = {
   soft:        "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@400;500&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&display=swap');`;
 
 const THINKERS = [
   { id:"2", name:"Michael Akindele", title:"Product · Brand · Venture Building", domains:["Product Strategy","Brand Building","Venture Design"], tier:"Prophecy", price:"$2.50" },
@@ -79,16 +79,16 @@ function QueryPortal() {
     <div className="divine-query-grid">
       {/* Selector */}
       <div>
-        <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.72rem", color:C.inkSoft, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:"0.75rem" }}>Choose a framework</p>
+        <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.72rem", color:C.inkSoft, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:"0.75rem" }}>Choose a framework</p>
         <div style={{ display:"flex", flexDirection:"column", gap:"0.6rem" }}>
           {THINKERS.map(t => (
             <div key={t.id} onClick={() => setSelected(t)}
               style={{ padding:"1.1rem", border:`1px solid ${selected?.id===t.id ? C.ink : C.border}`, borderRadius:"6px", cursor:"pointer", backgroundColor: selected?.id===t.id ? C.soft : C.bg, transition:"all 0.2s ease", position:"relative" }}>
-              {selected?.id===t.id && <div style={{ position:"absolute", left:0, top:"20%", bottom:"20%", width:"3px", backgroundColor:C.accent, borderRadius:"0 2px 2px 0" }} />}
-              <div style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.85rem", color:C.ink, marginBottom:"0.15rem" }}>{t.name}</div>
-              <div style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft, marginBottom:"0.6rem" }}>{t.title}</div>
+              {selected?.id===t.id & <div style={{ position:"absolute", left:0, top:"20%", bottom:"20%", width:"3px", backgroundColor:C.accent, borderRadius:"0 2px 2px 0" }} />}
+              <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:C.ink, marginBottom:"0.15rem" }}>{t.name}</div>
+              <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft, marginBottom:"0.6rem" }}>{t.title}</div>
               <div style={{ display:"flex", justifyContent:"space-between" }}>
-                <span style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.72rem", color:C.accent, fontWeight:500 }}>{t.tier}</span>
+                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", color:C.accent, fontWeight:500 }}>{t.tier}</span>
                 <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", color:C.inkSoft }}>{t.price}</span>
               </div>
             </div>
@@ -99,8 +99,8 @@ function QueryPortal() {
         <div style={{ marginTop:"1.5rem", padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px", backgroundColor:C.soft }}>
           {[["Per question","$0.05"],["Thinker cut","70%"],["Powered by","Claude"]].map(([k,v]) => (
             <div key={k} style={{ display:"flex", justifyContent:"space-between", marginBottom:"0.5rem" }}>
-              <span style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>{k}</span>
-              <span style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.75rem", color:C.ink }}>{v}</span>
+              <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>{k}</span>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.75rem", color:C.ink }}>{v}</span>
             </div>
           ))}
         </div>
@@ -112,27 +112,27 @@ function QueryPortal() {
           <div style={{ padding:"0.75rem 1.25rem", borderBottom:`1px solid ${C.border}`, display:"flex", alignItems:"center", justifyContent:"space-between", backgroundColor:C.soft }}>
             <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }}>
               <div style={{ width:"7px", height:"7px", borderRadius:"50%", backgroundColor: selected ? C.accent : C.border, transition:"background 0.3s" }} />
-              <span style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.72rem", fontWeight:500, color: selected ? C.ink : C.inkSoft }}>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", fontWeight:500, color: selected ? C.ink : C.inkSoft }}>
                 {selected ? selected.name : "No framework selected"}
               </span>
             </div>
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkSoft }}>Divine · v1.4</span>
           </div>
           <div style={{ padding:"1.75rem", minHeight:"240px" }}>
-            {!selected && <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft, fontStyle:"italic" }}>Choose a framework on the left to get started.</p>}
-            {selected && !loading && !response && <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft }}><span style={{ color:C.accent }}>✦</span> {selected.name} is ready. Ask your question below.</p>}
-            {loading && (
+            {!selected & <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft, fontStyle:"italic" }}>Choose a framework on the left to get started.</p>}
+            {selected & !loading & !response & <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft }}><span style={{ color:C.accent }}>✦</span> {selected.name} is ready. Ask your question below.</p>}
+            {loading & (
               <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem" }}>
-                <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.85rem", color:C.accent }}>Working on your answer...</p>
-                <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkSoft }}>Applying {selected?.name} framework.</p>
+                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:400, fontSize:"0.85rem", color:C.accent }}>Working on your answer...</p>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkSoft }}>Applying {selected?.name} framework.</p>
               </div>
             )}
-            {response && !loading && (
+            {response & !loading & (
               <div>
                 <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.accent, letterSpacing:"0.1em", marginBottom:"1rem" }}>
                   ✦ {selected?.name?.toUpperCase()} · {new Date().toLocaleTimeString()}
                 </p>
-                <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.88rem", lineHeight:1.8, color:C.ink, whiteSpace:"pre-wrap" }}>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.9, color:C.ink, whiteSpace:"pre-wrap" }}>
                   {typed}<span style={{ color:C.accent, animation:"blink 0.7s step-end infinite" }}>{typed.length < response.length ? "▌" : ""}</span>
                 </p>
               </div>
@@ -141,16 +141,16 @@ function QueryPortal() {
         </div>
         <div style={{ display:"flex", gap:"0.75rem" }}>
           <textarea value={query} onChange={e => setQuery(e.target.value)}
-            onKeyDown={e => { if (e.key==="Enter" && e.metaKey) ask(); }}
+            onKeyDown={e => { if (e.key==="Enter" & e.metaKey) ask(); }}
             placeholder="What decision are you working through? Strategy, hiring, pricing, fundraising..."
-            rows={3} style={{ flex:1, padding:"0.85rem 1rem", borderRadius:"6px", fontSize:"0.85rem", fontFamily:"'Poppins',sans-serif", resize:"none", lineHeight:1.65, border:`1px solid ${C.border}`, color:C.ink, outline:"none" }}
+            rows={3} style={{ flex:1, padding:"0.85rem 1rem", borderRadius:"6px", fontSize:"0.85rem", fontFamily:"'Inter Tight', sans-serif", resize:"none", lineHeight:1.65, border:`1px solid ${C.border}`, color:C.ink, outline:"none" }}
             onFocus={e => e.target.style.borderColor=C.ink} onBlur={e => e.target.style.borderColor=C.border} />
           <button onClick={ask} disabled={!selected || !query.trim() || loading}
-            style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor: (!selected || !query.trim() || loading) ? "#ccc" : C.accent, border:"none", borderRadius:"6px", padding:"0 1.5rem", cursor: (!selected || !query.trim() || loading) ? "not-allowed" : "pointer", minWidth:"90px", transition:"background 0.2s" }}>
+            style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor: (!selected || !query.trim() || loading) ? "#ccc" : C.accent, border:"none", borderRadius:"6px", padding:"0 1.5rem", cursor: (!selected || !query.trim() || loading) ? "not-allowed" : "pointer", minWidth:"90px", transition:"background 0.2s" }}>
             {loading ? "···" : "Ask ✦"}
           </button>
         </div>
-        <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.72rem", color:C.inkSoft }}>⌘ + Enter to submit · $0.05 per question · Powered by Anthropic Claude</p>
+        <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.72rem", color:C.inkSoft }}>⌘ + Enter to submit · $0.05 per question · Powered by Anthropic Claude</p>
       </div>
     </div>
   );
@@ -161,7 +161,7 @@ export default function DivinePage({ onBack }) {
   const [hoveredStep, setHoveredStep] = useState(null);
 
   return (
-    <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'Poppins', sans-serif" }}>
+    <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'JetBrains Mono', monospace" }}>
       <style>{`
         ${FONTS}
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -210,15 +210,15 @@ export default function DivinePage({ onBack }) {
       <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }} className="nav-outer">
         <div style={{ maxWidth:"1200px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
-            <button onClick={onBack} className="nav-link" style={{ background:"none", border:"none", cursor:"pointer", fontFamily:"'Poppins', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, padding:0 }}>← Uncharted</button>
+            <button onClick={onBack} className="nav-link" style={{ background:"none", border:"none", cursor:"pointer", fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, padding:0 }}>← Uncharted</button>
             <div style={{ width:"1px", height:"16px", backgroundColor:C.border }} />
-            <span style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkSoft }}>v1.4</span>
           </div>
           <div style={{ display:"flex", gap:"2rem", alignItems:"center" }} className="divine-nav-links">
-            <a href="#founders" className="nav-link" style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, textDecoration:"none" }}>For Founders</a>
-            <a href="#thinkers" className="nav-link" style={{ fontFamily:"'Poppins', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, textDecoration:"none" }}>For Thinkers</a>
-            <a href="#ask" className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
+            <a href="#founders" className="nav-link" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, textDecoration:"none" }}>For Founders</a>
+            <a href="#thinkers" className="nav-link" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, textDecoration:"none" }}>For Thinkers</a>
+            <a href="#ask" className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
           </div>
         </div>
       </nav>
@@ -227,26 +227,26 @@ export default function DivinePage({ onBack }) {
       <section style={{ minHeight:"100vh", display:"flex", alignItems:"center", padding:"10rem 3rem 6rem" }} className="divine-px">
         <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%" }} className="divine-hero-grid">
           <div>
-            <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
+            <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
               AI Tool for Founders · Built by Uncharted
             </p>
-            <h1 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"clamp(3rem, 7vw, 7rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
+            <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(3rem, 7vw, 7rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
               Ask a hard<br />question.<br /><em style={{ color:C.accent }}>Get a real<br />answer.</em>
             </h1>
-            <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"1rem", lineHeight:1.85, color:C.inkMid, maxWidth:"420px", marginBottom:"3rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards" }}>
+            <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:C.inkMid, maxWidth:"420px", marginBottom:"3rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards" }}>
               Divine gives founders direct, practical answers to their hardest business questions — drawn from real operator experience.
             </p>
             <div className="divine-cta-row" style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
-              <a href="#ask" className="cta-primary" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Try it free</a>
-              <a href="#thinkers" className="cta-ghost" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.88rem", color:C.inkMid, border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Become a Thinker →</a>
+              <a href="#ask" className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Try it free</a>
+              <a href="#thinkers" className="cta-ghost" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.88rem", color:C.inkMid, border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Become a Thinker →</a>
             </div>
           </div>
           {/* Use case grid */}
           <div className="divine-use-grid" style={{ opacity:0, animation:"fadeUp 0.8s 0.3s forwards" }}>
             {USE_CASES.map((uc, i) => (
               <div key={i} className="use-card" style={{ padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px", transition:"border-color 0.2s ease" }}>
-                <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.65rem", color:C.accent, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
-                <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.55, fontStyle:"italic" }}>"{uc.q}"</p>
+                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.65rem", color:C.accent, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.55, fontStyle:"italic" }}>"{uc.q}"</p>
               </div>
             ))}
           </div>
@@ -258,16 +258,16 @@ export default function DivinePage({ onBack }) {
       {/* ── FOR FOUNDERS ── */}
       <section id="founders" style={{ padding:"8rem 3rem" }} className="divine-px">
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
-          <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Founders</p>
+          <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Founders</p>
           <div className="divine-how-grid">
             <div>
-              <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3.2rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.25rem" }}>
+              <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3.2rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.25rem" }}>
                 Better answers than your smartest friend.
               </h2>
-              <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.85, color:C.inkMid, marginBottom:"1rem" }}>
+              <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.85, color:C.inkMid, marginBottom:"1rem" }}>
                 Every response is shaped by a real operator's thinking — not a generic language model. Pick the lens, ask your question, get a direct answer.
               </p>
-              <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft }}>$0.05 per question. No subscription.</p>
+              <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft }}>$0.05 per question. No subscription.</p>
             </div>
             <div className="divine-how-3">
               {[
@@ -276,9 +276,9 @@ export default function DivinePage({ onBack }) {
                 { n:"3", t:"Act on it",         d:"Direct, honest, operator-grade. No hedging." },
               ].map(s => (
                 <div key={s.n} style={{ padding:"2rem 1.5rem", backgroundColor:C.bg }}>
-                  <div style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"3rem", color:C.accent, lineHeight:1, marginBottom:"1.25rem" }}>{s.n}</div>
-                  <div style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.9rem", color:C.ink, marginBottom:"0.5rem" }}>{s.t}</div>
-                  <div style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.7 }}>{s.d}</div>
+                  <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"3rem", color:C.accent, lineHeight:1, marginBottom:"1.25rem" }}>{s.n}</div>
+                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.9rem", color:C.ink, marginBottom:"0.5rem" }}>{s.t}</div>
+                  <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.7 }}>{s.d}</div>
                 </div>
               ))}
             </div>
@@ -291,8 +291,8 @@ export default function DivinePage({ onBack }) {
       {/* ── LIVE QUERY ── */}
       <section id="ask" style={{ padding:"8rem 3rem" }}>
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
-          <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1rem" }}>Try it now</p>
-          <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:C.ink, marginBottom:"3rem" }}>
+          <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1rem" }}>Try it now</p>
+          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:C.ink, marginBottom:"3rem" }}>
             Ask your first question.
           </h2>
           <QueryPortal />
@@ -304,44 +304,44 @@ export default function DivinePage({ onBack }) {
       {/* ── FOR THINKERS ── */}
       <section id="thinkers" style={{ padding:"8rem 3rem" }}>
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
-          <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Thinkers · Monetise your experience</p>
+          <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Thinkers · Monetise your experience</p>
           <div className="divine-thinker-grid">
             <div>
-              <h2 style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3.2rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.25rem" }}>
+              <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3.2rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.25rem" }}>
                 Your experience is<br />worth more than<br /><em style={{ color:C.accent }}>you're charging.</em>
               </h2>
-              <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.85, color:C.inkMid, marginBottom:"1rem" }}>
+              <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.85, color:C.inkMid, marginBottom:"1rem" }}>
                 Encode your thinking into Divine. Founders ask you questions. You earn 70% of every answer — without taking any calls or blocking calendar time.
               </p>
-              <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft, marginBottom:"2rem" }}>
+              <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft, marginBottom:"2rem" }}>
                 Your rate is yours to set. Your knowledge compounds with every session.
               </p>
               {/* Stats */}
               <div className="divine-stat-3" style={{ marginBottom:"2.5rem" }}>
                 {[["70%","Your cut"],["$2.50","Max per answer"],["0","Calls required"]].map(([v,l]) => (
                   <div key={l} style={{ padding:"1.5rem 1.25rem", backgroundColor:C.bg }}>
-                    <div style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"2.2rem", color:C.ink, lineHeight:1, marginBottom:"0.25rem" }}>{v}</div>
-                    <div style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>{l}</div>
+                    <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"2.2rem", color:C.ink, lineHeight:1, marginBottom:"0.25rem" }}>{v}</div>
+                    <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>{l}</div>
                   </div>
                 ))}
               </div>
               <a href="https://divine.rootholdinc.com" target="_blank" rel="noopener noreferrer" className="cta-primary"
-                style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none", display:"inline-block" }}>
+                style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none", display:"inline-block" }}>
                 Become a Thinker →
               </a>
             </div>
 
             {/* Onboarding steps */}
             <div>
-              <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:500, fontSize:"0.72rem", color:C.inkSoft, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:"1rem" }}>How it works · 5 steps · ~10 min</p>
+              <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.72rem", color:C.inkSoft, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:"1rem" }}>How it works · 5 steps · ~10 min</p>
               <div style={{ display:"flex", flexDirection:"column", gap:"0.6rem" }}>
                 {ONBOARDING_STEPS.map((s, i) => (
                   <div key={s.num} className="step-row" onMouseEnter={() => setHoveredStep(i)} onMouseLeave={() => setHoveredStep(null)}
                     style={{ display:"flex", gap:"1.5rem", padding:"1.25rem 1.5rem", border:`1px solid ${hoveredStep===i ? C.ink : C.border}`, borderRadius:"6px", transition:"border-color 0.2s ease", alignItems:"flex-start" }}>
-                    <span style={{ fontFamily:"'Cormorant Garamond', serif", fontWeight:600, fontSize:"1.8rem", color:C.accent, lineHeight:1, flexShrink:0, marginTop:"-2px" }}>{s.num}</span>
+                    <span style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"1.8rem", color:C.accent, lineHeight:1, flexShrink:0, marginTop:"-2px" }}>{s.num}</span>
                     <div>
-                      <div style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.88rem", color:C.ink, marginBottom:"0.2rem" }}>{s.title}</div>
-                      <div style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkMid, lineHeight:1.65 }}>{s.desc}</div>
+                      <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:C.ink, marginBottom:"0.2rem" }}>{s.title}</div>
+                      <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkMid, lineHeight:1.65 }}>{s.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -355,13 +355,13 @@ export default function DivinePage({ onBack }) {
       <footer style={{ borderTop:`1px solid ${C.border}`, padding:"2rem 3rem" }} className="divine-px">
         <div style={{ maxWidth:"1200px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1rem" }}>
-            <span style={{ fontFamily:"'Poppins', sans-serif", fontWeight:600, fontSize:"0.95rem", color:C.ink }}>Divine</span>
-            <span style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>by Uncharted Ventures</span>
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.95rem", color:C.ink }}>Divine</span>
+            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>by Uncharted Ventures</span>
           </div>
           <div style={{ display:"flex", gap:"2rem", alignItems:"center" }}>
-            <a href="https://divine.rootholdinc.com" target="_blank" rel="noopener noreferrer" style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkSoft, textDecoration:"none", transition:"color 0.15s" }}
+            <a href="https://divine.rootholdinc.com" target="_blank" rel="noopener noreferrer" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkSoft, textDecoration:"none", transition:"color 0.15s" }}
               onMouseEnter={e => e.target.style.color=C.accent} onMouseLeave={e => e.target.style.color=C.inkSoft}>Full app →</a>
-            <button onClick={onBack} style={{ fontFamily:"'Poppins', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkSoft, background:"none", border:"none", cursor:"pointer", padding:0, transition:"color 0.15s" }}
+            <button onClick={onBack} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkSoft, background:"none", border:"none", cursor:"pointer", padding:0, transition:"color 0.15s" }}
               onMouseEnter={e => e.target.style.color=C.ink} onMouseLeave={e => e.target.style.color=C.inkSoft}>← Back to Uncharted</button>
           </div>
         </div>
