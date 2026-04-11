@@ -5,8 +5,8 @@ const C = {
   bg:           "#FAFAFA",
   surface:      "#FFFFFF",
   ink:          "#111111",
-  inkDim:       "rgba(17,17,17,0.5)",
-  inkDimmer:    "rgba(17,17,17,0.25)",
+  inkDim:       "rgba(17,17,17,0.65)",
+  inkDimmer:    "rgba(17,17,17,0.45)",
   gold:         "#B8962E",
   goldDim:      "rgba(184,150,46,0.08)",
   goldBorder:   "rgba(184,150,46,0.3)",
@@ -19,7 +19,6 @@ const C = {
 const FONTS = `@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');`;
 
 const THINKERS = [
-  { id:"1", name:"Kshitij Patil", title:"Operations · Supply Chain · AI", domains:["Operations","Capital Allocation","AI Infrastructure"], tier:"Strategy", price:"$0.50" },
   { id:"2", name:"Michael Akindele", title:"Product · Brand · Venture Building", domains:["Product Strategy","Brand Building","Venture Design"], tier:"Prophecy", price:"$2.50" },
   { id:"3", name:"Divine Composite", title:"All domains · Cross-functional advice", domains:["Strategy","Operations","Fundraising","Growth"], tier:"Prophecy", price:"$2.50" },
 ];

@@ -24,9 +24,9 @@ export default function ContactPage({ onBack }) {
         * { box-sizing: border-box; }
         ::selection { background: #F4F482; color: #1A1A1A; }
         .mono { font-family: 'DM Mono', monospace; }
-        .contact-input { transition: border-color 0.2s ease, box-shadow 0.2s ease; border: 1px solid rgba(26,26,26,0.12); background: #FAFAFA; }
+        .contact-input { transition: border-color 0.2s ease, box-shadow 0.2s ease; border: 1px solid rgba(26,26,26,0.18); background: #FAFAFA; }
         .contact-input:focus { outline: none; border-color: #1A1A1A; box-shadow: 0 0 0 3px rgba(244,244,130,0.2); }
-        .type-btn { transition: all 0.2s ease; border: 1px solid rgba(26,26,26,0.12); cursor: pointer; }
+        .type-btn { transition: all 0.2s ease; border: 1px solid rgba(26,26,26,0.18); cursor: pointer; }
         .type-btn:hover { border-color: #1A1A1A; }
         .type-btn.active { border-color: #1A1A1A; background: #1A1A1A; color: #FAFAFA; }
         .back-btn { transition: opacity 0.2s ease; }
@@ -39,7 +39,7 @@ export default function ContactPage({ onBack }) {
         .fade-up-3 { opacity: 0; animation: fadeUp 0.7s 0.25s cubic-bezier(0.16,1,0.3,1) forwards; }
         .fade-up-4 { opacity: 0; animation: fadeUp 0.7s 0.35s cubic-bezier(0.16,1,0.3,1) forwards; }
         .contact-card { transition: border-color 0.25s ease, transform 0.25s ease; }
-        .contact-card:hover { border-color: rgba(26,26,26,0.3); transform: translateY(-2px); }
+        .contact-card:hover { border-color: rgba(26,26,26,0.65); transform: translateY(-2px); }
       `}</style>
 
       {/* NAV */}
@@ -52,7 +52,7 @@ export default function ContactPage({ onBack }) {
             <button onClick={onBack} className="back-btn" style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.82rem", fontWeight: 500, letterSpacing: "0.04em", color: "#1A1A1A", textTransform: "uppercase", display: "flex", alignItems: "center", gap: "0.4rem" }}>
               ← Back
             </button>
-            <div className="mono" style={{ fontSize: "0.72rem", color: "rgba(26,26,26,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <div className="mono" style={{ fontSize: "0.72rem", color: "rgba(26,26,26,0.7)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Contact
             </div>
           </div>
@@ -64,8 +64,8 @@ export default function ContactPage({ onBack }) {
 
           {/* LEFT — Info */}
           <div style={{ position: "sticky", top: "9rem" }}>
-            <div className="fade-up-1 mono" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", color: "rgba(26,26,26,0.4)", textTransform: "uppercase", marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <span style={{ width: "28px", height: "1px", backgroundColor: "rgba(26,26,26,0.3)", display: "inline-block" }} />
+            <div className="fade-up-1 mono" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", color: "rgba(26,26,26,0.7)", textTransform: "uppercase", marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <span style={{ width: "28px", height: "1px", backgroundColor: "rgba(26,26,26,0.65)", display: "inline-block" }} />
               Get In Touch
             </div>
 
@@ -73,7 +73,7 @@ export default function ContactPage({ onBack }) {
               Let's build<br />something<br /><span style={{ color: "#1A1A1A", position: "relative" }}>extraordinary.<span style={{ position: "absolute", bottom: "-4px", left: 0, right: 0, height: "3px", background: "#F4F482", borderRadius: "2px" }} /></span>
             </h1>
 
-            <p className="fade-up-3" style={{ fontSize: "0.92rem", lineHeight: 1.75, color: "rgba(26,26,26,0.55)", marginBottom: "3rem", maxWidth: "380px" }}>
+            <p className="fade-up-3" style={{ fontSize: "0.92rem", lineHeight: 1.75, color: "rgba(26,26,26,0.7)", marginBottom: "3rem", maxWidth: "380px" }}>
               Whether you're a founder with a bold idea, an investor looking to co-build, or a partner exploring the ecosystem — we want to hear from you.
             </p>
 
@@ -86,7 +86,7 @@ export default function ContactPage({ onBack }) {
 
               ].map(item => (
                 <div key={item.label} className="contact-card" style={{ padding: "1.1rem 1.25rem", border: "1px solid rgba(26,26,26,0.08)", borderRadius: "4px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{item.label}</span>
+                  <span className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.7)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{item.label}</span>
                   {item.href ? (
                     <a href={item.href} style={{ fontSize: "0.83rem", color: "#1A1A1A", textDecoration: "none", fontWeight: 500, transition: "color 0.15s ease" }}
                       onMouseEnter={e => e.target.style.color = "#888"}
@@ -108,9 +108,9 @@ export default function ContactPage({ onBack }) {
               ].map(s => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                   className="mono"
-                  style={{ fontSize: "0.65rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(26,26,26,0.4)", textDecoration: "none", padding: "0.45rem 0.75rem", border: "1px solid rgba(26,26,26,0.1)", borderRadius: "2px", transition: "all 0.2s ease" }}
+                  style={{ fontSize: "0.65rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(26,26,26,0.7)", textDecoration: "none", padding: "0.45rem 0.75rem", border: "1px solid rgba(26,26,26,0.16)", borderRadius: "2px", transition: "all 0.2s ease" }}
                   onMouseEnter={e => { e.target.style.borderColor = "#1A1A1A"; e.target.style.color = "#1A1A1A"; }}
-                  onMouseLeave={e => { e.target.style.borderColor = "rgba(26,26,26,0.1)"; e.target.style.color = "rgba(26,26,26,0.4)"; }}
+                  onMouseLeave={e => { e.target.style.borderColor = "rgba(26,26,26,0.16)"; e.target.style.color = "rgba(26,26,26,0.7)"; }}
                 >{s.label}</a>
               ))}
             </div>
@@ -119,10 +119,10 @@ export default function ContactPage({ onBack }) {
           {/* RIGHT — Form */}
           <div className="fade-up-3">
             {submitted ? (
-              <div style={{ padding: "4rem 3rem", border: "1px solid rgba(26,26,26,0.1)", borderRadius: "4px", textAlign: "center" }}>
+              <div style={{ padding: "4rem 3rem", border: "1px solid rgba(26,26,26,0.16)", borderRadius: "4px", textAlign: "center" }}>
                 <div style={{ width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "#F4F482", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.5rem", fontSize: "1.4rem" }}>✓</div>
                 <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.6rem", letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>Message received.</h3>
-                <p style={{ fontSize: "0.88rem", color: "rgba(26,26,26,0.5)", lineHeight: 1.7, marginBottom: "2rem" }}>
+                <p style={{ fontSize: "0.88rem", color: "rgba(26,26,26,0.65)", lineHeight: 1.7, marginBottom: "2rem" }}>
                   We review every submission personally. You'll hear back from the Uncharted team within 2 business days.
                 </p>
                 <button onClick={onBack} style={{ backgroundColor: "#1A1A1A", color: "#FAFAFA", padding: "0.85rem 2rem", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.82rem", letterSpacing: "0.06em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase" }}>
@@ -134,7 +134,7 @@ export default function ContactPage({ onBack }) {
 
                 {/* Inquiry type */}
                 <div>
-                  <label className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(26,26,26,0.45)", display: "block", marginBottom: "0.65rem" }}>
+                  <label className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(26,26,26,0.65)", display: "block", marginBottom: "0.65rem" }}>
                     I'm reaching out as...
                   </label>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
@@ -155,7 +155,7 @@ export default function ContactPage({ onBack }) {
                 {/* Name + Email row */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                   <div>
-                    <label className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(26,26,26,0.45)", display: "block", marginBottom: "0.5rem" }}>Name *</label>
+                    <label className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(26,26,26,0.65)", display: "block", marginBottom: "0.5rem" }}>Name *</label>
                     <input
                       type="text"
                       className="contact-input"
@@ -167,7 +167,7 @@ export default function ContactPage({ onBack }) {
                     />
                   </div>
                   <div>
-                    <label className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(26,26,26,0.45)", display: "block", marginBottom: "0.5rem" }}>Email *</label>
+                    <label className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(26,26,26,0.65)", display: "block", marginBottom: "0.5rem" }}>Email *</label>
                     <input
                       type="email"
                       className="contact-input"
@@ -182,7 +182,7 @@ export default function ContactPage({ onBack }) {
 
                 {/* Message */}
                 <div>
-                  <label className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(26,26,26,0.45)", display: "block", marginBottom: "0.5rem" }}>Message *</label>
+                  <label className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(26,26,26,0.65)", display: "block", marginBottom: "0.5rem" }}>Message *</label>
                   <textarea
                     className="contact-input"
                     value={form.message}
@@ -196,7 +196,7 @@ export default function ContactPage({ onBack }) {
 
                 {/* Submit */}
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "0.5rem" }}>
-                  <p className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.3)", letterSpacing: "0.06em" }}>
+                  <p className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.65)", letterSpacing: "0.06em" }}>
                     We respond within 2 business days.
                   </p>
                   <button type="submit" className="submit-btn" style={{ backgroundColor: "#F4F482", color: "#1A1A1A", padding: "0.9rem 2rem", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase" }}>
@@ -210,7 +210,7 @@ export default function ContactPage({ onBack }) {
             {!submitted && (
               <div style={{ marginTop: "2rem", padding: "1.25rem", backgroundColor: "rgba(226,243,245,0.4)", border: "1px solid rgba(226,243,245,0.8)", borderRadius: "4px", display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
                 <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#1A1A1A", marginTop: "5px", flexShrink: 0 }} />
-                <p style={{ fontSize: "0.8rem", lineHeight: 1.65, color: "rgba(26,26,26,0.55)" }}>
+                <p style={{ fontSize: "0.8rem", lineHeight: 1.65, color: "rgba(26,26,26,0.7)" }}>
                   <strong style={{ color: "#1A1A1A", fontWeight: 600 }}>Founders applying to Change50</strong> — use the email form or reach out directly at <a href="mailto:founders@uncharted.ventures" style={{ color: "#1A1A1A", fontWeight: 500 }}>founders@uncharted.ventures</a> with a brief intro and your venture idea.
                 </p>
               </div>
@@ -222,10 +222,10 @@ export default function ContactPage({ onBack }) {
       {/* Footer strip */}
       <div style={{ borderTop: "1px solid rgba(26,26,26,0.06)", padding: "1.5rem 2.5rem", marginTop: "4rem" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.3)", letterSpacing: "0.06em" }}>
+          <div className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.65)", letterSpacing: "0.06em" }}>
             uncharted.ventures ~ $ contact
           </div>
-          <div className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.3)", letterSpacing: "0.06em" }}>
+          <div className="mono" style={{ fontSize: "0.65rem", color: "rgba(26,26,26,0.65)", letterSpacing: "0.06em" }}>
             © 2026 UNCHARTED VENTURES LLC
           </div>
         </div>
