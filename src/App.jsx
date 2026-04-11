@@ -1,490 +1,396 @@
 import { useState, useEffect, useRef } from "react";
+import DivinePage from "./Divine";
 import ContactPage from "./Contact";
 
-const LOGO_URL = "data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAHnB9ADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAj/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AIyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//Z";
+// ── Palette ────────────────────────────────────────────────────────────────
+const C = {
+  charcoal: "#121212",
+  paper: "#F5F5F5",
+  gold: "#D4AF37",
+  goldDim: "rgba(212,175,55,0.15)",
+  goldBorder: "rgba(212,175,55,0.3)",
+  white: "#FFFFFF",
+  dim: "rgba(245,245,245,0.45)",
+  dimmer: "rgba(245,245,245,0.2)",
+  border: "rgba(245,245,245,0.08)",
+};
 
-// Animated squiggle SVG paths
-function FloatingSquiggles() {
+// ── Fonts injected once ────────────────────────────────────────────────────
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');`;
+
+const PORTFOLIO = [
+  {
+    id: "sweetkiwi", name: "Sweetkiwi", cat: "Consumer / Retail",
+    url: "https://www.sweetkiwi.com",
+    desc: "Better-for-you frozen yogurt brand redefining the premium snack category.",
+    divineStatus: "Governance: Divine-Enforced", statusColor: C.gold,
+    metric: "ROC: 12.5%", active: true,
+  },
+  {
+    id: "surplus", name: "Surplus", cat: "Asset / Supply Chain",
+    url: "https://www.surpluspods.com",
+    desc: "Intelligent supply chain optimisation platform for modern retail operations.",
+    divineStatus: "Protocol: Embedded · v1.2", statusColor: C.gold,
+    metric: "ARR: +2.3×", active: true,
+  },
+  {
+    id: "stealth", name: "Stealth", cat: "Unannounced",
+    url: null,
+    desc: "Something new is being encoded inside the Foundry. Details coming soon.",
+    divineStatus: "Status: Pre-Encoding", statusColor: "rgba(245,245,245,0.3)",
+    metric: "Coming Soon", active: false,
+  },
+];
+
+// ── Animated grid background ───────────────────────────────────────────────
+function GridBg() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <path d="M-50 200 Q 100 150, 200 220 T 400 200 T 600 220 T 800 200 T 1000 220 T 1200 200 T 1440 220" stroke="#1A1A1A" strokeWidth="1.2" strokeOpacity="0.07" fill="none">
-          <animateTransform attributeName="transform" type="translate" values="0,0;0,-18;0,0" dur="8s" repeatCount="indefinite" />
-        </path>
-        <path d="M-50 350 Q 150 300, 300 370 T 600 350 T 900 370 T 1200 350 T 1500 370" stroke="#1A1A1A" strokeWidth="1" strokeOpacity="0.05" fill="none">
-          <animateTransform attributeName="transform" type="translate" values="0,0;0,14;0,0" dur="11s" repeatCount="indefinite" />
-        </path>
-        <path d="M200 -20 Q 250 100, 220 250 T 240 500 T 210 750 T 230 950" stroke="#1A1A1A" strokeWidth="1.2" strokeOpacity="0.06" fill="none">
-          <animateTransform attributeName="transform" type="translate" values="0,0;12,0;0,0" dur="9s" repeatCount="indefinite" />
-        </path>
-        <path d="M800 -20 Q 820 200, 790 400 T 810 650 T 800 900" stroke="#1A1A1A" strokeWidth="1" strokeOpacity="0.05" fill="none">
-          <animateTransform attributeName="transform" type="translate" values="0,0;-10,0;0,0" dur="13s" repeatCount="indefinite" />
-        </path>
-        <path d="M1100 100 Q 1200 200 1150 350 T 1180 550 T 1150 750" stroke="#F4F482" strokeWidth="1.5" strokeOpacity="0.25" fill="none">
-          <animateTransform attributeName="transform" type="translate" values="0,0;8,12;0,0" dur="7s" repeatCount="indefinite" />
-        </path>
-        <circle cx="1320" cy="180" r="120" stroke="#E2F3F5" strokeWidth="1" strokeOpacity="0.3" fill="none">
-          <animate attributeName="r" values="120;135;120" dur="6s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="80" cy="700" r="80" stroke="#F4F482" strokeWidth="1" strokeOpacity="0.2" fill="none">
-          <animate attributeName="r" values="80;95;80" dur="9s" repeatCount="indefinite" />
-        </circle>
+    <div aria-hidden style={{ position:"fixed", inset:0, pointerEvents:"none", zIndex:0, overflow:"hidden" }}>
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(245,245,245,0.03)" strokeWidth="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
+      {/* Gold radial glow top-right */}
+      <div style={{ position:"absolute", top:"-200px", right:"-200px", width:"600px", height:"600px", borderRadius:"50%", background:"radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%)", pointerEvents:"none" }} />
     </div>
   );
 }
 
-function Change50Logo() {
+// ── Capital health bar ─────────────────────────────────────────────────────
+function CapitalBar() {
+  const [blink, setBlink] = useState(true);
+  useEffect(() => { const t = setInterval(() => setBlink(b => !b), 1200); return () => clearInterval(t); }, []);
   return (
-    <div className="inline-flex items-center gap-2">
-      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.6rem", letterSpacing: "-0.03em", color: "#FAFAFA" }}>
-        Change
-        <span style={{ color: "#F4F482" }}>50</span>
+    <div style={{ position:"fixed", bottom:0, left:0, right:0, zIndex:200, backgroundColor:"rgba(18,18,18,0.95)", backdropFilter:"blur(12px)", borderTop:`1px solid ${C.goldBorder}`, padding:"0.45rem 2.5rem", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+      <div style={{ display:"flex", alignItems:"center", gap:"0.75rem" }}>
+        <div style={{ width:"6px", height:"6px", borderRadius:"50%", backgroundColor: blink ? C.gold : "transparent", transition:"background 0.4s ease" }} />
+        <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase" }}>
+          Capitalized by RootHold.inc
+        </span>
+        <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dimmer, letterSpacing:"0.08em" }}>|</span>
+        <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dim, letterSpacing:"0.08em" }}>
+          $3M Liquidity Facility Active
+        </span>
+      </div>
+      <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
+        <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.dimmer, letterSpacing:"0.1em" }}>DIVINE PROTOCOL · v1.4 · LIVE</span>
+        <div style={{ width:"48px", height:"2px", backgroundColor:C.goldDim, borderRadius:"1px", overflow:"hidden" }}>
+          <div style={{ width:"72%", height:"100%", backgroundColor:C.gold, animation:"liquidPulse 2.5s ease-in-out infinite" }} />
+        </div>
       </div>
     </div>
   );
 }
 
-const LAUNCH_CARDS = [
-  {
-    id: "saas",
-    number: "01",
-    title: "Start a Consumer\nSaaS Business",
-    tag: "Product Studio",
-    accent: "#F4F482",
-    description: "From zero to scalable. We co-build your product, tech stack, and GTM strategy.",
-  },
-  {
-    id: "ai",
-    number: "02",
-    title: "Deploy an\nAI-Agent",
-    tag: "AI Intelligence",
-    accent: "#E2F3F5",
-    description: "Custom AI agents, automation layers, and intelligent workflows built for your business.",
-  },
-  {
-    id: "funding",
-    number: "03",
-    title: "Secure Early-Stage\nFunding",
-    tag: "Capital Access",
-    accent: "#1A1A1A",
-    description: "Connect with our investor network, refine your pitch, and close your seed round.",
-  },
-];
+// ── Nav ────────────────────────────────────────────────────────────────────
+function Nav({ setPage, scrollY }) {
+  const scrolled = scrollY > 40;
+  return (
+    <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor: scrolled ? "rgba(18,18,18,0.96)" : "transparent", backdropFilter: scrolled ? "blur(16px)" : "none", borderBottom: scrolled ? `1px solid ${C.border}` : "none", transition:"all 0.5s cubic-bezier(0.16,1,0.3,1)", padding:"0 2.5rem" }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", display:"flex", alignItems:"center", gap:"0.65rem", padding:0 }}>
+          <div style={{ width:"28px", height:"28px", border:`1.5px solid ${C.gold}`, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center" }}>
+            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"0.7rem", color:C.gold }}>U</span>
+          </div>
+          <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1rem", color:C.paper, letterSpacing:"-0.01em" }}>Uncharted</span>
+        </button>
+        <div style={{ display:"flex", gap:"2.5rem", alignItems:"center" }}>
+          {[["Foundry","#foundry"],["Portfolio","#portfolio"],["Protocol","#protocol"]].map(([label, href]) => (
+            <a key={label} href={href} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.78rem", fontWeight:500, letterSpacing:"0.05em", textDecoration:"none", color:C.dim, textTransform:"uppercase", transition:"color 0.2s" }}
+              onMouseEnter={e => e.target.style.color = C.paper}
+              onMouseLeave={e => e.target.style.color = C.dim}
+            >{label}</a>
+          ))}
+          <button onClick={() => setPage("contact")} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.78rem", fontWeight:500, letterSpacing:"0.05em", color:C.dim, background:"none", border:"none", cursor:"pointer", textTransform:"uppercase", transition:"color 0.2s" }}
+            onMouseEnter={e => e.target.style.color = C.paper}
+            onMouseLeave={e => e.target.style.color = C.dim}
+          >Contact</button>
+          <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", fontWeight:500, letterSpacing:"0.08em", color:C.charcoal, backgroundColor:C.gold, border:"none", borderRadius:"2px", padding:"0.5rem 1.1rem", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
+            onMouseEnter={e => { e.target.style.backgroundColor="#c9a227"; e.target.style.transform="translateY(-1px)"; }}
+            onMouseLeave={e => { e.target.style.backgroundColor=C.gold; e.target.style.transform="translateY(0)"; }}
+          >Query Divine ✦</button>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
-const PORTFOLIO = [
-  {
-    id: "sweetkiwi",
-    name: "Sweetkiwi",
-    category: "Consumer / Retail",
-    description: "Better-for-you frozen yogurt brand redefining the premium snack category.",
-    stat: "ROC: 12.5%",
-    status: "Active",
-    accentColor: "#F4F482",
-    letter: "S",
-    url: "https://www.sweetkiwi.com",
-    stealth: false,
-  },
-  {
-    id: "surplus",
-    name: "Surplus",
-    category: "Asset / Supply Chain",
-    description: "Intelligent supply chain optimization platform for modern retail operations.",
-    stat: "ARR: +2.3×",
-    status: "Scaling",
-    accentColor: "#E2F3F5",
-    letter: "S",
-    url: "https://www.surpluspods.com",
-    stealth: false,
-  },
-  {
-    id: "stealth",
-    name: "Stealth",
-    category: "Unannounced",
-    description: "Something new is being built inside Uncharted. Details coming soon.",
-    stat: "Coming Soon",
-    status: "Stealth",
-    accentColor: "#1A1A1A",
-    letter: "?",
-    url: null,
-    stealth: true,
-  },
-];
-
-export default function UnchartedSite() {
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [hoveredPortfolio, setHoveredPortfolio] = useState(null);
-  const [scrollY, setScrollY] = useState(0);
-  const [page, setPage] = useState("home");
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [page]);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  if (page === "contact") {
-    return <ContactPage onBack={() => setPage("home")} />;
-  }
-
-  const handleEmailSubmit = (e) => {
-    e.preventDefault();
-    if (email) setSubmitted(true);
-  };
+// ── Hero ───────────────────────────────────────────────────────────────────
+function Hero({ setPage }) {
+  const [tick, setTick] = useState(0);
+  const streams = [
+    "DIVINE PROTOCOL · ENCODING VENTURE DNA ·····",
+    "ROOTHOLD.INC · $3M LIQUIDITY FACILITY · ACTIVE",
+    "COGNITIVE NODES · SWEETKIWI · SURPLUS · STEALTH",
+    "FOUNDRY STATUS · ACCEPTING NEW ARCHITECTS ·····",
+  ];
+  useEffect(() => { const t = setInterval(() => setTick(n => n + 1), 80); return () => clearInterval(t); }, []);
+  const stream = streams[Math.floor(tick / 60) % streams.length];
+  const charIdx = tick % (stream.length + 20);
+  const displayed = stream.slice(0, Math.min(charIdx, stream.length));
 
   return (
-    <div style={{ fontFamily: "'DM Sans', sans-serif", backgroundColor: "#FAFAFA", color: "#1A1A1A", overflowX: "hidden" }}>
-      {/* Google Fonts */}
+    <section id="foundry" style={{ minHeight:"100vh", display:"flex", flexDirection:"column", justifyContent:"center", padding:"8rem 2.5rem 6rem", position:"relative" }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }}>
+
+        {/* Eyebrow */}
+        <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"2.5rem", opacity:0, animation:"fadeUp 0.8s 0.1s forwards" }}>
+          <div style={{ width:"32px", height:"1px", backgroundColor:C.gold }} />
+          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", letterSpacing:"0.16em", color:C.gold, textTransform:"uppercase" }}>
+            AI-Native Institutional Foundry · Est. 2017
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(3rem, 7.5vw, 7.5rem)", lineHeight:1.0, letterSpacing:"-0.04em", color:C.paper, marginBottom:"2rem", maxWidth:"900px", opacity:0, animation:"fadeUp 0.9s 0.2s forwards" }}>
+          Deploying the<br />
+          Future of<br />
+          <span style={{ color:C.gold }}>Sovereignty.</span>
+        </h1>
+
+        {/* Sub-headline */}
+        <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"clamp(1rem, 1.8vw, 1.25rem)", lineHeight:1.75, color:C.dim, maxWidth:"580px", marginBottom:"3.5rem", opacity:0, animation:"fadeUp 0.9s 0.35s forwards" }}>
+          Uncharted.ventures is an AI-native foundry powered by the Divine Intelligence Protocol. We build the off-ramps of the future.
+        </p>
+
+        {/* CTAs */}
+        <div style={{ display:"flex", gap:"1rem", alignItems:"center", marginBottom:"5rem", opacity:0, animation:"fadeUp 0.9s 0.5s forwards" }}>
+          <a href="#portfolio" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.85rem", letterSpacing:"0.04em", textDecoration:"none", color:C.charcoal, backgroundColor:C.paper, padding:"0.85rem 2rem", borderRadius:"2px", textTransform:"uppercase", transition:"all 0.2s ease", display:"inline-block" }}
+            onMouseEnter={e => { e.target.style.backgroundColor="#e8e8e8"; e.target.style.transform="translateY(-2px)"; }}
+            onMouseLeave={e => { e.target.style.backgroundColor=C.paper; e.target.style.transform="translateY(0)"; }}
+          >Enter the Foundry</a>
+          <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", letterSpacing:"0.1em", color:C.gold, backgroundColor:"transparent", border:`1px solid ${C.goldBorder}`, padding:"0.85rem 2rem", borderRadius:"2px", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
+            onMouseEnter={e => { e.target.style.borderColor=C.gold; e.target.style.backgroundColor=C.goldDim; e.target.style.transform="translateY(-2px)"; }}
+            onMouseLeave={e => { e.target.style.borderColor=C.goldBorder; e.target.style.backgroundColor="transparent"; e.target.style.transform="translateY(0)"; }}
+          >✦ Query Divine</button>
+        </div>
+
+        {/* Live stream ticker */}
+        <div style={{ opacity:0, animation:"fadeUp 0.9s 0.65s forwards" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", padding:"0.65rem 1rem", border:`1px solid ${C.border}`, borderLeft:`2px solid ${C.gold}`, backgroundColor:"rgba(212,175,55,0.04)", maxWidth:"520px" }}>
+            <div style={{ width:"5px", height:"5px", borderRadius:"50%", backgroundColor:C.gold, flexShrink:0, animation:"pulse 1.5s ease-in-out infinite" }} />
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:"rgba(212,175,55,0.7)", letterSpacing:"0.1em", whiteSpace:"nowrap", overflow:"hidden" }}>
+              {displayed}<span style={{ animation:"blink 0.7s step-end infinite" }}>_</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Thesis strip ───────────────────────────────────────────────────────────
+function ThesisStrip() {
+  const stats = [["7+", "Years Operating"], ["$3M", "Liquidity Facility"], ["3", "Active Ventures"], ["v1.4", "Divine Protocol"]];
+  return (
+    <section style={{ padding:"4rem 2.5rem", backgroundColor:"rgba(245,245,245,0.02)", borderTop:`1px solid ${C.border}`, borderBottom:`1px solid ${C.border}` }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto", display:"grid", gridTemplateColumns:"repeat(4, 1fr)", gap:"1px", backgroundColor:C.border }}>
+        {stats.map(([val, label]) => (
+          <div key={label} style={{ padding:"2.5rem 2rem", backgroundColor:C.charcoal }}>
+            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"2rem", color:C.paper, letterSpacing:"-0.02em", marginBottom:"0.35rem" }}>{val}</div>
+            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dimmer, letterSpacing:"0.12em", textTransform:"uppercase" }}>{label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── Divine Protocol section ────────────────────────────────────────────────
+function ProtocolSection({ setPage }) {
+  const [logLines] = useState([
+    { t: "00:00:01", msg: "DIVINE PROTOCOL INITIALISED · NODE COUNT: 3", col: C.gold },
+    { t: "00:00:02", msg: "VENTURE DNA ENCODING · SWEETKIWI ··· COMPLETE", col: C.dim },
+    { t: "00:00:03", msg: "COGNITIVE LAYER · SURPLUS · GOVERNANCE ACTIVE", col: C.dim },
+    { t: "00:00:04", msg: "STEALTH NODE · PRE-ENCODING · AWAITING ARCHITECT", col: "rgba(245,245,245,0.3)" },
+    { t: "00:00:05", msg: "ROOTHOLD.INC · LIQUIDITY BRIDGE · $3,000,000 CONFIRMED", col: C.gold },
+    { t: "00:00:06", msg: "DIVINE v1.4 · ALL SYSTEMS SOVEREIGN ·····", col: C.gold },
+  ]);
+  return (
+    <section id="protocol" style={{ padding:"7rem 2.5rem" }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto", display:"grid", gridTemplateColumns:"1fr 1fr", gap:"6rem", alignItems:"center" }}>
+        <div>
+          <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1.5rem" }}>
+            <div style={{ width:"24px", height:"1px", backgroundColor:C.gold }} />
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>The Intelligence Layer</span>
+          </div>
+          <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 4vw, 3.5rem)", lineHeight:1.05, letterSpacing:"-0.03em", color:C.paper, marginBottom:"1.5rem" }}>
+            Divine Intelligence<br /><span style={{ color:C.gold }}>Protocol.</span>
+          </h2>
+          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.95rem", lineHeight:1.8, color:C.dim, marginBottom:"1.5rem", maxWidth:"440px" }}>
+            Every venture launched through Uncharted is encoded with the Divine Intelligence Protocol — a cognitive operating system that enforces governance, sharpens decision-making, and compounds founder intelligence over time.
+          </p>
+          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.88rem", lineHeight:1.8, color:"rgba(245,245,245,0.35)", marginBottom:"2.5rem", maxWidth:"440px" }}>
+            Divine is not a chatbot. It is the operating system for greatness — a verified human cognitive layer running on top of AI infrastructure.
+          </p>
+          <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", fontWeight:500, letterSpacing:"0.1em", color:C.charcoal, backgroundColor:C.gold, border:"none", borderRadius:"2px", padding:"0.85rem 1.75rem", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
+            onMouseEnter={e => { e.target.style.backgroundColor="#c9a227"; e.target.style.transform="translateY(-2px)"; }}
+            onMouseLeave={e => { e.target.style.backgroundColor=C.gold; e.target.style.transform="translateY(0)"; }}
+          >✦ Enter the Cognitive Portal</button>
+        </div>
+
+        {/* Terminal */}
+        <div style={{ backgroundColor:"#0a0a0a", border:`1px solid ${C.goldBorder}`, borderRadius:"4px", overflow:"hidden" }}>
+          <div style={{ padding:"0.65rem 1rem", borderBottom:`1px solid ${C.goldBorder}`, display:"flex", alignItems:"center", gap:"0.5rem", backgroundColor:"rgba(212,175,55,0.05)" }}>
+            <div style={{ width:"8px", height:"8px", borderRadius:"50%", backgroundColor:C.gold, animation:"pulse 2s infinite" }} />
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold, letterSpacing:"0.12em" }}>DIVINE · COGNITIVE ENGINE · LIVE</span>
+          </div>
+          <div style={{ padding:"1.5rem", display:"flex", flexDirection:"column", gap:"0.75rem" }}>
+            {logLines.map((line, i) => (
+              <div key={i} style={{ display:"flex", gap:"1rem", opacity:0, animation:`fadeUp 0.5s ${0.1 + i * 0.15}s forwards` }}>
+                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:"rgba(245,245,245,0.2)", letterSpacing:"0.05em", flexShrink:0 }}>{line.t}</span>
+                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:line.col, letterSpacing:"0.06em", lineHeight:1.6 }}>{line.msg}</span>
+              </div>
+            ))}
+            <div style={{ display:"flex", gap:"1rem", marginTop:"0.5rem" }}>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:"rgba(245,245,245,0.2)" }}>00:00:07</span>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold }}>› <span style={{ animation:"blink 0.8s step-end infinite" }}>_</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Portfolio ──────────────────────────────────────────────────────────────
+function Portfolio() {
+  const [hovered, setHovered] = useState(null);
+  return (
+    <section id="portfolio" style={{ padding:"7rem 2.5rem", borderTop:`1px solid ${C.border}` }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto" }}>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"4rem" }}>
+          <div>
+            <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1rem" }}>
+              <div style={{ width:"24px", height:"1px", backgroundColor:C.gold }} />
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Case Studies · Divine Optimisation</span>
+            </div>
+            <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 3.5vw, 3rem)", letterSpacing:"-0.03em", lineHeight:1.1, color:C.paper }}>
+              Off-Ramp<br />Portfolio
+            </h2>
+          </div>
+          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dimmer, letterSpacing:"0.1em" }}>2017 — PRESENT</span>
+        </div>
+
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:"1px", backgroundColor:C.border }}>
+          {PORTFOLIO.map(v => {
+            const CardEl = v.url ? "a" : "div";
+            const cardProps = v.url ? { href:v.url, target:"_blank", rel:"noopener noreferrer", style:{ textDecoration:"none", color:"inherit", display:"block" } } : {};
+            return (
+              <CardEl key={v.id} {...cardProps}>
+                <div
+                  onMouseEnter={() => setHovered(v.id)}
+                  onMouseLeave={() => setHovered(null)}
+                  style={{ backgroundColor: hovered === v.id ? "#1a1a1a" : C.charcoal, padding:"2.5rem 2rem", transition:"background 0.3s ease", cursor: v.url ? "pointer" : "default", position:"relative", overflow:"hidden" }}
+                >
+                  {/* Gold top border on hover */}
+                  <div style={{ position:"absolute", top:0, left:0, right:0, height:"2px", backgroundColor:C.gold, transform: hovered === v.id ? "scaleX(1)" : "scaleX(0)", transition:"transform 0.4s cubic-bezier(0.16,1,0.3,1)", transformOrigin:"left" }} />
+
+                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color: v.active ? C.gold : "rgba(245,245,245,0.3)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"1.5rem", display:"flex", alignItems:"center", gap:"0.5rem" }}>
+                    <div style={{ width:"4px", height:"4px", borderRadius:"50%", backgroundColor: v.active ? C.gold : "rgba(245,245,245,0.2)" }} />
+                    {v.divineStatus}
+                  </div>
+
+                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.4rem" }}>{v.cat}</div>
+                  <h3 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"1.5rem", letterSpacing:"-0.02em", color:C.paper, marginBottom:"0.75rem" }}>{v.name}</h3>
+                  <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.83rem", lineHeight:1.7, color:C.dim, marginBottom:"2rem" }}>{v.desc}</p>
+
+                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                    <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", color: v.active ? C.gold : C.dimmer, letterSpacing:"0.08em" }}>{v.metric}</span>
+                    {v.url && <span style={{ color:C.gold, fontSize:"0.8rem", opacity: hovered === v.id ? 1 : 0, transform: hovered === v.id ? "translateX(0)" : "translateX(-6px)", transition:"all 0.25s ease" }}>→</span>}
+                  </div>
+                </div>
+              </CardEl>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Footer ─────────────────────────────────────────────────────────────────
+function Footer({ setPage }) {
+  return (
+    <footer style={{ backgroundColor:"#0a0a0a", padding:"4rem 2.5rem 5rem", borderTop:`1px solid ${C.border}` }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto" }}>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:"3rem" }}>
+          <div>
+            <div style={{ display:"flex", alignItems:"center", gap:"0.65rem", marginBottom:"0.5rem" }}>
+              <div style={{ width:"24px", height:"24px", border:`1.5px solid ${C.gold}`, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"0.6rem", color:C.gold }}>U</span>
+              </div>
+              <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1rem", color:C.paper }}>Uncharted</span>
+            </div>
+            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.1em", textTransform:"uppercase" }}>VENTURES + FOUNDRY + DIVINE INTELLIGENCE</div>
+          </div>
+          <div style={{ display:"flex", gap:"2rem", alignItems:"center" }}>
+            {["Foundry","Portfolio","Protocol"].map(l => (
+              <a key={l} href={`#${l.toLowerCase()}`} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.75rem", color:C.dimmer, textDecoration:"none", letterSpacing:"0.04em", transition:"color 0.2s" }}
+                onMouseEnter={e => e.target.style.color = C.gold}
+                onMouseLeave={e => e.target.style.color = C.dimmer}
+              >{l}</a>
+            ))}
+            <button onClick={() => setPage("contact")} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.75rem", color:C.dimmer, background:"none", border:"none", cursor:"pointer", letterSpacing:"0.04em", padding:0, transition:"color 0.2s" }}
+              onMouseEnter={e => e.target.style.color = C.gold}
+              onMouseLeave={e => e.target.style.color = C.dimmer}
+            >Contact</button>
+          </div>
+        </div>
+        <div style={{ borderTop:`1px solid ${C.border}`, paddingTop:"1.5rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.08em" }}>
+            uncharted.ventures ~ $ divine --status sovereign<span style={{ animation:"blink 1s step-end infinite" }}>_</span>
+          </span>
+          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.08em" }}>
+            © 2026 UNCHARTED VENTURES LLC · ALL RIGHTS RESERVED
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// ── Root ───────────────────────────────────────────────────────────────────
+export default function App() {
+  const [page, setPage] = useState("home");
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const h = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", h, { passive: true });
+    return () => window.removeEventListener("scroll", h);
+  }, []);
+
+  useEffect(() => { window.scrollTo(0, 0); }, [page]);
+
+  if (page === "divine") return <DivinePage onBack={() => setPage("home")} />;
+  if (page === "contact") return <ContactPage onBack={() => setPage("home")} />;
+
+  return (
+    <div style={{ backgroundColor:C.charcoal, color:C.paper, minHeight:"100vh", overflowX:"hidden" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+        ${FONTS}
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        ::selection { background: #F4F482; color: #1A1A1A; }
-        .card-hover { transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
-        .card-hover:hover { transform: translateY(-4px); }
-        .launch-card { cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(26,26,26,0.1); }
-        .launch-card:hover { border-color: #1A1A1A; }
-        .launch-card.selected { border-color: #1A1A1A; background: #1A1A1A; color: #FAFAFA; }
-        .portfolio-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(26,26,26,0.1); }
-        .portfolio-card:hover { border-color: #1A1A1A; transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,26,26,0.08); }
-        .status-tag { opacity: 0; transform: translateY(8px); transition: all 0.25s ease; }
-        .portfolio-card:hover .status-tag { opacity: 1; transform: translateY(0); }
-        .nav-link { transition: opacity 0.2s ease; }
-        .nav-link:hover { opacity: 0.5; }
-        .input-field { transition: border-color 0.2s ease; border: 1px solid rgba(250,250,250,0.2); }
-        .input-field:focus { outline: none; border-color: #F4F482; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .fade-up { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .fade-up-1 { opacity: 0; animation: fadeUp 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .fade-up-2 { opacity: 0; animation: fadeUp 0.8s 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .fade-up-3 { opacity: 0; animation: fadeUp 0.8s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .fade-up-4 { opacity: 0; animation: fadeUp 0.8s 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .squiggle-underline { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='8' viewBox='0 0 100 8'%3E%3Cpath d='M0 4 Q 12.5 0, 25 4 T 50 4 T 75 4 T 100 4' stroke='%23F4F482' stroke-width='2.5' fill='none'/%3E%3C/svg%3E"); background-repeat: repeat-x; background-position: 0 100%; padding-bottom: 6px; background-size: 80px 8px; }
-        .terminal-cursor::after { content: '_'; animation: blink 1.1s step-end infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
-        .mono { font-family: 'DM Mono', monospace; }
+        ::selection { background: ${C.gold}; color: ${C.charcoal}; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes blink { 50% { opacity:0; } }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+        @keyframes liquidPulse { 0%,100% { opacity:0.6; } 50% { opacity:1; } }
+        @keyframes scanline { 0% { transform:translateY(-100%); } 100% { transform:translateY(100vh); } }
       `}</style>
-
-      {/* NAV */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, backgroundColor: scrollY > 50 ? "rgba(250,250,250,0.92)" : "transparent", backdropFilter: scrollY > 50 ? "blur(12px)" : "none", borderBottom: scrollY > 50 ? "1px solid rgba(26,26,26,0.08)" : "none", transition: "all 0.4s ease", padding: "0 2.5rem" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <a href="#" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600, fontSize: "1.15rem", letterSpacing: "-0.01em", color: "#1A1A1A" }}>Uncharted</span>
-          </a>
-          <div style={{ display: "flex", gap: "2.5rem", alignItems: "center" }}>
-            {["Studio", "Portfolio", "Network"].map(item => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="nav-link" style={{ fontSize: "0.82rem", fontWeight: 500, letterSpacing: "0.04em", textDecoration: "none", color: "#1A1A1A", textTransform: "uppercase" }}>
-                {item}
-              </a>
-            ))}
-            <button onClick={() => setPage("contact")} className="nav-link" style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.82rem", fontWeight: 500, letterSpacing: "0.04em", color: "#1A1A1A", textTransform: "uppercase", padding: 0 }}>
-              Contact
-            </button>
-
-          </div>
-        </div>
-      </nav>
-
-      {/* SECTION 1: HERO */}
-      <section id="studio" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "8rem 2.5rem 5rem", position: "relative", overflow: "hidden" }}>
-        <FloatingSquiggles />
-        <div style={{ maxWidth: "1280px", margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
-          
-          {/* Eyebrow */}
-          <div className="fade-up-1 mono" style={{ fontSize: "0.72rem", letterSpacing: "0.14em", color: "#1A1A1A", opacity: 0.5, textTransform: "uppercase", marginBottom: "2rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <span style={{ width: "28px", height: "1px", backgroundColor: "#1A1A1A", display: "inline-block", opacity: 0.5 }}></span>
-            Intelligence Layer · Venture Studio · Platform Builder
-          </div>
-
-          {/* Headline */}
-          <h1 className="fade-up-2" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(2.8rem, 6.5vw, 6rem)", lineHeight: 1.02, letterSpacing: "-0.03em", marginBottom: "3.5rem", maxWidth: "860px" }}>
-            What do you want<br />
-            to <span className="squiggle-underline">launch</span> today?
-          </h1>
-
-          {/* Cards */}
-          <div className="fade-up-3" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1rem", maxWidth: "960px", marginBottom: "4rem" }}>
-            {LAUNCH_CARDS.map((card) => (
-              <div
-                key={card.id}
-                className={`launch-card${selectedCard === card.id ? " selected" : ""}`}
-                onClick={() => setSelectedCard(selectedCard === card.id ? null : card.id)}
-                style={{ padding: "2rem", borderRadius: "4px", backgroundColor: selectedCard === card.id ? "#1A1A1A" : "#FAFAFA", position: "relative", overflow: "hidden" }}
-              >
-                {selectedCard === card.id && (
-                  <div style={{ position: "absolute", top: 0, right: 0, width: "80px", height: "80px", backgroundColor: card.accent, borderRadius: "0 4px 0 80px", opacity: 0.15 }} />
-                )}
-                <div className="mono" style={{ fontSize: "0.68rem", letterSpacing: "0.12em", color: selectedCard === card.id ? card.accent : "#1A1A1A", opacity: selectedCard === card.id ? 1 : 0.45, marginBottom: "1.25rem", textTransform: "uppercase" }}>
-                  {card.number} / {card.tag}
-                </div>
-                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.15rem", lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: "0.75rem", whiteSpace: "pre-line", color: selectedCard === card.id ? "#FAFAFA" : "#1A1A1A" }}>
-                  {card.title}
-                </h3>
-                <p style={{ fontSize: "0.82rem", lineHeight: 1.6, color: selectedCard === card.id ? "rgba(250,250,250,0.65)" : "rgba(26,26,26,0.55)", marginBottom: "1.5rem" }}>
-                  {card.description}
-                </p>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.78rem", fontWeight: 600, color: selectedCard === card.id ? card.id === "funding" ? "#F4F482" : card.accent : "#1A1A1A", letterSpacing: "0.02em" }}>
-                  {selectedCard === card.id ? "Selected →" : "Explore →"}
-                </div>
-              </div>
-            ))}
-          </div>
-
-
-        </div>
-      </section>
-
-      {/* SECTION 2: STUDIO THESIS */}
-      <section style={{ padding: "7rem 2.5rem", backgroundColor: "#1A1A1A", position: "relative", overflow: "hidden" }}>
-        {/* Mint accent blob */}
-        <div style={{ position: "absolute", top: "-80px", right: "10%", width: "300px", height: "300px", borderRadius: "50%", backgroundColor: "#E2F3F5", opacity: 0.04, filter: "blur(60px)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: "-60px", left: "5%", width: "200px", height: "200px", borderRadius: "50%", backgroundColor: "#F4F482", opacity: 0.05, filter: "blur(50px)", pointerEvents: "none" }} />
-        
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
-            <div>
-              <div className="mono" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", color: "rgba(250,250,250,0.35)", textTransform: "uppercase", marginBottom: "1.75rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                <span style={{ width: "28px", height: "1px", backgroundColor: "rgba(250,250,250,0.3)", display: "inline-block" }}></span>
-                The Thesis
-              </div>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 3.5vw, 3.2rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "#FAFAFA", marginBottom: "2rem" }}>
-                Future-proofing starts<br />
-                <span style={{ color: "#F4F482" }}>here.</span>
-              </h2>
-              <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(250,250,250,0.6)", marginBottom: "2.5rem", maxWidth: "480px" }}>
-                Uncharted is a next-generation venture and platform studio empowering founders and technologies that shape the future.
-              </p>
-              <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "rgba(250,250,250,0.4)", maxWidth: "440px" }}>
-                We don't just fund — we co-build. As the intelligence layer of a broader institutional ecosystem, Uncharted brings capital, product expertise, and distribution to every venture we touch.
-              </p>
-            </div>
-
-            {/* Stats */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", backgroundColor: "rgba(250,250,250,0.06)", border: "1px solid rgba(250,250,250,0.06)" }}>
-              {[
-                { value: "3+", label: "Ventures Launched" },
-                { value: "$2M+", label: "Capital Deployed" },
-                { value: "50+", label: "Network Founders" },
-                { value: "7+", label: "Years Building" },
-              ].map((stat) => (
-                <div key={stat.label} style={{ padding: "2.5rem 2rem", backgroundColor: "#1A1A1A" }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "2.4rem", letterSpacing: "-0.04em", color: "#FAFAFA", marginBottom: "0.4rem" }}>
-                    {stat.value}
-                  </div>
-                  <div className="mono" style={{ fontSize: "0.7rem", color: "rgba(250,250,250,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: PORTFOLIO */}
-      <section id="portfolio" style={{ padding: "7rem 2.5rem", backgroundColor: "#FAFAFA" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ marginBottom: "4rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-            <div>
-              <div className="mono" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", color: "rgba(26,26,26,0.4)", textTransform: "uppercase", marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                <span style={{ width: "28px", height: "1px", backgroundColor: "rgba(26,26,26,0.3)", display: "inline-block" }}></span>
-                Portfolio
-              </div>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 3.5vw, 3rem)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-                Launched Through<br />Uncharted
-              </h2>
-            </div>
-            <div className="mono" style={{ fontSize: "0.72rem", color: "rgba(26,26,26,0.35)", letterSpacing: "0.06em", paddingBottom: "4px" }}>
-              2017 — PRESENT
-            </div>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
-            {PORTFOLIO.map((item) => {
-              const CardWrapper = item.url ? "a" : "div";
-              const wrapperProps = item.url ? { href: item.url, target: "_blank", rel: "noopener noreferrer", style: { textDecoration: "none", color: "inherit", display: "block" } } : {};
-              return (
-                <CardWrapper key={item.id} {...wrapperProps}>
-                  <div
-                    className="portfolio-card card-hover"
-                    onMouseEnter={() => setHoveredPortfolio(item.id)}
-                    onMouseLeave={() => setHoveredPortfolio(null)}
-                    style={{
-                      padding: "2.25rem",
-                      borderRadius: "4px",
-                      backgroundColor: item.stealth ? "#111111" : "#FAFAFA",
-                      position: "relative",
-                      overflow: "hidden",
-                      height: "100%",
-                    }}
-                  >
-                    {/* Stealth noise overlay */}
-                    {item.stealth && (
-                      <div style={{ position: "absolute", inset: 0, backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")", opacity: 0.6, pointerEvents: "none" }} />
-                    )}
-
-                    {/* Status tag */}
-                    <div className="status-tag mono" style={{ position: "absolute", top: "1.25rem", right: "1.25rem", backgroundColor: item.stealth ? "rgba(250,250,250,0.08)" : item.accentColor, color: item.stealth ? "rgba(250,250,250,0.5)" : item.id === "stealth" ? "#FAFAFA" : "#1A1A1A", padding: "0.3rem 0.65rem", fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.1em", borderRadius: "2px", textTransform: "uppercase", border: item.stealth ? "1px solid rgba(250,250,250,0.1)" : "none" }}>
-                      {item.stat}
-                    </div>
-
-                    {/* Letter mark */}
-                    <div style={{ width: "52px", height: "52px", borderRadius: "4px", backgroundColor: item.stealth ? "rgba(250,250,250,0.06)" : item.accentColor, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.75rem", transition: "transform 0.3s ease", transform: hoveredPortfolio === item.id ? "rotate(-5deg)" : "rotate(0deg)", border: item.stealth ? "1px solid rgba(250,250,250,0.1)" : "none" }}>
-                      <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.4rem", color: item.stealth ? "rgba(250,250,250,0.3)" : item.id === "stealth" ? "#FAFAFA" : "#1A1A1A" }}>
-                        {item.letter}
-                      </span>
-                    </div>
-
-                    <div className="mono" style={{ fontSize: "0.68rem", color: item.stealth ? "rgba(250,250,250,0.25)" : "rgba(26,26,26,0.4)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                      {item.category}
-                    </div>
-                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.02em", marginBottom: "0.75rem", color: item.stealth ? "rgba(250,250,250,0.6)" : "#1A1A1A" }}>
-                      {item.name}
-                    </h3>
-                    <p style={{ fontSize: "0.83rem", lineHeight: 1.65, color: item.stealth ? "rgba(250,250,250,0.3)" : "rgba(26,26,26,0.55)", marginBottom: "2rem" }}>
-                      {item.description}
-                    </p>
-
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-                        <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: item.stealth ? "rgba(250,250,250,0.2)" : item.status === "Active" ? "#22c55e" : item.status === "Scaling" ? "#3b82f6" : "#f59e0b" }} />
-                        <span className="mono" style={{ fontSize: "0.68rem", color: item.stealth ? "rgba(250,250,250,0.25)" : "rgba(26,26,26,0.45)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                          {item.status}
-                        </span>
-                      </div>
-                      {item.url && (
-                        <span style={{ fontSize: "0.78rem", fontWeight: 600, color: item.stealth ? "rgba(250,250,250,0.3)" : "#1A1A1A", letterSpacing: "0.02em" }}>→</span>
-                      )}
-                    </div>
-                  </div>
-                </CardWrapper>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: CHANGE50 / NETWORK */}
-      <section id="network" style={{ padding: "7rem 2.5rem", backgroundColor: "#1A1A1A", position: "relative", overflow: "hidden" }}>
-        {/* Background texture */}
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 70% 50%, rgba(244,244,130,0.04) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(226,243,245,0.04) 0%, transparent 50%)", pointerEvents: "none" }} />
-
-        <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "center" }}>
-            <div>
-              <div style={{ marginBottom: "2rem" }}>
-                <Change50Logo />
-              </div>
-              <div className="mono" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", color: "rgba(250,250,250,0.3)", textTransform: "uppercase", marginBottom: "1.5rem" }}>
-                Uncharted Network Initiative
-              </div>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 3vw, 2.75rem)", letterSpacing: "-0.03em", lineHeight: 1.1, color: "#FAFAFA", marginBottom: "1.5rem" }}>
-                Empowering the Next Generation of Global Founders.
-              </h2>
-              <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(250,250,250,0.5)", marginBottom: "1.5rem" }}>
-                Join a global network of founders, builders, and investors committed to creating change at scale. Change50 is Uncharted's flagship community initiative.
-              </p>
-              <div style={{ display: "flex", gap: "2.5rem", marginTop: "2.5rem" }}>
-                {[["Global", "Network"], ["Exclusive", "Access"], ["Direct", "Capital"]].map(([top, bot]) => (
-                  <div key={top}>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: "#F4F482", marginBottom: "0.2rem" }}>{top}</div>
-                    <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(250,250,250,0.3)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{bot}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Email Capture */}
-            <div style={{ backgroundColor: "rgba(250,250,250,0.04)", border: "1px solid rgba(250,250,250,0.08)", borderRadius: "4px", padding: "3rem" }}>
-              <div className="mono" style={{ fontSize: "0.68rem", letterSpacing: "0.12em", color: "rgba(250,250,250,0.3)", textTransform: "uppercase", marginBottom: "1.25rem" }}>
-                Join the Network
-              </div>
-              <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.02em", color: "#FAFAFA", marginBottom: "0.75rem" }}>
-                Let's build something<br />extraordinary.
-              </h3>
-              <p style={{ fontSize: "0.82rem", lineHeight: 1.7, color: "rgba(250,250,250,0.4)", marginBottom: "2rem" }}>
-                Applications for the Change50 cohort are now open. Drop your email and we'll be in touch.
-              </p>
-              {submitted ? (
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "1.25rem", backgroundColor: "rgba(244,244,130,0.08)", border: "1px solid rgba(244,244,130,0.2)", borderRadius: "2px" }}>
-                  <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#F4F482" }} />
-                  <span className="mono" style={{ fontSize: "0.78rem", color: "#F4F482", letterSpacing: "0.06em" }}>
-                    You're on the list. We'll be in touch.
-                  </span>
-                </div>
-              ) : (
-                <form onSubmit={handleEmailSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                  <input
-                    type="email"
-                    className="input-field"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    required
-                    style={{ backgroundColor: "rgba(250,250,250,0.05)", color: "#FAFAFA", padding: "0.85rem 1.1rem", borderRadius: "2px", fontSize: "0.9rem", width: "100%", fontFamily: "'DM Sans', sans-serif" }}
-                  />
-                  <button type="submit" style={{ backgroundColor: "#F4F482", color: "#1A1A1A", padding: "0.85rem 1.5rem", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", border: "none", borderRadius: "2px", cursor: "pointer", textTransform: "uppercase", transition: "transform 0.15s ease", textAlign: "center" }}
-                    onMouseEnter={e => e.target.style.transform = "translateY(-1px)"}
-                    onMouseLeave={e => e.target.style.transform = "translateY(0)"}
-                  >
-                    Let's Connect →
-                  </button>
-                </form>
-              )}
-              <p className="mono" style={{ marginTop: "1rem", fontSize: "0.65rem", color: "rgba(250,250,250,0.2)", letterSpacing: "0.06em" }}>
-                No spam. Founders only.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TERMINAL FOOTER */}
-      <footer style={{ backgroundColor: "#111111", padding: "3rem 2.5rem 2rem", borderTop: "1px solid rgba(250,250,250,0.05)" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "2.5rem" }}>
-            <div>
-              <div style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600, fontSize: "1.1rem", letterSpacing: "-0.01em", color: "#FAFAFA", marginBottom: "0.6rem" }}>Uncharted</div>
-              <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(250,250,250,0.55)", letterSpacing: "0.08em" }}>
-                VENTURES + STUDIO + INTELLIGENCE LAYER
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "2rem" }}>
-              {["Studio", "Portfolio", "Change50"].map(link => (
-                <a key={link} href={`#${link.toLowerCase()}`} style={{ fontSize: "0.78rem", color: "rgba(250,250,250,0.6)", textDecoration: "none", letterSpacing: "0.04em", transition: "color 0.2s ease" }}
-                  onMouseEnter={e => e.target.style.color = "#F4F482"}
-                  onMouseLeave={e => e.target.style.color = "rgba(250,250,250,0.6)"}
-                >
-                  {link}
-                </a>
-              ))}
-              <button onClick={() => setPage("contact")} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.78rem", color: "rgba(250,250,250,0.6)", letterSpacing: "0.04em", padding: 0, transition: "color 0.2s ease" }}
-                onMouseEnter={e => e.target.style.color = "#F4F482"}
-                onMouseLeave={e => e.target.style.color = "rgba(250,250,250,0.6)"}
-              >
-                Contact
-              </button>
-            </div>
-          </div>
-
-          {/* Terminal line */}
-          <div style={{ borderTop: "1px solid rgba(250,250,250,0.1)", paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div className="mono terminal-cursor" style={{ fontSize: "0.72rem", color: "rgba(250,250,250,0.5)", letterSpacing: "0.06em" }}>
-              uncharted.ventures ~ $ ready to build
-            </div>
-            <div className="mono" style={{ fontSize: "0.68rem", color: "rgba(250,250,250,0.5)", letterSpacing: "0.06em" }}>
-              © 2026 UNCHARTED VENTURES LLC · ALL RIGHTS RESERVED
-            </div>
-          </div>
-        </div>
-      </footer>
+      <GridBg />
+      <Nav setPage={setPage} scrollY={scrollY} />
+      <Hero setPage={setPage} />
+      <ThesisStrip />
+      <ProtocolSection setPage={setPage} />
+      <Portfolio />
+      <Footer setPage={setPage} />
+      <CapitalBar />
     </div>
   );
 }
