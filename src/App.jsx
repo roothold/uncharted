@@ -1,153 +1,103 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import DivinePage from "./Divine";
 import ContactPage from "./Contact";
 
-// ── Palette ────────────────────────────────────────────────────────────────
 const C = {
-  charcoal: "#121212",
-  paper: "#F5F5F5",
-  gold: "#D4AF37",
-  goldDim: "rgba(212,175,55,0.15)",
-  goldBorder: "rgba(212,175,55,0.3)",
-  white: "#FFFFFF",
-  dim: "rgba(245,245,245,0.45)",
-  dimmer: "rgba(245,245,245,0.2)",
-  border: "rgba(245,245,245,0.08)",
+  bg:           "#FAFAFA",
+  surface:      "#FFFFFF",
+  ink:          "#111111",
+  inkDim:       "rgba(17,17,17,0.5)",
+  inkDimmer:    "rgba(17,17,17,0.25)",
+  gold:         "#B8962E",
+  goldDim:      "rgba(184,150,46,0.08)",
+  goldBorder:   "rgba(184,150,46,0.3)",
+  border:       "rgba(17,17,17,0.08)",
+  borderStrong: "rgba(17,17,17,0.14)",
+  sectionAlt:   "#F2F2F2",
 };
 
-// ── Fonts injected once ────────────────────────────────────────────────────
 const FONTS = `@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');`;
 
 const PORTFOLIO = [
-  {
-    id: "sweetkiwi", name: "Sweetkiwi", cat: "Consumer / Retail",
-    url: "https://www.sweetkiwi.com",
-    desc: "Better-for-you frozen yogurt brand. Built the brand, go-to-market strategy, and retail distribution from scratch.",
-    divineStatus: "Active · Using Divine", statusColor: C.gold,
-    metric: "ROC: 12.5%", active: true,
-  },
-  {
-    id: "surplus", name: "Surplus", cat: "Asset / Supply Chain",
-    url: "https://www.surpluspods.com",
-    desc: "Supply chain optimisation platform for retail operators. Built the product and early customer pipeline.",
-    divineStatus: "Active · Using Divine", statusColor: C.gold,
-    metric: "ARR: +2.3×", active: true,
-  },
-  {
-    id: "stealth", name: "Stealth", cat: "Unannounced",
-    url: null,
-    desc: "New venture in development. Details coming soon.",
-    divineStatus: "In Development", statusColor: "rgba(245,245,245,0.3)",
-    metric: "Coming Soon", active: false,
-  },
+  { id:"sweetkiwi", name:"Sweetkiwi", cat:"Consumer / Retail", url:"https://www.sweetkiwi.com", desc:"Better-for-you frozen yogurt brand. Built the brand, go-to-market strategy, and retail distribution from scratch.", status:"Active", metric:"ROC: 12.5%" },
+  { id:"surplus", name:"Surplus", cat:"Asset / Supply Chain", url:"https://www.surpluspods.com", desc:"Supply chain optimisation platform for retail operators. Built the product and early customer pipeline.", status:"Active", metric:"ARR: +2.3×" },
+  { id:"stealth", name:"Stealth", cat:"Unannounced", url:null, desc:"New venture in development. Details coming soon.", status:"In Development", metric:"Coming Soon" },
 ];
 
-// ── Animated grid background ───────────────────────────────────────────────
 function GridBg() {
   return (
     <div aria-hidden style={{ position:"fixed", inset:0, pointerEvents:"none", zIndex:0, overflow:"hidden" }}>
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(245,245,245,0.03)" strokeWidth="1"/>
-          </pattern>
-        </defs>
+        <defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(17,17,17,0.04)" strokeWidth="1"/></pattern></defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
-      {/* Gold radial glow top-right */}
-      <div style={{ position:"absolute", top:"-200px", right:"-200px", width:"600px", height:"600px", borderRadius:"50%", background:"radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%)", pointerEvents:"none" }} />
     </div>
   );
 }
 
-// ── Nav ────────────────────────────────────────────────────────────────────
 function Nav({ setPage, scrollY }) {
   const scrolled = scrollY > 40;
   return (
-    <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor: scrolled ? "rgba(18,18,18,0.96)" : "transparent", backdropFilter: scrolled ? "blur(16px)" : "none", borderBottom: scrolled ? `1px solid ${C.border}` : "none", transition:"all 0.5s cubic-bezier(0.16,1,0.3,1)", padding:"0 2.5rem" }}>
-      <div style={{ maxWidth:"1360px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+    <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor: scrolled ? "rgba(250,250,250,0.95)" : "transparent", backdropFilter: scrolled ? "blur(16px)" : "none", borderBottom: scrolled ? `1px solid ${C.border}` : "none", transition:"all 0.4s ease", padding:"0 2.5rem" }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto", height:"64px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
         <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", display:"flex", alignItems:"center", gap:"0.65rem", padding:0 }}>
-          <div style={{ width:"28px", height:"28px", border:`1.5px solid ${C.gold}`, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center" }}>
-            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"0.7rem", color:C.gold }}>U</span>
+          <div style={{ width:"26px", height:"26px", border:`1.5px solid ${C.gold}`, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center" }}>
+            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"0.65rem", color:C.gold }}>U</span>
           </div>
-          <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1rem", color:C.paper, letterSpacing:"-0.01em" }}>Uncharted</span>
+          <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1rem", color:C.ink, letterSpacing:"-0.01em" }}>Uncharted</span>
         </button>
         <div style={{ display:"flex", gap:"2.5rem", alignItems:"center" }}>
-          {[["Foundry","#foundry"],["Portfolio","#portfolio"],["Protocol","#protocol"]].map(([label, href]) => (
-            <a key={label} href={href} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.78rem", fontWeight:500, letterSpacing:"0.05em", textDecoration:"none", color:C.dim, textTransform:"uppercase", transition:"color 0.2s" }}
-              onMouseEnter={e => e.target.style.color = C.paper}
-              onMouseLeave={e => e.target.style.color = C.dim}
+          {[["Studio","#studio"],["Portfolio","#portfolio"],["Divine","#divine"]].map(([label, href]) => (
+            <a key={label} href={href} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.8rem", fontWeight:500, letterSpacing:"0.04em", textDecoration:"none", color:C.inkDim, textTransform:"uppercase", transition:"color 0.2s" }}
+              onMouseEnter={e => e.target.style.color = C.ink} onMouseLeave={e => e.target.style.color = C.inkDim}
             >{label}</a>
           ))}
-          <button onClick={() => setPage("contact")} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.78rem", fontWeight:500, letterSpacing:"0.05em", color:C.dim, background:"none", border:"none", cursor:"pointer", textTransform:"uppercase", transition:"color 0.2s" }}
-            onMouseEnter={e => e.target.style.color = C.paper}
-            onMouseLeave={e => e.target.style.color = C.dim}
+          <button onClick={() => setPage("contact")} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.8rem", fontWeight:500, letterSpacing:"0.04em", color:C.inkDim, background:"none", border:"none", cursor:"pointer", textTransform:"uppercase", transition:"color 0.2s" }}
+            onMouseEnter={e => e.target.style.color = C.ink} onMouseLeave={e => e.target.style.color = C.inkDim}
           >Contact</button>
-          <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", fontWeight:500, letterSpacing:"0.08em", color:C.charcoal, backgroundColor:C.gold, border:"none", borderRadius:"2px", padding:"0.5rem 1.1rem", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
-            onMouseEnter={e => { e.target.style.backgroundColor="#c9a227"; e.target.style.transform="translateY(-1px)"; }}
-            onMouseLeave={e => { e.target.style.backgroundColor=C.gold; e.target.style.transform="translateY(0)"; }}
-          >Query Divine ✦</button>
+          <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.7rem", fontWeight:500, letterSpacing:"0.08em", color:"#fff", backgroundColor:C.ink, border:"none", borderRadius:"2px", padding:"0.5rem 1.1rem", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
+            onMouseEnter={e => { e.target.style.backgroundColor="#333"; e.target.style.transform="translateY(-1px)"; }}
+            onMouseLeave={e => { e.target.style.backgroundColor=C.ink; e.target.style.transform="translateY(0)"; }}
+          >✦ Try Divine</button>
         </div>
       </div>
     </nav>
   );
 }
 
-// ── Hero ───────────────────────────────────────────────────────────────────
 function Hero({ setPage }) {
   const [tick, setTick] = useState(0);
-  const streams = [
-    "SWEETKIWI · CONSUMER BRAND · ACTIVE ············",
-    "SURPLUS · SUPPLY CHAIN PLATFORM · SCALING ·······",
-    "DIVINE AI · FOUNDER INTELLIGENCE TOOL · v1.4 ····",
-    "UNCHARTED STUDIO · OPEN FOR NEW FOUNDERS ········",
-  ];
+  const streams = ["SWEETKIWI · CONSUMER BRAND · ACTIVE ············","SURPLUS · SUPPLY CHAIN PLATFORM · SCALING ·······","DIVINE AI · FOUNDER INTELLIGENCE TOOL · v1.4 ····","UNCHARTED STUDIO · OPEN FOR NEW FOUNDERS ········"];
   useEffect(() => { const t = setInterval(() => setTick(n => n + 1), 80); return () => clearInterval(t); }, []);
   const stream = streams[Math.floor(tick / 60) % streams.length];
-  const charIdx = tick % (stream.length + 20);
-  const displayed = stream.slice(0, Math.min(charIdx, stream.length));
-
+  const displayed = stream.slice(0, Math.min(tick % (stream.length + 20), stream.length));
   return (
-    <section id="foundry" style={{ minHeight:"100vh", display:"flex", flexDirection:"column", justifyContent:"center", padding:"8rem 2.5rem 6rem", position:"relative" }}>
+    <section id="studio" style={{ minHeight:"100vh", display:"flex", flexDirection:"column", justifyContent:"center", padding:"8rem 2.5rem 6rem", position:"relative" }}>
       <div style={{ maxWidth:"1360px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }}>
-
-        {/* Eyebrow */}
         <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"2.5rem", opacity:0, animation:"fadeUp 0.8s 0.1s forwards" }}>
-          <div style={{ width:"32px", height:"1px", backgroundColor:C.gold }} />
-          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", letterSpacing:"0.16em", color:C.gold, textTransform:"uppercase" }}>
-            Venture Studio · AI Tools · Est. 2017
-          </span>
+          <div style={{ width:"28px", height:"1px", backgroundColor:C.gold }} />
+          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Venture Studio · AI Tools · Est. 2017</span>
         </div>
-
-        {/* Headline */}
-        <h1 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(3rem, 7.5vw, 7.5rem)", lineHeight:1.0, letterSpacing:"-0.04em", color:C.paper, marginBottom:"2rem", maxWidth:"900px", opacity:0, animation:"fadeUp 0.9s 0.2s forwards" }}>
-          We build and back<br />
-          companies that<br />
-          <span style={{ color:C.gold }}>last.</span>
+        <h1 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(3rem, 7.5vw, 7.5rem)", lineHeight:1.0, letterSpacing:"-0.04em", color:C.ink, marginBottom:"2rem", maxWidth:"900px", opacity:0, animation:"fadeUp 0.9s 0.2s forwards" }}>
+          We build and back<br />companies that<br /><span style={{ color:C.gold }}>last.</span>
         </h1>
-
-        {/* Sub-headline */}
-        <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"clamp(1rem, 1.8vw, 1.25rem)", lineHeight:1.75, color:C.dim, maxWidth:"580px", marginBottom:"3.5rem", opacity:0, animation:"fadeUp 0.9s 0.35s forwards" }}>
+        <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"clamp(1rem, 1.8vw, 1.2rem)", lineHeight:1.75, color:C.inkDim, maxWidth:"560px", marginBottom:"3.5rem", opacity:0, animation:"fadeUp 0.9s 0.35s forwards" }}>
           Uncharted is a venture studio. We co-build companies with founders, give them access to AI tools that sharpen their decisions, and help them grow from idea to traction.
         </p>
-
-        {/* CTAs */}
         <div style={{ display:"flex", gap:"1rem", alignItems:"center", marginBottom:"5rem", opacity:0, animation:"fadeUp 0.9s 0.5s forwards" }}>
-          <a href="#portfolio" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.85rem", letterSpacing:"0.04em", textDecoration:"none", color:C.charcoal, backgroundColor:C.paper, padding:"0.85rem 2rem", borderRadius:"2px", textTransform:"uppercase", transition:"all 0.2s ease", display:"inline-block" }}
-            onMouseEnter={e => { e.target.style.backgroundColor="#e8e8e8"; e.target.style.transform="translateY(-2px)"; }}
-            onMouseLeave={e => { e.target.style.backgroundColor=C.paper; e.target.style.transform="translateY(0)"; }}
+          <a href="#portfolio" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.85rem", letterSpacing:"0.04em", textDecoration:"none", color:"#fff", backgroundColor:C.ink, padding:"0.85rem 2rem", borderRadius:"2px", textTransform:"uppercase", transition:"all 0.2s ease", display:"inline-block" }}
+            onMouseEnter={e => { e.target.style.backgroundColor="#333"; e.target.style.transform="translateY(-2px)"; }}
+            onMouseLeave={e => { e.target.style.backgroundColor=C.ink; e.target.style.transform="translateY(0)"; }}
           >See Our Work</a>
           <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", letterSpacing:"0.1em", color:C.gold, backgroundColor:"transparent", border:`1px solid ${C.goldBorder}`, padding:"0.85rem 2rem", borderRadius:"2px", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
             onMouseEnter={e => { e.target.style.borderColor=C.gold; e.target.style.backgroundColor=C.goldDim; e.target.style.transform="translateY(-2px)"; }}
             onMouseLeave={e => { e.target.style.borderColor=C.goldBorder; e.target.style.backgroundColor="transparent"; e.target.style.transform="translateY(0)"; }}
           >✦ Try Divine AI</button>
         </div>
-
-        {/* Live stream ticker */}
         <div style={{ opacity:0, animation:"fadeUp 0.9s 0.65s forwards" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", padding:"0.65rem 1rem", border:`1px solid ${C.border}`, borderLeft:`2px solid ${C.gold}`, backgroundColor:"rgba(212,175,55,0.04)", maxWidth:"520px" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", padding:"0.65rem 1rem", border:`1px solid ${C.border}`, borderLeft:`2px solid ${C.gold}`, backgroundColor:C.goldDim, maxWidth:"520px" }}>
             <div style={{ width:"5px", height:"5px", borderRadius:"50%", backgroundColor:C.gold, flexShrink:0, animation:"pulse 1.5s ease-in-out infinite" }} />
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:"rgba(212,175,55,0.7)", letterSpacing:"0.1em", whiteSpace:"nowrap", overflow:"hidden" }}>
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold, letterSpacing:"0.1em", whiteSpace:"nowrap", overflow:"hidden" }}>
               {displayed}<span style={{ animation:"blink 0.7s step-end infinite" }}>_</span>
             </span>
           </div>
@@ -157,16 +107,15 @@ function Hero({ setPage }) {
   );
 }
 
-// ── Thesis strip ───────────────────────────────────────────────────────────
-function ThesisStrip() {
-  const stats = [["7+", "Years Building"], ["2", "Ventures Launched"], ["1", "AI Tool in Market"], ["2017", "Founded"]];
+function StatsStrip() {
+  const stats = [["7+","Years Building"],["2","Ventures Launched"],["1","AI Tool in Market"],["2017","Founded"]];
   return (
-    <section style={{ padding:"4rem 2.5rem", backgroundColor:"rgba(245,245,245,0.02)", borderTop:`1px solid ${C.border}`, borderBottom:`1px solid ${C.border}` }}>
-      <div style={{ maxWidth:"1360px", margin:"0 auto", display:"grid", gridTemplateColumns:"repeat(4, 1fr)", gap:"1px", backgroundColor:C.border }}>
+    <section style={{ borderTop:`1px solid ${C.border}`, borderBottom:`1px solid ${C.border}`, backgroundColor:C.surface }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto", display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:"1px", backgroundColor:C.border }}>
         {stats.map(([val, label]) => (
-          <div key={label} style={{ padding:"2.5rem 2rem", backgroundColor:C.charcoal }}>
-            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"2rem", color:C.paper, letterSpacing:"-0.02em", marginBottom:"0.35rem" }}>{val}</div>
-            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dimmer, letterSpacing:"0.12em", textTransform:"uppercase" }}>{label}</div>
+          <div key={label} style={{ padding:"2.5rem 2rem", backgroundColor:C.surface }}>
+            <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"2.2rem", color:C.ink, letterSpacing:"-0.03em", marginBottom:"0.3rem" }}>{val}</div>
+            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkDimmer, letterSpacing:"0.12em", textTransform:"uppercase" }}>{label}</div>
           </div>
         ))}
       </div>
@@ -174,54 +123,49 @@ function ThesisStrip() {
   );
 }
 
-// ── Divine Protocol section ────────────────────────────────────────────────
-function ProtocolSection({ setPage }) {
-  const [logLines] = useState([
-    { t: "00:00:01", msg: "SWEETKIWI · STRATEGY SESSION COMPLETE · 3 ACTIONS LOGGED", col: C.gold },
-    { t: "00:00:02", msg: "SURPLUS · PRICING QUESTION ANSWERED · OPERATOR FRAMEWORK", col: C.dim },
-    { t: "00:00:03", msg: "FOUNDER QUERY · HIRING DECISION · REFRAME DELIVERED", col: C.dim },
-    { t: "00:00:04", msg: "NEW SESSION · FUNDRAISING PREP · DECK FEEDBACK IN PROGRESS", col: "rgba(245,245,245,0.3)" },
-    { t: "00:00:05", msg: "DIVINE v1.4 · READY FOR YOUR NEXT QUESTION ············", col: C.gold },
-  ]);
+function DivineSection({ setPage }) {
   return (
-    <section id="protocol" style={{ padding:"7rem 2.5rem" }}>
-      <div style={{ maxWidth:"1360px", margin:"0 auto", display:"grid", gridTemplateColumns:"1fr 1fr", gap:"6rem", alignItems:"center" }}>
-        <div>
-          <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1.5rem" }}>
-            <div style={{ width:"24px", height:"1px", backgroundColor:C.gold }} />
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Divine · AI Tool for Founders</span>
+    <section id="divine" style={{ padding:"7rem 2.5rem", backgroundColor:C.bg, borderTop:`1px solid ${C.border}` }}>
+      <div style={{ maxWidth:"1360px", margin:"0 auto" }}>
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1px", backgroundColor:C.border }}>
+          {/* Founders card */}
+          <div style={{ padding:"3.5rem 3rem", backgroundColor:C.surface }}>
+            <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1.5rem" }}>
+              <div style={{ width:"20px", height:"1px", backgroundColor:C.gold }} />
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.12em", color:C.gold, textTransform:"uppercase" }}>For Founders</span>
+            </div>
+            <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(1.6rem, 2.5vw, 2.5rem)", lineHeight:1.1, letterSpacing:"-0.03em", color:C.ink, marginBottom:"1.25rem" }}>
+              Get answers to your<br />hardest questions.
+            </h2>
+            <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.92rem", lineHeight:1.8, color:C.inkDim, marginBottom:"2rem", maxWidth:"380px" }}>
+              Strategy, hiring, pricing, fundraising. Ask anything and get a direct answer shaped by real operator experience — not generic AI.
+            </p>
+            <div style={{ display:"flex", gap:"1rem", alignItems:"center" }}>
+              <button onClick={() => setPage("divine")} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.82rem", letterSpacing:"0.04em", color:"#fff", backgroundColor:C.ink, border:"none", borderRadius:"2px", padding:"0.8rem 1.75rem", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
+                onMouseEnter={e => { e.target.style.backgroundColor="#333"; e.target.style.transform="translateY(-2px)"; }}
+                onMouseLeave={e => { e.target.style.backgroundColor=C.ink; e.target.style.transform="translateY(0)"; }}>Ask a Question ✦</button>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkDimmer, letterSpacing:"0.06em" }}>$0.05 per answer</span>
+            </div>
           </div>
-          <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 4vw, 3.5rem)", lineHeight:1.05, letterSpacing:"-0.03em", color:C.paper, marginBottom:"1.5rem" }}>
-            Better decisions,<br /><span style={{ color:C.gold }}>faster.</span>
-          </h2>
-          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.95rem", lineHeight:1.8, color:C.dim, marginBottom:"1.5rem", maxWidth:"440px" }}>
-            Divine is an AI tool built specifically for founders. Ask it a question about your business — strategy, hiring, pricing, fundraising — and get a sharp, direct answer drawn from real operator experience.
-          </p>
-          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.88rem", lineHeight:1.8, color:"rgba(245,245,245,0.35)", marginBottom:"2.5rem", maxWidth:"440px" }}>
-            It's not a generic chatbot. Every response is shaped by the thinking frameworks of founders and operators who have actually built companies.
-          </p>
-          <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", fontWeight:500, letterSpacing:"0.1em", color:C.charcoal, backgroundColor:C.gold, border:"none", borderRadius:"2px", padding:"0.85rem 1.75rem", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
-            onMouseEnter={e => { e.target.style.backgroundColor="#c9a227"; e.target.style.transform="translateY(-2px)"; }}
-            onMouseLeave={e => { e.target.style.backgroundColor=C.gold; e.target.style.transform="translateY(0)"; }}
-          >✦ Try Divine</button>
-        </div>
 
-        {/* Terminal */}
-        <div style={{ backgroundColor:"#0a0a0a", border:`1px solid ${C.goldBorder}`, borderRadius:"4px", overflow:"hidden" }}>
-          <div style={{ padding:"0.65rem 1rem", borderBottom:`1px solid ${C.goldBorder}`, display:"flex", alignItems:"center", gap:"0.5rem", backgroundColor:"rgba(212,175,55,0.05)" }}>
-            <div style={{ width:"8px", height:"8px", borderRadius:"50%", backgroundColor:C.gold, animation:"pulse 2s infinite" }} />
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold, letterSpacing:"0.12em" }}>DIVINE · LIVE SESSION LOG</span>
-          </div>
-          <div style={{ padding:"1.5rem", display:"flex", flexDirection:"column", gap:"0.75rem" }}>
-            {logLines.map((line, i) => (
-              <div key={i} style={{ display:"flex", gap:"1rem", opacity:0, animation:`fadeUp 0.5s ${0.1 + i * 0.15}s forwards` }}>
-                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:"rgba(245,245,245,0.2)", letterSpacing:"0.05em", flexShrink:0 }}>{line.t}</span>
-                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:line.col, letterSpacing:"0.06em", lineHeight:1.6 }}>{line.msg}</span>
-              </div>
-            ))}
-            <div style={{ display:"flex", gap:"1rem", marginTop:"0.5rem" }}>
-              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:"rgba(245,245,245,0.2)" }}>00:00:07</span>
-              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold }}>› <span style={{ animation:"blink 0.8s step-end infinite" }}>_</span></span>
+          {/* Thinkers card */}
+          <div style={{ padding:"3.5rem 3rem", backgroundColor:C.sectionAlt, position:"relative", overflow:"hidden" }}>
+            <div style={{ position:"absolute", top:0, left:0, right:0, height:"2px", backgroundColor:C.gold }} />
+            <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1.5rem" }}>
+              <div style={{ width:"20px", height:"1px", backgroundColor:C.gold }} />
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.12em", color:C.gold, textTransform:"uppercase" }}>For Thinkers</span>
+            </div>
+            <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(1.6rem, 2.5vw, 2.5rem)", lineHeight:1.1, letterSpacing:"-0.03em", color:C.ink, marginBottom:"1.25rem" }}>
+              Earn from your<br />expertise.
+            </h2>
+            <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.92rem", lineHeight:1.8, color:C.inkDim, marginBottom:"2rem", maxWidth:"380px" }}>
+              Encode your thinking into Divine. Founders pay to ask you questions. You earn 70% of every answer — no calls, no calendar, no limit.
+            </p>
+            <div style={{ display:"flex", gap:"1rem", alignItems:"center" }}>
+              <button onClick={() => setPage("divine")} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.82rem", letterSpacing:"0.04em", color:C.ink, backgroundColor:"transparent", border:`1px solid ${C.borderStrong}`, borderRadius:"2px", padding:"0.8rem 1.75rem", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
+                onMouseEnter={e => { e.target.style.borderColor=C.gold; e.target.style.backgroundColor=C.goldDim; e.target.style.transform="translateY(-2px)"; }}
+                onMouseLeave={e => { e.target.style.borderColor=C.borderStrong; e.target.style.backgroundColor="transparent"; e.target.style.transform="translateY(0)"; }}>Become a Thinker →</button>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkDimmer, letterSpacing:"0.06em" }}>70% revenue share</span>
             </div>
           </div>
         </div>
@@ -230,51 +174,40 @@ function ProtocolSection({ setPage }) {
   );
 }
 
-// ── Portfolio ──────────────────────────────────────────────────────────────
 function Portfolio() {
   const [hovered, setHovered] = useState(null);
   return (
-    <section id="portfolio" style={{ padding:"7rem 2.5rem", borderTop:`1px solid ${C.border}` }}>
+    <section id="portfolio" style={{ padding:"7rem 2.5rem", borderTop:`1px solid ${C.border}`, backgroundColor:C.surface }}>
       <div style={{ maxWidth:"1360px", margin:"0 auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"4rem" }}>
           <div>
             <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1rem" }}>
               <div style={{ width:"24px", height:"1px", backgroundColor:C.gold }} />
-              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Companies We've Built</span>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Companies We've Built</span>
             </div>
-            <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 3.5vw, 3rem)", letterSpacing:"-0.03em", lineHeight:1.1, color:C.paper }}>
-              Our<br />Portfolio
-            </h2>
+            <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 3.5vw, 3rem)", letterSpacing:"-0.03em", lineHeight:1.1, color:C.ink }}>Our Portfolio</h2>
           </div>
-          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dimmer, letterSpacing:"0.1em" }}>2017 — PRESENT</span>
+          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkDimmer, letterSpacing:"0.1em" }}>2017 — PRESENT</span>
         </div>
-
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:"1px", backgroundColor:C.border }}>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"1px", backgroundColor:C.border }}>
           {PORTFOLIO.map(v => {
             const CardEl = v.url ? "a" : "div";
             const cardProps = v.url ? { href:v.url, target:"_blank", rel:"noopener noreferrer", style:{ textDecoration:"none", color:"inherit", display:"block" } } : {};
             return (
               <CardEl key={v.id} {...cardProps}>
-                <div
-                  onMouseEnter={() => setHovered(v.id)}
-                  onMouseLeave={() => setHovered(null)}
-                  style={{ backgroundColor: hovered === v.id ? "#1a1a1a" : C.charcoal, padding:"2.5rem 2rem", transition:"background 0.3s ease", cursor: v.url ? "pointer" : "default", position:"relative", overflow:"hidden" }}
-                >
-                  {/* Gold top border on hover */}
+                <div onMouseEnter={() => setHovered(v.id)} onMouseLeave={() => setHovered(null)}
+                  style={{ backgroundColor: hovered === v.id ? C.sectionAlt : C.surface, padding:"2.5rem 2rem", transition:"background 0.3s ease", position:"relative", overflow:"hidden" }}>
                   <div style={{ position:"absolute", top:0, left:0, right:0, height:"2px", backgroundColor:C.gold, transform: hovered === v.id ? "scaleX(1)" : "scaleX(0)", transition:"transform 0.4s cubic-bezier(0.16,1,0.3,1)", transformOrigin:"left" }} />
-
-                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color: v.active ? C.gold : "rgba(245,245,245,0.3)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"1.5rem", display:"flex", alignItems:"center", gap:"0.5rem" }}>
-                    <div style={{ width:"4px", height:"4px", borderRadius:"50%", backgroundColor: v.active ? C.gold : "rgba(245,245,245,0.2)" }} />
-                    {v.divineStatus}
+                  <div style={{ display:"flex", alignItems:"center", gap:"0.5rem", marginBottom:"1.5rem" }}>
+                    <div style={{ width:"5px", height:"5px", borderRadius:"50%", backgroundColor: v.status === "Active" ? "#16a34a" : C.inkDimmer }} />
+                    <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color: v.status === "Active" ? "#16a34a" : C.inkDimmer, letterSpacing:"0.1em", textTransform:"uppercase" }}>{v.status}</span>
                   </div>
-
-                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.4rem" }}>{v.cat}</div>
-                  <h3 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"1.5rem", letterSpacing:"-0.02em", color:C.paper, marginBottom:"0.75rem" }}>{v.name}</h3>
-                  <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.83rem", lineHeight:1.7, color:C.dim, marginBottom:"2rem" }}>{v.desc}</p>
-
+                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.inkDimmer, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.4rem" }}>{v.cat}</div>
+                  <h3 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"1.5rem", letterSpacing:"-0.02em", color:C.ink, marginBottom:"0.75rem" }}>{v.name}</h3>
+                  <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.83rem", lineHeight:1.7, color:C.inkDim, marginBottom:"2rem" }}>{v.desc}</p>
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-                    <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", color: v.active ? C.gold : C.dimmer, letterSpacing:"0.08em" }}>{v.metric}</span>
-                    {v.url && <span style={{ color:C.gold, fontSize:"0.8rem", opacity: hovered === v.id ? 1 : 0, transform: hovered === v.id ? "translateX(0)" : "translateX(-6px)", transition:"all 0.25s ease" }}>→</span>}
+                    <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color: v.status === "Active" ? C.gold : C.inkDimmer, letterSpacing:"0.08em" }}>{v.metric}</span>
+                    {v.url && <span style={{ color:C.ink, fontSize:"0.8rem", opacity: hovered === v.id ? 1 : 0, transform: hovered === v.id ? "translateX(0)" : "translateX(-6px)", transition:"all 0.25s ease" }}>→</span>}
                   </div>
                 </div>
               </CardEl>
@@ -286,10 +219,9 @@ function Portfolio() {
   );
 }
 
-// ── Footer ─────────────────────────────────────────────────────────────────
 function Footer({ setPage }) {
   return (
-    <footer style={{ backgroundColor:"#0a0a0a", padding:"4rem 2.5rem 5rem", borderTop:`1px solid ${C.border}` }}>
+    <footer style={{ backgroundColor:C.surface, padding:"4rem 2.5rem 3rem", borderTop:`1px solid ${C.border}` }}>
       <div style={{ maxWidth:"1360px", margin:"0 auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:"3rem" }}>
           <div>
@@ -297,70 +229,60 @@ function Footer({ setPage }) {
               <div style={{ width:"24px", height:"24px", border:`1.5px solid ${C.gold}`, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center" }}>
                 <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:700, fontSize:"0.6rem", color:C.gold }}>U</span>
               </div>
-              <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1rem", color:C.paper }}>Uncharted</span>
+              <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1rem", color:C.ink }}>Uncharted</span>
             </div>
-            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.1em", textTransform:"uppercase" }}>VENTURE STUDIO · AI TOOLS · EST. 2017</div>
+            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.inkDimmer, letterSpacing:"0.1em", textTransform:"uppercase" }}>VENTURE STUDIO · AI TOOLS · EST. 2017</div>
           </div>
           <div style={{ display:"flex", gap:"2rem", alignItems:"center" }}>
-            {["Foundry","Portfolio","Protocol"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.75rem", color:C.dimmer, textDecoration:"none", letterSpacing:"0.04em", transition:"color 0.2s" }}
-                onMouseEnter={e => e.target.style.color = C.gold}
-                onMouseLeave={e => e.target.style.color = C.dimmer}
-              >{l}</a>
+            {["Studio","Portfolio","Divine"].map(l => (
+              <a key={l} href={`#${l.toLowerCase()}`} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.75rem", color:C.inkDimmer, textDecoration:"none", letterSpacing:"0.04em", transition:"color 0.2s" }}
+                onMouseEnter={e => e.target.style.color = C.ink} onMouseLeave={e => e.target.style.color = C.inkDimmer}>{l}</a>
             ))}
-            <button onClick={() => setPage("contact")} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.75rem", color:C.dimmer, background:"none", border:"none", cursor:"pointer", letterSpacing:"0.04em", padding:0, transition:"color 0.2s" }}
-              onMouseEnter={e => e.target.style.color = C.gold}
-              onMouseLeave={e => e.target.style.color = C.dimmer}
-            >Contact</button>
+            <button onClick={() => setPage("contact")} style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.75rem", color:C.inkDimmer, background:"none", border:"none", cursor:"pointer", letterSpacing:"0.04em", padding:0, transition:"color 0.2s" }}
+              onMouseEnter={e => e.target.style.color = C.ink} onMouseLeave={e => e.target.style.color = C.inkDimmer}>Contact</button>
           </div>
         </div>
         <div style={{ borderTop:`1px solid ${C.border}`, paddingTop:"1.5rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.08em" }}>
-            uncharted.ventures ~ $ ready to build<span style={{ animation:"blink 1s step-end infinite" }}>_</span>
-          </span>
-          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.08em" }}>
-            © 2026 UNCHARTED VENTURES LLC · ALL RIGHTS RESERVED
-          </span>
+          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.inkDimmer, letterSpacing:"0.08em" }}>uncharted.ventures ~ $ ready to build<span style={{ animation:"blink 1s step-end infinite" }}>_</span></span>
+          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.inkDimmer, letterSpacing:"0.08em" }}>© 2026 UNCHARTED VENTURES LLC · ALL RIGHTS RESERVED</span>
         </div>
       </div>
     </footer>
   );
 }
 
-// ── Root ───────────────────────────────────────────────────────────────────
 export default function App() {
   const [page, setPage] = useState("home");
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const h = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", h, { passive: true });
+    window.addEventListener("scroll", h, { passive:true });
     return () => window.removeEventListener("scroll", h);
   }, []);
 
   useEffect(() => { window.scrollTo(0, 0); }, [page]);
 
-  if (page === "divine") return <DivinePage onBack={() => setPage("home")} />;
+  if (page === "divine")  return <DivinePage onBack={() => setPage("home")} />;
   if (page === "contact") return <ContactPage onBack={() => setPage("home")} />;
 
   return (
-    <div style={{ backgroundColor:C.charcoal, color:C.paper, minHeight:"100vh", overflowX:"hidden" }}>
+    <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", overflowX:"hidden" }}>
       <style>{`
         ${FONTS}
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        ::selection { background: ${C.gold}; color: ${C.charcoal}; }
-        @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
-        @keyframes blink { 50% { opacity:0; } }
-        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-        @keyframes liquidPulse { 0%,100% { opacity:0.6; } 50% { opacity:1; } }
-        @keyframes scanline { 0% { transform:translateY(-100%); } 100% { transform:translateY(100vh); } }
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { -webkit-font-smoothing:antialiased; }
+        ::selection { background:${C.gold}; color:#fff; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
+        @keyframes blink { 50%{opacity:0;} }
+        @keyframes pulse { 0%,100%{opacity:1;}50%{opacity:0.3;} }
       `}</style>
       <GridBg />
       <Nav setPage={setPage} scrollY={scrollY} />
       <Hero setPage={setPage} />
-      <ThesisStrip />
-      <ProtocolSection setPage={setPage} />
+      <StatsStrip />
+      <DivineSection setPage={setPage} />
       <Portfolio />
       <Footer setPage={setPage} />
     </div>
