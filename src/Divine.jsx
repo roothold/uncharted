@@ -14,18 +14,17 @@ const C = {
 };
 
 const THINKERS = [
-  { id:"1", name:"Kshitij Patil", title:"Systems Architect · Supply Chain Intelligence", domains:["Operations","Capital Allocation","AI Infrastructure"], tier:"Strategy", price:"$0.50" },
-  { id:"2", name:"Michael Akindele", title:"Builder · Designer · Sovereign Founder", domains:["Product Strategy","Brand Architecture","Venture Design"], tier:"Prophecy", price:"$2.50" },
-  { id:"3", name:"Divine Oracle", title:"Composite Intelligence · All Domains", domains:["All Domains","Cross-Venture Synthesis","Foundry Logic"], tier:"Prophecy", price:"$2.50" },
+  { id:"1", name:"Kshitij Patil", title:"Operations · Supply Chain · AI", domains:["Operations","Capital Allocation","AI Infrastructure"], tier:"Strategy", price:"$0.50" },
+  { id:"2", name:"Michael Akindele", title:"Product · Brand · Venture Building", domains:["Product Strategy","Brand Building","Venture Design"], tier:"Prophecy", price:"$2.50" },
+  { id:"3", name:"Divine Composite", title:"All domains · Cross-functional advice", domains:["Strategy","Operations","Fundraising","Growth"], tier:"Prophecy", price:"$2.50" },
 ];
 
 const INSIGHT_LOGS = [
-  { time:"09:14:32", level:"INSIGHT", msg:"Capital allocation pattern identified — Surplus showing 2.3× ARR signal.", thinker:"Systems Architect" },
-  { time:"09:14:45", level:"PROTOCOL", msg:"Divine governance layer active on all 3 portfolio nodes.", thinker:"Oracle" },
-  { time:"09:15:01", level:"SIGNAL", msg:"Founder decision bias detected — recommend structural reframe.", thinker:"Sovereign Founder" },
-  { time:"09:15:18", level:"INSIGHT", msg:"Liquidity facility health: nominal. RootHold bridge confirmed.", thinker:"Oracle" },
-  { time:"09:15:34", level:"PROTOCOL", msg:"Stealth node awaiting architect encoding — slot open.", thinker:"Foundry" },
-  { time:"09:15:52", level:"INSIGHT", msg:"Sweetkiwi consumer signal trending +12.5% MoM. Maintain course.", thinker:"Systems Architect" },
+  { time:"09:14:32", level:"INSIGHT", msg:"Sweetkiwi — retail pricing reviewed. Recommendation: hold margin, increase unit volume.", thinker:"Kshitij Patil" },
+  { time:"09:14:45", level:"SIGNAL", msg:"Surplus — founder asked about hiring first salesperson. Direct answer delivered.", thinker:"Michael Akindele" },
+  { time:"09:15:01", level:"INSIGHT", msg:"Anonymous — fundraising deck reviewed. Three issues flagged before investor meeting.", thinker:"Divine Composite" },
+  { time:"09:15:34", level:"SIGNAL", msg:"Sweetkiwi — competitor entered market. Response strategy drafted and reviewed.", thinker:"Kshitij Patil" },
+  { time:"09:15:52", level:"INSIGHT", msg:"Surplus — cash flow question answered. 30/60/90 day action plan generated.", thinker:"Michael Akindele" },
 ];
 
 function LogLevel({ level }) {
@@ -92,9 +91,9 @@ export default function DivinePage({ onBack }) {
   };
 
   const tabs = [
-    { id:"portal", label:"Cognitive Portal" },
-    { id:"logs", label:"Intelligence Logs" },
-    { id:"thinkers", label:"Thought Architects" },
+    { id:"portal", label:"Ask a Question" },
+    { id:"logs", label:"Recent Sessions" },
+    { id:"thinkers", label:"Thinking Frameworks" },
   ];
 
   return (
@@ -140,13 +139,13 @@ export default function DivinePage({ onBack }) {
         {/* Page header */}
         <div style={{ marginBottom:"3rem", opacity:0, animation:"fadeUp 0.7s 0.1s forwards" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1rem" }}>
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>✦ Cognitive Portal · Uncharted Foundry</span>
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>✦ Divine · AI Tool for Founders</span>
           </div>
           <h1 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 4vw, 3.5rem)", lineHeight:1.05, letterSpacing:"-0.03em", color:C.paper, marginBottom:"0.75rem" }}>
-            The Operating System<br /><span style={{ color:C.gold }}>for Greatness.</span>
+            Ask a hard question.<br /><span style={{ color:C.gold }}>Get a real answer.</span>
           </h1>
           <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.92rem", color:C.dim, maxWidth:"500px", lineHeight:1.7 }}>
-            Query the Divine Intelligence Protocol. Select a Thought Architect and encode your decision into the network.
+            Select a thinking framework, type your question, and get a direct response shaped by real operator experience — not generic AI advice.
           </p>
         </div>
 
@@ -165,7 +164,7 @@ export default function DivinePage({ onBack }) {
 
             {/* Thinker selector */}
             <div>
-              <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", letterSpacing:"0.12em", color:C.dimmer, textTransform:"uppercase", marginBottom:"0.75rem" }}>Select Architect</div>
+              <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", letterSpacing:"0.12em", color:C.dimmer, textTransform:"uppercase", marginBottom:"0.75rem" }}>Choose a Framework</div>
               <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem" }}>
                 {THINKERS.map(t => (
                   <div key={t.id} className="thinker-card"
@@ -185,8 +184,8 @@ export default function DivinePage({ onBack }) {
 
               {/* Proof of Intelligence box */}
               <div style={{ marginTop:"1.5rem", padding:"1rem", border:`1px solid ${C.goldBorder}`, borderRadius:"2px", backgroundColor:"rgba(212,175,55,0.04)" }}>
-                <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.gold, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.75rem" }}>Proof of Intelligence</div>
-                {[["Nodes Active","3 / 3"],["Protocol Ver.","v1.4"],["Liquidity","$3M Active"],["Uptime","99.97%"]].map(([k,v]) => (
+                <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.gold, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.75rem" }}>Session Info</div>
+                {[["Frameworks","3 Available"],["Version","v1.4"],["Uptime","99.97%"],["Cost","$0.05 / query"]].map(([k,v]) => (
                   <div key={k} style={{ display:"flex", justifyContent:"space-between", marginBottom:"0.4rem" }}>
                     <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.dimmer }}>{k}</span>
                     <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.paper }}>{v}</span>
@@ -203,41 +202,41 @@ export default function DivinePage({ onBack }) {
                   <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }}>
                     <div style={{ width:"7px", height:"7px", borderRadius:"50%", backgroundColor: selectedThinker ? C.gold : C.dimmer, transition:"background 0.3s" }} />
                     <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color: selectedThinker ? C.gold : C.dimmer, letterSpacing:"0.1em" }}>
-                      {selectedThinker ? `ARCHITECT: ${selectedThinker.name.toUpperCase()}` : "AWAITING ARCHITECT SELECTION"}
+                      {selectedThinker ? `FRAMEWORK: ${selectedThinker.name.toUpperCase()}` : "NO FRAMEWORK SELECTED"}
                     </span>
                   </div>
-                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.dimmer }}>DIVINE · COGNITIVE ENGINE</span>
+                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.dimmer }}>DIVINE · v1.4</span>
                 </div>
 
                 {/* Response area */}
                 <div style={{ padding:"1.5rem", minHeight:"280px", position:"relative" }}>
                   {!selectedThinker && (
                     <div style={{ color:C.dimmer, fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", letterSpacing:"0.06em" }}>
-                      › Select a Thought Architect to begin encoding your query...<span style={{ animation:"blink 0.9s step-end infinite" }}>_</span>
+                      › Choose a framework on the left to get started...<span style={{ animation:"blink 0.9s step-end infinite" }}>_</span>
                     </div>
                   )}
                   {selectedThinker && !loading && !response && (
                     <div style={{ color:C.dimmer, fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", letterSpacing:"0.06em" }}>
-                      › Architect <span style={{ color:C.gold }}>{selectedThinker.name}</span> is standing by. Enter your query below.<span style={{ animation:"blink 0.9s step-end infinite" }}>_</span>
+                      › <span style={{ color:C.gold }}>{selectedThinker.name}</span> is ready. Type your question below.<span style={{ animation:"blink 0.9s step-end infinite" }}>_</span>
                     </div>
                   )}
                   {loading && (
                     <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem" }}>
                       <div style={{ color:C.gold, fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem" }}>
-                        › Encoding query into Divine network<span style={{ animation:"blink 0.6s step-end infinite" }}>...</span>
+                        › Working on your answer<span style={{ animation:"blink 0.6s step-end infinite" }}>...</span>
                       </div>
                       <div style={{ color:C.dimmer, fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", marginTop:"0.5rem" }}>
-                        › Activating {selectedThinker?.name} cognitive layer...
+                        › Applying {selectedThinker?.name} framework...
                       </div>
                       <div style={{ color:C.dimmer, fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem" }}>
-                        › Synthesising perspective...
+                        › Building your response...
                       </div>
                     </div>
                   )}
                   {response && !loading && (
                     <div>
                       <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.gold, letterSpacing:"0.1em", marginBottom:"0.75rem" }}>
-                        ✦ PERSPECTIVE · {selectedThinker?.name?.toUpperCase()} · {new Date().toLocaleTimeString()}
+                        ✦ ANSWER · {selectedThinker?.name?.toUpperCase()} · {new Date().toLocaleTimeString()}
                       </div>
                       <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.88rem", lineHeight:1.8, color:C.paper, whiteSpace:"pre-wrap" }}>
                         {typedResponse}<span style={{ animation:"blink 0.7s step-end infinite", color:C.gold }}>{typedResponse.length < response.length ? "_" : ""}</span>
@@ -253,7 +252,7 @@ export default function DivinePage({ onBack }) {
                   className="divine-input"
                   value={query}
                   onChange={e => setQuery(e.target.value)}
-                  placeholder="Describe your decision, challenge, or query for the Architect..."
+                  placeholder="What decision are you working through? Ask anything — strategy, hiring, pricing, fundraising..."
                   rows={3}
                   style={{ flex:1, padding:"0.85rem 1rem", borderRadius:"2px", fontSize:"0.85rem", fontFamily:"'Inter Tight', sans-serif", resize:"none", lineHeight:1.6 }}
                   onKeyDown={e => { if (e.key === "Enter" && e.metaKey) handleQuery(); }}
@@ -261,11 +260,11 @@ export default function DivinePage({ onBack }) {
                 <button onClick={handleQuery} disabled={!selectedThinker || !query.trim() || loading}
                   style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", fontWeight:500, letterSpacing:"0.08em", color:C.charcoal, backgroundColor: (!selectedThinker || !query.trim() || loading) ? "rgba(212,175,55,0.4)" : C.gold, border:"none", borderRadius:"2px", padding:"0 1.5rem", cursor: (!selectedThinker || !query.trim() || loading) ? "not-allowed" : "pointer", textTransform:"uppercase", transition:"all 0.2s ease", minWidth:"100px" }}
                 >
-                  {loading ? "···" : "Invoke ✦"}
+                  {loading ? "···" : "Ask ✦"}
                 </button>
               </div>
               <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.dimmer, letterSpacing:"0.06em" }}>
-                ⌘ + Enter to invoke · Each perspective costs $0.05 · Powered by Anthropic Claude
+                ⌘ + Enter to submit · $0.05 per question · Powered by Anthropic Claude
               </div>
             </div>
           </div>
@@ -278,9 +277,9 @@ export default function DivinePage({ onBack }) {
               <div style={{ padding:"0.65rem 1rem", borderBottom:`1px solid ${C.border}`, display:"flex", alignItems:"center", justifyContent:"space-between", backgroundColor:"rgba(212,175,55,0.03)" }}>
                 <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }}>
                   <div style={{ width:"6px", height:"6px", borderRadius:"50%", backgroundColor:C.gold, animation:"pulse 2s infinite" }} />
-                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold, letterSpacing:"0.1em" }}>DIVINE INTELLIGENCE STREAM · LIVE</span>
+                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold, letterSpacing:"0.1em" }}>RECENT SESSIONS · LIVE</span>
                 </div>
-                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.dimmer }}>{INSIGHT_LOGS.length} SIGNALS RECORDED</span>
+                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem", color:C.dimmer }}>{INSIGHT_LOGS.length} SESSIONS SHOWN</span>
               </div>
               <div style={{ padding:"1.5rem", display:"flex", flexDirection:"column", gap:"0.85rem" }}>
                 {INSIGHT_LOGS.slice(0, logVisible).map((log, i) => (
@@ -293,12 +292,12 @@ export default function DivinePage({ onBack }) {
                 ))}
                 {logVisible < INSIGHT_LOGS.length && (
                   <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold }}>
-                    › Receiving signals<span style={{ animation:"blink 0.5s step-end infinite" }}>...</span>
+                    › Loading sessions<span style={{ animation:"blink 0.5s step-end infinite" }}>...</span>
                   </div>
                 )}
                 {logVisible >= INSIGHT_LOGS.length && (
                   <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.dimmer }}>
-                    › Stream current. All nodes reporting sovereign.<span style={{ animation:"blink 1s step-end infinite" }}>_</span>
+                    › All sessions shown.<span style={{ animation:"blink 1s step-end infinite" }}>_</span>
                   </div>
                 )}
               </div>
@@ -310,7 +309,7 @@ export default function DivinePage({ onBack }) {
         {activeTab === "thinkers" && (
           <div style={{ opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
             <div style={{ marginBottom:"1.5rem", fontFamily:"'Inter Tight', sans-serif", fontSize:"0.88rem", color:C.dim, lineHeight:1.7, maxWidth:"560px" }}>
-              Thought Architects are verified human minds whose cognitive frameworks have been encoded into the Divine network. Each perspective is a distillation of hard-won domain expertise.
+              Each framework is built from the real experience of a founder or operator. Pick one that fits your situation, then ask your question.
             </div>
             <div style={{ display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:"1px", backgroundColor:C.border }}>
               {THINKERS.map(t => (
@@ -330,7 +329,7 @@ export default function DivinePage({ onBack }) {
                   </div>
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                     <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.gold, letterSpacing:"0.08em" }}>{t.tier} · {t.price}</span>
-                    <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.75rem", color:C.gold }}>Query →</span>
+                    <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.75rem", color:C.gold }}>Use this →</span>
                   </div>
                 </div>
               ))}
@@ -342,10 +341,10 @@ export default function DivinePage({ onBack }) {
       {/* Capital bar */}
       <div style={{ position:"fixed", bottom:0, left:0, right:0, backgroundColor:"rgba(10,10,10,0.97)", backdropFilter:"blur(12px)", borderTop:`1px solid ${C.goldBorder}`, padding:"0.4rem 2.5rem", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
         <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.gold, letterSpacing:"0.1em" }}>
-          ✦ Capitalized by RootHold.inc · $3M Liquidity Facility Active
+          ✦ Divine · AI tool by Uncharted Ventures
         </span>
         <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.08em" }}>
-          divine.uncharted.ventures · Sovereign Intelligence Layer
+          divine.uncharted.ventures
         </span>
       </div>
     </div>

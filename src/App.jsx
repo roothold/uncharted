@@ -22,22 +22,22 @@ const PORTFOLIO = [
   {
     id: "sweetkiwi", name: "Sweetkiwi", cat: "Consumer / Retail",
     url: "https://www.sweetkiwi.com",
-    desc: "Better-for-you frozen yogurt brand redefining the premium snack category.",
-    divineStatus: "Governance: Divine-Enforced", statusColor: C.gold,
+    desc: "Better-for-you frozen yogurt brand. Built the brand, go-to-market strategy, and retail distribution from scratch.",
+    divineStatus: "Active · Using Divine", statusColor: C.gold,
     metric: "ROC: 12.5%", active: true,
   },
   {
     id: "surplus", name: "Surplus", cat: "Asset / Supply Chain",
     url: "https://www.surpluspods.com",
-    desc: "Intelligent supply chain optimisation platform for modern retail operations.",
-    divineStatus: "Protocol: Embedded · v1.2", statusColor: C.gold,
+    desc: "Supply chain optimisation platform for retail operators. Built the product and early customer pipeline.",
+    divineStatus: "Active · Using Divine", statusColor: C.gold,
     metric: "ARR: +2.3×", active: true,
   },
   {
     id: "stealth", name: "Stealth", cat: "Unannounced",
     url: null,
-    desc: "Something new is being encoded inside the Foundry. Details coming soon.",
-    divineStatus: "Status: Pre-Encoding", statusColor: "rgba(245,245,245,0.3)",
+    desc: "New venture in development. Details coming soon.",
+    divineStatus: "In Development", statusColor: "rgba(245,245,245,0.3)",
     metric: "Coming Soon", active: false,
   },
 ];
@@ -56,32 +56,6 @@ function GridBg() {
       </svg>
       {/* Gold radial glow top-right */}
       <div style={{ position:"absolute", top:"-200px", right:"-200px", width:"600px", height:"600px", borderRadius:"50%", background:"radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%)", pointerEvents:"none" }} />
-    </div>
-  );
-}
-
-// ── Capital health bar ─────────────────────────────────────────────────────
-function CapitalBar() {
-  const [blink, setBlink] = useState(true);
-  useEffect(() => { const t = setInterval(() => setBlink(b => !b), 1200); return () => clearInterval(t); }, []);
-  return (
-    <div style={{ position:"fixed", bottom:0, left:0, right:0, zIndex:200, backgroundColor:"rgba(18,18,18,0.95)", backdropFilter:"blur(12px)", borderTop:`1px solid ${C.goldBorder}`, padding:"0.45rem 2.5rem", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-      <div style={{ display:"flex", alignItems:"center", gap:"0.75rem" }}>
-        <div style={{ width:"6px", height:"6px", borderRadius:"50%", backgroundColor: blink ? C.gold : "transparent", transition:"background 0.4s ease" }} />
-        <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase" }}>
-          Capitalized by RootHold.inc
-        </span>
-        <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dimmer, letterSpacing:"0.08em" }}>|</span>
-        <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dim, letterSpacing:"0.08em" }}>
-          $3M Liquidity Facility Active
-        </span>
-      </div>
-      <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
-        <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.dimmer, letterSpacing:"0.1em" }}>DIVINE PROTOCOL · v1.4 · LIVE</span>
-        <div style={{ width:"48px", height:"2px", backgroundColor:C.goldDim, borderRadius:"1px", overflow:"hidden" }}>
-          <div style={{ width:"72%", height:"100%", backgroundColor:C.gold, animation:"liquidPulse 2.5s ease-in-out infinite" }} />
-        </div>
-      </div>
     </div>
   );
 }
@@ -123,10 +97,10 @@ function Nav({ setPage, scrollY }) {
 function Hero({ setPage }) {
   const [tick, setTick] = useState(0);
   const streams = [
-    "DIVINE PROTOCOL · ENCODING VENTURE DNA ·····",
-    "ROOTHOLD.INC · $3M LIQUIDITY FACILITY · ACTIVE",
-    "COGNITIVE NODES · SWEETKIWI · SURPLUS · STEALTH",
-    "FOUNDRY STATUS · ACCEPTING NEW ARCHITECTS ·····",
+    "SWEETKIWI · CONSUMER BRAND · ACTIVE ············",
+    "SURPLUS · SUPPLY CHAIN PLATFORM · SCALING ·······",
+    "DIVINE AI · FOUNDER INTELLIGENCE TOOL · v1.4 ····",
+    "UNCHARTED STUDIO · OPEN FOR NEW FOUNDERS ········",
   ];
   useEffect(() => { const t = setInterval(() => setTick(n => n + 1), 80); return () => clearInterval(t); }, []);
   const stream = streams[Math.floor(tick / 60) % streams.length];
@@ -141,20 +115,20 @@ function Hero({ setPage }) {
         <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"2.5rem", opacity:0, animation:"fadeUp 0.8s 0.1s forwards" }}>
           <div style={{ width:"32px", height:"1px", backgroundColor:C.gold }} />
           <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", letterSpacing:"0.16em", color:C.gold, textTransform:"uppercase" }}>
-            AI-Native Institutional Foundry · Est. 2017
+            Venture Studio · AI Tools · Est. 2017
           </span>
         </div>
 
         {/* Headline */}
         <h1 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(3rem, 7.5vw, 7.5rem)", lineHeight:1.0, letterSpacing:"-0.04em", color:C.paper, marginBottom:"2rem", maxWidth:"900px", opacity:0, animation:"fadeUp 0.9s 0.2s forwards" }}>
-          Deploying the<br />
-          Future of<br />
-          <span style={{ color:C.gold }}>Sovereignty.</span>
+          We build and back<br />
+          companies that<br />
+          <span style={{ color:C.gold }}>last.</span>
         </h1>
 
         {/* Sub-headline */}
         <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"clamp(1rem, 1.8vw, 1.25rem)", lineHeight:1.75, color:C.dim, maxWidth:"580px", marginBottom:"3.5rem", opacity:0, animation:"fadeUp 0.9s 0.35s forwards" }}>
-          Uncharted.ventures is an AI-native foundry powered by the Divine Intelligence Protocol. We build the off-ramps of the future.
+          Uncharted is a venture studio. We co-build companies with founders, give them access to AI tools that sharpen their decisions, and help them grow from idea to traction.
         </p>
 
         {/* CTAs */}
@@ -162,11 +136,11 @@ function Hero({ setPage }) {
           <a href="#portfolio" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.85rem", letterSpacing:"0.04em", textDecoration:"none", color:C.charcoal, backgroundColor:C.paper, padding:"0.85rem 2rem", borderRadius:"2px", textTransform:"uppercase", transition:"all 0.2s ease", display:"inline-block" }}
             onMouseEnter={e => { e.target.style.backgroundColor="#e8e8e8"; e.target.style.transform="translateY(-2px)"; }}
             onMouseLeave={e => { e.target.style.backgroundColor=C.paper; e.target.style.transform="translateY(0)"; }}
-          >Enter the Foundry</a>
+          >See Our Work</a>
           <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", letterSpacing:"0.1em", color:C.gold, backgroundColor:"transparent", border:`1px solid ${C.goldBorder}`, padding:"0.85rem 2rem", borderRadius:"2px", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
             onMouseEnter={e => { e.target.style.borderColor=C.gold; e.target.style.backgroundColor=C.goldDim; e.target.style.transform="translateY(-2px)"; }}
             onMouseLeave={e => { e.target.style.borderColor=C.goldBorder; e.target.style.backgroundColor="transparent"; e.target.style.transform="translateY(0)"; }}
-          >✦ Query Divine</button>
+          >✦ Try Divine AI</button>
         </div>
 
         {/* Live stream ticker */}
@@ -185,7 +159,7 @@ function Hero({ setPage }) {
 
 // ── Thesis strip ───────────────────────────────────────────────────────────
 function ThesisStrip() {
-  const stats = [["7+", "Years Operating"], ["$3M", "Liquidity Facility"], ["3", "Active Ventures"], ["v1.4", "Divine Protocol"]];
+  const stats = [["7+", "Years Building"], ["2", "Ventures Launched"], ["1", "AI Tool in Market"], ["2017", "Founded"]];
   return (
     <section style={{ padding:"4rem 2.5rem", backgroundColor:"rgba(245,245,245,0.02)", borderTop:`1px solid ${C.border}`, borderBottom:`1px solid ${C.border}` }}>
       <div style={{ maxWidth:"1360px", margin:"0 auto", display:"grid", gridTemplateColumns:"repeat(4, 1fr)", gap:"1px", backgroundColor:C.border }}>
@@ -203,12 +177,11 @@ function ThesisStrip() {
 // ── Divine Protocol section ────────────────────────────────────────────────
 function ProtocolSection({ setPage }) {
   const [logLines] = useState([
-    { t: "00:00:01", msg: "DIVINE PROTOCOL INITIALISED · NODE COUNT: 3", col: C.gold },
-    { t: "00:00:02", msg: "VENTURE DNA ENCODING · SWEETKIWI ··· COMPLETE", col: C.dim },
-    { t: "00:00:03", msg: "COGNITIVE LAYER · SURPLUS · GOVERNANCE ACTIVE", col: C.dim },
-    { t: "00:00:04", msg: "STEALTH NODE · PRE-ENCODING · AWAITING ARCHITECT", col: "rgba(245,245,245,0.3)" },
-    { t: "00:00:05", msg: "ROOTHOLD.INC · LIQUIDITY BRIDGE · $3,000,000 CONFIRMED", col: C.gold },
-    { t: "00:00:06", msg: "DIVINE v1.4 · ALL SYSTEMS SOVEREIGN ·····", col: C.gold },
+    { t: "00:00:01", msg: "SWEETKIWI · STRATEGY SESSION COMPLETE · 3 ACTIONS LOGGED", col: C.gold },
+    { t: "00:00:02", msg: "SURPLUS · PRICING QUESTION ANSWERED · OPERATOR FRAMEWORK", col: C.dim },
+    { t: "00:00:03", msg: "FOUNDER QUERY · HIRING DECISION · REFRAME DELIVERED", col: C.dim },
+    { t: "00:00:04", msg: "NEW SESSION · FUNDRAISING PREP · DECK FEEDBACK IN PROGRESS", col: "rgba(245,245,245,0.3)" },
+    { t: "00:00:05", msg: "DIVINE v1.4 · READY FOR YOUR NEXT QUESTION ············", col: C.gold },
   ]);
   return (
     <section id="protocol" style={{ padding:"7rem 2.5rem" }}>
@@ -216,28 +189,28 @@ function ProtocolSection({ setPage }) {
         <div>
           <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1.5rem" }}>
             <div style={{ width:"24px", height:"1px", backgroundColor:C.gold }} />
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>The Intelligence Layer</span>
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Divine · AI Tool for Founders</span>
           </div>
           <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 4vw, 3.5rem)", lineHeight:1.05, letterSpacing:"-0.03em", color:C.paper, marginBottom:"1.5rem" }}>
-            Divine Intelligence<br /><span style={{ color:C.gold }}>Protocol.</span>
+            Better decisions,<br /><span style={{ color:C.gold }}>faster.</span>
           </h2>
           <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.95rem", lineHeight:1.8, color:C.dim, marginBottom:"1.5rem", maxWidth:"440px" }}>
-            Every venture launched through Uncharted is encoded with the Divine Intelligence Protocol — a cognitive operating system that enforces governance, sharpens decision-making, and compounds founder intelligence over time.
+            Divine is an AI tool built specifically for founders. Ask it a question about your business — strategy, hiring, pricing, fundraising — and get a sharp, direct answer drawn from real operator experience.
           </p>
           <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.88rem", lineHeight:1.8, color:"rgba(245,245,245,0.35)", marginBottom:"2.5rem", maxWidth:"440px" }}>
-            Divine is not a chatbot. It is the operating system for greatness — a verified human cognitive layer running on top of AI infrastructure.
+            It's not a generic chatbot. Every response is shaped by the thinking frameworks of founders and operators who have actually built companies.
           </p>
           <button onClick={() => setPage("divine")} style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", fontWeight:500, letterSpacing:"0.1em", color:C.charcoal, backgroundColor:C.gold, border:"none", borderRadius:"2px", padding:"0.85rem 1.75rem", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s ease" }}
             onMouseEnter={e => { e.target.style.backgroundColor="#c9a227"; e.target.style.transform="translateY(-2px)"; }}
             onMouseLeave={e => { e.target.style.backgroundColor=C.gold; e.target.style.transform="translateY(0)"; }}
-          >✦ Enter the Cognitive Portal</button>
+          >✦ Try Divine</button>
         </div>
 
         {/* Terminal */}
         <div style={{ backgroundColor:"#0a0a0a", border:`1px solid ${C.goldBorder}`, borderRadius:"4px", overflow:"hidden" }}>
           <div style={{ padding:"0.65rem 1rem", borderBottom:`1px solid ${C.goldBorder}`, display:"flex", alignItems:"center", gap:"0.5rem", backgroundColor:"rgba(212,175,55,0.05)" }}>
             <div style={{ width:"8px", height:"8px", borderRadius:"50%", backgroundColor:C.gold, animation:"pulse 2s infinite" }} />
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold, letterSpacing:"0.12em" }}>DIVINE · COGNITIVE ENGINE · LIVE</span>
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.gold, letterSpacing:"0.12em" }}>DIVINE · LIVE SESSION LOG</span>
           </div>
           <div style={{ padding:"1.5rem", display:"flex", flexDirection:"column", gap:"0.75rem" }}>
             {logLines.map((line, i) => (
@@ -267,10 +240,10 @@ function Portfolio() {
           <div>
             <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1rem" }}>
               <div style={{ width:"24px", height:"1px", backgroundColor:C.gold }} />
-              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Case Studies · Divine Optimisation</span>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", letterSpacing:"0.14em", color:C.gold, textTransform:"uppercase" }}>Companies We've Built</span>
             </div>
             <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:800, fontSize:"clamp(2rem, 3.5vw, 3rem)", letterSpacing:"-0.03em", lineHeight:1.1, color:C.paper }}>
-              Off-Ramp<br />Portfolio
+              Our<br />Portfolio
             </h2>
           </div>
           <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem", color:C.dimmer, letterSpacing:"0.1em" }}>2017 — PRESENT</span>
@@ -326,7 +299,7 @@ function Footer({ setPage }) {
               </div>
               <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1rem", color:C.paper }}>Uncharted</span>
             </div>
-            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.1em", textTransform:"uppercase" }}>VENTURES + FOUNDRY + DIVINE INTELLIGENCE</div>
+            <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.1em", textTransform:"uppercase" }}>VENTURE STUDIO · AI TOOLS · EST. 2017</div>
           </div>
           <div style={{ display:"flex", gap:"2rem", alignItems:"center" }}>
             {["Foundry","Portfolio","Protocol"].map(l => (
@@ -343,7 +316,7 @@ function Footer({ setPage }) {
         </div>
         <div style={{ borderTop:`1px solid ${C.border}`, paddingTop:"1.5rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.08em" }}>
-            uncharted.ventures ~ $ divine --status sovereign<span style={{ animation:"blink 1s step-end infinite" }}>_</span>
+            uncharted.ventures ~ $ ready to build<span style={{ animation:"blink 1s step-end infinite" }}>_</span>
           </span>
           <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.dimmer, letterSpacing:"0.08em" }}>
             © 2026 UNCHARTED VENTURES LLC · ALL RIGHTS RESERVED
@@ -390,7 +363,6 @@ export default function App() {
       <ProtocolSection setPage={setPage} />
       <Portfolio />
       <Footer setPage={setPage} />
-      <CapitalBar />
     </div>
   );
 }
