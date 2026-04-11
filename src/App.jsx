@@ -231,7 +231,7 @@ export default function App() {
                     <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.87rem", lineHeight:1.85, color:C.inkMid, marginBottom:"2rem" }}>{v.desc}</p>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:"1.25rem", borderTop:`1px solid ${C.border}` }}>
                       <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.65rem", color: v.url ? C.gold : C.inkSoft, letterSpacing:"0.06em" }}>{v.metric}</span>
-                      {v.url & <span style={{ fontSize:"0.8rem", color:C.inkSoft }}>↗</span>}
+                      {v.url && <span style={{ fontSize:"0.8rem", color:C.inkSoft }}>↗</span>}
                     </div>
                   </div>
                 </El>
