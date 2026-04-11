@@ -107,6 +107,13 @@ export default function App() {
         .cta-primary:hover { background:${C.accentHover} !important; transform:translateY(-2px); }
         .cta-ghost { transition:all 0.2s ease; cursor:pointer; }
         .cta-ghost:hover { border-color:${C.accent} !important; color:${C.accent} !important; transform:translateY(-2px); }
+        .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
+        .desktop-nav { display:flex; }
+        .hamburger   { display:none !important; }
+        @media(max-width:768px) {
+          .desktop-nav { display:none !important; }
+          .hamburger   { display:flex !important; }
+        }
 
         /* ── Mobile menu ── */
         .mobile-menu {
@@ -133,7 +140,6 @@ export default function App() {
 
           {/* Desktop nav */}
           <div style={{ display:"flex", gap:"2.5rem", alignItems:"center" }} className="desktop-nav">
-            <style>{`.desktop-nav { } @media(max-width:768px){.desktop-nav{display:none!important;}}`}</style>
             {[["Companies","#portfolio"],["Studio","#studio"],["Divine","#divine"]].map(([l,h]) => (
               <a key={l} href={h} className="nav-link" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:C.ink, textDecoration:"none" }}>{l}</a>
             ))}
@@ -143,7 +149,6 @@ export default function App() {
 
           {/* Hamburger */}
           <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }} style={{ display:"none", background:"none", border:"none", cursor:"pointer", padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
-            <style>{`.hamburger{display:none!important;} @media(max-width:768px){.hamburger{display:flex!important;}}`}</style>
             <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:C.ink, transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
             <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:C.ink, transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
             <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:C.ink, transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
