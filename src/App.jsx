@@ -168,7 +168,7 @@ export default function App() {
           {/* Logo */}
           <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0 }}>
             <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full"
-              style={{ height:"40px", width:"auto", display:"block" }} />
+              style={{ height:"40px", width:"auto", display:"block", imageRendering:"crisp-edges" }} />
             <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon"
               style={{ height:"32px", width:"32px", display:"none" }} />
           </button>
@@ -234,7 +234,7 @@ export default function App() {
             color:"#FFFFFF", marginBottom:"1.5rem",
             opacity:0, animation:"fadeUp 0.8s 0.2s forwards",
           }}>
-            Turning startups<br />into growth assets.
+            Turning opportunities<br />into growth assets.
           </h1>
 
           <p style={{
@@ -352,7 +352,7 @@ export default function App() {
           <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
             <div className="footer-grid" style={{ marginBottom:"4rem" }}>
               <div>
-                <img src="/logo-white.png" alt="Uncharted Ventures" style={{ height:"36px", width:"auto", display:"block", marginBottom:"0.75rem" }} />
+                <img src="/logo-white.png" alt="Uncharted Ventures" style={{ height:"36px", width:"auto", display:"block", marginBottom:"0.75rem", imageRendering:"crisp-edges" }} />
                 <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.45)", lineHeight:1.7, maxWidth:"240px" }}>We build and back companies that last — with the infrastructure, intelligence, and conviction to see it through.</div>
               </div>
               <div>
