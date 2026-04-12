@@ -151,7 +151,7 @@ export default function App() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, padding:"0 3rem", backgroundColor: scrolled ? "rgba(13,13,13,0.96)" : "rgba(0,0,0,0.2)", backdropFilter:"blur(12px)", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "none", transition:"all 0.4s ease" }} className="nav-outer">
+      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, padding:"0 3rem", backgroundColor: scrolled ? "rgba(8,8,8,0.75)" : "rgba(0,0,0,0.15)", backdropFilter:"blur(20px)", WebkitBackdropFilter:"blur(20px)", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none", transition:"all 0.4s ease" }} className="nav-outer">
         <div style={{ maxWidth:"1200px", margin:"0 auto", height:"76px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
             <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"45px", width:"auto", display:"block", filter:"invert(1)" }} />
