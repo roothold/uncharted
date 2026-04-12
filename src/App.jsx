@@ -38,6 +38,7 @@ export default function App() {
   const [scrollY, setScrollY]   = useState(0);
   const [activeQuote, setAQ]    = useState(0);
   const [menuOpen, setMenu]     = useState(false);
+  const [dropdown, setDropdown] = useState(null); // 'industries' | 'solutions' | null
 
   useEffect(() => {
     const h = () => setScrollY(window.scrollY);
@@ -52,13 +53,13 @@ export default function App() {
     return () => clearInterval(t);
   }, []);
 
-  // Close menu on outside click
+  // Close menu/dropdown on outside click
   useEffect(() => {
-    if (!menuOpen) return;
-    const h = () => setMenu(false);
+    if (!menuOpen && !dropdown) return;
+    const h = () => { setMenu(false); setDropdown(null); };
     document.addEventListener("click", h);
     return () => document.removeEventListener("click", h);
-  }, [menuOpen]);
+  }, [menuOpen, dropdown]);
 
   if (page === "divine")        return <DivinePage onBack={() => setPage("home")} onBecomeThinker={() => setPage("become-thinker")} />;
   if (page === "contact")       return <ContactPage onBack={() => setPage("home")} />;
@@ -153,60 +154,218 @@ export default function App() {
         .mobile-menu a:last-child, .mobile-menu button:last-child { border-bottom:none; }
       `}</style>
 
-      {/* ── NAV ── */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, padding:"0 3rem", backgroundColor: scrolled ? "rgba(8,8,8,0.75)" : "rgba(0,0,0,0.15)", backdropFilter:"blur(20px)", WebkitBackdropFilter:"blur(20px)", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none", transition:"all 0.4s ease" }} className="nav-outer">
-        <div style={{ maxWidth:"1200px", margin:"0 auto", height:"76px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-          <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
-            <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"45px", width:"auto", display:"block", filter:"invert(1)" }} />
-            <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"40px", width:"40px", display:"none", filter:"invert(1)" }} />
+      {/* ── PLATFORM NAV ── */}
+      <nav style={{
+        position:"fixed", top:0, left:0, right:0, zIndex:100,
+        backgroundColor:"rgba(255,255,255,0.97)",
+        backdropFilter:"blur(12px)", WebkitBackdropFilter:"blur(12px)",
+        borderBottom:"1px solid #E8E8E8",
+        padding:"0 2.5rem",
+      }}>
+        <div style={{ maxWidth:"1360px", margin:"0 auto", height:"56px",
+          display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+
+          {/* Logo */}
+          <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0 }}>
+            <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full"
+              style={{ height:"30px", width:"auto", display:"block" }} />
+            <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon"
+              style={{ height:"32px", width:"32px", display:"none" }} />
           </button>
 
           {/* Desktop nav */}
-          <div style={{ display:"flex", gap:"2.5rem", alignItems:"center" }} className="desktop-nav">
-            {[["Divine","#divine"]].map(([l,h]) => (
-              <a key={l} href={h} className="nav-link" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:"#fff", textDecoration:"none" }}>{l}</a>
-            ))}
-            <button onClick={() => setPage("contact")} className="nav-link" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:"#fff", background:"none", border:"none", cursor:"pointer", padding:0 }}>Contact</button>
-            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.55rem 1.4rem" }}>Work with us</button>
+          <div style={{ display:"flex", alignItems:"center", gap:"0.25rem" }} className="desktop-nav">
+
+            {/* Industries dropdown */}
+            <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
+              <button className={`nav-dropdown-btn${dropdown==="industries" ? " open" : ""}`}
+                onClick={() => setDropdown(d => d==="industries" ? null : "industries")}
+                style={{ padding:"0.4rem 0.65rem" }}>
+                Industries
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              {dropdown==="industries" && (
+                <div className="dropdown-panel">
+                  {[
+                    { label:"Consumer Goods",   sub:"Retail & Brand" },
+                    { label:"Supply Chain",     sub:"Logistics & Ops" },
+                    { label:"Technology",       sub:"Software & AI" },
+                    { label:"Financial Assets", sub:"Capital & Investment" },
+                  ].map(item => (
+                    <button key={item.label} className="dropdown-item"
+                      onClick={() => { setDropdown(null); }}>
+                      <span className="dropdown-item-label">{item.sub}</span>
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Solutions dropdown */}
+            <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
+              <button className={`nav-dropdown-btn${dropdown==="solutions" ? " open" : ""}`}
+                onClick={() => setDropdown(d => d==="solutions" ? null : "solutions")}
+                style={{ padding:"0.4rem 0.65rem" }}>
+                Solutions
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              {dropdown==="solutions" && (
+                <div className="dropdown-panel">
+                  {[
+                    { label:"Divine AI",           sub:"Intelligence Protocol",  action: () => setPage("divine") },
+                    { label:"Venture Foundry",     sub:"Studio & Co-Building",   action: () => {} },
+                    { label:"Capital Stewardship", sub:"Asset & Fund Strategy",  action: () => {} },
+                  ].map(item => (
+                    <button key={item.label} className="dropdown-item"
+                      onClick={() => { setDropdown(null); item.action(); }}>
+                      <span className="dropdown-item-label">{item.sub}</span>
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div style={{ width:"1px", height:"16px", backgroundColor:"#E8E8E8", margin:"0 0.4rem" }} />
+
+            <button onClick={() => setPage("contact")} className="nav-link"
+              style={{ padding:"0.4rem 0.65rem", fontFamily:"'Inter Tight',sans-serif",
+                fontSize:"0.82rem", fontWeight:500, background:"none", border:"none", cursor:"pointer" }}>
+              Contact
+            </button>
+
+            <button onClick={() => setPage("contact")} className="signin-btn" style={{ marginLeft:"0.5rem" }}>
+              Work with us
+            </button>
+
+            <button className="signin-btn" style={{ marginLeft:"0.35rem", backgroundColor:"#111", color:"#fff", borderColor:"#111" }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor="#333"; e.currentTarget.style.borderColor="#333"; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor="#111"; e.currentTarget.style.borderColor="#111"; }}
+              onClick={() => window.open("https://divine.uncharted.ventures", "_blank")}>
+              Sign In
+            </button>
           </div>
 
           {/* Hamburger */}
-          <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }} style={{ display:"none", background:"none", border:"none", cursor:"pointer", padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#fff", transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#fff", transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#fff", transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
+          <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }}
+            style={{ display:"none", background:"none", border:"none", cursor:"pointer",
+              padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
+            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
+              transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
+            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
+              transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
+              transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
           </button>
         </div>
 
         {/* Mobile menu */}
         {menuOpen && (
           <div className="mobile-menu" onClick={e => e.stopPropagation()}>
-            {[["Divine","#divine"]].map(([l,h]) => (
-              <a key={l} href={h} onClick={() => setMenu(false)}>{l}</a>
-            ))}
+            <a href="#portfolio" onClick={() => setMenu(false)}>Industries</a>
+            <button onClick={() => { setPage("divine"); setMenu(false); }}>Divine AI</button>
+            <button onClick={() => setMenu(false)}>Venture Foundry</button>
+            <button onClick={() => setMenu(false)}>Capital Stewardship</button>
             <button onClick={() => { setPage("contact"); setMenu(false); }}>Contact</button>
-            <button onClick={() => { setPage("contact"); setMenu(false); }} style={{ color:"#fff !important", backgroundColor:C.accent, borderRadius:"4px", padding:"0.75rem 1rem", marginTop:"0.5rem", fontWeight:600, border:"none !important" }}>Work with us</button>
+            <button onClick={() => { setPage("contact"); setMenu(false); }}
+              style={{ color:"#fff", backgroundColor:C.accent, borderRadius:"4px",
+                padding:"0.75rem 1rem", marginTop:"0.5rem", fontWeight:600, border:"none" }}>
+              Work with us
+            </button>
           </div>
         )}
       </nav>
-
       {/* ── HERO ── */}
-      <section style={{ minHeight:"100vh", display:"flex", flexDirection:"column", justifyContent:"center", padding:"10rem 3rem 6rem", position:"relative", backgroundImage:'url(/hero-bg.jpg)', backgroundSize:"cover", backgroundPosition:"center", backgroundRepeat:"no-repeat" }} className="px-main hero-top">
-        <div style={{ position:"absolute", inset:0, background:"linear-gradient(to bottom right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.3) 100%)", zIndex:0 }} />
+      <section style={{
+        minHeight:"100vh", display:"flex", flexDirection:"column",
+        justifyContent:"center", padding:"8rem 3rem 6rem",
+        position:"relative",
+        backgroundImage:"url(/hero-bg.jpg)",
+        backgroundSize:"cover", backgroundPosition:"center", backgroundRepeat:"no-repeat",
+      }} className="px-main hero-top">
+        <div style={{ position:"absolute", inset:0,
+          background:"linear-gradient(to bottom right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.28) 100%)",
+          zIndex:0 }} />
         <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }} className="hero-inner">
-          <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.4rem, 8vw, 6.8rem)", lineHeight:1.05, color:"#FFFFFF", marginBottom:"2.5rem", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
-            We build and back<br />companies that last.
+
+          {/* Eyebrow */}
+          <div style={{ display:"flex", alignItems:"center", gap:"0.65rem", marginBottom:"2rem",
+            opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
+            <div style={{ width:"24px", height:"1px", backgroundColor:C.accent }} />
+            <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.62rem",
+              color:"rgba(255,255,255,0.65)", letterSpacing:"0.14em", textTransform:"uppercase" }}>
+              Venture Engine · Uncharted
+            </span>
+          </div>
+
+          {/* Headline */}
+          <h1 style={{
+            fontFamily:"'Instrument Serif',serif", fontWeight:600,
+            fontSize:"clamp(2.4rem, 8vw, 6.8rem)", lineHeight:1.0,
+            color:"#FFFFFF", marginBottom:"1.5rem",
+            opacity:0, animation:"fadeUp 0.8s 0.2s forwards",
+          }}>
+            Turning startups<br />into sovereign assets.
           </h1>
-          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"clamp(0.95rem, 1.6vw, 1.05rem)", lineHeight:1.85, color:"rgba(255,255,255,0.75)", marginBottom:"3.5rem", maxWidth:"560px", opacity:0, animation:"fadeUp 0.8s 0.35s forwards" }}>
-            Uncharted is a venture studio. We co-build companies with founders, give them access to AI tools that sharpen decisions, and help them grow from idea to traction.
+
+          {/* Sub */}
+          <p style={{
+            fontFamily:"'Inter Tight',sans-serif", fontWeight:300,
+            fontSize:"clamp(0.95rem, 1.6vw, 1.1rem)", lineHeight:1.85,
+            color:"rgba(255,255,255,0.72)", maxWidth:"540px",
+            marginBottom:"3rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards",
+          }}>
+            Uncharted is a Venture Engine — combining proprietary AI infrastructure,
+            capital stewardship, and co-founding capability to build companies
+            that endure as institutional-grade assets.
           </p>
-          <div className="hero-btns" style={{ display:"flex", gap:"1rem", opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
-            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.9rem 2.25rem" }}>Build with us</button>
-            <button onClick={() => setPage("divine")} className="cta-ghost" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.88rem", color:"#fff", backgroundColor:"rgba(255,255,255,0.12)", border:"1.5px solid rgba(255,255,255,0.45)", borderRadius:"4px", padding:"0.9rem 2.25rem" }}>Try Divine AI →</button>
+
+          {/* CTAs */}
+          <div className="hero-btns" style={{ display:"flex", gap:"1rem",
+            opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
+            <button onClick={() => setPage("contact")} className="cta-primary"
+              style={{ fontFamily:"'JetBrains Mono',monospace", fontWeight:600,
+                fontSize:"0.82rem", color:"#fff", backgroundColor:C.accent,
+                border:"none", borderRadius:"4px", padding:"0.9rem 2.25rem" }}>
+              Enter the Engine
+            </button>
+            <button onClick={() => setPage("divine")} className="cta-ghost"
+              style={{ fontFamily:"'JetBrains Mono',monospace", fontWeight:500,
+                fontSize:"0.82rem", color:"#fff",
+                backgroundColor:"rgba(255,255,255,0.1)",
+                border:"1.5px solid rgba(255,255,255,0.4)",
+                borderRadius:"4px", padding:"0.9rem 2.25rem" }}>
+              Explore Divine AI →
+            </button>
+          </div>
+
+          {/* Engine stats strip */}
+          <div style={{
+            display:"flex", gap:"3rem", marginTop:"5rem",
+            opacity:0, animation:"fadeUp 0.8s 0.7s forwards",
+            flexWrap:"wrap",
+          }}>
+            {[
+              { v:"3", l:"Portfolio Companies" },
+              { v:"Divine", l:"AI Protocol" },
+              { v:"Foundry", l:"Venture Infrastructure" },
+            ].map(s => (
+              <div key={s.l} style={{ borderLeft:"2px solid rgba(200,81,42,0.6)", paddingLeft:"1rem" }}>
+                <div style={{ fontFamily:"'Instrument Serif',serif", fontWeight:600,
+                  fontSize:"1.6rem", color:"#fff", lineHeight:1 }}>{s.v}</div>
+                <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.58rem",
+                  color:"rgba(255,255,255,0.5)", letterSpacing:"0.1em",
+                  textTransform:"uppercase", marginTop:"0.25rem" }}>{s.l}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-
       <div style={{ height:"1px", backgroundColor:C.border }} />
 
       {/* ── HOW WE BUILD ── */}
@@ -286,11 +445,11 @@ export default function App() {
         {/* Closing CTA */}
         <section style={{ padding:"10rem 3rem", textAlign:"center" }} className="px-main">
           <div style={{ maxWidth:"680px", margin:"0 auto" }}>
-            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.5rem, 8vw, 5rem)", lineHeight:1.05, color:"#FFFFFF", marginBottom:"2rem" }}>Come build with us.</h2>
+            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.5rem, 8vw, 5rem)", lineHeight:1.05, color:"#FFFFFF", marginBottom:"2rem" }}>Join the Engine.</h2>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:"rgba(255,255,255,0.55)", marginBottom:"3rem" }}>
-              Whether you have an idea, a company in motion, or expertise worth monetising — there's a place for you inside Uncharted.
+              Founders, operators, and capital partners who want to build companies that become sovereign assets. The Engine is open.
             </p>
-            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.92rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"1rem 2.75rem" }}>Get in touch</button>
+            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.92rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"1rem 2.75rem" }}>Apply for access</button>
           </div>
         </section>
 
