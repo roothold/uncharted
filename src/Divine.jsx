@@ -78,82 +78,165 @@ function QueryPortal() {
     setLoading(false);
   };
 
+  // Explicit white-surface palette — works on any background
+  const W = {
+    card:       "#FFFFFF",
+    cardHover:  "#F7F7F7",
+    cardBorder: "#E8E8E8",
+    cardActive: "#FFF8F6",
+    ink:        "#0D0D0D",
+    inkMid:     "#555555",
+    inkSoft:    "#888888",
+    accent:     "#C8512A",
+    label:      "rgba(255,255,255,0.7)",  // for text directly on terracotta bg
+  };
+
   return (
     <div className="divine-query-grid">
-      {/* Selector */}
+
+      {/* ── Selector column ── */}
       <div>
-        <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.72rem", color:C.inkSoft, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:"0.75rem" }}>Choose a framework</p>
+        <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500,
+          fontSize:"0.68rem", color:"rgba(255,255,255,0.75)", letterSpacing:"0.1em",
+          textTransform:"uppercase", marginBottom:"0.85rem" }}>Choose a framework</p>
+
         <div style={{ display:"flex", flexDirection:"column", gap:"0.6rem" }}>
           {THINKERS.map(t => (
             <div key={t.id} onClick={() => setSelected(t)}
-              style={{ padding:"1.1rem", border:`1px solid ${selected?.id===t.id ? C.ink : C.border}`, borderRadius:"6px", cursor:"pointer", backgroundColor: selected?.id===t.id ? C.soft : C.bg, transition:"all 0.2s ease", position:"relative" }}>
-              {selected?.id===t.id && <div style={{ position:"absolute", left:0, top:"20%", bottom:"20%", width:"3px", backgroundColor:C.accent, borderRadius:"0 2px 2px 0" }} />}
-              <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:C.ink, marginBottom:"0.15rem" }}>{t.name}</div>
-              <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft, marginBottom:"0.6rem" }}>{t.title}</div>
+              style={{
+                padding:"1.1rem 1.1rem 1.1rem 1.3rem",
+                border:`1px solid ${selected?.id===t.id ? W.accent : W.cardBorder}`,
+                borderRadius:"6px", cursor:"pointer",
+                backgroundColor: selected?.id===t.id ? W.cardActive : W.card,
+                transition:"all 0.2s ease", position:"relative",
+                boxShadow: selected?.id===t.id ? `0 0 0 1px ${W.accent}` : "none",
+              }}>
+              {selected?.id===t.id && (
+                <div style={{ position:"absolute", left:0, top:"15%", bottom:"15%",
+                  width:"3px", backgroundColor:W.accent, borderRadius:"0 2px 2px 0" }} />
+              )}
+              <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+                fontSize:"0.82rem", color:W.ink, marginBottom:"0.2rem" }}>{t.name}</div>
+              <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
+                fontSize:"0.75rem", color:W.inkMid, marginBottom:"0.65rem" }}>{t.title}</div>
               <div style={{ display:"flex", justifyContent:"space-between" }}>
-                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", color:C.accent, fontWeight:500 }}>{t.tier}</span>
-                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem", color:C.inkSoft }}>{t.price}</span>
+                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.66rem",
+                  color:W.accent, fontWeight:500 }}>{t.tier}</span>
+                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem",
+                  color:W.inkSoft }}>{t.price}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Info panel */}
-        <div style={{ marginTop:"1.5rem", padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px", backgroundColor:C.soft }}>
+        <div style={{ marginTop:"1rem", padding:"1.1rem 1.25rem",
+          border:`1px solid ${W.cardBorder}`, borderRadius:"6px",
+          backgroundColor:W.card }}>
           {[["Per question","$0.05"],["Thinker cut","70%"],["Powered by","Claude"]].map(([k,v]) => (
-            <div key={k} style={{ display:"flex", justifyContent:"space-between", marginBottom:"0.5rem" }}>
-              <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>{k}</span>
-              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.75rem", color:C.ink }}>{v}</span>
+            <div key={k} style={{ display:"flex", justifyContent:"space-between",
+              marginBottom:"0.5rem" }}>
+              <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
+                fontSize:"0.75rem", color:W.inkMid }}>{k}</span>
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+                fontSize:"0.75rem", color:W.ink }}>{v}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Terminal */}
-      <div style={{ display:"flex", flexDirection:"column", gap:"1rem" }}>
-        <div style={{ border:`1px solid ${C.border}`, borderRadius:"8px", overflow:"hidden", flex:1 }}>
-          <div style={{ padding:"0.75rem 1.25rem", borderBottom:`1px solid ${C.border}`, display:"flex", alignItems:"center", justifyContent:"space-between", backgroundColor:C.soft }}>
+      {/* ── Terminal column ── */}
+      <div style={{ display:"flex", flexDirection:"column", gap:"0.85rem" }}>
+
+        {/* Response panel */}
+        <div style={{ border:`1px solid ${W.cardBorder}`, borderRadius:"8px",
+          overflow:"hidden", backgroundColor:W.card, flex:1 }}>
+
+          {/* Panel header */}
+          <div style={{ padding:"0.7rem 1.25rem", borderBottom:`1px solid ${W.cardBorder}`,
+            display:"flex", alignItems:"center", justifyContent:"space-between",
+            backgroundColor:"#F7F7F7" }}>
             <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }}>
-              <div style={{ width:"7px", height:"7px", borderRadius:"50%", backgroundColor: selected ? C.accent : C.border, transition:"background 0.3s" }} />
-              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem", fontWeight:500, color: selected ? C.ink : C.inkSoft }}>
+              <div style={{ width:"7px", height:"7px", borderRadius:"50%",
+                backgroundColor: selected ? W.accent : "#CCCCCC",
+                transition:"background 0.3s" }} />
+              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.68rem",
+                fontWeight:500, color: selected ? W.ink : W.inkSoft }}>
                 {selected ? selected.name : "No framework selected"}
               </span>
             </div>
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkSoft }}>Divine · v1.4</span>
+            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem",
+              color:W.inkSoft }}>Divine · v1.4</span>
           </div>
-          <div style={{ padding:"1.75rem", minHeight:"240px" }}>
-            {!selected && <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft, fontStyle:"italic" }}>Choose a framework on the left to get started.</p>}
-            {selected && !loading && !response && <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft }}><span style={{ color:C.accent }}>✦</span> {selected.name} is ready. Ask your question below.</p>}
+
+          {/* Panel body */}
+          <div style={{ padding:"1.75rem", minHeight:"220px" }}>
+            {!selected && (
+              <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
+                fontSize:"0.88rem", color:"#BBBBBB", fontStyle:"italic" }}>
+                Choose a framework on the left to get started.
+              </p>
+            )}
+            {selected && !loading && !response && (
+              <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
+                fontSize:"0.88rem", color:W.inkSoft }}>
+                <span style={{ color:W.accent }}>✦</span> {selected.name} is ready. Ask your question below.
+              </p>
+            )}
             {loading && (
               <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem" }}>
-                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:400, fontSize:"0.85rem", color:C.accent }}>Working on your answer...</p>
-                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkSoft }}>Applying {selected?.name} framework.</p>
+                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem",
+                  color:W.accent }}>Working on your answer...</p>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
+                  fontSize:"0.8rem", color:W.inkSoft }}>
+                  Applying {selected?.name} framework.
+                </p>
               </div>
             )}
             {response && !loading && (
               <div>
-                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.accent, letterSpacing:"0.1em", marginBottom:"1rem" }}>
+                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem",
+                  color:W.accent, letterSpacing:"0.1em", marginBottom:"1rem" }}>
                   ✦ {selected?.name?.toUpperCase()} · {new Date().toLocaleTimeString()}
                 </p>
-                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.9, color:C.ink, whiteSpace:"pre-wrap" }}>
-                  {typed}<span style={{ color:C.accent, animation:"blink 0.7s step-end infinite" }}>{typed.length < response.length ? "▌" : ""}</span>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
+                  fontSize:"0.9rem", lineHeight:1.9, color:W.ink, whiteSpace:"pre-wrap" }}>
+                  {typed}
+                  <span style={{ color:W.accent, animation:"blink 0.7s step-end infinite" }}>
+                    {typed.length < response.length ? "▌" : ""}
+                  </span>
                 </p>
               </div>
             )}
           </div>
         </div>
+
+        {/* Input row */}
         <div style={{ display:"flex", gap:"0.75rem" }}>
           <textarea value={query} onChange={e => setQuery(e.target.value)}
             onKeyDown={e => { if (e.key==="Enter" && e.metaKey) ask(); }}
             placeholder="What decision are you working through? Strategy, hiring, pricing, fundraising..."
-            rows={3} style={{ flex:1, padding:"0.85rem 1rem", borderRadius:"6px", fontSize:"0.85rem", fontFamily:"'Inter Tight', sans-serif", resize:"none", lineHeight:1.65, border:`1px solid ${C.border}`, color:C.ink, outline:"none" }}
-            onFocus={e => e.target.style.borderColor=C.ink} onBlur={e => e.target.style.borderColor=C.border} />
+            rows={3} style={{ flex:1, padding:"0.85rem 1rem", borderRadius:"6px",
+              fontSize:"0.85rem", fontFamily:"'Inter Tight', sans-serif",
+              resize:"none", lineHeight:1.65, border:`1px solid ${W.cardBorder}`,
+              backgroundColor:W.card, color:W.ink, outline:"none" }}
+            onFocus={e => e.target.style.borderColor=W.ink}
+            onBlur={e => e.target.style.borderColor=W.cardBorder} />
           <button onClick={ask} disabled={!selected || !query.trim() || loading}
-            style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor: (!selected || !query.trim() || loading) ? "#ccc" : C.accent, border:"none", borderRadius:"6px", padding:"0 1.5rem", cursor: (!selected || !query.trim() || loading) ? "not-allowed" : "pointer", minWidth:"90px", transition:"background 0.2s" }}>
+            style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+              fontSize:"0.82rem", color:"#fff",
+              backgroundColor: (!selected || !query.trim() || loading) ? "#BBBBBB" : W.accent,
+              border:"none", borderRadius:"6px", padding:"0 1.5rem",
+              cursor: (!selected || !query.trim() || loading) ? "not-allowed" : "pointer",
+              minWidth:"90px", transition:"background 0.2s" }}>
             {loading ? "···" : "Ask ✦"}
           </button>
         </div>
-        <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.72rem", color:C.inkSoft }}>⌘ + Enter to submit · $0.05 per question · Powered by Anthropic Claude</p>
+
+        <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
+          fontSize:"0.7rem", color:"rgba(255,255,255,0.5)" }}>
+          ⌘ + Enter to submit · $0.05 per question · Powered by Anthropic Claude
+        </p>
       </div>
     </div>
   );
