@@ -156,7 +156,7 @@ export default function App() {
         </div>
 
         {/* Mobile menu */}
-        {menuOpen & (
+        {menuOpen && (
           <div className="mobile-menu" onClick={e => e.stopPropagation()}>
             {[["Companies","#portfolio"],["Studio","#studio"],["Divine","#divine"]].map(([l,h]) => (
               <a key={l} href={h} onClick={() => setMenu(false)}>{l}</a>

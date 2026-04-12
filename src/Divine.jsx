@@ -84,7 +84,7 @@ function QueryPortal() {
           {THINKERS.map(t => (
             <div key={t.id} onClick={() => setSelected(t)}
               style={{ padding:"1.1rem", border:`1px solid ${selected?.id===t.id ? C.ink : C.border}`, borderRadius:"6px", cursor:"pointer", backgroundColor: selected?.id===t.id ? C.soft : C.bg, transition:"all 0.2s ease", position:"relative" }}>
-              {selected?.id===t.id & <div style={{ position:"absolute", left:0, top:"20%", bottom:"20%", width:"3px", backgroundColor:C.accent, borderRadius:"0 2px 2px 0" }} />}
+              {selected?.id===t.id && <div style={{ position:"absolute", left:0, top:"20%", bottom:"20%", width:"3px", backgroundColor:C.accent, borderRadius:"0 2px 2px 0" }} />}
               <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:C.ink, marginBottom:"0.15rem" }}>{t.name}</div>
               <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft, marginBottom:"0.6rem" }}>{t.title}</div>
               <div style={{ display:"flex", justifyContent:"space-between" }}>
@@ -119,15 +119,15 @@ function QueryPortal() {
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkSoft }}>Divine · v1.4</span>
           </div>
           <div style={{ padding:"1.75rem", minHeight:"240px" }}>
-            {!selected & <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft, fontStyle:"italic" }}>Choose a framework on the left to get started.</p>}
-            {selected & !loading & !response & <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft }}><span style={{ color:C.accent }}>✦</span> {selected.name} is ready. Ask your question below.</p>}
-            {loading & (
+            {!selected && <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft, fontStyle:"italic" }}>Choose a framework on the left to get started.</p>}
+            {selected && !loading && !response && <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.inkSoft }}><span style={{ color:C.accent }}>✦</span> {selected.name} is ready. Ask your question below.</p>}
+            {loading && (
               <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem" }}>
                 <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:400, fontSize:"0.85rem", color:C.accent }}>Working on your answer...</p>
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkSoft }}>Applying {selected?.name} framework.</p>
               </div>
             )}
-            {response & !loading & (
+            {response && !loading && (
               <div>
                 <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.accent, letterSpacing:"0.1em", marginBottom:"1rem" }}>
                   ✦ {selected?.name?.toUpperCase()} · {new Date().toLocaleTimeString()}
@@ -141,7 +141,7 @@ function QueryPortal() {
         </div>
         <div style={{ display:"flex", gap:"0.75rem" }}>
           <textarea value={query} onChange={e => setQuery(e.target.value)}
-            onKeyDown={e => { if (e.key==="Enter" & e.metaKey) ask(); }}
+            onKeyDown={e => { if (e.key==="Enter" && e.metaKey) ask(); }}
             placeholder="What decision are you working through? Strategy, hiring, pricing, fundraising..."
             rows={3} style={{ flex:1, padding:"0.85rem 1rem", borderRadius:"6px", fontSize:"0.85rem", fontFamily:"'Inter Tight', sans-serif", resize:"none", lineHeight:1.65, border:`1px solid ${C.border}`, color:C.ink, outline:"none" }}
             onFocus={e => e.target.style.borderColor=C.ink} onBlur={e => e.target.style.borderColor=C.border} />

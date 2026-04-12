@@ -203,7 +203,7 @@ export default function ContactPage({ onBack }) {
                 </div>
 
                 {/* Error */}
-                {error & (
+                {error && (
                   <div style={{ padding:"0.85rem 1rem", backgroundColor:"#fef2f2", border:"1px solid #fecaca", borderRadius:"4px", fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"#991b1b", marginTop:"0.5rem" }}>
                     {error}
                   </div>
