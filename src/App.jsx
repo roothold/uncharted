@@ -211,9 +211,12 @@ export default function App() {
       {/* ── HOW WE BUILD ── */}
       <section id="studio" style={{ padding:"8rem 3rem" }} className="px-main">
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
-          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:700, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:C.ink, marginBottom:"5rem", maxWidth:"520px", lineHeight:1.1 }}>
-            A different kind of co-founder.
+          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:700, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:C.ink, marginBottom:"1.5rem", maxWidth:"520px", lineHeight:1.1 }}>
+            A different kind of partner.
           </h2>
+          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.95rem", lineHeight:1.85, color:C.inkMid, maxWidth:"520px", marginBottom:"5rem" }}>
+            We provide the institutional infrastructure and cognitive edge. You provide the vision. Together, we secure the asset.
+          </p>
           <div className="grid-3" style={{ gap:"3rem" }}>
             {[
               { n:"1", t:"Build with experience",         d:"Work with founders who have done this before. We bring playbooks, networks, and pattern recognition from building multiple companies." },
