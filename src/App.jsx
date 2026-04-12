@@ -186,7 +186,7 @@ export default function App() {
         </div>
       </section>
 
-      <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} className="px-main" />
+      <div style={{ height:"1px", backgroundColor:C.border }} />
 
       {/* ── HOW WE BUILD ── */}
       <section id="studio" style={{ padding:"8rem 3rem" }} className="px-main">
@@ -210,14 +210,12 @@ export default function App() {
         </div>
       </section>
 
-      <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} className="px-main" />
-
       {/* ── PORTFOLIO ── */}
-      <section id="portfolio" style={{ padding:"8rem 3rem" }} className="px-main">
+      <section id="portfolio" style={{ padding:"8rem 3rem", backgroundColor:"#BF452A" }} className="px-main">
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"4rem", flexWrap:"wrap", gap:"1rem" }}>
-            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:C.ink, lineHeight:1.1 }}>Our companies.</h2>
-            <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.62rem", color:C.inkSoft, letterSpacing:"0.1em" }}>2017 — PRESENT</span>
+            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:"#fff", lineHeight:1.1 }}>Our companies.</h2>
+            <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.62rem", color:"rgba(255,255,255,0.55)", letterSpacing:"0.1em" }}>2017 — PRESENT</span>
           </div>
           <div className="grid-3" style={{ gap:"1.5rem" }}>
             {PORTFOLIO.map(v => {
@@ -225,7 +223,7 @@ export default function App() {
               const props = v.url ? { href:v.url, target:"_blank", rel:"noopener noreferrer", style:{ textDecoration:"none", color:"inherit", display:"block" } } : {};
               return (
                 <El key={v.id} {...props}>
-                  <div className="port-card" style={{ border:`1px solid ${C.border}`, borderRadius:"8px", padding:"2.5rem 2rem" }}>
+                  <div className="port-card" style={{ border:"1px solid rgba(255,255,255,0.15)", borderRadius:"8px", padding:"2.5rem 2rem", backgroundColor:"#fff" }}>
                     <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.6rem", color: v.url ? C.gold : C.inkSoft, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"1.5rem" }}>{v.cat}</div>
                     <h3 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"2rem", color:C.ink, marginBottom:"0.75rem", lineHeight:1.1 }}>{v.name}</h3>
                     <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.87rem", lineHeight:1.85, color:C.inkMid, marginBottom:"2rem" }}>{v.desc}</p>
