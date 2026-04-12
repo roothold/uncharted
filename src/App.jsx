@@ -276,7 +276,7 @@ export default function App() {
               </p>
               <button onClick={() => setPage("divine")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.85rem 2rem" }}>Try Divine →</button>
             </div>
-
+          </div>
         </div>
       </section>
 

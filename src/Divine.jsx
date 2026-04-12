@@ -32,14 +32,6 @@ const USE_CASES = [
   { q:"We have 3 months of runway. What are our real options?", domain:"Capital" },
 ];
 
-const ONBOARDING_STEPS = [
-  { num:"1", title:"Set your identity",     desc:"Name, title, two-sentence background. This is how founders find you." },
-  { num:"2", title:"Define your framework", desc:"How do you approach decisions? What do you look for? Be specific." },
-  { num:"3", title:"Write your lens",       desc:"One sentence capturing how you uniquely see the world." },
-  { num:"4", title:"Choose your domains",   desc:"3–8 topics where your thinking creates the most value." },
-  { num:"5", title:"Set your price & go live", desc:"$0.05–$2.50 per answer. You earn 70%. No ceiling." },
-];
-
 // ── Query Portal ────────────────────────────────────────────────────────────
 function QueryPortal() {
   const [selected, setSelected] = useState(null);
@@ -103,6 +95,7 @@ function QueryPortal() {
         <div style={{ display:"flex", flexDirection:"column", gap:"0.6rem" }}>
           {THINKERS.map(t => (
             <div key={t.id} onClick={() => setSelected(t)}
+              data-thinker-id={t.id === "2" ? "michael" : "composite"}
               style={{
                 padding:"1.1rem 1.1rem 1.1rem 1.3rem",
                 border:`1px solid ${selected?.id===t.id ? W.accent : W.cardBorder}`,
@@ -213,7 +206,7 @@ function QueryPortal() {
 
         {/* Input row */}
         <div style={{ display:"flex", gap:"0.75rem" }}>
-          <textarea value={query} onChange={e => setQuery(e.target.value)}
+          <textarea id="divine-question" value={query} onChange={e => setQuery(e.target.value)}
             onKeyDown={e => { if (e.key==="Enter" && e.metaKey) ask(); }}
             placeholder="What decision are you working through? Strategy, hiring, pricing, fundraising..."
             rows={3} style={{ flex:1, padding:"0.85rem 1rem", borderRadius:"6px",
@@ -222,7 +215,7 @@ function QueryPortal() {
               backgroundColor:W.card, color:W.ink, outline:"none" }}
             onFocus={e => e.target.style.borderColor=W.ink}
             onBlur={e => e.target.style.borderColor=W.cardBorder} />
-          <button onClick={ask} disabled={!selected || !query.trim() || loading}
+          <button id="divine-ask-btn" onClick={ask} disabled={!selected || !query.trim() || loading}
             style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
               fontSize:"0.82rem", color:"#fff",
               backgroundColor: (!selected || !query.trim() || loading) ? "#BBBBBB" : W.accent,
@@ -244,8 +237,6 @@ function QueryPortal() {
 
 // ── Main Divine Page ────────────────────────────────────────────────────────
 export default function DivinePage({ onBack, onBecomeThinker }) {
-  const [hoveredStep, setHoveredStep] = useState(null);
-
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'JetBrains Mono', monospace" }}>
       <style>{`
