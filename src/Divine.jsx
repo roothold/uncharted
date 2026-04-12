@@ -297,10 +297,10 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} />
 
       {/* ── LIVE QUERY ── */}
-      <section id="ask" style={{ padding:"8rem 3rem" }}>
+      <section id="ask" style={{ padding:"8rem 3rem", backgroundColor:"#C8512A" }}>
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
-          <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1rem" }}>Try it now</p>
-          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:C.ink, marginBottom:"3rem" }}>
+          <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:"rgba(255,255,255,0.6)", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1rem" }}>Try it now</p>
+          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:"#fff", marginBottom:"3rem" }}>
             Ask your first question.
           </h2>
           <QueryPortal />
