@@ -97,7 +97,7 @@ function QueryPortal() {
       {/* ── Selector column ── */}
       <div>
         <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500,
-          fontSize:"0.68rem", color:"rgba(255,255,255,0.75)", letterSpacing:"0.1em",
+          fontSize:"0.68rem", color:C.inkSoft, letterSpacing:"0.1em",
           textTransform:"uppercase", marginBottom:"0.85rem" }}>Choose a framework</p>
 
         <div style={{ display:"flex", flexDirection:"column", gap:"0.6rem" }}>
@@ -234,7 +234,7 @@ function QueryPortal() {
         </div>
 
         <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
-          fontSize:"0.7rem", color:"rgba(255,255,255,0.5)" }}>
+          fontSize:"0.7rem", color:C.inkSoft }}>
           ⌘ + Enter to submit · $0.05 per question · Powered by Anthropic Claude
         </p>
       </div>
@@ -380,10 +380,10 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} />
 
       {/* ── LIVE QUERY ── */}
-      <section id="ask" style={{ padding:"8rem 3rem", backgroundColor:"#C8512A" }}>
+      <section id="ask" style={{ padding:"8rem 3rem" }}>
         <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
-          <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:"rgba(255,255,255,0.6)", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1rem" }}>Try it now</p>
-          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:"#fff", marginBottom:"3rem" }}>
+          <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1rem" }}>Try it now</p>
+          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:C.ink, marginBottom:"3rem" }}>
             Ask your first question.
           </h2>
           <QueryPortal />
