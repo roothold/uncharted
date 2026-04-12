@@ -285,27 +285,25 @@ export default function App() {
                 Better decisions,<br />faster.
               </h2>
               <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.9, color:C.inkMid, marginBottom:"1rem", maxWidth:"420px" }}>
-                Divine is an AI tool built for founders. Ask any question about your business — strategy, hiring, pricing, fundraising — and get a direct answer shaped by real operator experience.
+                Divine is not a chatbot. It is the proprietary intelligence protocol used by Uncharted to de-risk investments and automate operator logic. We don't ask questions; we execute protocols.
               </p>
-              <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", lineHeight:1.8, color:C.inkSoft, marginBottom:"2.5rem", maxWidth:"420px" }}>
-                Not a generic chatbot. Every response is shaped by founders who've built companies.
-              </p>
-              <div className="hero-btns" style={{ display:"flex", gap:"1rem" }}>
+              <div className="hero-btns" style={{ display:"flex", gap:"1rem", marginTop:"2.5rem" }}>
                 <button onClick={() => setPage("divine")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.85rem 2rem" }}>Try Divine free</button>
                 <button onClick={() => setPage("divine")} className="cta-ghost" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.85rem", color:C.inkMid, backgroundColor:"transparent", border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.85rem 2rem" }}>Become a Thinker →</button>
               </div>
             </div>
-            <div className="grid-2" style={{ gap:"1px", backgroundColor:C.border }}>
+            {/* Stats grid — no borders, Machine vs Human typography */}
+            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"3rem 2rem" }}>
               {[
-                { v:"$0.05", l:"Per question",         sub:"No subscription required" },
-                { v:"70%",   l:"Thinker revenue share", sub:"Earn from your expertise" },
-                { v:"2",     l:"Expert frameworks",     sub:"Real operator experience" },
-                { v:"v1.4",  l:"Current version",       sub:"Powered by Claude" },
+                { v:"2.4ms",       l:"Latency",      sub:"Online",      gold:true  },
+                { v:"Proprietary", l:"Logic Core",   sub:"Active",      gold:true  },
+                { v:"84+",         l:"Tactical Nodes", sub:"Operational", gold:false },
+                { v:"Verified",    l:"Audit Status", sub:"Confirmed",   gold:true  },
               ].map(s => (
-                <div key={s.l} style={{ padding:"2.5rem 2rem", backgroundColor:C.bg }}>
-                  <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"2.8rem", color:C.ink, lineHeight:1, marginBottom:"0.4rem" }}>{s.v}</div>
-                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.82rem", color:C.ink, marginBottom:"0.2rem" }}>{s.l}</div>
-                  <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.72rem", color:C.inkSoft }}>{s.sub}</div>
+                <div key={s.l}>
+                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:700, fontSize:"clamp(1.5rem, 2.5vw, 2.4rem)", color:C.ink, lineHeight:1, marginBottom:"0.5rem", letterSpacing:"-0.02em" }}>{s.v}</div>
+                  <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"1rem", color:C.ink, marginBottom:"0.25rem", letterSpacing:"0.05em" }}>{s.l}</div>
+                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:400, fontSize:"0.65rem", color: s.gold ? "#D4AF37" : C.inkSoft, letterSpacing:"0.14em", textTransform:"uppercase" }}>{s.sub}</div>
                 </div>
               ))}
             </div>
