@@ -160,10 +160,10 @@ export default function App() {
         backgroundColor:"rgba(255,255,255,0.97)",
         backdropFilter:"blur(12px)", WebkitBackdropFilter:"blur(12px)",
         borderBottom:"1px solid #E8E8E8",
-        padding:"0 2.5rem",
+        padding:"0 2rem",
       }}>
         <div style={{ maxWidth:"1360px", margin:"0 auto", height:"56px",
-          display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+          display:"flex", alignItems:"center", justifyContent:"space-between", gap:"1rem" }}>
 
           {/* Logo */}
           <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0 }}>
@@ -174,13 +174,13 @@ export default function App() {
           </button>
 
           {/* Desktop nav */}
-          <div style={{ display:"flex", alignItems:"center", gap:"0.25rem" }} className="desktop-nav">
+          <div style={{ display:"flex", alignItems:"center", gap:"0.15rem", flexShrink:0 }} className="desktop-nav">
 
             {/* Industries dropdown */}
             <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
               <button className={`nav-dropdown-btn${dropdown==="industries" ? " open" : ""}`}
                 onClick={() => setDropdown(d => d==="industries" ? null : "industries")}
-                style={{ padding:"0.4rem 0.65rem" }}>
+                style={{ padding:"0.35rem 0.55rem" }}>
                 Industries
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -208,7 +208,7 @@ export default function App() {
             <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
               <button className={`nav-dropdown-btn${dropdown==="solutions" ? " open" : ""}`}
                 onClick={() => setDropdown(d => d==="solutions" ? null : "solutions")}
-                style={{ padding:"0.4rem 0.65rem" }}>
+                style={{ padding:"0.35rem 0.55rem" }}>
                 Solutions
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -234,16 +234,16 @@ export default function App() {
             <div style={{ width:"1px", height:"16px", backgroundColor:"#E8E8E8", margin:"0 0.4rem" }} />
 
             <button onClick={() => setPage("contact")} className="nav-link"
-              style={{ padding:"0.4rem 0.65rem", fontFamily:"'Inter Tight',sans-serif",
+              style={{ padding:"0.35rem 0.55rem", fontFamily:"'Inter Tight',sans-serif",
                 fontSize:"0.82rem", fontWeight:500, background:"none", border:"none", cursor:"pointer" }}>
               Contact
             </button>
 
-            <button onClick={() => setPage("contact")} className="signin-btn" style={{ marginLeft:"0.5rem" }}>
+            <button onClick={() => setPage("contact")} className="signin-btn" style={{ marginLeft:"0.25rem" }}>
               Work with us
             </button>
 
-            <button className="signin-btn" style={{ marginLeft:"0.35rem", backgroundColor:"#111", color:"#fff", borderColor:"#111" }}
+            <button className="signin-btn" style={{ marginLeft:"0.2rem", backgroundColor:"#111", color:"#fff", borderColor:"#111" }}
               onMouseEnter={e => { e.currentTarget.style.backgroundColor="#333"; e.currentTarget.style.borderColor="#333"; }}
               onMouseLeave={e => { e.currentTarget.style.backgroundColor="#111"; e.currentTarget.style.borderColor="#111"; }}
               onClick={() => window.open("https://divine.uncharted.ventures", "_blank")}>
@@ -310,7 +310,7 @@ export default function App() {
             color:"#FFFFFF", marginBottom:"1.5rem",
             opacity:0, animation:"fadeUp 0.8s 0.2s forwards",
           }}>
-            Turning startups<br />into sovereign assets.
+            Turning startups<br />into growth assets.
           </h1>
 
           {/* Sub */}
@@ -447,7 +447,7 @@ export default function App() {
           <div style={{ maxWidth:"680px", margin:"0 auto" }}>
             <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.5rem, 8vw, 5rem)", lineHeight:1.05, color:"#FFFFFF", marginBottom:"2rem" }}>Join the Engine.</h2>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:"rgba(255,255,255,0.55)", marginBottom:"3rem" }}>
-              Founders, operators, and capital partners who want to build companies that become sovereign assets. The Engine is open.
+              Founders, operators, and capital partners who want to build companies that become durable growth assets. The Engine is open.
             </p>
             <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.92rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"1rem 2.75rem" }}>Apply for access</button>
           </div>
