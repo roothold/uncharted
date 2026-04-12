@@ -174,7 +174,7 @@ export default function App() {
           </button>
 
           {/* Desktop nav */}
-          <div style={{ display:"flex", alignItems:"center", gap:"0.15rem", flexShrink:0 }} className="desktop-nav">
+          <div style={{ display:"flex", alignItems:"center", gap:"0.5rem", flexShrink:0 }} className="desktop-nav">
 
             {/* Industries dropdown */}
             <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
@@ -239,11 +239,11 @@ export default function App() {
               Contact
             </button>
 
-            <button onClick={() => setPage("contact")} className="signin-btn" style={{ marginLeft:"0.25rem" }}>
+            <button onClick={() => setPage("contact")} className="signin-btn">
               Work with us
             </button>
 
-            <button className="signin-btn" style={{ marginLeft:"0.2rem", backgroundColor:"#111", color:"#fff", borderColor:"#111" }}
+            <button className="signin-btn" style={{ backgroundColor:"#111", color:"#fff", borderColor:"#111" }}
               onMouseEnter={e => { e.currentTarget.style.backgroundColor="#333"; e.currentTarget.style.borderColor="#333"; }}
               onMouseLeave={e => { e.currentTarget.style.backgroundColor="#111"; e.currentTarget.style.borderColor="#111"; }}
               onClick={() => window.open("https://divine.uncharted.ventures", "_blank")}>
