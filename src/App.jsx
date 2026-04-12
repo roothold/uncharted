@@ -160,10 +160,10 @@ export default function App() {
         backgroundColor:"rgba(255,255,255,0.97)",
         backdropFilter:"blur(12px)", WebkitBackdropFilter:"blur(12px)",
         borderBottom:"1px solid #E8E8E8",
-        padding:"0 2rem",
+        padding:"0 2.5rem",
       }}>
         <div style={{ maxWidth:"1360px", margin:"0 auto", height:"56px",
-          display:"flex", alignItems:"center", justifyContent:"space-between", gap:"1rem" }}>
+          display:"flex", alignItems:"center", justifyContent:"space-between" }}>
 
           {/* Logo */}
           <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0 }}>
@@ -174,15 +174,14 @@ export default function App() {
           </button>
 
           {/* Desktop nav */}
-          <div style={{ display:"flex", alignItems:"center", gap:"0.5rem", flexShrink:0 }} className="desktop-nav">
+          <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }} className="desktop-nav">
 
             {/* Industries dropdown */}
             <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
               <button className={`nav-dropdown-btn${dropdown==="industries" ? " open" : ""}`}
-                onClick={() => setDropdown(d => d==="industries" ? null : "industries")}
-                style={{ padding:"0.35rem 0.55rem" }}>
+                onClick={() => setDropdown(d => d==="industries" ? null : "industries")}>
                 Industries
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
                   <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
@@ -195,7 +194,7 @@ export default function App() {
                     { label:"Financial Assets", sub:"Capital & Investment" },
                   ].map(item => (
                     <button key={item.label} className="dropdown-item"
-                      onClick={() => { setDropdown(null); }}>
+                      onClick={() => setDropdown(null)}>
                       <span className="dropdown-item-label">{item.sub}</span>
                       {item.label}
                     </button>
@@ -207,19 +206,18 @@ export default function App() {
             {/* Solutions dropdown */}
             <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
               <button className={`nav-dropdown-btn${dropdown==="solutions" ? " open" : ""}`}
-                onClick={() => setDropdown(d => d==="solutions" ? null : "solutions")}
-                style={{ padding:"0.35rem 0.55rem" }}>
+                onClick={() => setDropdown(d => d==="solutions" ? null : "solutions")}>
                 Solutions
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
                   <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
               {dropdown==="solutions" && (
                 <div className="dropdown-panel">
                   {[
-                    { label:"Divine AI",           sub:"Intelligence Protocol",  action: () => setPage("divine") },
-                    { label:"Venture Foundry",     sub:"Studio & Co-Building",   action: () => {} },
-                    { label:"Capital Stewardship", sub:"Asset & Fund Strategy",  action: () => {} },
+                    { label:"Divine AI",           sub:"Intelligence Protocol", action: () => setPage("divine") },
+                    { label:"Venture Foundry",     sub:"Studio & Co-Building",  action: () => {} },
+                    { label:"Capital Stewardship", sub:"Asset & Fund Strategy", action: () => {} },
                   ].map(item => (
                     <button key={item.label} className="dropdown-item"
                       onClick={() => { setDropdown(null); item.action(); }}>
@@ -231,23 +229,20 @@ export default function App() {
               )}
             </div>
 
-            <div style={{ width:"1px", height:"16px", backgroundColor:"#E8E8E8", margin:"0 0.4rem" }} />
-
-            <button onClick={() => setPage("contact")} className="nav-link"
-              style={{ padding:"0.35rem 0.55rem", fontFamily:"'Inter Tight',sans-serif",
-                fontSize:"0.82rem", fontWeight:500, background:"none", border:"none", cursor:"pointer" }}>
-              Contact
-            </button>
-
-            <button onClick={() => setPage("contact")} className="signin-btn">
-              Work with us
-            </button>
-
-            <button className="signin-btn" style={{ backgroundColor:"#111", color:"#fff", borderColor:"#111" }}
-              onMouseEnter={e => { e.currentTarget.style.backgroundColor="#333"; e.currentTarget.style.borderColor="#333"; }}
-              onMouseLeave={e => { e.currentTarget.style.backgroundColor="#111"; e.currentTarget.style.borderColor="#111"; }}
-              onClick={() => window.open("https://divine.uncharted.ventures", "_blank")}>
-              Sign In
+            {/* Sign In — outline pill, far right */}
+            <button
+              onClick={() => window.open("https://divine.uncharted.ventures", "_blank")}
+              style={{
+                marginLeft:"1rem",
+                fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
+                fontSize:"0.82rem", padding:"0.4rem 1.1rem",
+                border:"1px solid #D0D0D0", borderRadius:"20px",
+                background:"#fff", color:"#111", cursor:"pointer",
+                transition:"all 0.15s ease", lineHeight:1,
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
+              Sign in
             </button>
           </div>
 
@@ -267,15 +262,13 @@ export default function App() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="mobile-menu" onClick={e => e.stopPropagation()}>
-            <a href="#portfolio" onClick={() => setMenu(false)}>Industries</a>
+            <button onClick={() => setMenu(false)}>Industries</button>
             <button onClick={() => { setPage("divine"); setMenu(false); }}>Divine AI</button>
             <button onClick={() => setMenu(false)}>Venture Foundry</button>
             <button onClick={() => setMenu(false)}>Capital Stewardship</button>
-            <button onClick={() => { setPage("contact"); setMenu(false); }}>Contact</button>
-            <button onClick={() => { setPage("contact"); setMenu(false); }}
-              style={{ color:"#fff", backgroundColor:C.accent, borderRadius:"4px",
-                padding:"0.75rem 1rem", marginTop:"0.5rem", fontWeight:600, border:"none" }}>
-              Work with us
+            <button onClick={() => { window.open("https://divine.uncharted.ventures","_blank"); setMenu(false); }}
+              style={{ marginTop:"0.5rem", border:"1px solid #D0D0D0", borderRadius:"20px" }}>
+              Sign in
             </button>
           </div>
         )}
@@ -293,17 +286,7 @@ export default function App() {
           zIndex:0 }} />
         <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }} className="hero-inner">
 
-          {/* Eyebrow */}
-          <div style={{ display:"flex", alignItems:"center", gap:"0.65rem", marginBottom:"2rem",
-            opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
-            <div style={{ width:"24px", height:"1px", backgroundColor:C.accent }} />
-            <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.62rem",
-              color:"rgba(255,255,255,0.65)", letterSpacing:"0.14em", textTransform:"uppercase" }}>
-              Venture Engine · Uncharted
-            </span>
-          </div>
-
-          {/* Headline */}
+          {/* Headline */
           <h1 style={{
             fontFamily:"'Instrument Serif',serif", fontWeight:600,
             fontSize:"clamp(2.4rem, 8vw, 6.8rem)", lineHeight:1.0,
