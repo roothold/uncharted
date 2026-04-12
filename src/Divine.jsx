@@ -409,7 +409,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
             <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>by Uncharted Ventures</span>
           </div>
           <div style={{ display:"flex", gap:"2rem", alignItems:"center" }}>
-            <a href="https://divine.rootholdinc.com" target="_blank" rel="noopener noreferrer" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkSoft, textDecoration:"none", transition:"color 0.15s" }}
+            <a href="https://divine.uncharted.ventures" target="_blank" rel="noopener noreferrer" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkSoft, textDecoration:"none", transition:"color 0.15s" }}
               onMouseEnter={e => e.target.style.color=C.accent} onMouseLeave={e => e.target.style.color=C.inkSoft}>Full app →</a>
             <button onClick={onBack} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.8rem", color:C.inkSoft, background:"none", border:"none", cursor:"pointer", padding:0, transition:"color 0.15s" }}
               onMouseEnter={e => e.target.style.color=C.ink} onMouseLeave={e => e.target.style.color=C.inkSoft}>← Back to Uncharted</button>
