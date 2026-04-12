@@ -108,7 +108,7 @@ export default function ContactPage({ onBack }) {
       <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 2.5rem" }} className="nav-outer">
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"76px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
-            <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"45px", width:"auto", display:"block" }} />
+            <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"40px", width:"auto", display:"block" }} />
             <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"40px", width:"40px", display:"none" }} />
           </button>
           <button onClick={onBack} className="nav-link" style={{ background:"none", border:"none", cursor:"pointer", fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, padding:0 }}>

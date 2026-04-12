@@ -290,7 +290,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
             <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
-              <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"45px", width:"auto", display:"block" }} />
+              <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"40px", width:"auto", display:"block" }} />
               <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"40px", width:"40px", display:"none" }} />
             </button>
             <div style={{ width:"1px", height:"16px", backgroundColor:C.border }} />

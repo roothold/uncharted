@@ -168,7 +168,7 @@ export default function App() {
           {/* Logo */}
           <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0 }}>
             <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full"
-              style={{ height:"30px", width:"auto", display:"block" }} />
+              style={{ height:"40px", width:"auto", display:"block" }} />
             <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon"
               style={{ height:"32px", width:"32px", display:"none" }} />
           </button>
@@ -189,7 +189,7 @@ export default function App() {
               }}
               onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
-              Sign in to Divine
+              Sign In
             </a>
           </div>
 
