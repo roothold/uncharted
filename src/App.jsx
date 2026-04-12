@@ -286,7 +286,6 @@ export default function App() {
           zIndex:0 }} />
         <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }} className="hero-inner">
 
-          {/* Headline */
           <h1 style={{
             fontFamily:"'Instrument Serif',serif", fontWeight:600,
             fontSize:"clamp(2.4rem, 8vw, 6.8rem)", lineHeight:1.0,
@@ -296,7 +295,6 @@ export default function App() {
             Turning startups<br />into growth assets.
           </h1>
 
-          {/* Sub */}
           <p style={{
             fontFamily:"'Inter Tight',sans-serif", fontWeight:300,
             fontSize:"clamp(0.95rem, 1.6vw, 1.1rem)", lineHeight:1.85,
@@ -308,45 +306,16 @@ export default function App() {
             that endure as institutional-grade assets.
           </p>
 
-          {/* CTAs */}
-          <div className="hero-btns" style={{ display:"flex", gap:"1rem",
-            opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
-            <button onClick={() => setPage("contact")} className="cta-primary"
+          <div style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
+            <button onClick={() => setPage("divine")}
               style={{ fontFamily:"'JetBrains Mono',monospace", fontWeight:600,
                 fontSize:"0.82rem", color:"#fff", backgroundColor:C.accent,
-                border:"none", borderRadius:"4px", padding:"0.9rem 2.25rem" }}>
-              Enter the Engine
-            </button>
-            <button onClick={() => setPage("divine")} className="cta-ghost"
-              style={{ fontFamily:"'JetBrains Mono',monospace", fontWeight:500,
-                fontSize:"0.82rem", color:"#fff",
-                backgroundColor:"rgba(255,255,255,0.1)",
-                border:"1.5px solid rgba(255,255,255,0.4)",
-                borderRadius:"4px", padding:"0.9rem 2.25rem" }}>
-              Explore Divine AI →
+                border:"none", borderRadius:"4px", padding:"0.9rem 2.25rem",
+                cursor:"pointer" }}>
+              Try Divine →
             </button>
           </div>
 
-          {/* Engine stats strip */}
-          <div style={{
-            display:"flex", gap:"3rem", marginTop:"5rem",
-            opacity:0, animation:"fadeUp 0.8s 0.7s forwards",
-            flexWrap:"wrap",
-          }}>
-            {[
-              { v:"3", l:"Portfolio Companies" },
-              { v:"Divine", l:"AI Protocol" },
-              { v:"Foundry", l:"Venture Infrastructure" },
-            ].map(s => (
-              <div key={s.l} style={{ borderLeft:"2px solid rgba(200,81,42,0.6)", paddingLeft:"1rem" }}>
-                <div style={{ fontFamily:"'Instrument Serif',serif", fontWeight:600,
-                  fontSize:"1.6rem", color:"#fff", lineHeight:1 }}>{s.v}</div>
-                <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.58rem",
-                  color:"rgba(255,255,255,0.5)", letterSpacing:"0.1em",
-                  textTransform:"uppercase", marginTop:"0.25rem" }}>{s.l}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
       <div style={{ height:"1px", backgroundColor:C.border }} />
