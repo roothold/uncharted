@@ -174,66 +174,10 @@ export default function App() {
           </button>
 
           {/* Desktop nav */}
-          <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }} className="desktop-nav">
-
-            {/* Industries dropdown */}
-            <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
-              <button className={`nav-dropdown-btn${dropdown==="industries" ? " open" : ""}`}
-                onClick={() => setDropdown(d => d==="industries" ? null : "industries")}>
-                Industries
-                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-              {dropdown==="industries" && (
-                <div className="dropdown-panel">
-                  {[
-                    { label:"Consumer Goods",   sub:"Retail & Brand" },
-                    { label:"Supply Chain",     sub:"Logistics & Ops" },
-                    { label:"Technology",       sub:"Software & AI" },
-                    { label:"Financial Assets", sub:"Capital & Investment" },
-                  ].map(item => (
-                    <button key={item.label} className="dropdown-item"
-                      onClick={() => setDropdown(null)}>
-                      <span className="dropdown-item-label">{item.sub}</span>
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Solutions dropdown */}
-            <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
-              <button className={`nav-dropdown-btn${dropdown==="solutions" ? " open" : ""}`}
-                onClick={() => setDropdown(d => d==="solutions" ? null : "solutions")}>
-                Solutions
-                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-              {dropdown==="solutions" && (
-                <div className="dropdown-panel">
-                  {[
-                    { label:"Divine AI",           sub:"Intelligence Protocol", action: () => setPage("divine") },
-                    { label:"Venture Foundry",     sub:"Studio & Co-Building",  action: () => {} },
-                    { label:"Capital Stewardship", sub:"Asset & Fund Strategy", action: () => {} },
-                  ].map(item => (
-                    <button key={item.label} className="dropdown-item"
-                      onClick={() => { setDropdown(null); item.action(); }}>
-                      <span className="dropdown-item-label">{item.sub}</span>
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Sign In — outline pill, far right */}
+          <div style={{ display:"flex", alignItems:"center" }} className="desktop-nav">
             <button
               onClick={() => window.open("https://divine.uncharted.ventures", "_blank")}
               style={{
-                marginLeft:"1rem",
                 fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
                 fontSize:"0.82rem", padding:"0.4rem 1.1rem",
                 border:"1px solid #D0D0D0", borderRadius:"20px",
@@ -262,12 +206,7 @@ export default function App() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="mobile-menu" onClick={e => e.stopPropagation()}>
-            <button onClick={() => setMenu(false)}>Industries</button>
-            <button onClick={() => { setPage("divine"); setMenu(false); }}>Divine AI</button>
-            <button onClick={() => setMenu(false)}>Venture Foundry</button>
-            <button onClick={() => setMenu(false)}>Capital Stewardship</button>
-            <button onClick={() => { window.open("https://divine.uncharted.ventures","_blank"); setMenu(false); }}
-              style={{ marginTop:"0.5rem", border:"1px solid #D0D0D0", borderRadius:"20px" }}>
+            <button onClick={() => { window.open("https://divine.uncharted.ventures","_blank"); setMenu(false); }}>
               Sign in
             </button>
           </div>
