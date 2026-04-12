@@ -286,8 +286,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       `}</style>
 
       {/* Nav */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }} className="nav-outer">
-        <div style={{ maxWidth:"1200px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 2.5rem" }} className="nav-outer">
+        <div style={{ maxWidth:"1280px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
             <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
               <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"45px", width:"auto", display:"block" }} />
@@ -307,7 +307,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
 
       {/* ── HERO ── */}
       <section style={{ minHeight:"100vh", display:"flex", alignItems:"center", padding:"10rem 3rem 6rem" }} className="divine-px">
-        <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%" }} className="divine-hero-grid">
+        <div style={{ maxWidth:"1280px", margin:"0 auto", width:"100%" }} className="divine-hero-grid">
           <div>
             <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
               AI Tool for Founders · Built by Uncharted
@@ -338,8 +338,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} />
 
       {/* ── FOR FOUNDERS ── */}
-      <section id="founders" style={{ padding:"8rem 3rem" }} className="divine-px">
-        <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
+      <section id="founders" style={{ padding:"8rem 2.5rem" }} className="divine-px">
+        <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Founders</p>
           <div className="divine-how-grid">
             <div>
@@ -371,8 +371,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} />
 
       {/* ── LIVE QUERY ── */}
-      <section id="ask" style={{ padding:"8rem 3rem" }}>
-        <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
+      <section id="ask" style={{ padding:"8rem 2.5rem" }}>
+        <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1rem" }}>Try it now</p>
           <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:C.ink, marginBottom:"3rem" }}>
             Ask your first question.
@@ -384,8 +384,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} />
 
       {/* ── THINKER CTA STRIP ── */}
-      <section style={{ padding:"5rem 3rem", backgroundColor:C.soft }} className="divine-px">
-        <div style={{ maxWidth:"1200px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"2rem" }}>
+      <section style={{ padding:"5rem 2.5rem", backgroundColor:C.soft }} className="divine-px">
+        <div style={{ maxWidth:"1280px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"2rem" }}>
           <div>
             <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(1.5rem, 3vw, 2.2rem)", color:C.ink, marginBottom:"0.5rem" }}>
               Your experience is worth more than you're charging.
@@ -402,8 +402,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop:`1px solid ${C.border}`, padding:"2rem 3rem" }} className="divine-px">
-        <div style={{ maxWidth:"1200px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+      <footer style={{ borderTop:`1px solid ${C.border}`, padding:"2rem 2.5rem" }} className="divine-px">
+        <div style={{ maxWidth:"1280px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1rem" }}>
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.95rem", color:C.ink }}>Divine</span>
             <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>by Uncharted Ventures</span>

@@ -81,7 +81,7 @@ export default function App() {
         .grid-3  { display:grid; grid-template-columns:repeat(3,1fr); }
         .grid-2  { display:grid; grid-template-columns:1fr 1fr; }
         .grid-2a { display:grid; grid-template-columns:2fr 1fr; }
-        .px-main { padding-left:3rem; padding-right:3rem; }
+        .px-main { padding-left:2.5rem; padding-right:2.5rem; }
         .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; }
 
         @media (max-width: 900px) {
@@ -92,7 +92,7 @@ export default function App() {
         }
         @media (max-width: 600px) {
           .grid-4  { grid-template-columns:repeat(2,1fr) !important; }
-          .px-main { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .px-main { padding-left:1.5rem !important; padding-right:1.5rem !important; }
           .footer-grid { grid-template-columns:1fr !important; }
           .hero-btns { flex-direction:column !important; }
           .hero-btns a, .hero-btns button { width:100% !important; text-align:center !important; }
@@ -162,7 +162,7 @@ export default function App() {
         borderBottom:"1px solid #E8E8E8",
         padding:"0 2.5rem",
       }}>
-        <div style={{ maxWidth:"1360px", margin:"0 auto", height:"56px",
+        <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px",
           display:"flex", alignItems:"center", justifyContent:"space-between" }}>
 
           {/* Logo */}
@@ -175,19 +175,22 @@ export default function App() {
 
           {/* Desktop nav */}
           <div style={{ display:"flex", alignItems:"center" }} className="desktop-nav">
-            <button
-              onClick={() => window.open("https://divine.uncharted.ventures", "_blank")}
+            <a
+              href="https://divine.uncharted.ventures/?login=1"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
                 fontSize:"0.82rem", padding:"0.4rem 1.1rem",
                 border:"1px solid #D0D0D0", borderRadius:"20px",
                 background:"#fff", color:"#111", cursor:"pointer",
                 transition:"all 0.15s ease", lineHeight:1,
+                textDecoration:"none", display:"inline-block",
               }}
               onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
-              Sign in
-            </button>
+              Sign in to Divine
+            </a>
           </div>
 
           {/* Hamburger */}
@@ -206,7 +209,7 @@ export default function App() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="mobile-menu" onClick={e => e.stopPropagation()}>
-            <button onClick={() => { window.open("https://divine.uncharted.ventures","_blank"); setMenu(false); }}>
+            <button onClick={() => { window.location.href="https://divine.uncharted.ventures/?login=1"; setMenu(false); }}>
               Sign in
             </button>
           </div>
@@ -215,7 +218,7 @@ export default function App() {
       {/* ── HERO ── */}
       <section style={{
         minHeight:"100vh", display:"flex", flexDirection:"column",
-        justifyContent:"center", padding:"8rem 3rem 6rem",
+        justifyContent:"center", padding:"8rem 2.5rem 6rem",
         position:"relative",
         backgroundImage:"url(/hero-bg.jpg)",
         backgroundSize:"cover", backgroundPosition:"center", backgroundRepeat:"no-repeat",
@@ -223,7 +226,7 @@ export default function App() {
         <div style={{ position:"absolute", inset:0,
           background:"linear-gradient(to bottom right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.28) 100%)",
           zIndex:0 }} />
-        <div style={{ maxWidth:"1200px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }} className="hero-inner">
+        <div style={{ maxWidth:"1280px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }} className="hero-inner">
 
           <h1 style={{
             fontFamily:"'Instrument Serif',serif", fontWeight:600,
@@ -260,8 +263,8 @@ export default function App() {
       <div style={{ height:"1px", backgroundColor:C.border }} />
 
       {/* ── HOW WE BUILD ── */}
-      <section id="studio" style={{ padding:"8rem 3rem" }} className="px-main">
-        <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
+      <section id="studio" style={{ padding:"8rem 2.5rem" }} className="px-main">
+        <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:700, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:C.ink, marginBottom:"1.5rem", maxWidth:"520px", lineHeight:1.1 }}>
             A different kind of partner.
           </h2>
@@ -285,8 +288,8 @@ export default function App() {
       </section>
 
       {/* ── PORTFOLIO ── */}
-      <section id="portfolio" style={{ padding:"8rem 3rem", backgroundColor:"#BF452A" }} className="px-main">
-        <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
+      <section id="portfolio" style={{ padding:"8rem 2.5rem", backgroundColor:"#BF452A" }} className="px-main">
+        <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"4rem", flexWrap:"wrap", gap:"1rem" }}>
             <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:"#fff", lineHeight:1.1 }}>Our companies.</h2>
           </div>
@@ -313,8 +316,8 @@ export default function App() {
       </section>
 
       {/* ── DIVINE ── */}
-      <section id="divine" style={{ padding:"8rem 3rem", borderTop:`1px solid ${C.border}` }} className="px-main">
-        <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
+      <section id="divine" style={{ padding:"8rem 2.5rem", borderTop:`1px solid ${C.border}` }} className="px-main">
+        <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <div style={{ maxWidth:"620px" }}>
             <div>
               <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem" }}>Divine · AI Tool</p>
@@ -334,7 +337,7 @@ export default function App() {
       <div style={{ backgroundColor:"#0D0D0D" }}>
 
         {/* Closing CTA */}
-        <section style={{ padding:"10rem 3rem", textAlign:"center" }} className="px-main">
+        <section style={{ padding:"10rem 2.5rem", textAlign:"center" }} className="px-main">
           <div style={{ maxWidth:"680px", margin:"0 auto" }}>
             <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.5rem, 8vw, 5rem)", lineHeight:1.05, color:"#FFFFFF", marginBottom:"2rem" }}>Join the Engine.</h2>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:"rgba(255,255,255,0.55)", marginBottom:"3rem" }}>
@@ -345,8 +348,8 @@ export default function App() {
         </section>
 
         {/* Footer */}
-        <footer style={{ borderTop:"1px solid rgba(255,255,255,0.1)", padding:"4rem 3rem 3rem" }} className="px-main">
-          <div style={{ maxWidth:"1200px", margin:"0 auto" }}>
+        <footer style={{ borderTop:"1px solid rgba(255,255,255,0.1)", padding:"4rem 2.5rem 3rem" }} className="px-main">
+          <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
             <div className="footer-grid" style={{ marginBottom:"4rem" }}>
               <div>
                 <img src={LOGO_SRC} alt="Uncharted Ventures" style={{ height:"42px", width:"auto", display:"block", marginBottom:"0.75rem", filter:"invert(1)" }} />
