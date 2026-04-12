@@ -169,9 +169,9 @@ export default function App() {
 
           {/* Hamburger */}
           <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }} style={{ display:"none", background:"none", border:"none", cursor:"pointer", padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:C.ink, transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:C.ink, transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:C.ink, transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
+            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#fff", transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
+            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#fff", transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#fff", transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
           </button>
         </div>
 
