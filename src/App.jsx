@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import DivinePage from "./Divine";
 import ContactPage from "./Contact";
+import BecomeThinker from "./BecomeThinker";
 
 const C = {
   bg:          "#FFFFFF",
@@ -59,8 +60,9 @@ export default function App() {
     return () => document.removeEventListener("click", h);
   }, [menuOpen]);
 
-  if (page === "divine")  return <DivinePage onBack={() => setPage("home")} />;
-  if (page === "contact") return <ContactPage onBack={() => setPage("home")} />;
+  if (page === "divine")        return <DivinePage onBack={() => setPage("home")} onBecomeThinker={() => setPage("become-thinker")} />;
+  if (page === "contact")       return <ContactPage onBack={() => setPage("home")} />;
+  if (page === "become-thinker") return <BecomeThinker onBack={() => setPage("home")} />;
 
   const scrolled = scrollY > 30;
 
@@ -289,7 +291,7 @@ export default function App() {
               </p>
               <div className="hero-btns" style={{ display:"flex", gap:"1rem", marginTop:"2.5rem" }}>
                 <button onClick={() => setPage("divine")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.85rem 2rem" }}>Try Divine free</button>
-                <button onClick={() => setPage("divine")} className="cta-ghost" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.85rem", color:C.inkMid, backgroundColor:"transparent", border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.85rem 2rem" }}>Become a Thinker →</button>
+                <button onClick={() => setPage("become-thinker")} className="cta-ghost" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.85rem", color:C.inkMid, backgroundColor:"transparent", border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.85rem 2rem" }}>Become a Thinker →</button>
               </div>
             </div>
             {/* Stats grid — no borders, Machine vs Human typography */}

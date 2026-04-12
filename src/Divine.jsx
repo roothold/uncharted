@@ -160,7 +160,7 @@ function QueryPortal() {
 }
 
 // ── Main Divine Page ────────────────────────────────────────────────────────
-export default function DivinePage({ onBack }) {
+export default function DivinePage({ onBack, onBecomeThinker }) {
   const [hoveredStep, setHoveredStep] = useState(null);
 
   return (
@@ -246,7 +246,7 @@ export default function DivinePage({ onBack }) {
             </p>
             <div className="divine-cta-row" style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
               <a href="#ask" className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Try it free</a>
-              <a href="#thinkers" className="cta-ghost" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.88rem", color:C.inkMid, border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Become a Thinker →</a>
+              <button onClick={onBecomeThinker} className="cta-ghost" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.88rem", color:C.inkMid, backgroundColor:"transparent", border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.9rem 2.25rem", cursor:"pointer" }}>Become a Thinker →</button>
             </div>
           </div>
           {/* Use case grid */}
@@ -333,10 +333,10 @@ export default function DivinePage({ onBack }) {
                   </div>
                 ))}
               </div>
-              <a href="https://divine.rootholdinc.com" target="_blank" rel="noopener noreferrer" className="cta-primary"
-                style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none", display:"inline-block" }}>
+              <button onClick={onBecomeThinker} className="cta-primary"
+                style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.9rem 2.25rem", cursor:"pointer", display:"inline-block" }}>
                 Become a Thinker →
-              </a>
+              </button>
             </div>
 
             {/* Onboarding steps */}
