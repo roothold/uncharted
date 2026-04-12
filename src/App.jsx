@@ -352,7 +352,7 @@ export default function App() {
           <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
             <div className="footer-grid" style={{ marginBottom:"4rem" }}>
               <div>
-                <img src={LOGO_SRC} alt="Uncharted Ventures" style={{ height:"42px", width:"auto", display:"block", marginBottom:"0.75rem", filter:"invert(1)" }} />
+                <img src="/logo-white.png" alt="Uncharted Ventures" style={{ height:"36px", width:"auto", display:"block", marginBottom:"0.75rem" }} />
                 <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.45)", lineHeight:1.7, maxWidth:"240px" }}>We build and back companies that last — with the infrastructure, intelligence, and conviction to see it through.</div>
               </div>
               <div>
