@@ -138,7 +138,7 @@ export default function App() {
         .dropdown-panel {
           position:fixed; top:56px; left:0; right:0;
           background:#0D0D0D; border-top:1px solid rgba(255,255,255,0.08);
-          padding:3.5rem 0 4rem; z-index:199;
+          padding:3rem 0 4rem; z-index:199;
           animation:dropIn 0.2s ease;
         }
         @keyframes dropIn {
@@ -146,7 +146,6 @@ export default function App() {
           to   { opacity:1; transform:translateY(0); }
         }
         .dropdown-inner {
-          max-width:1280px; margin:0 auto; padding:0 2.5rem;
           display:grid; gap:0;
         }
         .dropdown-inner.cols-4 { grid-template-columns:repeat(4,1fr); }
@@ -162,16 +161,15 @@ export default function App() {
           background:none; border:none; cursor:pointer;
           transition:opacity 0.15s;
         }
-        .dropdown-item:hover .di-title { color:#fff !important; }
-        .dropdown-item:hover .di-sub { opacity:0.8 !important; }
+        .dropdown-item:hover { opacity:0.7; }
         .di-title {
           display:block; font-family:'Instrument Serif',serif; font-weight:400;
-          font-size:1.6rem; color:rgba(255,255,255,0.75); line-height:1.15;
-          transition:color 0.15s; margin-bottom:0.2rem;
+          font-size:1.6rem; color:#FFFFFF; line-height:1.15;
+          transition:opacity 0.15s; margin-bottom:0.35rem;
         }
         .di-sub {
           display:block; font-family:'Inter Tight',sans-serif; font-weight:300;
-          font-size:0.75rem; color:rgba(255,255,255,0.35); line-height:1.5;
+          font-size:0.78rem; color:rgba(255,255,255,0.55); line-height:1.55;
           transition:opacity 0.15s;
         }
         .dropdown-overlay {
@@ -251,22 +249,22 @@ export default function App() {
                 <>
                   <div className="dropdown-overlay" onClick={() => setDropdown(null)} />
                   <div className="dropdown-panel" onClick={e => e.stopPropagation()}>
-                    <div className="dropdown-inner cols-4">
-                      {[
-                        { label:"Professional Services", sub:"The billable hour is ending. The judgment economy is beginning." },
-                        { label:"Specialty Consumer",    sub:"Brand endures. Supply chain doesn't." },
-                        { label:"B2B Infrastructure",    sub:"Every mid-market company is reorganising around AI." },
-                        { label:"Thinking Economy",      sub:"When execution is automated, judgment becomes the product." },
-                      ].map(item => (
-                        <div key={item.label}>
-                          <div className="dropdown-section-label">Industry</div>
-                          <button className="dropdown-item"
+                    <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 2.5rem" }}>
+                      <div className="dropdown-section-label" style={{ marginBottom:"2rem" }}>Industries</div>
+                      <div className="dropdown-inner cols-4">
+                        {[
+                          { label:"Professional Services", sub:"The billable hour is ending. The judgment economy is beginning." },
+                          { label:"Specialty Consumer",    sub:"Brand endures. Supply chain doesn't." },
+                          { label:"B2B Infrastructure",    sub:"Every mid-market company is reorganising around AI." },
+                          { label:"Thinking Economy",      sub:"When execution is automated, judgment becomes the product." },
+                        ].map(item => (
+                          <button key={item.label} className="dropdown-item"
                             onClick={() => { setDropdown(null); setPage("industries"); }}>
                             <span className="di-title">{item.label}</span>
                             <span className="di-sub">{item.sub}</span>
                           </button>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </>
@@ -286,21 +284,21 @@ export default function App() {
                 <>
                   <div className="dropdown-overlay" onClick={() => setDropdown(null)} />
                   <div className="dropdown-panel" onClick={e => e.stopPropagation()}>
-                    <div className="dropdown-inner cols-3">
-                      {[
-                        { label:"Divine AI",           sub:"Operator intelligence, on demand. The proprietary AI layer powering every Uncharted decision.", action:"divine" },
-                        { label:"Venture Foundry",     sub:"We don't just invest. We co-build AI-native firms with experienced practitioners.", action:"solutions" },
-                        { label:"Capital Stewardship", sub:"Capital that sequences correctly — internal first, external at proof, compounding from year three.", action:"solutions" },
-                      ].map(item => (
-                        <div key={item.label}>
-                          <div className="dropdown-section-label">Solution</div>
-                          <button className="dropdown-item"
+                    <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 2.5rem" }}>
+                      <div className="dropdown-section-label" style={{ marginBottom:"2rem" }}>Solutions</div>
+                      <div className="dropdown-inner cols-3">
+                        {[
+                          { label:"Divine AI",           sub:"Operator intelligence, on demand.", action:"divine" },
+                          { label:"Venture Foundry",     sub:"We don't just invest. We co-build AI-native firms.", action:"solutions" },
+                          { label:"Capital Stewardship", sub:"Capital that sequences correctly — internal first, external at proof.", action:"solutions" },
+                        ].map(item => (
+                          <button key={item.label} className="dropdown-item"
                             onClick={() => { setDropdown(null); setPage(item.action); }}>
                             <span className="di-title">{item.label}</span>
                             <span className="di-sub">{item.sub}</span>
                           </button>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </>
