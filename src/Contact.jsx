@@ -76,7 +76,7 @@ export default function ContactPage({ onBack }) {
         .type-btn { transition:all 0.2s ease; border:1px solid ${C.border}; border-radius:4px; cursor:pointer; font-family:'Inter Tight', sans-serif; font-size:0.82rem; font-weight:500; padding:0.5rem 1rem; background:${C.bg}; color:${C.inkMid}; }
         .type-btn:hover { border-color:${C.ink}; color:${C.ink}; }
         .type-btn.active { border-color:${C.ink}; background:${C.ink}; color:#fff; }
-        .nav-outer { padding-left:0; padding-right:0; }
+        .nav-outer { padding-left:3rem; padding-right:3rem; }
         @media(max-width:600px){.nav-outer{padding-left:1rem!important;padding-right:1rem!important;}}
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
         .logo-full { display:block; } .logo-icon { display:none; }
@@ -117,7 +117,8 @@ export default function ContactPage({ onBack }) {
         </div>
       </nav>
 
-      <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"8rem 3rem 5rem" }} className="px-contact">
+      <div style={{ padding:"0 3rem" }} className="px-contact">
+      <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"8rem 0 5rem" }}>
         <div className="contact-grid">
 
           {/* Left */}
@@ -219,10 +220,11 @@ export default function ContactPage({ onBack }) {
           </div>
         </div>
       </div>
+      </div>
 
       {/* Footer */}
-      <footer style={{ borderTop:`1px solid ${C.border}`, marginTop:"4rem" }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"2rem 3rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+      <footer style={{ borderTop:`1px solid ${C.border}`, marginTop:"4rem", padding:"0 3rem" }}>
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"2rem 0", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>© 2026 Uncharted Ventures LLC. All rights reserved.</span>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>uncharted.ventures</span>
         </div>
