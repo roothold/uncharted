@@ -146,7 +146,7 @@ export default function App() {
           to   { opacity:1; transform:translateY(0); }
         }
         .dropdown-inner {
-          display:grid; gap:0;
+          display:grid; gap:0; align-items:start;
         }
         .dropdown-inner.cols-4 { grid-template-columns:repeat(4,1fr); }
         .dropdown-inner.cols-3 { grid-template-columns:repeat(3,1fr); }
@@ -157,7 +157,7 @@ export default function App() {
           border-bottom:1px solid rgba(255,255,255,0.08);
         }
         .dropdown-item {
-          display:block; width:100%; padding:0.5rem 0; text-align:left;
+          display:block; width:100%; padding:0.5rem 2rem 0.5rem 0; text-align:left;
           background:none; border:none; cursor:pointer;
           transition:opacity 0.15s;
         }
@@ -225,16 +225,18 @@ export default function App() {
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px",
           display:"flex", alignItems:"center", justifyContent:"space-between" }}>
 
-          {/* Logo */}
-          <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0 }}>
-            <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full"
-              style={{ height:"40px", width:"auto", display:"block", imageRendering:"crisp-edges" }} />
-            <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon"
-              style={{ height:"32px", width:"32px", display:"none" }} />
-          </button>
+          {/* Left: Logo + nav links */}
+          <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }}>
+            {/* Logo */}
+            <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0, marginRight:"0.75rem" }}>
+              <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full"
+                style={{ height:"40px", width:"auto", display:"block", imageRendering:"crisp-edges" }} />
+              <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon"
+                style={{ height:"32px", width:"32px", display:"none" }} />
+            </button>
 
-          {/* Desktop nav */}
-          <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }} className="desktop-nav">
+            {/* Desktop nav — Industries + Solutions */}
+            <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }} className="desktop-nav">
 
             {/* Industries */}
             <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
@@ -305,9 +307,10 @@ export default function App() {
               )}
             </div>
 
-            <div style={{ width:"1px", height:"16px", backgroundColor:"#E8E8E8", margin:"0 0.25rem" }} />
+          </div>{/* end left group */}
 
-            {/* Sign In */}
+          {/* Right: Sign In */}
+          <div style={{ display:"flex", alignItems:"center", gap:"0.75rem" }}>
             <a href="https://divine.uncharted.ventures/?login=1"
               target="_blank" rel="noopener noreferrer"
               style={{ fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
@@ -320,19 +323,19 @@ export default function App() {
               onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
               Sign In
             </a>
-          </div>
 
-          {/* Hamburger */}
-          <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }}
-            style={{ display:"none", background:"none", border:"none", cursor:"pointer",
-              padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
-              transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
-              transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
-            <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
-              transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
-          </button>
+            {/* Hamburger */}
+            <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }}
+              style={{ display:"none", background:"none", border:"none", cursor:"pointer",
+                padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
+              <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
+                transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
+              <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
+                transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
+                transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
