@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 const QUESTIONS = [
-  { q:"When do I replace myself as operator?",        domain:"Leadership"   },
-  { q:"How do I price judgment, not hours?",          domain:"Pricing"      },
-  { q:"What breaks first when we scale?",             domain:"Operations"   },
-  { q:"Should I raise or grow from revenue?",         domain:"Capital"      },
-  { q:"How do I land the first enterprise client?",   domain:"Sales"        },
-  { q:"When is the right time to bring in a COO?",    domain:"Hiring"       },
+  { q:"When do I replace myself as operator?",       chip:"Delegation"    },
+  { q:"How do I price judgment, not hours?",         chip:"Pricing"       },
+  { q:"What breaks first when we scale?",            chip:"Scaling"       },
+  { q:"Should I raise or grow from revenue?",        chip:"Fundraising"   },
+  { q:"How do I land the first enterprise client?",  chip:"Enterprise"    },
+  { q:"When is the right time to bring in a COO?",   chip:"Hiring"        },
 ];
 
 const go = (q) => {
@@ -46,33 +46,15 @@ export default function DivineHero() {
           Real answers from operator experience. No fluff.
         </p>
 
-        {/* Question chips */}
-        <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center",
-          gap:"0.5rem", marginBottom:"1.75rem",
-          opacity:0, animation:"fadeUp 0.7s 0.4s forwards" }}>
-          {QUESTIONS.map((item, i) => (
-            <button key={i} onClick={() => go(item.q)}
-              style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:400,
-                fontSize:"0.82rem", color:"#555555",
-                backgroundColor:"#F5F5F5", border:"1px solid #E0E0E0",
-                borderRadius:"20px", padding:"0.5rem 1.1rem",
-                cursor:"pointer", transition:"all 0.15s ease", lineHeight:1.4 }}
-              onMouseEnter={e=>{e.currentTarget.style.backgroundColor="#EAEAEA";e.currentTarget.style.borderColor="#BDBDBD";e.currentTarget.style.color="#0D0D0D";}}
-              onMouseLeave={e=>{e.currentTarget.style.backgroundColor="#F5F5F5";e.currentTarget.style.borderColor="#E0E0E0";e.currentTarget.style.color="#555555";}}>
-              {item.q}
-            </button>
-          ))}
-        </div>
-
-        {/* Custom input */}
-        <div style={{ display:"flex", maxWidth:"540px", margin:"0 auto",
-          gap:"0.5rem", opacity:0, animation:"fadeUp 0.7s 0.5s forwards" }}>
+        {/* Custom input — above chips */}
+        <div style={{ display:"flex", maxWidth:"540px", margin:"0 auto 1.25rem",
+          gap:"0.5rem", opacity:0, animation:"fadeUp 0.7s 0.4s forwards" }}>
           <input
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter") go(query.trim() || undefined); }}
-            placeholder="Or type your own question..."
+            placeholder="Ask your question..."
             style={{ flex:1, padding:"0.7rem 1.1rem", borderRadius:"20px",
               border:"1px solid #E8E8E8",
               fontFamily:"'Inter Tight', sans-serif", fontSize:"0.85rem",
@@ -92,9 +74,27 @@ export default function DivineHero() {
           </button>
         </div>
 
+        {/* Question chips — short labels, below input */}
+        <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center",
+          gap:"0.5rem", marginBottom:"1.5rem",
+          opacity:0, animation:"fadeUp 0.7s 0.5s forwards" }}>
+          {QUESTIONS.map((item, i) => (
+            <button key={i} onClick={() => go(item.q)}
+              style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:400,
+                fontSize:"0.78rem", color:"#555555",
+                backgroundColor:"#F5F5F5", border:"1px solid #E0E0E0",
+                borderRadius:"20px", padding:"0.4rem 0.9rem",
+                cursor:"pointer", transition:"all 0.15s ease", lineHeight:1.4 }}
+              onMouseEnter={e=>{e.currentTarget.style.backgroundColor="#EAEAEA";e.currentTarget.style.borderColor="#BDBDBD";e.currentTarget.style.color="#0D0D0D";}}
+              onMouseLeave={e=>{e.currentTarget.style.backgroundColor="#F5F5F5";e.currentTarget.style.borderColor="#E0E0E0";e.currentTarget.style.color="#555555";}}>
+              {item.chip}
+            </button>
+          ))}
+        </div>
+
         {/* Attribution */}
         <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
-          fontSize:"0.68rem", color:"#BBBBBB", marginTop:"1.25rem",
+          fontSize:"0.68rem", color:"#BBBBBB",
           opacity:0, animation:"fadeUp 0.7s 0.6s forwards" }}>
           Powered by Divine · Anthropic Claude · $0.05 per question
         </p>
