@@ -198,20 +198,43 @@ export default function App() {
           .hamburger   { display:flex !important; }
         }
 
-        /* ── Mobile menu ── */
+        /* ── Mobile menu — full-screen dark overlay, OpenAI style ── */
         .mobile-menu {
-          position:fixed; top:56px; left:0; right:0; background:#fff;
-          border-bottom:1px solid ${C.border}; padding:1.5rem 1.25rem;
-          display:flex; flex-direction:column; gap:1rem; z-index:99;
-          animation:fadeIn 0.2s ease;
+          position:fixed; top:0; left:0; right:0; bottom:0;
+          background:#0D0D0D; z-index:200;
+          display:flex; flex-direction:column;
+          padding:0 2rem;
+          animation:slideDown 0.25s ease;
         }
-        .mobile-menu a, .mobile-menu button {
-          font-family:'JetBrains Mono', monospace; font-weight:500; font-size:1rem;
-          color:${C.ink}; text-decoration:none; background:none; border:none;
-          text-align:left; padding:0.5rem 0; cursor:pointer;
-          border-bottom:1px solid ${C.border};
+        @keyframes slideDown {
+          from { opacity:0; transform:translateY(-8px); }
+          to   { opacity:1; transform:translateY(0); }
         }
-        .mobile-menu a:last-child, .mobile-menu button:last-child { border-bottom:none; }
+        .mobile-menu-header {
+          height:56px; display:flex; align-items:center;
+          justify-content:space-between; flex-shrink:0;
+        }
+        .mobile-menu-links {
+          flex:1; display:flex; flex-direction:column;
+          justify-content:center; gap:0;
+        }
+        .mobile-menu-item {
+          font-family:'Instrument Serif',serif; font-weight:400;
+          font-size:2.4rem; color:rgba(255,255,255,0.9);
+          background:none; border:none; text-align:left;
+          padding:0.6rem 0; cursor:pointer; text-decoration:none;
+          display:block; transition:opacity 0.15s; line-height:1.2;
+        }
+        .mobile-menu-item:hover { opacity:0.6; }
+        .mobile-menu-footer {
+          padding-bottom:2.5rem; flex-shrink:0;
+          border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;
+        }
+        .mobile-menu-signin {
+          font-family:'Inter Tight',sans-serif; font-weight:400;
+          font-size:0.95rem; color:rgba(255,255,255,0.45);
+          text-decoration:none; display:block;
+        }
       `}</style>
 
       {/* ── PLATFORM NAV ── */}
@@ -337,15 +360,44 @@ export default function App() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="mobile-menu" onClick={e => e.stopPropagation()}>
-            <button onClick={() => { setPage("industries"); setMenu(false); }}>Industries</button>
-            <button onClick={() => { setPage("solutions"); setMenu(false); }}>Solutions</button>
-            <button onClick={() => { setPage("divine"); setMenu(false); }}>Divine AI</button>
-            <button onClick={() => { setPage("contact"); setMenu(false); }}>Contact</button>
-            <a href="https://divine.uncharted.ventures/?login=1" target="_blank" rel="noopener noreferrer"
-              onClick={() => setMenu(false)}
-              style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.88rem", color:"#333", textDecoration:"none" }}>
-              Sign In
-            </a>
+
+            {/* Header row: logo + close */}
+            <div className="mobile-menu-header">
+              <button onClick={() => { setPage("home"); setMenu(false); }}
+                style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
+                <img src="/logo-white.png" alt="Uncharted" style={{ height:"36px", width:"auto", display:"block" }} />
+              </button>
+              <button onClick={() => setMenu(false)}
+                style={{ background:"none", border:"none", cursor:"pointer", padding:"4px",
+                  color:"rgba(255,255,255,0.7)", fontSize:"1.4rem", lineHeight:1 }}>
+                ✕
+              </button>
+            </div>
+
+            {/* Nav links — large type */}
+            <div className="mobile-menu-links">
+              {[
+                { label:"Industries", action:() => { setPage("industries"); setMenu(false); } },
+                { label:"Solutions",  action:() => { setPage("solutions");  setMenu(false); } },
+                { label:"Divine AI",  action:() => { setPage("divine");     setMenu(false); } },
+                { label:"Contact",    action:() => { setPage("contact");    setMenu(false); } },
+              ].map(item => (
+                <button key={item.label} className="mobile-menu-item" onClick={item.action}>
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Footer: Sign In */}
+            <div className="mobile-menu-footer">
+              <a href="https://divine.uncharted.ventures/?login=1"
+                target="_blank" rel="noopener noreferrer"
+                className="mobile-menu-signin"
+                onClick={() => setMenu(false)}>
+                Sign In →
+              </a>
+            </div>
+
           </div>
         )}
       </nav>
