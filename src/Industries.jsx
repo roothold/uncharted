@@ -125,7 +125,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
           </button>
           <button onClick={onBack}
             style={{ background:"none", border:"none", cursor:"pointer", padding:0,
-              fontFamily:"'JetBrains Mono', monospace", fontSize:"0.72rem",
+              fontFamily:"'Inter Tight', sans-serif", fontSize:"0.72rem",
               color:C.inkSoft, letterSpacing:"0.06em", transition:"opacity 0.2s" }}
             onMouseEnter={e=>e.currentTarget.style.opacity="0.5"}
             onMouseLeave={e=>e.currentTarget.style.opacity="1"}>
@@ -182,13 +182,13 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
                   borderTop:`1px solid ${C.border}`, borderBottom:"none",
                   borderRight:"none", width:"100%" }}>
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:"0.3rem" }}>
-                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.56rem",
+                  <div style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.56rem",
                     letterSpacing:"0.1em", textTransform:"uppercase",
                     color: isActive ? C.accent : C.inkSoft }}>
                     {item.eyebrow}
                   </div>
-                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.52rem",
-                    letterSpacing:"0.06em", padding:"0.15rem 0.4rem", borderRadius:"2px",
+                  <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.52rem",
+                    letterSpacing:"0.06em", padding:"0.15rem 0.4rem", borderRadius:"20px",
                     backgroundColor:t.bg, color:t.color }}>
                     {item.tag}
                   </span>
@@ -275,19 +275,19 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
           {/* CTAs */}
           <div style={{ display:"flex", gap:"0.75rem", flexWrap:"wrap" }}>
             <button onClick={onContact}
-              style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+              style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600,
                 fontSize:"0.72rem", letterSpacing:"0.06em", color:"#fff",
-                backgroundColor:C.accent, border:"none", borderRadius:"4px",
+                backgroundColor:C.accent, border:"none", borderRadius:"20px",
                 padding:"0.85rem 2rem", cursor:"pointer", transition:"opacity 0.15s" }}
               onMouseEnter={e=>e.currentTarget.style.opacity="0.85"}
               onMouseLeave={e=>e.currentTarget.style.opacity="1"}>
               Build with us
             </button>
             <button onClick={onSolutions}
-              style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500,
+              style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500,
                 fontSize:"0.72rem", letterSpacing:"0.06em", color:C.inkMid,
                 backgroundColor:"transparent", border:`1px solid ${C.border}`,
-                borderRadius:"4px", padding:"0.85rem 2rem", cursor:"pointer",
+                borderRadius:"20px", padding:"0.85rem 2rem", cursor:"pointer",
                 transition:"all 0.15s" }}
               onMouseEnter={e=>{e.currentTarget.style.borderColor=C.ink;e.currentTarget.style.color=C.ink;}}
               onMouseLeave={e=>{e.currentTarget.style.borderColor=C.border;e.currentTarget.style.color=C.inkMid;}}>

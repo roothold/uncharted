@@ -221,10 +221,10 @@ function QueryPortal({ externalQuery }) {
             onFocus={e => e.target.style.borderColor=W.ink}
             onBlur={e => e.target.style.borderColor=W.cardBorder} />
           <button id="divine-ask-btn" onClick={ask} disabled={!selected || !query.trim() || loading}
-            style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+            style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600,
               fontSize:"0.82rem", color:"#fff",
               backgroundColor: (!selected || !query.trim() || loading) ? "#BBBBBB" : W.accent,
-              border:"none", borderRadius:"6px", padding:"0 1.5rem",
+              border:"none", borderRadius:"20px", padding:"0 1.5rem",
               cursor: (!selected || !query.trim() || loading) ? "not-allowed" : "pointer",
               minWidth:"90px", transition:"background 0.2s" }}>
             {loading ? "···" : "Ask ✦"}
@@ -304,7 +304,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkSoft }}>v1.4</span>
           </div>
-          <a href="#ask" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
+          <a href="#ask" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"20px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
         </div>
       </nav>
 
@@ -319,7 +319,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
               Divine gives founders direct, practical answers to their hardest business questions — drawn from real operator experience.
             </p>
             <div style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
-              <a href="#ask" className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none", display:"inline-block" }}>Ask your first question →</a>
+              <a href="#ask" className="cta-primary" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"20px", padding:"0.9rem 2.25rem", textDecoration:"none", display:"inline-block" }}>Ask your first question →</a>
             </div>
           </div>
           {/* Use case grid — clickable, pre-fills question */}
@@ -401,7 +401,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
             </p>
           </div>
           <button onClick={onBecomeThinker} className="cta-primary"
-            style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.9rem 2rem", cursor:"pointer", whiteSpace:"nowrap" }}>
+            style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"20px", padding:"0.9rem 2rem", cursor:"pointer", whiteSpace:"nowrap" }}>
             Apply to become a Thinker →
           </button>
         </div>

@@ -111,7 +111,7 @@ export default function ContactPage({ onBack }) {
             <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"40px", width:"auto", display:"block" }} />
             <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"40px", width:"40px", display:"none" }} />
           </button>
-          <button onClick={onBack} className="nav-link" style={{ background:"none", border:"none", cursor:"pointer", fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, padding:0 }}>
+          <button onClick={onBack} className="nav-link" style={{ background:"none", border:"none", cursor:"pointer", fontFamily:"'Inter Tight', sans-serif", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, padding:0 }}>
             ← Back
           </button>
         </div>
@@ -141,7 +141,7 @@ export default function ContactPage({ onBack }) {
               ].map(item => (
                 <div key={item.label} className="contact-row" style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"1rem 1.25rem", border:`1px solid ${C.border}`, borderRadius:"4px" }}>
                   <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.75rem", color:C.inkSoft, letterSpacing:"0.06em", textTransform:"uppercase" }}>{item.label}</span>
-                  <a href={item.href} style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:400, fontSize:"0.85rem", color:C.ink, textDecoration:"none", transition:"color 0.15s" }}
+                  <a href={item.href} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:400, fontSize:"0.85rem", color:C.ink, textDecoration:"none", transition:"color 0.15s" }}
                     onMouseEnter={e => e.target.style.color = C.accent} onMouseLeave={e => e.target.style.color = C.ink}>{item.value}</a>
                 </div>
               ))}
@@ -157,7 +157,7 @@ export default function ContactPage({ onBack }) {
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.88rem", color:C.inkMid, lineHeight:1.7, marginBottom:"2rem" }}>
                   We review every submission personally. You'll hear back within 2 business days.
                 </p>
-                <button onClick={onBack} style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.ink, border:"none", borderRadius:"4px", padding:"0.85rem 2rem", cursor:"pointer" }}>
+                <button onClick={onBack} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.ink, border:"none", borderRadius:"20px", padding:"0.85rem 2rem", cursor:"pointer" }}>
                   Back to Uncharted
                 </button>
               </div>
@@ -203,7 +203,7 @@ export default function ContactPage({ onBack }) {
                     We respond within 2 business days.
                   </p>
                   <button type="submit" className="submit-btn" disabled={submitting}
-                    style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor: submitting ? "#e07a55" : C.accent, border:"none", borderRadius:"4px", padding:"0.9rem 2rem", cursor: submitting ? "not-allowed" : "pointer", minWidth:"180px" }}>
+                    style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor: submitting ? "#e07a55" : C.accent, border:"none", borderRadius:"20px", padding:"0.9rem 2rem", cursor: submitting ? "not-allowed" : "pointer", minWidth:"180px" }}>
                     {submitting ? "Sending..." : "Send message →"}
                   </button>
                 </div>

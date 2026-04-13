@@ -135,7 +135,7 @@ export default function BecomeThinker({ onBack }) {
         {/* Back */}
         <div style={{ position:"absolute", top:"2rem", left:"1rem", zIndex:10 }}>
           <button onClick={onBack} className="nav-back" style={{ background:"none", border:"none",
-            cursor:"pointer", padding:0, fontFamily:"'JetBrains Mono',monospace",
+            cursor:"pointer", padding:0, fontFamily:"'Inter Tight',sans-serif",
             fontSize:"0.6rem", color:"rgba(255,255,255,0.6)", letterSpacing:"0.08em" }}>
             ← Uncharted
           </button>

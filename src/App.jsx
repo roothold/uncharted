@@ -436,9 +436,9 @@ export default function App() {
 
           <div style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
             <button onClick={() => setPage("divine")}
-              style={{ fontFamily:"'JetBrains Mono',monospace", fontWeight:600,
+              style={{ fontFamily:"'Inter Tight',sans-serif", fontWeight:600,
                 fontSize:"0.82rem", color:"#fff", backgroundColor:C.accent,
-                border:"none", borderRadius:"4px", padding:"0.9rem 2.25rem",
+                border:"none", borderRadius:"20px", padding:"0.9rem 2.25rem",
                 cursor:"pointer" }}>
               Try Divine →
             </button>
@@ -513,7 +513,7 @@ export default function App() {
               <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.95rem", lineHeight:1.9, color:C.inkMid, marginBottom:"2.5rem", maxWidth:"420px" }}>
                 Our proprietary AI protocol. Ask any business question — strategy, pricing, hiring, capital — and get a direct answer shaped by operators who've built and exited companies.
               </p>
-              <button onClick={() => setPage("divine")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"0.85rem 2rem" }}>Try Divine →</button>
+              <button onClick={() => setPage("divine")} className="cta-primary" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.85rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"20px", padding:"0.85rem 2rem" }}>Try Divine →</button>
             </div>
           </div>
         </div>
@@ -529,7 +529,7 @@ export default function App() {
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:"rgba(255,255,255,0.55)", marginBottom:"3rem" }}>
               Founders, operators, and capital partners who want to build companies that become durable growth assets. The Engine is open.
             </p>
-            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.92rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"4px", padding:"1rem 2.75rem" }}>Apply for access</button>
+            <button onClick={() => setPage("contact")} className="cta-primary" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.92rem", color:"#fff", backgroundColor:C.accent, border:"none", borderRadius:"20px", padding:"1rem 2.75rem" }}>Get in touch</button>
           </div>
         </section>
 
