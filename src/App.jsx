@@ -140,7 +140,6 @@ export default function App() {
         /* Full-width panel — anchored to nav bottom, spans viewport */
         .dropdown-panel {
           position:fixed; top:56px; left:0; right:0;
-          background:#0D0D0D; border-top:1px solid rgba(255,255,255,0.08);
           padding:3rem 0 4rem; z-index:199;
           animation:dropIn 0.2s ease;
         }
@@ -155,29 +154,59 @@ export default function App() {
         .dropdown-inner.cols-3 { grid-template-columns:repeat(3,1fr); }
         .dropdown-section-label {
           font-family:'Inter Tight',sans-serif; font-size:0.6rem;
-          color:rgba(255,255,255,0.35); letter-spacing:0.12em; text-transform:uppercase;
+          letter-spacing:0.12em; text-transform:uppercase;
           margin-bottom:1.5rem; padding-bottom:0.75rem;
-          border-bottom:1px solid rgba(255,255,255,0.08);
         }
         .dropdown-item {
           display:block; width:100%; padding:0.5rem 2rem 0.5rem 0; text-align:left;
           background:none; border:none; cursor:pointer;
           transition:opacity 0.15s;
         }
-        .dropdown-item:hover { opacity:0.7; }
+        .dropdown-item:hover { opacity:0.6; }
         .di-title {
           display:block; font-family:'Instrument Serif',serif; font-weight:400;
-          font-size:1.6rem; color:#FFFFFF; line-height:1.15;
+          font-size:1.6rem; line-height:1.15;
           transition:opacity 0.15s; margin-bottom:0.35rem;
         }
         .di-sub {
           display:block; font-family:'Inter Tight',sans-serif; font-weight:300;
-          font-size:0.78rem; color:rgba(255,255,255,0.55); line-height:1.55;
+          font-size:0.78rem; line-height:1.55;
           transition:opacity 0.15s;
         }
         .dropdown-overlay {
           position:fixed; top:56px; left:0; right:0; bottom:0;
-          background:rgba(0,0,0,0.5); z-index:198; cursor:default;
+          z-index:198; cursor:default;
+        }
+
+        /* ── Light mode (day) ── */
+        @media (prefers-color-scheme: light) {
+          .dropdown-panel {
+            background:#FFFFFF;
+            border-top:1px solid #E8E8E8;
+            box-shadow:0 8px 32px rgba(0,0,0,0.08);
+          }
+          .dropdown-section-label {
+            color:#AAAAAA;
+            border-bottom:1px solid #E8E8E8;
+          }
+          .di-title { color:#0D0D0D; }
+          .di-sub   { color:#888888; }
+          .dropdown-overlay { background:rgba(0,0,0,0.15); }
+        }
+
+        /* ── Dark mode (night) ── */
+        @media (prefers-color-scheme: dark) {
+          .dropdown-panel {
+            background:#0D0D0D;
+            border-top:1px solid rgba(255,255,255,0.08);
+          }
+          .dropdown-section-label {
+            color:rgba(255,255,255,0.35);
+            border-bottom:1px solid rgba(255,255,255,0.08);
+          }
+          .di-title { color:#FFFFFF; }
+          .di-sub   { color:rgba(255,255,255,0.55); }
+          .dropdown-overlay { background:rgba(0,0,0,0.5); }
         }
         .desktop-nav { display:flex; }
         .hamburger   { display:none !important; }
