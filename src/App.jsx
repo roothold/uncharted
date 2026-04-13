@@ -157,7 +157,7 @@ export default function App() {
       {/* ── PLATFORM NAV ── */}
       <nav style={{
         position:"fixed", top:0, left:0, right:0, zIndex:100,
-        backgroundColor:"rgba(255,255,255,0.97)",
+        backgroundColor:"#FFFFFF",
         backdropFilter:"blur(12px)", WebkitBackdropFilter:"blur(12px)",
         borderBottom:"1px solid #E8E8E8",
         padding:"0 2.5rem",
@@ -357,9 +357,11 @@ export default function App() {
               </div>
               <div>
                 <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Studio</div>
-                {["Companies","About","Divine"].map(l => (
+                {[["Companies","#portfolio"],["Divine","#divine"],["Get in touch","contact"]].map(([l,h]) => (
                   <div key={l} style={{ marginBottom:"0.5rem" }}>
-                    <a href={`#${l.toLowerCase()}`} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", transition:"color 0.15s" }}
+                    <a href={h.startsWith("#") ? h : "#"}
+                      onClick={!h.startsWith("#") ? (e) => { e.preventDefault(); setPage("contact"); } : undefined}
+                      style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", transition:"color 0.15s", cursor:"pointer" }}
                       onMouseEnter={e => e.target.style.color="#fff"} onMouseLeave={e => e.target.style.color="rgba(255,255,255,0.6)"}>{l}</a>
                   </div>
                 ))}
