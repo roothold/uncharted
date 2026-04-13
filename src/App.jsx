@@ -120,6 +120,40 @@ export default function App() {
         .cta-ghost { transition:all 0.2s ease; cursor:pointer; }
         .cta-ghost:hover { border-color:${C.accent} !important; color:${C.accent} !important; transform:translateY(-2px); }
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
+
+        /* ── Nav dropdowns ── */
+        .nav-dropdown-btn {
+          display:inline-flex; align-items:center; justify-content:center;
+          gap:0.25rem; background:none; border:none; cursor:pointer;
+          font-family:'Inter Tight',sans-serif; font-weight:500;
+          font-size:0.82rem; color:#333; padding:0.4rem 0.65rem; line-height:1;
+          transition:color 0.15s; white-space:nowrap;
+        }
+        .nav-dropdown-btn:hover { color:#000; }
+        .nav-dropdown-btn svg { display:block; flex-shrink:0; transition:transform 0.2s; }
+        .nav-dropdown-btn.open svg { transform:rotate(180deg); }
+        .dropdown-panel {
+          position:absolute; top:calc(100% + 8px); left:50%;
+          transform:translateX(-50%);
+          background:#fff; border:1px solid #E8E8E8;
+          border-radius:8px; padding:0.4rem;
+          box-shadow:0 8px 24px rgba(0,0,0,0.09);
+          min-width:210px; z-index:200;
+          animation:fadeUp 0.15s ease;
+        }
+        .dropdown-item {
+          display:block; width:100%; padding:0.6rem 0.9rem;
+          font-family:'Inter Tight',sans-serif; font-size:0.82rem;
+          color:#333; cursor:pointer; background:none; border:none;
+          text-align:left; border-radius:5px; transition:background 0.12s;
+          white-space:nowrap;
+        }
+        .dropdown-item:hover { background:#F5F5F5; color:#000; }
+        .dropdown-item-label {
+          display:block; font-family:'JetBrains Mono',monospace; font-size:0.58rem;
+          color:${C.accent}; letter-spacing:0.08em; text-transform:uppercase;
+          margin-bottom:0.1rem;
+        }
         .desktop-nav { display:flex; }
         .hamburger   { display:none !important; }
         /* Logo: full on desktop, icon only on mobile */
@@ -178,7 +212,7 @@ export default function App() {
           </button>
 
           {/* Desktop nav */}
-          <div style={{ display:"flex", alignItems:"center", gap:"0.25rem" }} className="desktop-nav">
+          <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }} className="desktop-nav">
 
             {/* Industries */}
             <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
