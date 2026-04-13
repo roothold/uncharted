@@ -244,7 +244,7 @@ export default function App() {
       <nav className="nav-outer" style={{
         position:"fixed", top:0, left:0, right:0, zIndex:100,
         backgroundColor:"#FFFFFF",
-        borderBottom:"1px solid #E8E8E8",
+        borderBottom:"1px solid #FFFFFF",
         padding:"0 3rem",
       }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px",
