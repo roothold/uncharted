@@ -63,7 +63,8 @@ export default function ContactPage({ onBack }) {
 
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'JetBrains Mono', monospace" }}>
-      <style>{`
+      <style>{`        .nav-outer { padding-left:3rem; padding-right:3rem; }
+
         @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400&display=swap');
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         body { -webkit-font-smoothing:antialiased; }

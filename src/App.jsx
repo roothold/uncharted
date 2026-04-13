@@ -73,7 +73,8 @@ export default function App() {
 
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", overflowX:"hidden" }}>
-      <style>{`
+      <style>{`        .nav-outer { padding-left:3rem; padding-right:3rem; }
+
         ${FONTS}
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         html { scroll-behavior:smooth; }
@@ -238,7 +239,7 @@ export default function App() {
       `}</style>
 
       {/* ── PLATFORM NAV ── */}
-      <nav style={{
+      <nav className="nav-outer" style={{
         position:"fixed", top:0, left:0, right:0, zIndex:100,
         backgroundColor:"#FFFFFF",
         borderBottom:"1px solid #E8E8E8",

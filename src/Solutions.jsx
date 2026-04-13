@@ -117,7 +117,8 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
 
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'Inter Tight', sans-serif" }}>
-      <style>{`
+      <style>{`        .nav-outer { padding-left:3rem; padding-right:3rem; }
+
         ${FONTS}
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         html { scroll-behavior:smooth; }
@@ -130,12 +131,12 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
         .logo-full { display:block; } .logo-icon { display:none; }
         @media(max-width:768px){ .logo-full{display:none!important;} .logo-icon{display:block!important;} }
         @media(max-width:900px){ .sol-layout{ flex-direction:column !important; } .sol-sidebar{ width:100% !important; border-right:none !important; border-bottom:1px solid ${C.border} !important; position:static !important; height:auto !important; } }
-        @media(max-width:600px){ .sol-px{ padding-left:1rem !important; padding-right:1rem !important; } .sol-metrics{ grid-template-columns:1fr 1fr !important; } }
+        @media(max-width:600px){ .nav-outer{padding-left:1rem!important;padding-right:1rem!important;} .sol-px{ padding-left:1rem !important; padding-right:1rem !important; } .sol-metrics{ grid-template-columns:1fr 1fr !important; } }
         @media(max-width:600px){ nav{ padding-left:1rem !important; padding-right:1rem !important; } }
         `}</style>
 
       {/* Nav */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100,
+      <nav className="nav-outer" style={{ position:"fixed", top:0, left:0, right:0, zIndex:100,
         backgroundColor:"#FFFFFF", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px",
           display:"flex", alignItems:"center", justifyContent:"space-between" }}>
