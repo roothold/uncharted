@@ -33,10 +33,14 @@ const USE_CASES = [
 ];
 
 // ── Query Portal ────────────────────────────────────────────────────────────
-function QueryPortal() {
+function QueryPortal({ externalQuery }) {
   const [selected, setSelected] = useState(null);
-  const [query, setQuery]       = useState("");
+  const [query, setQuery]       = useState(externalQuery || "");
   const [response, setResponse] = useState(null);
+
+  useEffect(() => {
+    if (externalQuery) { setQuery(externalQuery); setResponse(null); }
+  }, [externalQuery]);
   const [loading, setLoading]   = useState(false);
   const [typed, setTyped]       = useState("");
 
@@ -254,14 +258,14 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
         .cta-primary:hover { background:${C.accentHover} !important; transform:translateY(-2px); }
         .cta-ghost { transition:all 0.2s ease; }
         .cta-ghost:hover { border-color:${C.accent} !important; color:${C.accent} !important; transform:translateY(-2px); }
-        .use-card:hover { border-color:${C.accent} !important; }
+        .use-card:hover { border-color:${C.accent} !important; transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,0.06); }
         .step-row:hover { border-color:${C.ink} !important; }
         .logo-full { display:block; } .logo-icon { display:none; }
         @media(max-width:768px){ .logo-full{display:none!important;} .logo-icon{display:block!important;} }
         /* ── Responsive ── */
         .divine-hero-grid   { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
         .divine-how-grid    { display:grid; grid-template-columns:1fr 2fr; gap:5rem; align-items:start; }
-        .divine-how-3       { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:${C.border}; }
+        .divine-how-3       { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
         .divine-thinker-grid{ display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
         .divine-stat-3      { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:${C.border}; }
         .divine-query-grid  { display:grid; grid-template-columns:260px 1fr; gap:2rem; }
@@ -297,11 +301,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
             <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkSoft }}>v1.4</span>
           </div>
-          <div style={{ display:"flex", gap:"2rem", alignItems:"center" }} className="divine-nav-links">
-            <a href="#founders" className="nav-link" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, textDecoration:"none" }}>For Founders</a>
-            <a href="#thinkers" className="nav-link" style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem", fontWeight:500, color:C.inkMid, textDecoration:"none" }}>For Thinkers</a>
-            <a href="#ask" className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
-          </div>
+          <a href="#ask" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
         </div>
       </nav>
 
@@ -309,26 +309,31 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <section style={{ minHeight:"100vh", display:"flex", alignItems:"center", padding:"10rem 3rem 6rem" }} className="divine-px">
         <div style={{ maxWidth:"1280px", margin:"0 auto", width:"100%" }} className="divine-hero-grid">
           <div>
-            <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem", color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
-              AI Tool for Founders · Built by Uncharted
-            </p>
-            <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(3rem, 7vw, 7rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
-              Ask a hard<br />question.<br /><em style={{ color:C.accent }}>Get a real<br />answer.</em>
+            <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.8rem, 5.5vw, 5.5rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
+              Ask a hard<br />question.<br />Get a real<br />answer.
             </h1>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:C.inkMid, maxWidth:"420px", marginBottom:"3rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards" }}>
               Divine gives founders direct, practical answers to their hardest business questions — drawn from real operator experience.
             </p>
-            <div className="divine-cta-row" style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
-              <a href="#ask" className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none" }}>Try it free</a>
-              <button onClick={onBecomeThinker} className="cta-ghost" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.88rem", color:C.inkMid, backgroundColor:"transparent", border:`1.5px solid ${C.border}`, borderRadius:"4px", padding:"0.9rem 2.25rem", cursor:"pointer" }}>Become a Thinker →</button>
+            <div style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
+              <a href="#ask" className="cta-primary" style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"4px", padding:"0.9rem 2.25rem", textDecoration:"none", display:"inline-block" }}>Ask your first question →</a>
             </div>
           </div>
-          {/* Use case grid */}
+          {/* Use case grid — clickable, pre-fills question */}
           <div className="divine-use-grid" style={{ opacity:0, animation:"fadeUp 0.8s 0.3s forwards" }}>
             {USE_CASES.map((uc, i) => (
-              <div key={i} className="use-card" style={{ padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px", transition:"border-color 0.2s ease" }}>
+              <div key={i} className="use-card" onClick={() => {
+                setPrefillQuery(uc.q);
+                setTimeout(() => {
+                  const askEl = document.getElementById("ask");
+                  if (askEl) askEl.scrollIntoView({ behavior:"smooth", block:"start" });
+                }, 50);
+              }}
+              style={{ padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px",
+                transition:"all 0.2s ease", cursor:"pointer" }}>
                 <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.65rem", color:C.ink, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.55, fontStyle:"italic" }}>"{uc.q}"</p>
+                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.accent, marginTop:"0.6rem", letterSpacing:"0.08em" }}>Ask this →</p>
               </div>
             ))}
           </div>
@@ -375,7 +380,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
           <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:C.ink, marginBottom:"3rem" }}>
             Ask your first question.
           </h2>
-          <QueryPortal />
+          <QueryPortal externalQuery={prefillQuery} />
         </div>
       </section>
 
