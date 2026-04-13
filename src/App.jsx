@@ -352,7 +352,7 @@ export default function App() {
       {/* ── HERO ── */}
       <section style={{
         minHeight:"100vh", display:"flex", flexDirection:"column",
-        justifyContent:"center", padding:"8rem 2.5rem 6rem",
+        justifyContent:"center", padding:"8rem 0 6rem",
         position:"relative",
         backgroundImage:"url(/hero-bg.jpg)",
         backgroundSize:"cover", backgroundPosition:"center", backgroundRepeat:"no-repeat",
@@ -395,7 +395,7 @@ export default function App() {
       <div style={{ height:"1px", backgroundColor:C.border }} />
 
       {/* ── HOW WE BUILD ── */}
-      <section id="studio" style={{ padding:"8rem 2.5rem" }} className="px-main">
+      <section id="studio" style={{ padding:"8rem 0" }} className="px-main">
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:700, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:C.ink, marginBottom:"1.5rem", maxWidth:"520px", lineHeight:1.1 }}>
             A different kind of partner.
@@ -420,7 +420,7 @@ export default function App() {
       </section>
 
       {/* ── PORTFOLIO ── */}
-      <section id="portfolio" style={{ padding:"8rem 2.5rem", backgroundColor:"#BF452A" }} className="px-main">
+      <section id="portfolio" style={{ padding:"8rem 0", backgroundColor:"#BF452A" }} className="px-main">
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"4rem", flexWrap:"wrap", gap:"1rem" }}>
             <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:"#fff", lineHeight:1.1 }}>Our companies.</h2>
@@ -448,7 +448,7 @@ export default function App() {
       </section>
 
       {/* ── DIVINE ── */}
-      <section id="divine" style={{ padding:"8rem 2.5rem", borderTop:`1px solid ${C.border}` }} className="px-main">
+      <section id="divine" style={{ padding:"8rem 0", borderTop:`1px solid ${C.border}` }} className="px-main">
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <div style={{ maxWidth:"620px" }}>
             <div>
@@ -469,7 +469,7 @@ export default function App() {
       <div style={{ backgroundColor:"#0D0D0D" }}>
 
         {/* Closing CTA */}
-        <section style={{ padding:"10rem 2.5rem", textAlign:"center" }} className="px-main">
+        <section style={{ padding:"10rem 0", textAlign:"center" }} className="px-main">
           <div style={{ maxWidth:"680px", margin:"0 auto" }}>
             <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.5rem, 8vw, 5rem)", lineHeight:1.05, color:"#FFFFFF", marginBottom:"2rem" }}>Join the Engine.</h2>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:"rgba(255,255,255,0.55)", marginBottom:"3rem" }}>
@@ -480,7 +480,7 @@ export default function App() {
         </section>
 
         {/* Footer */}
-        <footer style={{ borderTop:"1px solid rgba(255,255,255,0.1)", padding:"4rem 2.5rem 3rem" }} className="px-main">
+        <footer style={{ borderTop:"1px solid rgba(255,255,255,0.1)", padding:"4rem 0 3rem" }} className="px-main">
           <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
             <div className="footer-grid" style={{ marginBottom:"4rem" }}>
               <div>
