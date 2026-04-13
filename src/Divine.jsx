@@ -209,6 +209,44 @@ function QueryPortal({ externalQuery }) {
           </div>
         </div>
 
+        {/* ── Suggested questions ── */}
+        <div>
+          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500,
+            fontSize:"0.65rem", color:W.inkSoft, letterSpacing:"0.08em",
+            textTransform:"uppercase", marginBottom:"0.65rem" }}>
+            Try one of these
+          </p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:"0.5rem" }}>
+            {USE_CASES.map((uc, i) => (
+              <button key={i} onClick={() => { setQuery(uc.q); setResponse(null); }}
+                style={{
+                  fontFamily:"'Inter Tight', sans-serif", fontWeight:400,
+                  fontSize:"0.78rem",
+                  color: query===uc.q ? "#fff" : W.inkMid,
+                  backgroundColor: query===uc.q ? W.accent : "#F2F2F2",
+                  border: `1px solid ${query===uc.q ? W.accent : "#DCDCDC"}`,
+                  borderRadius:"20px", padding:"0.45rem 1rem",
+                  cursor:"pointer", transition:"all 0.15s ease",
+                  textAlign:"left", lineHeight:1.4,
+                }}
+                onMouseEnter={e => {
+                  if (query !== uc.q) {
+                    e.currentTarget.style.backgroundColor = "#E8E8E8";
+                    e.currentTarget.style.color = W.ink;
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (query !== uc.q) {
+                    e.currentTarget.style.backgroundColor = "#F2F2F2";
+                    e.currentTarget.style.color = W.inkMid;
+                  }
+                }}>
+                {uc.q}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Input row */}
         <div style={{ display:"flex", gap:"0.75rem" }}>
           <textarea id="divine-question" value={query} onChange={e => setQuery(e.target.value)}
