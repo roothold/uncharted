@@ -243,9 +243,7 @@ export default function App() {
             color:"rgba(255,255,255,0.72)", maxWidth:"540px",
             marginBottom:"3rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards",
           }}>
-            Uncharted is a Venture Engine — combining proprietary AI infrastructure,
-            capital stewardship, and co-founding capability to build companies
-            that endure as institutional-grade assets.
+            Uncharted is an institutional venture engine integrating proprietary AI and expert operators to secure high-moat infrastructure.
           </p>
 
           <div style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
