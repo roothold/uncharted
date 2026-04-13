@@ -12,7 +12,7 @@ const C = {
   soft:    "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@400;500&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@400;500&display=swap');`;
 
 const VERTICALS = [
   "Strategy","Design","Logistics","Philosophy",
@@ -165,7 +165,7 @@ export default function BecomeThinker({ onBack }) {
             <div style={{ width:"36px", height:"36px", border:`1px solid ${C.accent}`,
               display:"flex", alignItems:"center", justifyContent:"center",
               color:C.accent, fontSize:"0.9rem", marginBottom:"1.75rem" }}>✓</div>
-            <h1 style={{ fontFamily:"'Instrument Serif',serif", fontWeight:600,
+            <h1 style={{ fontFamily:"'Instrument Serif',serif", fontWeight:400,
               fontSize:"2.2rem", color:C.ink, lineHeight:1.05, marginBottom:"1rem" }}>
               Application received.
             </h1>
@@ -192,7 +192,7 @@ export default function BecomeThinker({ onBack }) {
               marginBottom:"1.5rem" }}>
               Divine · Thinker Application
             </p>
-            <h1 style={{ fontFamily:"'Instrument Serif',serif", fontWeight:600,
+            <h1 style={{ fontFamily:"'Instrument Serif',serif", fontWeight:400,
               fontSize:"clamp(2rem, 3.5vw, 2.8rem)", lineHeight:1.05, color:C.ink,
               marginBottom:"0.85rem" }}>
               Apply for access.

@@ -65,7 +65,7 @@ export default function ContactPage({ onBack }) {
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'JetBrains Mono', monospace" }}>
       <style>{`        .nav-outer { padding-left:3rem; padding-right:3rem; }
 
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400&display=swap');
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         body { -webkit-font-smoothing:antialiased; }
         ::selection { background:${C.accent}; color:#fff; }
@@ -124,7 +124,7 @@ export default function ContactPage({ onBack }) {
             <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem", color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
               Get in touch
             </p>
-            <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.5rem, 5vw, 5rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.7s 0.2s forwards" }}>
+            <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2.5rem, 5vw, 5rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.7s 0.2s forwards" }}>
               Let's build<br />something<br />great.
             </h1>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.9, color:C.inkMid, marginBottom:"3rem", maxWidth:"360px", opacity:0, animation:"fadeUp 0.7s 0.3s forwards" }}>
@@ -152,7 +152,7 @@ export default function ContactPage({ onBack }) {
             {submitted ? (
               <div style={{ padding:"4rem 2.5rem", border:`1px solid ${C.border}`, borderRadius:"8px", textAlign:"center" }}>
                 <div style={{ width:"52px", height:"52px", borderRadius:"50%", backgroundColor:C.accent, display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 1.5rem", fontSize:"1.2rem", color:"#fff" }}>✓</div>
-                <h3 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"2.2rem", color:C.ink, marginBottom:"0.75rem" }}>Message received.</h3>
+                <h3 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"2.2rem", color:C.ink, marginBottom:"0.75rem" }}>Message received.</h3>
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.88rem", color:C.inkMid, lineHeight:1.7, marginBottom:"2rem" }}>
                   We review every submission personally. You'll hear back within 2 business days.
                 </p>
