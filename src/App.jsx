@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import DivinePage from "./Divine";
 import ContactPage from "./Contact";
 import BecomeThinker from "./BecomeThinker";
+import IndustriesPage from "./Industries";
+import SolutionsPage from "./Solutions";
 
 const C = {
   bg:          "#FFFFFF",
@@ -64,6 +66,8 @@ export default function App() {
   if (page === "divine")        return <DivinePage onBack={() => setPage("home")} onBecomeThinker={() => setPage("become-thinker")} />;
   if (page === "contact")       return <ContactPage onBack={() => setPage("home")} />;
   if (page === "become-thinker") return <BecomeThinker onBack={() => setPage("home")} />;
+  if (page === "industries")    return <IndustriesPage onBack={() => setPage("home")} onContact={() => setPage("contact")} onSolutions={() => setPage("solutions")} />;
+  if (page === "solutions")     return <SolutionsPage onBack={() => setPage("home")} onContact={() => setPage("contact")} onDivine={() => setPage("divine")} onBecomeThinker={() => setPage("become-thinker")} onIndustries={() => setPage("industries")} />;
 
   const scrolled = scrollY > 30;
 
@@ -174,19 +178,72 @@ export default function App() {
           </button>
 
           {/* Desktop nav */}
-          <div style={{ display:"flex", alignItems:"center" }} className="desktop-nav">
-            <a
-              href="https://divine.uncharted.ventures/?login=1"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
+          <div style={{ display:"flex", alignItems:"center", gap:"0.25rem" }} className="desktop-nav">
+
+            {/* Industries */}
+            <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
+              <button className={`nav-dropdown-btn${dropdown==="industries" ? " open" : ""}`}
+                onClick={() => setDropdown(d => d==="industries" ? null : "industries")}>
+                Industries
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              {dropdown==="industries" && (
+                <div className="dropdown-panel">
+                  {[
+                    { label:"Professional Services", sub:"Judgment economy" },
+                    { label:"Specialty Consumer",    sub:"Brand endures" },
+                    { label:"B2B Infrastructure",    sub:"Transition gap" },
+                    { label:"Thinking Economy",      sub:"Long-term bet" },
+                  ].map(item => (
+                    <button key={item.label} className="dropdown-item"
+                      onClick={() => { setDropdown(null); setPage("industries"); }}>
+                      <span className="dropdown-item-label">{item.sub}</span>
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Solutions */}
+            <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
+              <button className={`nav-dropdown-btn${dropdown==="solutions" ? " open" : ""}`}
+                onClick={() => setDropdown(d => d==="solutions" ? null : "solutions")}>
+                Solutions
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              {dropdown==="solutions" && (
+                <div className="dropdown-panel">
+                  {[
+                    { label:"Divine AI",            sub:"Intelligence Protocol", action:"divine" },
+                    { label:"Venture Foundry",      sub:"Studio & Co-Building",  action:"solutions" },
+                    { label:"Capital Stewardship",  sub:"Asset & Fund Strategy", action:"solutions" },
+                  ].map(item => (
+                    <button key={item.label} className="dropdown-item"
+                      onClick={() => { setDropdown(null); setPage(item.action); }}>
+                      <span className="dropdown-item-label">{item.sub}</span>
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div style={{ width:"1px", height:"16px", backgroundColor:"#E8E8E8", margin:"0 0.25rem" }} />
+
+            {/* Sign In */}
+            <a href="https://divine.uncharted.ventures/?login=1"
+              target="_blank" rel="noopener noreferrer"
+              style={{ fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
                 fontSize:"0.82rem", padding:"0.4rem 1.1rem",
                 border:"1px solid #D0D0D0", borderRadius:"20px",
                 background:"#fff", color:"#111", cursor:"pointer",
                 transition:"all 0.15s ease", lineHeight:1,
-                textDecoration:"none", display:"inline-block",
-              }}
+                textDecoration:"none", display:"inline-flex", alignItems:"center" }}
               onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
               Sign In
@@ -209,9 +266,15 @@ export default function App() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="mobile-menu" onClick={e => e.stopPropagation()}>
-            <button onClick={() => { window.location.href="https://divine.uncharted.ventures/?login=1"; setMenu(false); }}>
-              Sign in
-            </button>
+            <button onClick={() => { setPage("industries"); setMenu(false); }}>Industries</button>
+            <button onClick={() => { setPage("solutions"); setMenu(false); }}>Solutions</button>
+            <button onClick={() => { setPage("divine"); setMenu(false); }}>Divine AI</button>
+            <button onClick={() => { setPage("contact"); setMenu(false); }}>Contact</button>
+            <a href="https://divine.uncharted.ventures/?login=1" target="_blank" rel="noopener noreferrer"
+              onClick={() => setMenu(false)}
+              style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.88rem", color:"#333", textDecoration:"none" }}>
+              Sign In
+            </a>
           </div>
         )}
       </nav>
