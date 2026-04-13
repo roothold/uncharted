@@ -254,7 +254,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
         @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
         @keyframes blink   { 50%{opacity:0;} }
         .nav-outer { padding-left:3rem; padding-right:3rem; }
-        @media(max-width:600px){.nav-outer{padding-left:1.25rem!important;padding-right:1.25rem!important;}}
+        @media(max-width:600px){.nav-outer{padding-left:1rem!important;padding-right:1rem!important;}}
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
         .cta-primary { transition:all 0.2s ease; }
         .cta-primary:hover { background:${C.accentHover} !important; transform:translateY(-2px); }
@@ -284,7 +284,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
         @media (max-width:600px) {
           .divine-use-grid  { grid-template-columns:1fr !important; }
           .divine-stat-3    { grid-template-columns:1fr 1fr !important; }
-          .divine-px        { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .divine-px        { padding-left:1rem !important; padding-right:1rem !important; }
           .divine-cta-row   { flex-direction:column !important; }
           .divine-cta-row a, .divine-cta-row button { width:100% !important; text-align:center !important; box-sizing:border-box; }
           .divine-nav-links { display:none !important; }

@@ -96,7 +96,7 @@ export default function App() {
         }
         @media (max-width: 600px) {
           .grid-4  { grid-template-columns:repeat(2,1fr) !important; }
-          .px-main { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .px-main { padding-left:1rem !important; padding-right:1rem !important; }
           .footer-grid { grid-template-columns:1fr !important; }
           .hero-btns { flex-direction:column !important; }
           .hero-btns a, .hero-btns button { width:100% !important; text-align:center !important; }
@@ -109,9 +109,8 @@ export default function App() {
         @keyframes blink  { 50%{opacity:0;} }
         
         @media (max-width:600px) {
-          .nav-outer { padding-left:1.25rem !important; padding-right:1.25rem !important; }
-          .mobile-menu { padding-left:1.25rem !important; padding-right:1.25rem !important; }
-          .hero-top { padding-top:7rem !important; padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .nav-outer { padding-left:1rem !important; padding-right:1rem !important; }
+                    .hero-top { padding-top:7rem !important; padding-left:1rem !important; padding-right:1rem !important; }
         }
         .port-card { transition:transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease; }
         .port-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.07); }
@@ -203,7 +202,7 @@ export default function App() {
           position:fixed; top:0; left:0; right:0; bottom:0;
           background:#0D0D0D; z-index:200;
           display:flex; flex-direction:column;
-          padding:0 2rem;
+          padding:0 1rem;
           animation:slideDown 0.25s ease;
         }
         @keyframes slideDown {

@@ -130,8 +130,8 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
         .logo-full { display:block; } .logo-icon { display:none; }
         @media(max-width:768px){ .logo-full{display:none!important;} .logo-icon{display:block!important;} }
         @media(max-width:900px){ .sol-layout{ flex-direction:column !important; } .sol-sidebar{ width:100% !important; border-right:none !important; border-bottom:1px solid ${C.border} !important; position:static !important; height:auto !important; } }
-        @media(max-width:600px){ .sol-px{ padding-left:1.25rem !important; padding-right:1.25rem !important; } .sol-metrics{ grid-template-columns:1fr 1fr !important; } }
-        @media(max-width:600px){ nav{ padding-left:1.25rem !important; padding-right:1.25rem !important; } }
+        @media(max-width:600px){ .sol-px{ padding-left:1rem !important; padding-right:1rem !important; } .sol-metrics{ grid-template-columns:1fr 1fr !important; } }
+        @media(max-width:600px){ nav{ padding-left:1rem !important; padding-right:1rem !important; } }
         `}</style>
 
       {/* Nav */}

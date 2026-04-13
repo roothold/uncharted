@@ -132,7 +132,7 @@ export default function BecomeThinker({ onBack }) {
           background:"linear-gradient(160deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%)" }} />
 
         {/* Back */}
-        <div style={{ position:"absolute", top:"2rem", left:"2.5rem", zIndex:10 }}>
+        <div style={{ position:"absolute", top:"2rem", left:"1rem", zIndex:10 }}>
           <button onClick={onBack} className="nav-back" style={{ background:"none", border:"none",
             cursor:"pointer", padding:0, fontFamily:"'JetBrains Mono',monospace",
             fontSize:"0.6rem", color:"rgba(255,255,255,0.6)", letterSpacing:"0.08em" }}>
@@ -141,7 +141,7 @@ export default function BecomeThinker({ onBack }) {
         </div>
 
         {/* Bottom text */}
-        <div style={{ position:"absolute", bottom:"2.5rem", left:"2.5rem", right:"2.5rem", zIndex:10 }}>
+        <div style={{ position:"absolute", bottom:"2.5rem", left:"1rem", right:"2.5rem", zIndex:10 }}>
           <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.56rem",
             color:"rgba(255,255,255,0.45)", letterSpacing:"0.12em", textTransform:"uppercase",
             marginBottom:"0.75rem" }}>Divine · Thinker Network</div>
