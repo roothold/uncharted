@@ -135,9 +135,9 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
 
       {/* Nav */}
       <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100,
-        backgroundColor:"#FFFFFF", borderBottom:`1px solid ${C.border}` }}>
+        backgroundColor:"#FFFFFF", borderBottom:`1px solid ${C.border}`, padding:"0 2.5rem" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px",
-          display:"flex", alignItems:"center", justifyContent:"space-between", padding:"0 2.5rem" }}>
+          display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
             <img src={LOGO_SRC} alt="Uncharted" className="logo-full" style={{ height:"40px", width:"auto", display:"block" }} />
             <img src={ICON_SRC} alt="Uncharted" className="logo-icon" style={{ height:"32px", width:"32px", display:"none" }} />
@@ -153,7 +153,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
 
       {/* Page header */}
       <div style={{ borderBottom:`1px solid ${C.border}`, paddingTop:"56px" }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"5rem 2.5rem 3.5rem" }} className="sol-px">
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"5rem 0 3.5rem" }} className="sol-px">
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem",
             color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1rem" }}>
             Solutions
@@ -304,7 +304,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
 
       {/* Footer */}
       <footer style={{ borderTop:`1px solid ${C.border}` }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"1.75rem 2.5rem",
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"1.75rem 0",
           display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"1rem" }}>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
             fontSize:"0.75rem", color:C.inkSoft }}>© 2026 Uncharted Ventures LLC</span>
