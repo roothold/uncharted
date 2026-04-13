@@ -4,6 +4,7 @@ import ContactPage from "./Contact";
 import BecomeThinker from "./BecomeThinker";
 import IndustriesPage from "./Industries";
 import SolutionsPage from "./Solutions";
+import DivineHero from "./DivineHero";
 
 const C = {
   bg:          "#FFFFFF",
@@ -403,6 +404,9 @@ export default function App() {
           </div>
         )}
       </nav>
+      {/* ── DIVINE DIALOGUE HERO ── */}
+      <DivineHero onAskMore={() => setPage("divine")} />
+
       {/* ── HERO ── */}
       <section style={{
         minHeight:"100vh", display:"flex", flexDirection:"column",
