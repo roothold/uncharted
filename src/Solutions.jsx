@@ -184,7 +184,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
       <div style={{ maxWidth:"1280px", margin:"0 auto", display:"flex" }} className="sol-layout">
 
         {/* Sidebar */}
-        <div className="sol-sidebar" style={{ width:"260px", flexShrink:0,
+        <div className="sol-sidebar" style={{ width:"280px", flexShrink:0,
           borderRight:`1px solid ${C.border}`, position:"sticky",
           top:"56px", height:"calc(100vh - 106px)", overflowY:"auto" }}>
 
@@ -218,30 +218,29 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
             );
           })}
 
-          {/* System flow diagram */}
-          <div style={{ margin:"1.5rem 1.5rem 0", padding:"1.1rem",
-            backgroundColor:C.soft, borderRadius:"4px" }}>
-            <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.56rem",
-              color:C.inkSoft, letterSpacing:"0.1em", textTransform:"uppercase",
-              marginBottom:"0.85rem" }}>The system</p>
+          {/* System diagram */}
+          <div style={{ margin:"1.5rem 0 0", padding:"1.25rem 1.5rem",
+            borderTop:`1px solid ${C.border}` }}>
+            <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem",
+              color:C.inkSoft, letterSpacing:"0.12em", textTransform:"uppercase",
+              marginBottom:"1.1rem" }}>The system</p>
             {[
-              {l:"Foundry",  d:"Builds the firms",        color:C.accent},
-              {l:"Divine",   d:"Powers the decisions",    color:C.gold},
-              {l:"Capital",  d:"Compounds the returns",   color:C.inkMid},
+              {l:"Foundry",  d:"Builds the firms",      color:C.accent},
+              {l:"Divine",   d:"Powers the decisions",  color:C.gold},
+              {l:"Capital",  d:"Compounds the returns", color:C.inkSoft},
             ].map((item, i) => (
-              <div key={i} style={{ display:"flex", alignItems:"flex-start", gap:"0.65rem",
-                marginBottom: i<2 ? "0.65rem" : 0 }}>
-                <div style={{ width:"6px", height:"6px", borderRadius:"50%",
-                  backgroundColor:item.color, marginTop:"4px", flexShrink:0 }} />
-                <div>
-                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.65rem",
-                    fontWeight:600, color:C.ink }}>{item.l}</span>
+              <div key={i} style={{ display:"flex", alignItems:"center", gap:"0.75rem",
+                marginBottom: i<2 ? "0.9rem" : 0 }}>
+                <div style={{ width:"7px", height:"7px", borderRadius:"50%",
+                  backgroundColor:item.color, flexShrink:0 }} />
+                <div style={{ display:"flex", alignItems:"baseline", gap:"0.4rem", minWidth:0 }}>
+                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.68rem",
+                    fontWeight:600, color:C.ink, whiteSpace:"nowrap" }}>{item.l}</span>
                   <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.72rem",
-                    color:C.inkSoft }}> — {item.d}</span>
+                    color:C.inkSoft, whiteSpace:"nowrap" }}>— {item.d}</span>
                 </div>
               </div>
             ))}
-            {/* Arrow connectors */}
           </div>
         </div>
 
