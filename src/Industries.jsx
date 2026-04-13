@@ -111,7 +111,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
 
       {/* Nav */}
       <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100,
-        backgroundColor:"#FFFFFF", borderBottom:`1px solid ${C.border}`, padding:"0 2.5rem" }}>
+        backgroundColor:"#FFFFFF", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px",
           display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
@@ -129,7 +129,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
 
       {/* Page header */}
       <div style={{ borderBottom:`1px solid ${C.border}`, paddingTop:"56px" }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"5rem 0 3.5rem" }} className="ind-px">
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"5rem 3rem 3.5rem" }} className="ind-px">
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem",
             color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1rem" }}>
             Industries
@@ -175,7 +175,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
         </div>
 
         {/* Content */}
-        <div key={active} style={{ flex:1, padding:"3.5rem 2.5rem 5rem", opacity:0,
+        <div key={active} style={{ flex:1, padding:"3.5rem 3rem 5rem", opacity:0,
           animation:"fadeUp 0.35s ease forwards" }} className="ind-px">
 
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.68rem",
@@ -250,7 +250,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
 
       {/* Footer */}
       <footer style={{ borderTop:`1px solid ${C.border}` }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"1.75rem 0",
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"1.75rem 3rem",
           display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"1rem" }}>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
             fontSize:"0.75rem", color:C.inkSoft }}>© 2026 Uncharted Ventures LLC</span>

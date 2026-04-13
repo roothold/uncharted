@@ -292,7 +292,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       `}</style>
 
       {/* Nav */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 2.5rem" }} className="nav-outer">
+      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }} className="nav-outer">
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
             <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>

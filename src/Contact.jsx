@@ -103,7 +103,7 @@ export default function ContactPage({ onBack }) {
       `}</style>
 
       {/* Nav */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 2.5rem" }} className="nav-outer">
+      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }} className="nav-outer">
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
             <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"40px", width:"auto", display:"block" }} />
@@ -115,7 +115,7 @@ export default function ContactPage({ onBack }) {
         </div>
       </nav>
 
-      <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"8rem 0 5rem" }} className="px-contact">
+      <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"8rem 3rem 5rem" }} className="px-contact">
         <div className="contact-grid">
 
           {/* Left */}
@@ -220,7 +220,7 @@ export default function ContactPage({ onBack }) {
 
       {/* Footer */}
       <footer style={{ borderTop:`1px solid ${C.border}`, marginTop:"4rem" }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"2rem 0", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"2rem 3rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>© 2026 Uncharted Ventures LLC. All rights reserved.</span>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>uncharted.ventures</span>
         </div>
