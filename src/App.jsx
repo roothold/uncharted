@@ -85,7 +85,7 @@ export default function App() {
         .grid-3  { display:grid; grid-template-columns:repeat(3,1fr); }
         .grid-2  { display:grid; grid-template-columns:1fr 1fr; }
         .grid-2a { display:grid; grid-template-columns:2fr 1fr; }
-        .px-main { padding-left:2.5rem; padding-right:2.5rem; }
+        
         .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; }
 
         @media (max-width: 900px) {
@@ -96,11 +96,11 @@ export default function App() {
         }
         @media (max-width: 600px) {
           .grid-4  { grid-template-columns:repeat(2,1fr) !important; }
-          .px-main { padding-left:1rem !important; padding-right:1rem !important; }
+          
           .footer-grid { grid-template-columns:1fr !important; }
           .hero-btns { flex-direction:column !important; }
           .hero-btns a, .hero-btns button { width:100% !important; text-align:center !important; }
-          .hero-top { padding-top:7rem !important; padding-bottom:4rem !important; }
+          .hero-top { padding-top:6rem !important; padding-bottom:4rem !important; }
         }
 
         /* ── Interactions ── */
@@ -110,7 +110,8 @@ export default function App() {
         
         @media (max-width:600px) {
           .nav-outer { padding-left:1rem !important; padding-right:1rem !important; }
-                    .hero-top { padding-top:7rem !important; padding-left:1rem !important; padding-right:1rem !important; }
+          section { padding-left:1rem !important; padding-right:1rem !important; }
+                    
         }
         .port-card { transition:transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease; }
         .port-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.07); }
