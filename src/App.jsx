@@ -218,28 +218,25 @@ export default function App() {
       <nav style={{
         position:"fixed", top:0, left:0, right:0, zIndex:100,
         backgroundColor:"#FFFFFF",
-        backdropFilter:"blur(12px)", WebkitBackdropFilter:"blur(12px)",
         borderBottom:"1px solid #E8E8E8",
-        padding:"0 2.5rem",
       }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px",
-          display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+          display:"flex", alignItems:"center", justifyContent:"space-between",
+          padding:"0 2.5rem" }}>
 
-          {/* Left: Logo + nav links */}
-          <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }}>
+          {/* ── LEFT: Logo + nav dropdowns ── */}
+          <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
+
             {/* Logo */}
-            <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0, marginRight:"0.75rem" }}>
+            <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0 }}>
               <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full"
                 style={{ height:"40px", width:"auto", display:"block", imageRendering:"crisp-edges" }} />
               <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon"
                 style={{ height:"32px", width:"32px", display:"none" }} />
             </button>
 
-            {/* Desktop nav — Industries + Solutions */}
-            <div style={{ display:"flex", alignItems:"center", gap:"0.5rem" }} className="desktop-nav">
-
-            {/* Industries */}
-            <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
+            {/* Industries dropdown */}
+            <div style={{ position:"relative" }} className="desktop-nav" onClick={e => e.stopPropagation()}>
               <button className={`nav-dropdown-btn${dropdown==="industries" ? " open" : ""}`}
                 onClick={() => setDropdown(d => d==="industries" ? null : "industries")}>
                 Industries
@@ -273,8 +270,8 @@ export default function App() {
               )}
             </div>
 
-            {/* Solutions */}
-            <div style={{ position:"relative" }} onClick={e => e.stopPropagation()}>
+            {/* Solutions dropdown */}
+            <div style={{ position:"relative" }} className="desktop-nav" onClick={e => e.stopPropagation()}>
               <button className={`nav-dropdown-btn${dropdown==="solutions" ? " open" : ""}`}
                 onClick={() => setDropdown(d => d==="solutions" ? null : "solutions")}>
                 Solutions
@@ -309,22 +306,20 @@ export default function App() {
 
           </div>{/* end left group */}
 
-          {/* Right: Sign In */}
+          {/* ── RIGHT: Sign In + Hamburger ── */}
           <div style={{ display:"flex", alignItems:"center", gap:"0.75rem" }}>
             <a href="https://divine.uncharted.ventures/?login=1"
               target="_blank" rel="noopener noreferrer"
               style={{ fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
                 fontSize:"0.82rem", padding:"0.4rem 1.1rem",
                 border:"1px solid #D0D0D0", borderRadius:"20px",
-                background:"#fff", color:"#111", cursor:"pointer",
-                transition:"all 0.15s ease", lineHeight:1,
-                textDecoration:"none", display:"inline-flex", alignItems:"center" }}
+                background:"#fff", color:"#111",
+                textDecoration:"none", display:"inline-flex", alignItems:"center",
+                transition:"all 0.15s ease", lineHeight:1 }}
               onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
               Sign In
             </a>
-
-            {/* Hamburger */}
             <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }}
               style={{ display:"none", background:"none", border:"none", cursor:"pointer",
                 padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
@@ -336,6 +331,7 @@ export default function App() {
                 transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
             </button>
           </div>
+
         </div>
 
         {/* Mobile menu */}

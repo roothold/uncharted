@@ -1,7 +1,8 @@
+import { useState } from "react";
+
 const LOGO_SRC = "/logo.png";
 const ICON_SRC = "/icon.png";
 
-import { useState } from "react";
 
 const C = {
   bg:      "#FFFFFF",
