@@ -17,7 +17,7 @@ const C = {
   soft:        "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400&display=swap');`;
 
 const THINKERS = [
   { id:"2", name:"Michael Akindele", title:"Product · Brand · Venture Building", domains:["Product Strategy","Brand Building","Venture Design"], tier:"Perspective", price:"$2.50" },
@@ -311,7 +311,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <section style={{ minHeight:"100vh", display:"flex", alignItems:"center", padding:"10rem 3rem 6rem" }} className="divine-px">
         <div style={{ maxWidth:"1280px", margin:"0 auto", width:"100%" }} className="divine-hero-grid">
           <div>
-            <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2.8rem, 5.5vw, 5.5rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
+            <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.8rem, 5.5vw, 5.5rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
               Ask a hard<br />question.<br />Get a real<br />answer.
             </h1>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:C.inkMid, maxWidth:"420px", marginBottom:"3rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards" }}>
@@ -349,7 +349,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem", color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Founders</p>
           <div className="divine-how-grid">
             <div>
-              <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2rem, 3.5vw, 3.2rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.25rem" }}>
+              <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3.2rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.25rem" }}>
                 Better answers than your smartest friend.
               </h2>
               <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.85, color:C.inkMid, marginBottom:"1rem" }}>
@@ -364,7 +364,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
                 { n:"3", t:"Act on it",         d:"Direct, honest, operator-grade. No hedging.",            bg:"rgba(212,175,55,0.18)" },
               ].map(s => (
                 <div key={s.n} style={{ padding:"2rem 1.5rem", backgroundColor:s.bg }}>
-                  <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"3rem", color:C.ink, lineHeight:1, marginBottom:"1.25rem" }}>{s.n}</div>
+                  <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"3rem", color:C.ink, lineHeight:1, marginBottom:"1.25rem" }}>{s.n}</div>
                   <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.9rem", color:C.ink, marginBottom:"0.5rem" }}>{s.t}</div>
                   <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.7 }}>{s.d}</div>
                 </div>
@@ -379,7 +379,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <section id="ask" style={{ padding:"8rem 2.5rem" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem", color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1rem" }}>Try it now</p>
-          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:C.ink, marginBottom:"3rem" }}>
+          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 3.5vw, 3rem)", color:C.ink, marginBottom:"3rem" }}>
             Ask your first question.
           </h2>
           <QueryPortal externalQuery={prefillQuery} />
@@ -392,7 +392,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <section style={{ padding:"5rem 2.5rem", backgroundColor:C.soft }} className="divine-px">
         <div style={{ maxWidth:"1280px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"2rem" }}>
           <div>
-            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(1.5rem, 3vw, 2.2rem)", color:C.ink, marginBottom:"0.5rem" }}>
+            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(1.5rem, 3vw, 2.2rem)", color:C.ink, marginBottom:"0.5rem" }}>
               Your experience is worth more than you're charging.
             </h2>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.88rem", color:C.inkMid }}>

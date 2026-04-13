@@ -15,7 +15,7 @@ const C = {
   soft:    "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400;700&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400;700&display=swap');`;
 
 const SOLUTIONS = [
   {
@@ -160,7 +160,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
             color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1rem" }}>
             Solutions
           </p>
-          <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400,
+          <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600,
             fontSize:"clamp(2.2rem, 5vw, 4rem)", lineHeight:1.05, color:C.ink,
             maxWidth:"640px", marginBottom:"1.25rem" }}>
             The three components of the Venture Engine.
@@ -232,7 +232,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
             color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1.25rem" }}>
             {sol.tag}
           </p>
-          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400,
+          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600,
             fontSize:"clamp(1.8rem, 3.5vw, 2.8rem)", lineHeight:1.1, color:C.ink,
             marginBottom:"1rem", maxWidth:"560px" }}>
             {sol.headline}
@@ -256,7 +256,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
             gap:"1px", backgroundColor:C.border, margin:"2.5rem 0" }}>
             {sol.metrics.map((m, i) => (
               <div key={i} style={{ padding:"1.25rem 1rem", backgroundColor:C.bg }}>
-                <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400,
+                <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600,
                   fontSize:"1.6rem", color:C.ink, lineHeight:1, marginBottom:"0.3rem" }}>{m.v}</div>
                 <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
                   fontSize:"0.72rem", color:C.inkSoft }}>{m.l}</div>
@@ -273,7 +273,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
             {sol.how.map((s, i) => (
               <div key={i} style={{ display:"flex", gap:"1.5rem", padding:"1.25rem 0",
                 borderBottom:`1px solid ${C.border}` }}>
-                <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400,
+                <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600,
                   fontSize:"1.8rem", color:C.accent, lineHeight:1, flexShrink:0, width:"28px" }}>{s.n}</div>
                 <div>
                   <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
