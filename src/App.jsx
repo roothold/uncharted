@@ -18,7 +18,7 @@ const C = {
   soft:        "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400;700&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400;700&display=swap');`;
 
 const ICON_SRC = "/icon.png";
 
@@ -416,7 +416,7 @@ export default function App() {
         <div style={{ maxWidth:"1280px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }}>
 
           <h1 style={{
-            fontFamily:"'Instrument Serif',serif", fontWeight:600,
+            fontFamily:"'Instrument Serif',serif", fontWeight:400,
             fontSize:"clamp(2.4rem, 8vw, 6.8rem)", lineHeight:1.0,
             color:"#FFFFFF", marginBottom:"1.5rem",
             opacity:0, animation:"fadeUp 0.8s 0.2s forwards",
@@ -450,7 +450,7 @@ export default function App() {
       {/* ── HOW WE BUILD ── */}
       <section id="studio" style={{ padding:"8rem 3rem" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
-          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:C.ink, marginBottom:"1.5rem", maxWidth:"520px", lineHeight:1.1 }}>
+          <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:C.ink, marginBottom:"1.5rem", maxWidth:"520px", lineHeight:1.1 }}>
             A different kind of partner.
           </h2>
           <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.95rem", lineHeight:1.85, color:C.inkMid, maxWidth:"520px", marginBottom:"5rem" }}>
@@ -463,7 +463,7 @@ export default function App() {
               { n:"3", t:"AI baked in from day one", d:"Divine, our proprietary intelligence protocol, is built into how we operate. Every portfolio company uses it. You don't get AI bolted on — it's the substrate." },
             ].map(item => (
               <div key={item.n}>
-                <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"3.5rem", color:C.accent, lineHeight:1, marginBottom:"1.5rem" }}>{item.n}</div>
+                <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"3.5rem", color:C.accent, lineHeight:1, marginBottom:"1.5rem" }}>{item.n}</div>
                 <h3 style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"1rem", color:C.ink, marginBottom:"0.75rem" }}>{item.t}</h3>
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.9, color:C.inkMid }}>{item.d}</p>
               </div>
@@ -476,7 +476,7 @@ export default function App() {
       <section id="portfolio" style={{ padding:"8rem 3rem", backgroundColor:"#BF452A" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"4rem", flexWrap:"wrap", gap:"1rem" }}>
-            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:"#fff", lineHeight:1.1 }}>Our companies.</h2>
+            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:"#fff", lineHeight:1.1 }}>Our companies.</h2>
           </div>
           <div className="grid-3" style={{ gap:"1.5rem" }}>
             {PORTFOLIO.map(v => {
@@ -486,7 +486,7 @@ export default function App() {
                 <El key={v.id} {...props}>
                   <div className="port-card" style={{ border:"1px solid rgba(255,255,255,0.15)", borderRadius:"8px", padding:"2.5rem 2rem", backgroundColor:"#fff" }}>
                     <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.6rem", color: v.url ? C.gold : C.inkSoft, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"1.5rem" }}>{v.cat}</div>
-                    <h3 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"2rem", color:C.ink, marginBottom:"0.75rem", lineHeight:1.1 }}>{v.name}</h3>
+                    <h3 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"2rem", color:C.ink, marginBottom:"0.75rem", lineHeight:1.1 }}>{v.name}</h3>
                     <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.87rem", lineHeight:1.85, color:C.inkMid, marginBottom:"2rem" }}>{v.desc}</p>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:"1.25rem", borderTop:`1px solid ${C.border}` }}>
                       <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.65rem", color: v.url ? C.gold : C.inkSoft, letterSpacing:"0.06em" }}>{v.metric}</span>
@@ -506,7 +506,7 @@ export default function App() {
           <div style={{ maxWidth:"620px" }}>
             <div>
               <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem", color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1.5rem" }}>Divine · AI Tool</p>
-              <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2rem, 4vw, 3.5rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.5rem" }}>
+              <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2rem, 4vw, 3.5rem)", lineHeight:1.1, color:C.ink, marginBottom:"1.5rem" }}>
                 Better decisions,<br />faster.
               </h2>
               <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.95rem", lineHeight:1.9, color:C.inkMid, marginBottom:"2.5rem", maxWidth:"420px" }}>
@@ -524,7 +524,7 @@ export default function App() {
         {/* Closing CTA */}
         <section style={{ padding:"10rem 3rem", textAlign:"center" }}>
           <div style={{ maxWidth:"680px", margin:"0 auto" }}>
-            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.5rem, 8vw, 5rem)", lineHeight:1.05, color:"#FFFFFF", marginBottom:"2rem" }}>Join the Engine.</h2>
+            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2.5rem, 8vw, 5rem)", lineHeight:1.05, color:"#FFFFFF", marginBottom:"2rem" }}>Join the Engine.</h2>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:"rgba(255,255,255,0.55)", marginBottom:"3rem" }}>
               Founders, operators, and capital partners who want to build companies that become durable growth assets. The Engine is open.
             </p>
