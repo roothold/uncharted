@@ -245,7 +245,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
   const [prefillQuery, setPrefillQuery] = useState("");
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'JetBrains Mono', monospace" }}>
-      <style>{`
+      <style>{`        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
+
         ${FONTS}
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         html { scroll-behavior:smooth; }
