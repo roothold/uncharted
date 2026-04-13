@@ -71,24 +71,24 @@ The playbook is deliberately repeatable. Year one: three firms across three vert
     id:"capital-stewardship", label:"Capital Stewardship", tag:"Asset Strategy",
     tagStyle:{bg:"rgba(85,85,85,0.08)", color:"#555555"},
     headline:"Capital that compounds with the engine.",
-    sub:"Capital Stewardship is Uncharted's investment and portfolio management function. It ensures that the companies we build and back are capitalised correctly at every stage — and that Uncharted's own portfolio grows in value as the engine matures.",
-    body:`The capital strategy is designed to avoid the mistake most studios make: raising external money before the model is proven, then diluting into irrelevance.
+    sub:"Most venture studios raise too early, dilute too much, and spend the rest of their existence serving investors instead of building. We don't do that.",
+    body:`Capital Stewardship is the discipline that keeps the engine running on its own terms. We sequence capital the way we sequence everything else — proof first, scale second.
 
-Phase one is internal capital and Foundry revenue. Three firms, each requiring $150K–$300K, generating revenue within 12 months. By the end of year one, the combined portfolio is covering Uncharted's operational costs.
+We enter every company with a clear view of how it gets to revenue, what it needs to grow, and when outside capital actually adds value versus extracting it. That clarity shapes every decision from initial commitment to exit.
 
-Phase two is the first external raise — a $3–5M seed round built on three proof points: at least one Foundry firm generating $500K+ annual revenue, a live AI product with real usage data, and a documented thesis that institutional investors can evaluate.
+The result is a portfolio that compounds quietly. Each company we build strengthens the infrastructure available to the next. Each dollar deployed does more than the last because the operating model gets sharper with every iteration.
 
-Phase three is the compounding. Eight to ten firms. Divine API revenue. A Thinker network of 50–100 verified operators. An equity portfolio appreciating as the firms scale.`,
+We're not trying to build a fund. We're building a machine that generates institutional-quality returns as a byproduct of building great companies.`,
     how:[
-      {n:"1", t:"Internal capital first",    d:"Foundry firms funded from Uncharted's balance sheet or a small friends-and-family round. No institutional dilution before proof."},
-      {n:"2", t:"Revenue before raise",      d:"Each firm is profitable within 12 months. The first external raise happens when the model is proven — not before."},
-      {n:"3", t:"Strategic raise at proof",  d:"$3–5M seed targeting family offices and operator angels. Use of funds: scale the Foundry, build the Divine API, hire head of product."},
+      {n:"1", t:"Proof before scale",     d:"We establish real revenue and repeatable unit economics before we think about external capital. The model earns the right to grow."},
+      {n:"2", t:"Strategic partnerships", d:"When we do bring in outside capital, it's surgical — partners who add genuine leverage, not just a cheque."},
+      {n:"3", t:"Portfolio compounding",  d:"Every company we build strengthens the next. Infrastructure, intelligence, and relationships accumulate across the portfolio."},
     ],
     metrics:[
-      {v:"$150K",    l:"Min. Foundry co-investment"},
-      {v:"12 months",l:"Target to profitability"},
-      {v:"$3–5M",    l:"Seed round target"},
-      {v:"Year 3",   l:"When compounding begins"},
+      {v:"Proof",     l:"Required before external raise"},
+      {v:"Selective", l:"Capital partnership approach"},
+      {v:"Long-term", l:"Return horizon"},
+      {v:"Portfolio", l:"Value compounds across firms"},
     ],
     ctaLabel:"Talk capital", ctaAction:"contact",
     secondaryLabel:"See the Foundry →", secondaryAction:"solutions",
