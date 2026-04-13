@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 const QUESTIONS = [
-  { q:"Should I raise now or wait 6 months?",                   domain:"Fundraising" },
-  { q:"My co-founder wants to pivot. How do I think about this?",domain:"Strategy"   },
-  { q:"When should I hire my first salesperson?",                domain:"Hiring"      },
-  { q:"Our margins are compressing. What do I cut first?",       domain:"Operations"  },
-  { q:"How do I price this for enterprise vs. SMB?",             domain:"Pricing"     },
-  { q:"We have 3 months of runway. What are our real options?",  domain:"Capital"     },
+  { q:"When do I replace myself as operator?",        domain:"Leadership"   },
+  { q:"How do I price judgment, not hours?",          domain:"Pricing"      },
+  { q:"What breaks first when we scale?",             domain:"Operations"   },
+  { q:"Should I raise or grow from revenue?",         domain:"Capital"      },
+  { q:"How do I land the first enterprise client?",   domain:"Sales"        },
+  { q:"When is the right time to bring in a COO?",    domain:"Hiring"       },
 ];
 
 const go = (q) => {
