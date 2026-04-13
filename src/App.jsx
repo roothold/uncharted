@@ -121,38 +121,62 @@ export default function App() {
         .cta-ghost:hover { border-color:${C.accent} !important; color:${C.accent} !important; transform:translateY(-2px); }
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
 
-        /* ── Nav dropdowns ── */
+        /* ── Nav dropdowns — full-width overlay, OpenAI-style ── */
         .nav-dropdown-btn {
-          display:inline-flex; align-items:center; justify-content:center;
-          gap:0.25rem; background:none; border:none; cursor:pointer;
+          display:inline-flex; align-items:center; gap:0.25rem;
+          background:none; border:none; cursor:pointer;
           font-family:'Inter Tight',sans-serif; font-weight:500;
           font-size:0.82rem; color:#333; padding:0.4rem 0.65rem; line-height:1;
           transition:color 0.15s; white-space:nowrap;
         }
         .nav-dropdown-btn:hover { color:#000; }
         .nav-dropdown-btn svg { display:block; flex-shrink:0; transition:transform 0.2s; }
+        .nav-dropdown-btn.open { color:#000; }
         .nav-dropdown-btn.open svg { transform:rotate(180deg); }
+
+        /* Full-width panel — anchored to nav bottom, spans viewport */
         .dropdown-panel {
-          position:absolute; top:calc(100% + 8px); left:50%;
-          transform:translateX(-50%);
-          background:#fff; border:1px solid #E8E8E8;
-          border-radius:8px; padding:0.4rem;
-          box-shadow:0 8px 24px rgba(0,0,0,0.09);
-          min-width:210px; z-index:200;
-          animation:fadeUp 0.15s ease;
+          position:fixed; top:56px; left:0; right:0;
+          background:#0D0D0D; border-top:1px solid rgba(255,255,255,0.08);
+          padding:3.5rem 0 4rem; z-index:199;
+          animation:dropIn 0.2s ease;
+        }
+        @keyframes dropIn {
+          from { opacity:0; transform:translateY(-8px); }
+          to   { opacity:1; transform:translateY(0); }
+        }
+        .dropdown-inner {
+          max-width:1280px; margin:0 auto; padding:0 2.5rem;
+          display:grid; gap:0;
+        }
+        .dropdown-inner.cols-4 { grid-template-columns:repeat(4,1fr); }
+        .dropdown-inner.cols-3 { grid-template-columns:repeat(3,1fr); }
+        .dropdown-section-label {
+          font-family:'JetBrains Mono',monospace; font-size:0.6rem;
+          color:rgba(255,255,255,0.35); letter-spacing:0.12em; text-transform:uppercase;
+          margin-bottom:1.5rem; padding-bottom:0.75rem;
+          border-bottom:1px solid rgba(255,255,255,0.08);
         }
         .dropdown-item {
-          display:block; width:100%; padding:0.6rem 0.9rem;
-          font-family:'Inter Tight',sans-serif; font-size:0.82rem;
-          color:#333; cursor:pointer; background:none; border:none;
-          text-align:left; border-radius:5px; transition:background 0.12s;
-          white-space:nowrap;
+          display:block; width:100%; padding:0.5rem 0; text-align:left;
+          background:none; border:none; cursor:pointer;
+          transition:opacity 0.15s;
         }
-        .dropdown-item:hover { background:#F5F5F5; color:#000; }
-        .dropdown-item-label {
-          display:block; font-family:'JetBrains Mono',monospace; font-size:0.58rem;
-          color:${C.accent}; letter-spacing:0.08em; text-transform:uppercase;
-          margin-bottom:0.1rem;
+        .dropdown-item:hover .di-title { color:#fff !important; }
+        .dropdown-item:hover .di-sub { opacity:0.8 !important; }
+        .di-title {
+          display:block; font-family:'Instrument Serif',serif; font-weight:400;
+          font-size:1.6rem; color:rgba(255,255,255,0.75); line-height:1.15;
+          transition:color 0.15s; margin-bottom:0.2rem;
+        }
+        .di-sub {
+          display:block; font-family:'Inter Tight',sans-serif; font-weight:300;
+          font-size:0.75rem; color:rgba(255,255,255,0.35); line-height:1.5;
+          transition:opacity 0.15s;
+        }
+        .dropdown-overlay {
+          position:fixed; top:56px; left:0; right:0; bottom:0;
+          background:rgba(0,0,0,0.5); z-index:198; cursor:default;
         }
         .desktop-nav { display:flex; }
         .hamburger   { display:none !important; }
@@ -224,20 +248,28 @@ export default function App() {
                 </svg>
               </button>
               {dropdown==="industries" && (
-                <div className="dropdown-panel">
-                  {[
-                    { label:"Professional Services", sub:"Judgment economy" },
-                    { label:"Specialty Consumer",    sub:"Brand endures" },
-                    { label:"B2B Infrastructure",    sub:"Transition gap" },
-                    { label:"Thinking Economy",      sub:"Long-term bet" },
-                  ].map(item => (
-                    <button key={item.label} className="dropdown-item"
-                      onClick={() => { setDropdown(null); setPage("industries"); }}>
-                      <span className="dropdown-item-label">{item.sub}</span>
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
+                <>
+                  <div className="dropdown-overlay" onClick={() => setDropdown(null)} />
+                  <div className="dropdown-panel" onClick={e => e.stopPropagation()}>
+                    <div className="dropdown-inner cols-4">
+                      {[
+                        { label:"Professional Services", sub:"The billable hour is ending. The judgment economy is beginning." },
+                        { label:"Specialty Consumer",    sub:"Brand endures. Supply chain doesn't." },
+                        { label:"B2B Infrastructure",    sub:"Every mid-market company is reorganising around AI." },
+                        { label:"Thinking Economy",      sub:"When execution is automated, judgment becomes the product." },
+                      ].map(item => (
+                        <div key={item.label}>
+                          <div className="dropdown-section-label">Industry</div>
+                          <button className="dropdown-item"
+                            onClick={() => { setDropdown(null); setPage("industries"); }}>
+                            <span className="di-title">{item.label}</span>
+                            <span className="di-sub">{item.sub}</span>
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
               )}
             </div>
 
@@ -251,19 +283,27 @@ export default function App() {
                 </svg>
               </button>
               {dropdown==="solutions" && (
-                <div className="dropdown-panel">
-                  {[
-                    { label:"Divine AI",            sub:"Intelligence Protocol", action:"divine" },
-                    { label:"Venture Foundry",      sub:"Studio & Co-Building",  action:"solutions" },
-                    { label:"Capital Stewardship",  sub:"Asset & Fund Strategy", action:"solutions" },
-                  ].map(item => (
-                    <button key={item.label} className="dropdown-item"
-                      onClick={() => { setDropdown(null); setPage(item.action); }}>
-                      <span className="dropdown-item-label">{item.sub}</span>
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
+                <>
+                  <div className="dropdown-overlay" onClick={() => setDropdown(null)} />
+                  <div className="dropdown-panel" onClick={e => e.stopPropagation()}>
+                    <div className="dropdown-inner cols-3">
+                      {[
+                        { label:"Divine AI",           sub:"Operator intelligence, on demand. The proprietary AI layer powering every Uncharted decision.", action:"divine" },
+                        { label:"Venture Foundry",     sub:"We don't just invest. We co-build AI-native firms with experienced practitioners.", action:"solutions" },
+                        { label:"Capital Stewardship", sub:"Capital that sequences correctly — internal first, external at proof, compounding from year three.", action:"solutions" },
+                      ].map(item => (
+                        <div key={item.label}>
+                          <div className="dropdown-section-label">Solution</div>
+                          <button className="dropdown-item"
+                            onClick={() => { setDropdown(null); setPage(item.action); }}>
+                            <span className="di-title">{item.label}</span>
+                            <span className="di-sub">{item.sub}</span>
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
               )}
             </div>
 
