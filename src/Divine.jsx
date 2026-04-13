@@ -327,7 +327,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
           <div className="divine-use-grid" style={{ opacity:0, animation:"fadeUp 0.8s 0.3s forwards" }}>
             {USE_CASES.map((uc, i) => (
               <div key={i} className="use-card" style={{ padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px", transition:"border-color 0.2s ease" }}>
-                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.65rem", color:C.accent, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
+                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.65rem", color:C.ink, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.55, fontStyle:"italic" }}>"{uc.q}"</p>
               </div>
             ))}
@@ -335,10 +335,9 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
         </div>
       </section>
 
-      <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} />
 
       {/* ── FOR FOUNDERS ── */}
-      <section id="founders" style={{ padding:"8rem 2.5rem" }} className="divine-px">
+      <section id="founders" style={{ padding:"8rem 2.5rem", backgroundColor:"#FBF8F2" }} className="divine-px">
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem", color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1.5rem" }}>For Founders</p>
           <div className="divine-how-grid">
@@ -357,8 +356,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
                 { n:"2", t:"Ask your question", d:"Be specific. More context = sharper answer." },
                 { n:"3", t:"Act on it",         d:"Direct, honest, operator-grade. No hedging." },
               ].map(s => (
-                <div key={s.n} style={{ padding:"2rem 1.5rem", backgroundColor:C.bg }}>
-                  <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"3rem", color:C.accent, lineHeight:1, marginBottom:"1.25rem" }}>{s.n}</div>
+                <div key={s.n} style={{ padding:"2rem 1.5rem", backgroundColor:"transparent" }}>
+                  <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"3rem", color:C.ink, lineHeight:1, marginBottom:"1.25rem" }}>{s.n}</div>
                   <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.9rem", color:C.ink, marginBottom:"0.5rem" }}>{s.t}</div>
                   <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.7 }}>{s.d}</div>
                 </div>
@@ -368,7 +367,6 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
         </div>
       </section>
 
-      <div style={{ height:"1px", backgroundColor:C.border, margin:"0 3rem" }} />
 
       {/* ── LIVE QUERY ── */}
       <section id="ask" style={{ padding:"8rem 2.5rem" }}>
