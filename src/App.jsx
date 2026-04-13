@@ -370,9 +370,15 @@ export default function App() {
                 <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Connect</div>
                 {[["Contact","contact"],["LinkedIn","https://linkedin.com"],["Twitter / X","https://x.com"]].map(([l,h]) => (
                   <div key={l} style={{ marginBottom:"0.5rem" }}>
-                    <a href={h.startsWith("http") ? h : "#"} onClick={!h.startsWith("http") ? (e) => { e.preventDefault(); setPage("contact"); } : undefined}
-                      style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", cursor:"pointer", transition:"color 0.15s" }}
-                      onMouseEnter={e => e.target.style.color="#fff"} onMouseLeave={e => e.target.style.color="rgba(255,255,255,0.6)"}>{l}</a>
+                    {h.startsWith("http") ? (
+                      <a href={h} target="_blank" rel="noopener noreferrer"
+                        style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", cursor:"pointer", transition:"color 0.15s" }}
+                        onMouseEnter={e => e.target.style.color="#fff"} onMouseLeave={e => e.target.style.color="rgba(255,255,255,0.6)"}>{l}</a>
+                    ) : (
+                      <button onClick={() => setPage("contact")}
+                        style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", cursor:"pointer", transition:"color 0.15s", background:"none", border:"none", padding:0 }}
+                        onMouseEnter={e => e.target.style.color="#fff"} onMouseLeave={e => e.target.style.color="rgba(255,255,255,0.6)"}>{l}</button>
+                    )}
                   </div>
                 ))}
               </div>
