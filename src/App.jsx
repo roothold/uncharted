@@ -228,9 +228,6 @@ export default function App() {
           zIndex:0 }} />
         <div style={{ maxWidth:"1280px", margin:"0 auto", width:"100%", position:"relative", zIndex:1 }} className="hero-inner">
 
-          <img src="/divine-logo.svg" alt="Divine Intelligence 1.0"
-            style={{ width:"clamp(260px, 42vw, 520px)", height:"auto", display:"block",
-              marginBottom:"2rem", opacity:0, animation:"fadeUp 0.7s 0.15s forwards" }} />
           <h1 style={{
             fontFamily:"'Instrument Serif',serif", fontWeight:600,
             fontSize:"clamp(2.4rem, 8vw, 6.8rem)", lineHeight:1.0,
