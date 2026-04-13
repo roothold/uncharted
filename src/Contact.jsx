@@ -75,7 +75,7 @@ export default function ContactPage({ onBack }) {
         .type-btn:hover { border-color:${C.ink}; color:${C.ink}; }
         .type-btn.active { border-color:${C.ink}; background:${C.ink}; color:#fff; }
         .nav-outer { padding-left:0; padding-right:0; }
-        @media(max-width:600px){.nav-outer{padding-left:1.5rem!important;padding-right:1.5rem!important;}}
+        @media(max-width:600px){.nav-outer{padding-left:1.25rem!important;padding-right:1.25rem!important;}}
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
         .logo-full { display:block; } .logo-icon { display:none; }
         @media(max-width:768px){ .logo-full{display:none!important;} .logo-icon{display:block!important;} }
@@ -96,7 +96,7 @@ export default function ContactPage({ onBack }) {
           .submit-row { flex-direction:column !important; gap:1rem !important; align-items:stretch !important; }
           .submit-row p { text-align:center; }
           .submit-row button { width:100%; }
-          .px-contact { padding-left:1.5rem !important; padding-right:1.5rem !important; }
+          .px-contact { padding-left:1.25rem !important; padding-right:1.25rem !important; }
           .type-pills { flex-wrap:wrap; }
         }
         @keyframes fadeUp { from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);} }

@@ -96,7 +96,7 @@ export default function App() {
         }
         @media (max-width: 600px) {
           .grid-4  { grid-template-columns:repeat(2,1fr) !important; }
-          .px-main { padding-left:1.5rem !important; padding-right:1.5rem !important; }
+          .px-main { padding-left:1.25rem !important; padding-right:1.25rem !important; }
           .footer-grid { grid-template-columns:1fr !important; }
           .hero-btns { flex-direction:column !important; }
           .hero-btns a, .hero-btns button { width:100% !important; text-align:center !important; }
@@ -107,7 +107,7 @@ export default function App() {
         @keyframes fadeUp { from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);} }
         @keyframes fadeIn { from{opacity:0;}to{opacity:1;} }
         @keyframes blink  { 50%{opacity:0;} }
-        .nav-outer { padding-left:3rem; padding-right:3rem; }
+        
         @media (max-width:600px) {
           .nav-outer { padding-left:1.25rem !important; padding-right:1.25rem !important; }
           .mobile-menu { padding-left:1.25rem !important; padding-right:1.25rem !important; }

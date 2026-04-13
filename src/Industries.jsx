@@ -105,8 +105,9 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
         .logo-full { display:block; } .logo-icon { display:none; }
         @media(max-width:768px){ .logo-full{display:none!important;} .logo-icon{display:block!important;} }
         @media(max-width:900px){ .ind-layout{ flex-direction:column !important; } .ind-sidebar{ width:100% !important; border-right:none !important; border-bottom:1px solid ${C.border} !important; } }
-        @media(max-width:600px){ .ind-px{ padding-left:1.5rem !important; padding-right:1.5rem !important; } .opp-grid{ grid-template-columns:1fr !important; } }
-      `}</style>
+        @media(max-width:600px){ .ind-px{ padding-left:1.25rem !important; padding-right:1.25rem !important; } .opp-grid{ grid-template-columns:1fr !important; } }
+        @media(max-width:600px){ nav{ padding-left:1.25rem !important; padding-right:1.25rem !important; } }
+        `}</style>
 
       {/* Nav */}
       <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100,
