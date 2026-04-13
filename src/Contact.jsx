@@ -66,7 +66,7 @@ export default function ContactPage({ onBack }) {
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'JetBrains Mono', monospace" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400&display=swap');
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         body { -webkit-font-smoothing:antialiased; }
         ::selection { background:${C.accent}; color:#fff; }
@@ -76,8 +76,8 @@ export default function ContactPage({ onBack }) {
         .type-btn { transition:all 0.2s ease; border:1px solid ${C.border}; border-radius:4px; cursor:pointer; font-family:'JetBrains Mono', monospace; font-size:0.82rem; font-weight:500; padding:0.5rem 1rem; background:${C.bg}; color:${C.inkMid}; }
         .type-btn:hover { border-color:${C.ink}; color:${C.ink}; }
         .type-btn.active { border-color:${C.ink}; background:${C.ink}; color:#fff; }
-        .nav-outer { padding-left:3rem; padding-right:3rem; }
-        @media(max-width:600px){.nav-outer{padding-left:1.25rem!important;padding-right:1.25rem!important;}}
+        .nav-outer { padding-left:2.5rem; padding-right:2.5rem; }
+        @media(max-width:600px){.nav-outer{padding-left:1.5rem!important;padding-right:1.5rem!important;}}
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
         .logo-full { display:block; } .logo-icon { display:none; }
         @media(max-width:768px){ .logo-full{display:none!important;} .logo-icon{display:block!important;} }
@@ -98,7 +98,7 @@ export default function ContactPage({ onBack }) {
           .submit-row { flex-direction:column !important; gap:1rem !important; align-items:stretch !important; }
           .submit-row p { text-align:center; }
           .submit-row button { width:100%; }
-          .px-contact { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+          .px-contact { padding-left:1.5rem !important; padding-right:1.5rem !important; }
           .type-pills { flex-wrap:wrap; }
         }
         @keyframes fadeUp { from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);} }
@@ -106,7 +106,7 @@ export default function ContactPage({ onBack }) {
 
       {/* Nav */}
       <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 2.5rem" }} className="nav-outer">
-        <div style={{ maxWidth:"1280px", margin:"0 auto", height:"76px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
             <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"40px", width:"auto", display:"block" }} />
             <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"40px", width:"40px", display:"none" }} />
@@ -117,12 +117,12 @@ export default function ContactPage({ onBack }) {
         </div>
       </nav>
 
-      <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"9rem 3rem 6rem" }} className="px-contact">
+      <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"8rem 2.5rem 5rem" }} className="px-contact">
         <div className="contact-grid">
 
           {/* Left */}
           <div style={{ position:"sticky", top:"9rem" }} className="sticky-left">
-            <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.78rem", color:C.gold, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
+            <p style={{ fontFamily:"'Poppins', sans-serif", fontWeight:400, fontSize:"0.72rem", color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"1.5rem", opacity:0, animation:"fadeUp 0.6s 0.1s forwards" }}>
               Get in touch
             </p>
             <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"clamp(2.5rem, 5vw, 5rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.7s 0.2s forwards" }}>
