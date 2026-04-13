@@ -16,7 +16,7 @@ const C = {
   soft:     "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400;700&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Poppins:wght@400;700&display=swap');`;
 
 const SOLUTIONS = [
   {
@@ -154,7 +154,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
       <div style={{ borderBottom:`1px solid ${C.border}`, paddingTop:"56px" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"2rem 3rem" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", flexWrap:"wrap" }}>
-            <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.68rem",
+            <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.68rem",
               color:C.accent, letterSpacing:"0.14em", textTransform:"uppercase" }}>Solutions</p>
             <span style={{ color:C.border, fontSize:"0.9rem" }}>—</span>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid }}>
@@ -221,7 +221,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
           {/* System diagram */}
           <div style={{ margin:"1.5rem 0 0", padding:"1.25rem 1.5rem",
             borderTop:`1px solid ${C.border}` }}>
-            <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.55rem",
+            <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.55rem",
               color:C.inkSoft, letterSpacing:"0.12em", textTransform:"uppercase",
               marginBottom:"1.1rem" }}>The system</p>
             {[
@@ -234,7 +234,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
                 <div style={{ width:"7px", height:"7px", borderRadius:"50%",
                   backgroundColor:item.color, flexShrink:0 }} />
                 <div style={{ display:"flex", alignItems:"baseline", gap:"0.4rem", minWidth:0 }}>
-                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.68rem",
+                  <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.68rem",
                     fontWeight:600, color:C.ink, whiteSpace:"nowrap" }}>{item.l}</span>
                   <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.72rem",
                     color:C.inkSoft, whiteSpace:"nowrap" }}>— {item.d}</span>
@@ -250,11 +250,11 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
 
           {/* Tag + eyebrow */}
           <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1.25rem" }}>
-            <span style={{ ...sol.tagStyle, fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem",
+            <span style={{ ...sol.tagStyle, fontFamily:"'Inter Tight', sans-serif", fontSize:"0.62rem",
               letterSpacing:"0.1em", textTransform:"uppercase", padding:"0.22rem 0.6rem", borderRadius:"2px" }}>
               {sol.tag}
             </span>
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem",
+            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.58rem",
               color:C.inkSoft, letterSpacing:"0.06em" }}>
               {["01","02","03"][active]} / 03
             </span>
@@ -295,7 +295,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
           </div>
 
           {/* How it works */}
-          <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem",
+          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.6rem",
             color:C.inkSoft, letterSpacing:"0.12em", textTransform:"uppercase",
             marginBottom:"1rem" }}>How it works</p>
 
@@ -305,7 +305,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
               <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400,
                 fontSize:"1.6rem", color:C.accent, lineHeight:1, flexShrink:0, width:"24px" }}>{s.n}</div>
               <div>
-                <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+                <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600,
                   fontSize:"0.75rem", color:C.ink, marginBottom:"0.3rem",
                   letterSpacing:"0.04em" }}>{s.t}</div>
                 <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
@@ -344,7 +344,7 @@ export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThi
           display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"1rem" }}>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
             fontSize:"0.75rem", color:C.inkSoft }}>© 2026 Uncharted Ventures LLC</span>
-          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem",
+          <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.62rem",
             color:C.inkSoft, letterSpacing:"0.08em" }}>uncharted.ventures</span>
         </div>
       </footer>

@@ -96,7 +96,7 @@ export default function BecomeThinker({ onBack }) {
           padding:0.4rem 0.85rem;
           border:1px solid ${C.border};
           background:transparent; color:${C.inkSoft};
-          font-family:'JetBrains Mono',monospace; font-size:0.6rem;
+          font-family:'Inter Tight',sans-serif; font-size:0.6rem;
           letter-spacing:0.06em; text-transform:uppercase;
           cursor:pointer; transition:all 0.15s ease;
         }
@@ -107,7 +107,7 @@ export default function BecomeThinker({ onBack }) {
         .submit-btn {
           width:100%; padding:0.95rem;
           background:${C.accent}; color:#fff; border:none;
-          font-family:'JetBrains Mono',monospace; font-weight:500;
+          font-family:'Inter Tight',sans-serif; font-weight:500;
           font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase;
           cursor:pointer; transition:all 0.2s ease;
         }
@@ -143,7 +143,7 @@ export default function BecomeThinker({ onBack }) {
 
         {/* Bottom text */}
         <div style={{ position:"absolute", bottom:"2.5rem", left:"1rem", right:"2.5rem", zIndex:10 }}>
-          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.56rem",
+          <div style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.56rem",
             color:"rgba(255,255,255,0.45)", letterSpacing:"0.12em", textTransform:"uppercase",
             marginBottom:"0.75rem" }}>Divine · Thinker Network</div>
           <p style={{ fontFamily:"'Instrument Serif',serif", fontStyle:"italic",
@@ -175,7 +175,7 @@ export default function BecomeThinker({ onBack }) {
               The Uncharted team reviews applications personally.
               You will be contacted within 72 hours if approved.
             </p>
-            <p style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.56rem",
+            <p style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.56rem",
               color:C.inkSoft, letterSpacing:"0.08em", textTransform:"uppercase",
               borderTop:`1px solid ${C.border}`, paddingTop:"1.25rem" }}>
               Access to Divine is a privilege of the Uncharted Garrison
@@ -188,7 +188,7 @@ export default function BecomeThinker({ onBack }) {
           <div style={{ maxWidth:"400px", opacity:0, animation:"fadeUp 0.5s 0.05s forwards" }}>
 
             {/* Header */}
-            <p style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.6rem",
+            <p style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.6rem",
               color:C.inkSoft, letterSpacing:"0.12em", textTransform:"uppercase",
               marginBottom:"1.5rem" }}>
               Divine · Thinker Application
@@ -208,7 +208,7 @@ export default function BecomeThinker({ onBack }) {
               {/* Name + Alias */}
               <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1.5rem" }}>
                 <div>
-                  <label style={{ display:"block", fontFamily:"'JetBrains Mono',monospace",
+                  <label style={{ display:"block", fontFamily:"'Inter Tight',sans-serif",
                     fontSize:"0.56rem", color:C.inkSoft, letterSpacing:"0.1em",
                     textTransform:"uppercase", marginBottom:"0.5rem" }}>Full Name *</label>
                   <input className="f-input" type="text" placeholder="—"
@@ -216,7 +216,7 @@ export default function BecomeThinker({ onBack }) {
                     onChange={e => setForm(f => ({...f, name:e.target.value}))} />
                 </div>
                 <div>
-                  <label style={{ display:"block", fontFamily:"'JetBrains Mono',monospace",
+                  <label style={{ display:"block", fontFamily:"'Inter Tight',sans-serif",
                     fontSize:"0.56rem", color:C.inkSoft, letterSpacing:"0.1em",
                     textTransform:"uppercase", marginBottom:"0.5rem" }}>Public Alias</label>
                   <input className="f-input" type="text" placeholder="Optional"
@@ -227,7 +227,7 @@ export default function BecomeThinker({ onBack }) {
 
               {/* Framework */}
               <div>
-                <label style={{ display:"block", fontFamily:"'JetBrains Mono',monospace",
+                <label style={{ display:"block", fontFamily:"'Inter Tight',sans-serif",
                   fontSize:"0.56rem", color:C.inkSoft, letterSpacing:"0.1em",
                   textTransform:"uppercase", marginBottom:"0.5rem" }}>
                   Decision Framework *
@@ -240,7 +240,7 @@ export default function BecomeThinker({ onBack }) {
 
               {/* Domains */}
               <div>
-                <label style={{ display:"block", fontFamily:"'JetBrains Mono',monospace",
+                <label style={{ display:"block", fontFamily:"'Inter Tight',sans-serif",
                   fontSize:"0.56rem", color:C.inkSoft, letterSpacing:"0.1em",
                   textTransform:"uppercase", marginBottom:"0.75rem" }}>
                   Domains of Expertise *
@@ -272,7 +272,7 @@ export default function BecomeThinker({ onBack }) {
                   disabled={!canSubmit || submitting}>
                   {submitting ? "Submitting..." : "Submit Application"}
                 </button>
-                <p style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.54rem",
+                <p style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.54rem",
                   color:C.inkSoft, letterSpacing:"0.06em", marginTop:"0.75rem",
                   textAlign:"center" }}>
                   Verification may take 72 hours.

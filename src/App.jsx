@@ -18,7 +18,7 @@ const C = {
   soft:        "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400;700&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Poppins:wght@400;700&display=swap');`;
 
 const ICON_SRC = "/icon.png";
 
@@ -153,7 +153,7 @@ export default function App() {
         .dropdown-inner.cols-4 { grid-template-columns:repeat(4,1fr); }
         .dropdown-inner.cols-3 { grid-template-columns:repeat(3,1fr); }
         .dropdown-section-label {
-          font-family:'JetBrains Mono',monospace; font-size:0.6rem;
+          font-family:'Inter Tight',sans-serif; font-size:0.6rem;
           color:rgba(255,255,255,0.35); letter-spacing:0.12em; text-transform:uppercase;
           margin-bottom:1.5rem; padding-bottom:0.75rem;
           border-bottom:1px solid rgba(255,255,255,0.08);
@@ -465,7 +465,7 @@ export default function App() {
             ].map(item => (
               <div key={item.n}>
                 <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"3.5rem", color:C.accent, lineHeight:1, marginBottom:"1.5rem" }}>{item.n}</div>
-                <h3 style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"1rem", color:C.ink, marginBottom:"0.75rem" }}>{item.t}</h3>
+                <h3 style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1rem", color:C.ink, marginBottom:"0.75rem" }}>{item.t}</h3>
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.9rem", lineHeight:1.9, color:C.inkMid }}>{item.d}</p>
               </div>
             ))}
@@ -486,11 +486,11 @@ export default function App() {
               return (
                 <El key={v.id} {...props}>
                   <div className="port-card" style={{ border:"1px solid rgba(255,255,255,0.15)", borderRadius:"8px", padding:"2.5rem 2rem", backgroundColor:"#fff" }}>
-                    <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.6rem", color: v.url ? C.gold : C.inkSoft, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"1.5rem" }}>{v.cat}</div>
+                    <div style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.6rem", color: v.url ? C.gold : C.inkSoft, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"1.5rem" }}>{v.cat}</div>
                     <h3 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"2rem", color:C.ink, marginBottom:"0.75rem", lineHeight:1.1 }}>{v.name}</h3>
                     <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.87rem", lineHeight:1.85, color:C.inkMid, marginBottom:"2rem" }}>{v.desc}</p>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:"1.25rem", borderTop:`1px solid ${C.border}` }}>
-                      <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.65rem", color: v.url ? C.gold : C.inkSoft, letterSpacing:"0.06em" }}>{v.metric}</span>
+                      <span style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.65rem", color: v.url ? C.gold : C.inkSoft, letterSpacing:"0.06em" }}>{v.metric}</span>
                       {v.url && <span style={{ fontSize:"0.8rem", color:C.inkSoft }}>↗</span>}
                     </div>
                   </div>
@@ -542,7 +542,7 @@ export default function App() {
                 <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.45)", lineHeight:1.7, maxWidth:"240px" }}>We build and back companies that last — with the infrastructure, intelligence, and conviction to see it through.</div>
               </div>
               <div>
-                <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Studio</div>
+                <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Studio</div>
                 {[
                     { l:"Companies",   action:() => { setPage("home"); setTimeout(()=>{ const el=document.getElementById("portfolio"); if(el) el.scrollIntoView({behavior:"smooth"}); },100); }},
                     { l:"Divine",      action:() => setPage("divine") },
@@ -556,7 +556,7 @@ export default function App() {
                 ))}
               </div>
               <div>
-                <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Connect</div>
+                <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Connect</div>
                 <div style={{ marginBottom:"0.5rem" }}>
                     <button onClick={() => setPage("contact")}
                       style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", cursor:"pointer", transition:"color 0.15s", background:"none", border:"none", padding:0 }}
@@ -564,7 +564,7 @@ export default function App() {
                   </div>
               </div>
               <div>
-                <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Contact</div>
+                <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Contact</div>
                 {["hello@uncharted.ventures","founders@uncharted.ventures"].map(email => (
                   <a key={email} href={`mailto:${email}`} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.78rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", display:"block", marginBottom:"0.5rem", transition:"color 0.15s", wordBreak:"break-all" }}
                     onMouseEnter={e => e.target.style.color="#fff"} onMouseLeave={e => e.target.style.color="rgba(255,255,255,0.6)"}>{email}</a>
@@ -573,7 +573,7 @@ export default function App() {
             </div>
             <div style={{ borderTop:"1px solid rgba(255,255,255,0.1)", paddingTop:"1.5rem", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"0.75rem" }}>
               <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:"rgba(255,255,255,0.35)" }}>© 2026 Uncharted Ventures LLC. All rights reserved.</span>
-              <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.6rem", color:"rgba(255,255,255,0.35)", letterSpacing:"0.08em" }}>uncharted.ventures</span>
+              <span style={{ fontFamily:"'Inter Tight',sans-serif", fontSize:"0.6rem", color:"rgba(255,255,255,0.35)", letterSpacing:"0.08em" }}>uncharted.ventures</span>
             </div>
           </div>
         </footer>

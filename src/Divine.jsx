@@ -17,7 +17,7 @@ const C = {
   soft:        "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Poppins:wght@400&display=swap');`;
 
 const THINKERS = [
   { id:"2", name:"Michael Akindele", title:"Product · Brand · Venture Building", domains:["Product Strategy","Brand Building","Venture Design"], tier:"Perspective", price:"$2.50" },
@@ -93,7 +93,7 @@ function QueryPortal({ externalQuery }) {
 
       {/* ── Selector column ── */}
       <div>
-        <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500,
+        <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500,
           fontSize:"0.68rem", color:C.inkSoft, letterSpacing:"0.1em",
           textTransform:"uppercase", marginBottom:"0.85rem" }}>Choose a framework</p>
 
@@ -113,14 +113,14 @@ function QueryPortal({ externalQuery }) {
                 <div style={{ position:"absolute", left:0, top:"15%", bottom:"15%",
                   width:"3px", backgroundColor:W.accent, borderRadius:"0 2px 2px 0" }} />
               )}
-              <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+              <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600,
                 fontSize:"0.82rem", color:W.ink, marginBottom:"0.2rem" }}>{t.name}</div>
               <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
                 fontSize:"0.75rem", color:W.inkMid, marginBottom:"0.65rem" }}>{t.title}</div>
               <div style={{ display:"flex", justifyContent:"space-between" }}>
-                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.66rem",
+                <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.66rem",
                   color:W.accent, fontWeight:500 }}>{t.tier}</span>
-                <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem",
+                <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.62rem",
                   color:W.inkSoft }}>{t.price}</span>
               </div>
             </div>
@@ -136,7 +136,7 @@ function QueryPortal({ externalQuery }) {
               marginBottom:"0.5rem" }}>
               <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
                 fontSize:"0.75rem", color:W.inkMid }}>{k}</span>
-              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+              <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600,
                 fontSize:"0.75rem", color:W.ink }}>{v}</span>
             </div>
           ))}
@@ -158,12 +158,12 @@ function QueryPortal({ externalQuery }) {
               <div style={{ width:"7px", height:"7px", borderRadius:"50%",
                 backgroundColor: selected ? W.accent : "#CCCCCC",
                 transition:"background 0.3s" }} />
-              <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.68rem",
+              <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.68rem",
                 fontWeight:500, color: selected ? W.ink : W.inkSoft }}>
                 {selected ? selected.name : "No framework selected"}
               </span>
             </div>
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem",
+            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.58rem",
               color:W.inkSoft }}>Divine · v1.4</span>
           </div>
 
@@ -183,7 +183,7 @@ function QueryPortal({ externalQuery }) {
             )}
             {loading && (
               <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem" }}>
-                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.82rem",
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.82rem",
                   color:W.accent }}>Working on your answer...</p>
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
                   fontSize:"0.8rem", color:W.inkSoft }}>
@@ -193,7 +193,7 @@ function QueryPortal({ externalQuery }) {
             )}
             {response && !loading && (
               <div>
-                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem",
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.58rem",
                   color:W.accent, letterSpacing:"0.1em", marginBottom:"1rem" }}>
                   ✦ {selected?.name?.toUpperCase()} · {new Date().toLocaleTimeString()}
                 </p>
@@ -244,7 +244,7 @@ function QueryPortal({ externalQuery }) {
 export default function DivinePage({ onBack, onBecomeThinker }) {
   const [prefillQuery, setPrefillQuery] = useState("");
   return (
-    <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'JetBrains Mono', monospace" }}>
+    <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'Inter Tight', sans-serif" }}>
       <style>{`        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
 
         ${FONTS}
@@ -301,8 +301,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
               <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"40px", width:"40px", display:"none" }} />
             </button>
             <div style={{ width:"1px", height:"16px", backgroundColor:C.border }} />
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem", color:C.inkSoft }}>v1.4</span>
+            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
+            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.6rem", color:C.inkSoft }}>v1.4</span>
           </div>
           <a href="#ask" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"20px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
         </div>
@@ -334,9 +334,9 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
               }}
               style={{ padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px",
                 transition:"all 0.2s ease", cursor:"pointer" }}>
-                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.65rem", color:C.ink, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.65rem", color:C.ink, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
                 <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.55, fontStyle:"italic" }}>"{uc.q}"</p>
-                <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem", color:C.accent, marginTop:"0.6rem", letterSpacing:"0.08em" }}>Ask this →</p>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.58rem", color:C.accent, marginTop:"0.6rem", letterSpacing:"0.08em" }}>Ask this →</p>
               </div>
             ))}
           </div>
@@ -366,7 +366,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
               ].map(s => (
                 <div key={s.n} style={{ padding:"2rem 1.5rem", backgroundColor:s.bg }}>
                   <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"3rem", color:C.ink, lineHeight:1, marginBottom:"1.25rem" }}>{s.n}</div>
-                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.9rem", color:C.ink, marginBottom:"0.5rem" }}>{s.t}</div>
+                  <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.9rem", color:C.ink, marginBottom:"0.5rem" }}>{s.t}</div>
                   <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.7 }}>{s.d}</div>
                 </div>
               ))}
@@ -411,7 +411,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
       <footer style={{ borderTop:`1px solid ${C.border}`, padding:"2rem 2.5rem" }} className="divine-px">
         <div style={{ maxWidth:"1280px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1rem" }}>
-            <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.95rem", color:C.ink }}>Divine</span>
+            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.95rem", color:C.ink }}>Divine</span>
             <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>by Uncharted Ventures</span>
           </div>
           <div style={{ display:"flex", gap:"2rem", alignItems:"center" }}>

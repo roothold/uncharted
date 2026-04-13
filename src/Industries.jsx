@@ -15,7 +15,7 @@ const C = {
   soft:     "#F7F7F7",
 };
 
-const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400;700&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Poppins:wght@400;700&display=swap');`;
 
 const INDUSTRIES = [
   {
@@ -138,7 +138,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
       <div style={{ borderBottom:`1px solid ${C.border}`, paddingTop:"56px" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"2rem 3rem" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", flexWrap:"wrap" }}>
-            <p style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.68rem",
+            <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.68rem",
               color:C.accent, letterSpacing:"0.14em", textTransform:"uppercase" }}>Industries</p>
             <span style={{ color:C.border, fontSize:"0.9rem" }}>—</span>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid }}>
@@ -213,7 +213,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
               color:C.gold, letterSpacing:"0.14em", textTransform:"uppercase" }}>
               {ind.eyebrow}
             </p>
-            <span style={{ ...tc, fontFamily:"'JetBrains Mono', monospace", fontSize:"0.58rem",
+            <span style={{ ...tc, fontFamily:"'Inter Tight', sans-serif", fontSize:"0.58rem",
               letterSpacing:"0.08em", padding:"0.18rem 0.5rem", borderRadius:"2px" }}>
               {ind.tag}
             </span>
@@ -239,14 +239,14 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
 
           {/* Opportunities first */}
           <div style={{ marginBottom:"2.5rem" }}>
-            <p style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.6rem",
+            <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.6rem",
               color:C.inkSoft, letterSpacing:"0.12em", textTransform:"uppercase",
               marginBottom:"1rem" }}>Foundry Opportunities</p>
             <div className="opp-grid" style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"0.65rem" }}>
               {ind.opportunities.map((o, i) => (
                 <div key={i} className="opp-card" style={{ padding:"1.1rem 1.25rem",
                   border:`1px solid ${C.border}`, borderRadius:"4px" }}>
-                  <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600,
+                  <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600,
                     fontSize:"0.68rem", color:C.ink, marginBottom:"0.4rem",
                     letterSpacing:"0.04em" }}>{o.title}</div>
                   <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
@@ -303,7 +303,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
           display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"1rem" }}>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300,
             fontSize:"0.75rem", color:C.inkSoft }}>© 2026 Uncharted Ventures LLC</span>
-          <span style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:"0.62rem",
+          <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.62rem",
             color:C.inkSoft, letterSpacing:"0.08em" }}>uncharted.ventures</span>
         </div>
       </footer>

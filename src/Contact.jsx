@@ -62,18 +62,18 @@ export default function ContactPage({ onBack }) {
   };
 
   return (
-    <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'JetBrains Mono', monospace" }}>
+    <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'Inter Tight', sans-serif" }}>
       <style>{`        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
         .nav-outer { padding-left:3rem; padding-right:3rem; }
 
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Poppins:wght@400&display=swap');
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         body { -webkit-font-smoothing:antialiased; }
         ::selection { background:${C.accent}; color:#fff; }
-        .field { border:1px solid ${C.border}; border-radius:4px; background:${C.bg}; color:${C.ink}; font-family:'JetBrains Mono', monospace; transition:border-color 0.2s ease; width:100%; }
+        .field { border:1px solid ${C.border}; border-radius:4px; background:${C.bg}; color:${C.ink}; font-family:'Inter Tight', sans-serif; transition:border-color 0.2s ease; width:100%; }
         .field:focus { outline:none; border-color:${C.ink}; }
         .field::placeholder { color:${C.inkSoft}; }
-        .type-btn { transition:all 0.2s ease; border:1px solid ${C.border}; border-radius:4px; cursor:pointer; font-family:'JetBrains Mono', monospace; font-size:0.82rem; font-weight:500; padding:0.5rem 1rem; background:${C.bg}; color:${C.inkMid}; }
+        .type-btn { transition:all 0.2s ease; border:1px solid ${C.border}; border-radius:4px; cursor:pointer; font-family:'Inter Tight', sans-serif; font-size:0.82rem; font-weight:500; padding:0.5rem 1rem; background:${C.bg}; color:${C.inkMid}; }
         .type-btn:hover { border-color:${C.ink}; color:${C.ink}; }
         .type-btn.active { border-color:${C.ink}; background:${C.ink}; color:#fff; }
         .nav-outer { padding-left:0; padding-right:0; }
@@ -140,7 +140,7 @@ export default function ContactPage({ onBack }) {
                 { label:"Investors", value:"capital@uncharted.ventures",  href:"mailto:capital@uncharted.ventures" },
               ].map(item => (
                 <div key={item.label} className="contact-row" style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"1rem 1.25rem", border:`1px solid ${C.border}`, borderRadius:"4px" }}>
-                  <span style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.75rem", color:C.inkSoft, letterSpacing:"0.06em", textTransform:"uppercase" }}>{item.label}</span>
+                  <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.75rem", color:C.inkSoft, letterSpacing:"0.06em", textTransform:"uppercase" }}>{item.label}</span>
                   <a href={item.href} style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:400, fontSize:"0.85rem", color:C.ink, textDecoration:"none", transition:"color 0.15s" }}
                     onMouseEnter={e => e.target.style.color = C.accent} onMouseLeave={e => e.target.style.color = C.ink}>{item.value}</a>
                 </div>
@@ -166,7 +166,7 @@ export default function ContactPage({ onBack }) {
 
                 {/* Inquiry type */}
                 <div>
-                  <label style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.75rem" }}>
+                  <label style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.75rem" }}>
                     I'm reaching out as...
                   </label>
                   <div style={{ display:"flex", flexWrap:"wrap", gap:"0.5rem" }}>
@@ -180,18 +180,18 @@ export default function ContactPage({ onBack }) {
                 {/* Name + Email */}
                 <div className="name-grid">
                   <div>
-                    <label style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.5rem" }}>Name *</label>
+                    <label style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.5rem" }}>Name *</label>
                     <input type="text" className="field" value={form.name} onChange={e => setForm(f => ({ ...f, name:e.target.value }))} placeholder="Your name" required style={{ padding:"0.8rem 1rem", fontSize:"0.88rem" }} />
                   </div>
                   <div>
-                    <label style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.5rem" }}>Email *</label>
+                    <label style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.5rem" }}>Email *</label>
                     <input type="email" className="field" value={form.email} onChange={e => setForm(f => ({ ...f, email:e.target.value }))} placeholder="your@email.com" required style={{ padding:"0.8rem 1rem", fontSize:"0.88rem" }} />
                   </div>
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.5rem" }}>Message *</label>
+                  <label style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.72rem", letterSpacing:"0.08em", textTransform:"uppercase", color:C.inkMid, display:"block", marginBottom:"0.5rem" }}>Message *</label>
                   <textarea className="field" value={form.message} onChange={e => setForm(f => ({ ...f, message:e.target.value }))}
                     placeholder="Tell us what you're building, what you need, or what's on your mind..." required rows={6}
                     style={{ padding:"0.8rem 1rem", fontSize:"0.88rem", resize:"vertical", lineHeight:1.65 }} />
