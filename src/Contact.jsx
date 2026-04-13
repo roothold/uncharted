@@ -76,7 +76,7 @@ export default function ContactPage({ onBack }) {
         .type-btn { transition:all 0.2s ease; border:1px solid ${C.border}; border-radius:4px; cursor:pointer; font-family:'JetBrains Mono', monospace; font-size:0.82rem; font-weight:500; padding:0.5rem 1rem; background:${C.bg}; color:${C.inkMid}; }
         .type-btn:hover { border-color:${C.ink}; color:${C.ink}; }
         .type-btn.active { border-color:${C.ink}; background:${C.ink}; color:#fff; }
-        .nav-outer { padding-left:2.5rem; padding-right:2.5rem; }
+        .nav-outer { padding-left:0; padding-right:0; }
         @media(max-width:600px){.nav-outer{padding-left:1.5rem!important;padding-right:1.5rem!important;}}
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
         .logo-full { display:block; } .logo-icon { display:none; }
@@ -86,7 +86,7 @@ export default function ContactPage({ onBack }) {
         .contact-row { transition:border-color 0.2s, transform 0.2s; }
         .contact-row:hover { border-color:${C.ink} !important; }
         /* ── Responsive ── */
-        .contact-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:7rem; align-items:start; }
+        .contact-grid { display:grid; grid-template-columns:minmax(0,420px) 1fr; gap:5rem; align-items:start; }
         .name-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
         .submit-row { display:flex; align-items:center; justify-content:space-between; padding-top:0.5rem; }
         @media (max-width:900px) {
@@ -105,8 +105,8 @@ export default function ContactPage({ onBack }) {
       `}</style>
 
       {/* Nav */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 2.5rem" }} className="nav-outer">
-        <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0" }} className="nav-outer">
+        <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px", display:"flex", alignItems:"center", justifyContent:"space-between", padding:"0 2.5rem" }}>
           <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
             <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"40px", width:"auto", display:"block" }} />
             <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"40px", width:"40px", display:"none" }} />
@@ -221,8 +221,8 @@ export default function ContactPage({ onBack }) {
       </div>
 
       {/* Footer */}
-      <footer style={{ borderTop:`1px solid ${C.border}`, padding:"2rem 2.5rem", marginTop:"4rem" }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+      <footer style={{ borderTop:`1px solid ${C.border}`, marginTop:"4rem" }}>
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"2rem 2.5rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>© 2026 Uncharted Ventures LLC. All rights reserved.</span>
           <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.75rem", color:C.inkSoft }}>uncharted.ventures</span>
         </div>
