@@ -140,7 +140,7 @@ export default function App() {
 
         /* ── Mobile menu ── */
         .mobile-menu {
-          position:fixed; top:76px; left:0; right:0; background:#fff;
+          position:fixed; top:56px; left:0; right:0; background:#fff;
           border-bottom:1px solid ${C.border}; padding:1.5rem 1.25rem;
           display:flex; flex-direction:column; gap:1rem; z-index:99;
           animation:fadeIn 0.2s ease;
@@ -357,30 +357,25 @@ export default function App() {
               </div>
               <div>
                 <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Studio</div>
-                {[["Companies","#portfolio"],["Divine","#divine"],["Get in touch","contact"]].map(([l,h]) => (
+                {[
+                    { l:"Companies",   action:() => { setPage("home"); setTimeout(()=>{ const el=document.getElementById("portfolio"); if(el) el.scrollIntoView({behavior:"smooth"}); },100); }},
+                    { l:"Divine",      action:() => setPage("divine") },
+                    { l:"Get in touch",action:() => setPage("contact") },
+                  ].map(({l, action}) => (
                   <div key={l} style={{ marginBottom:"0.5rem" }}>
-                    <a href={h.startsWith("#") ? h : "#"}
-                      onClick={!h.startsWith("#") ? (e) => { e.preventDefault(); setPage("contact"); } : undefined}
-                      style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", transition:"color 0.15s", cursor:"pointer" }}
-                      onMouseEnter={e => e.target.style.color="#fff"} onMouseLeave={e => e.target.style.color="rgba(255,255,255,0.6)"}>{l}</a>
+                    <button onClick={action}
+                      style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", cursor:"pointer", transition:"color 0.15s", background:"none", border:"none", padding:0 }}
+                      onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,0.6)"}>{l}</button>
                   </div>
                 ))}
               </div>
               <div>
                 <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Connect</div>
-                {[["Contact","contact"],["LinkedIn","https://linkedin.com"],["Twitter / X","https://x.com"]].map(([l,h]) => (
-                  <div key={l} style={{ marginBottom:"0.5rem" }}>
-                    {h.startsWith("http") ? (
-                      <a href={h} target="_blank" rel="noopener noreferrer"
-                        style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", cursor:"pointer", transition:"color 0.15s" }}
-                        onMouseEnter={e => e.target.style.color="#fff"} onMouseLeave={e => e.target.style.color="rgba(255,255,255,0.6)"}>{l}</a>
-                    ) : (
-                      <button onClick={() => setPage("contact")}
-                        style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", textDecoration:"none", cursor:"pointer", transition:"color 0.15s", background:"none", border:"none", padding:0 }}
-                        onMouseEnter={e => e.target.style.color="#fff"} onMouseLeave={e => e.target.style.color="rgba(255,255,255,0.6)"}>{l}</button>
-                    )}
+                <div style={{ marginBottom:"0.5rem" }}>
+                    <button onClick={() => setPage("contact")}
+                      style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:"rgba(255,255,255,0.6)", cursor:"pointer", transition:"color 0.15s", background:"none", border:"none", padding:0 }}
+                      onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,0.6)"}>Contact</button>
                   </div>
-                ))}
               </div>
               <div>
                 <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.72rem", color:"rgba(255,255,255,0.4)", marginBottom:"1rem", letterSpacing:"0.08em", textTransform:"uppercase" }}>Contact</div>
