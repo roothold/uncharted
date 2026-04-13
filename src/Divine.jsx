@@ -352,11 +352,11 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
             </div>
             <div className="divine-how-3">
               {[
-                { n:"1", t:"Pick a thinker",    d:"Choose someone whose experience matches your problem." },
-                { n:"2", t:"Ask your question", d:"Be specific. More context = sharper answer." },
-                { n:"3", t:"Act on it",         d:"Direct, honest, operator-grade. No hedging." },
+                { n:"1", t:"Pick a thinker",    d:"Choose someone whose experience matches your problem.",  bg:"rgba(212,175,55,0.06)" },
+                { n:"2", t:"Ask your question", d:"Be specific. More context = sharper answer.",            bg:"rgba(212,175,55,0.11)" },
+                { n:"3", t:"Act on it",         d:"Direct, honest, operator-grade. No hedging.",            bg:"rgba(212,175,55,0.18)" },
               ].map(s => (
-                <div key={s.n} style={{ padding:"2rem 1.5rem", backgroundColor:"transparent" }}>
+                <div key={s.n} style={{ padding:"2rem 1.5rem", backgroundColor:s.bg }}>
                   <div style={{ fontFamily:"'Instrument Serif', serif", fontWeight:600, fontSize:"3rem", color:C.ink, lineHeight:1, marginBottom:"1.25rem" }}>{s.n}</div>
                   <div style={{ fontFamily:"'JetBrains Mono', monospace", fontWeight:600, fontSize:"0.9rem", color:C.ink, marginBottom:"0.5rem" }}>{s.t}</div>
                   <div style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.7 }}>{s.d}</div>

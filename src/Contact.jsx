@@ -36,9 +36,6 @@ export default function ContactPage({ onBack }) {
     setSubmitting(true);
     setError(null);
     try {
-      // ── Replace YOUR_FORM_ID with your Formspree form ID ──────────────
-      // 1. Go to formspree.io → New Form → set email to michael@uncharted.ventures
-      // 2. Copy the 8-char ID from the form endpoint URL and paste below
       const FORMSPREE_ID = "mgopgdba";
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method:  "POST",
