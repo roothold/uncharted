@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="80" viewBox="0 0 600 80">
+  <defs>
+    <linearGradient id="dg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C8512A"/>
+      <stop offset="55%" stop-color="#B8962E"/>
+      <stop offset="100%" stop-color="#C8512A"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="58" font-family="Instrument Serif, Georgia, serif" font-size="52" font-weight="400" fill="url(#dg)">Divine</text>
+  <text x="185" y="58" font-family="Inter Tight, Arial, sans-serif" font-size="52" font-weight="300" fill="url(#dg)">Intelligence</text>
+  <text x="598" y="58" font-family="JetBrains Mono, monospace" font-size="13" font-weight="400" fill="#B8962E" text-anchor="end">1.0</text>
+</svg>
