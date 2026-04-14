@@ -433,9 +433,6 @@ export default function App() {
           </div>
         )}
       </nav>
-      {/* ── DIVINE DIALOGUE HERO ── */}
-      <DivineHero onAskMore={() => setPage("divine")} />
-
       {/* ── HERO ── */}
       <section style={{
         minHeight:"100vh", display:"flex", flexDirection:"column",
@@ -480,6 +477,9 @@ export default function App() {
         </div>
       </section>
       <div style={{ height:"1px", backgroundColor:C.border }} />
+
+      {/* ── DIVINE DIALOGUE HERO ── */}
+      <DivineHero onAskMore={() => setPage("divine")} />
 
       {/* ── HOW WE BUILD ── */}
       <section id="studio" style={{ padding:"8rem 3rem" }}>
