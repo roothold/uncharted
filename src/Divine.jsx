@@ -350,7 +350,18 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
             <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
             <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.6rem", color:C.inkSoft }}>v1.4</span>
           </div>
-          <a href="#ask" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.78rem", color:"#fff", backgroundColor:C.accent, borderRadius:"20px", padding:"0.55rem 1.4rem", textDecoration:"none" }}>Ask now</a>
+          <a href="https://divine.uncharted.ventures/?login=1"
+            target="_blank" rel="noopener noreferrer"
+            style={{ fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
+              fontSize:"0.82rem", padding:"0.4rem 1.1rem",
+              border:"1px solid #D0D0D0", borderRadius:"20px",
+              background:"#fff", color:"#111",
+              textDecoration:"none", display:"inline-flex", alignItems:"center",
+              transition:"all 0.15s ease", lineHeight:1 }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
+            Sign In
+          </a>
         </div>
       </nav>
 
