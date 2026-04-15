@@ -26,12 +26,10 @@ const THINKERS = [
 ];
 
 const USE_CASES = [
-  { q:"Should I raise now or wait 6 months?",               domain:"Fundraising" },
-  { q:"My co-founder wants to pivot. How do I think about this?", domain:"Strategy" },
-  { q:"When should I hire my first salesperson?",            domain:"Hiring" },
-  { q:"Our margins are compressing. What do I cut first?",   domain:"Operations" },
-  { q:"How do I price this for enterprise vs. SMB?",         domain:"Pricing" },
-  { q:"We have 3 months of runway. What are our real options?", domain:"Capital" },
+  { q:"Audit my current runway against 2026 market benchmarks.",               domain:"Capital Strategy"    },
+  { q:"Identify the structural fragility in my supply chain.",                  domain:"Operational Moats"   },
+  { q:"Stress-test our pricing model for a high-inflation environment.",        domain:"Growth Logic"        },
+  { q:"Design a vesting schedule that secures long-term executive alignment.",  domain:"Talent Architecture" },
 ];
 
 // ── Query Portal ────────────────────────────────────────────────────────────
@@ -512,16 +510,16 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
         <div style={{ maxWidth:"1280px", margin:"0 auto", width:"100%" }} className="divine-hero-grid">
           <div>
             <h1 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2.8rem, 5.5vw, 5.5rem)", lineHeight:1.0, color:C.ink, marginBottom:"1.75rem", opacity:0, animation:"fadeUp 0.8s 0.2s forwards" }}>
-              Ask a hard<br />question.<br />Get a real<br />answer.
+              Hard decisions,<br />decoded.
             </h1>
             <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.98rem", lineHeight:1.9, color:C.inkMid, maxWidth:"420px", marginBottom:"3rem", opacity:0, animation:"fadeUp 0.8s 0.35s forwards" }}>
-              Divine gives founders direct, practical answers to their hardest business questions — drawn from real operator experience.
+              Divine is a proprietary intelligence layer providing direct, operator-grade answers to consequential business questions. The protocol bypasses generic AI noise by utilising a private corpus of verified expertise from founders who have built and exited companies.
             </p>
             <div style={{ opacity:0, animation:"fadeUp 0.8s 0.5s forwards" }}>
-              <a href="#ask" className="cta-primary" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"20px", padding:"0.9rem 2.25rem", textDecoration:"none", display:"inline-block" }}>Ask your first question →</a>
+              <a href="#ask" className="cta-primary" style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.88rem", color:"#fff", backgroundColor:C.accent, borderRadius:"20px", padding:"0.9rem 2.25rem", textDecoration:"none", display:"inline-block" }}>Initiate a Protocol →</a>
             </div>
           </div>
-          {/* Use case grid — clickable, pre-fills question */}
+          {/* Protocol cards — clickable, pre-fills question */}
           <div className="divine-use-grid" style={{ opacity:0, animation:"fadeUp 0.8s 0.3s forwards" }}>
             {USE_CASES.map((uc, i) => (
               <div key={i} className="use-card" onClick={() => {
@@ -531,11 +529,10 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
                   if (askEl) askEl.scrollIntoView({ behavior:"smooth", block:"start" });
                 }, 50);
               }}
-              style={{ padding:"1.25rem", border:`1px solid ${C.border}`, borderRadius:"6px",
+              style={{ padding:"1.5rem", border:`1px solid ${C.border}`, borderRadius:"6px",
                 transition:"all 0.2s ease", cursor:"pointer" }}>
-                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500, fontSize:"0.65rem", color:C.ink, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"0.5rem" }}>{uc.domain}</p>
-                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.82rem", color:C.inkMid, lineHeight:1.55, fontStyle:"italic" }}>"{uc.q}"</p>
-                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.58rem", color:C.accent, marginTop:"0.6rem", letterSpacing:"0.08em" }}>Ask this →</p>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"0.6rem", color:C.accent, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"0.65rem" }}>Protocol · {uc.domain}</p>
+                <p style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:300, fontSize:"0.85rem", color:C.ink, lineHeight:1.6 }}>"{uc.q}"</p>
               </div>
             ))}
           </div>
