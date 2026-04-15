@@ -53,6 +53,25 @@ export default function App() {
     window.scrollTo(0, 0);
   };
 
+  // ── Smart link interception ──────────────────────────────────────────────
+  // Catches <a href="/contact"> etc. anywhere in body text and routes
+  // client-side without a full page reload
+  useEffect(() => {
+    const INTERNAL = ["/contact","/divine","/thinker","/industries","/solutions","/"];
+    const handler = (e) => {
+      const anchor = e.target.closest("a[href]");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (href && INTERNAL.some(p => href === p || href.startsWith(p + "?"))) {
+        e.preventDefault();
+        navigate(href);
+        window.scrollTo(0, 0);
+      }
+    };
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, [navigate]);
+
   const [scrollY, setScrollY]   = useState(0);
   const [activeQuote, setAQ]    = useState(0);
   const [menuOpen, setMenu]     = useState(false);
@@ -87,6 +106,7 @@ export default function App() {
       <Route path="/thinker"     element={<BecomeThinker  onBack={() => setPage("home")} />} />
       <Route path="/industries"  element={<IndustriesPage onBack={() => setPage("home")} onContact={() => setPage("contact")} onSolutions={() => setPage("solutions")} />} />
       <Route path="/solutions"   element={<SolutionsPage  onBack={() => setPage("home")} onContact={() => setPage("contact")} onDivine={() => setPage("divine")} onBecomeThinker={() => setPage("become-thinker")} onIndustries={() => setPage("industries")} />} />
+      <Route path="/"            element={<HomePage scrolled={scrolled} activeQuote={activeQuote} menuOpen={menuOpen} setMenu={setMenu} dropdown={dropdown} setDropdown={setDropdown} setPage={setPage} />} />
       <Route path="/*"           element={<HomePage scrolled={scrolled} activeQuote={activeQuote} menuOpen={menuOpen} setMenu={setMenu} dropdown={dropdown} setDropdown={setDropdown} setPage={setPage} />} />
     </Routes>
   );

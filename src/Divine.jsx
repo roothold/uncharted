@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const LOGO_SRC = "/logo.png";
 const ICON_SRC = "/icon.png";
@@ -35,8 +36,11 @@ const USE_CASES = [
 
 // ── Query Portal ────────────────────────────────────────────────────────────
 function QueryPortal({ externalQuery }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialQuery = externalQuery || searchParams.get("q") || "";
+
   const [selected, setSelected] = useState(null);
-  const [query, setQuery]       = useState(externalQuery || "");
+  const [query, setQuery]       = useState(initialQuery);
   const [response, setResponse] = useState(null);
 
   useEffect(() => {
@@ -59,6 +63,9 @@ function QueryPortal({ externalQuery }) {
 
   const ask = async () => {
     if (!query.trim() || !selected) return;
+    // Generate session ID and update URL for bookmarking
+    const sessionId = `${selected.id}-${Date.now().toString(36)}`;
+    setSearchParams({ session: sessionId, q: query.trim() });
     setLoading(true); setResponse(null);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -280,7 +287,8 @@ function QueryPortal({ externalQuery }) {
 
 // ── Main Divine Page ────────────────────────────────────────────────────────
 export default function DivinePage({ onBack, onBecomeThinker }) {
-  const [prefillQuery, setPrefillQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const [prefillQuery, setPrefillQuery] = useState(searchParams.get("q") || "");
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'Inter Tight', sans-serif" }}>
       <style>{`        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
