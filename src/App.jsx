@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import DivinePage from "./Divine";
 import ContactPage from "./Contact";
 import BecomeThinker from "./BecomeThinker";
@@ -37,11 +38,25 @@ const QUOTES = [
 ];
 
 export default function App() {
-  const [page, setPage]         = useState("home");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const setPage  = (p) => {
+    const routes = {
+      "home":           "/",
+      "divine":         "/divine",
+      "contact":        "/contact",
+      "become-thinker": "/thinker",
+      "industries":     "/industries",
+      "solutions":      "/solutions",
+    };
+    navigate(routes[p] || "/");
+    window.scrollTo(0, 0);
+  };
+
   const [scrollY, setScrollY]   = useState(0);
   const [activeQuote, setAQ]    = useState(0);
   const [menuOpen, setMenu]     = useState(false);
-  const [dropdown, setDropdown] = useState(null); // 'industries' | 'solutions' | null
+  const [dropdown, setDropdown] = useState(null);
 
   useEffect(() => {
     const h = () => setScrollY(window.scrollY);
@@ -49,14 +64,13 @@ export default function App() {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  useEffect(() => { window.scrollTo(0,0); setMenu(false); }, [page]);
+  useEffect(() => { window.scrollTo(0,0); setMenu(false); }, [location.pathname]);
 
   useEffect(() => {
     const t = setInterval(() => setAQ(q => (q+1) % QUOTES.length), 5000);
     return () => clearInterval(t);
   }, []);
 
-  // Close menu/dropdown on outside click
   useEffect(() => {
     if (!menuOpen && !dropdown) return;
     const h = () => { setMenu(false); setDropdown(null); };
@@ -64,14 +78,21 @@ export default function App() {
     return () => document.removeEventListener("click", h);
   }, [menuOpen, dropdown]);
 
-  if (page === "divine")        return <DivinePage onBack={() => setPage("home")} onBecomeThinker={() => setPage("become-thinker")} />;
-  if (page === "contact")       return <ContactPage onBack={() => setPage("home")} />;
-  if (page === "become-thinker") return <BecomeThinker onBack={() => setPage("home")} />;
-  if (page === "industries")    return <IndustriesPage onBack={() => setPage("home")} onContact={() => setPage("contact")} onSolutions={() => setPage("solutions")} />;
-  if (page === "solutions")     return <SolutionsPage onBack={() => setPage("home")} onContact={() => setPage("contact")} onDivine={() => setPage("divine")} onBecomeThinker={() => setPage("become-thinker")} onIndustries={() => setPage("industries")} />;
-
   const scrolled = scrollY > 30;
 
+  return (
+    <Routes>
+      <Route path="/divine"      element={<DivinePage     onBack={() => setPage("home")} onBecomeThinker={() => setPage("become-thinker")} />} />
+      <Route path="/contact"     element={<ContactPage    onBack={() => setPage("home")} />} />
+      <Route path="/thinker"     element={<BecomeThinker  onBack={() => setPage("home")} />} />
+      <Route path="/industries"  element={<IndustriesPage onBack={() => setPage("home")} onContact={() => setPage("contact")} onSolutions={() => setPage("solutions")} />} />
+      <Route path="/solutions"   element={<SolutionsPage  onBack={() => setPage("home")} onContact={() => setPage("contact")} onDivine={() => setPage("divine")} onBecomeThinker={() => setPage("become-thinker")} onIndustries={() => setPage("industries")} />} />
+      <Route path="/*"           element={<HomePage scrolled={scrolled} activeQuote={activeQuote} menuOpen={menuOpen} setMenu={setMenu} dropdown={dropdown} setDropdown={setDropdown} setPage={setPage} />} />
+    </Routes>
+  );
+}
+
+function HomePage({ scrolled, activeQuote, menuOpen, setMenu, dropdown, setDropdown, setPage }) {
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", overflowX:"hidden" }}>
       <style>{`        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
@@ -482,7 +503,7 @@ export default function App() {
       <DivineHero onAskMore={() => setPage("divine")} />
 
       {/* ── HOW WE BUILD ── */}
-      <section id="studio" style={{ padding:"8rem 3rem" }}>
+      <section id="studio" style={{ padding:"8rem 3rem", backgroundColor:"#FAF8F3" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:C.ink, marginBottom:"1.5rem", maxWidth:"520px", lineHeight:1.1 }}>
             A different kind of partner.
