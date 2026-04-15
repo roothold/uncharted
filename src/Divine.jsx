@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 const LOGO_SRC = "/logo.png";
 const ICON_SRC = "/icon.png";
@@ -289,17 +289,37 @@ function QueryPortal({ externalQuery }) {
 export default function DivinePage({ onBack, onBecomeThinker }) {
   const [searchParams] = useSearchParams();
   const [prefillQuery, setPrefillQuery] = useState(searchParams.get("q") || "");
+  const navigate = useNavigate();
+  const [menuOpen, setMenu]     = useState(false);
+  const [dropdown, setDropdown] = useState(null);
+
+  const setPage = (p) => {
+    const routes = { home:"/", divine:"/divine", contact:"/contact",
+      "become-thinker":"/thinker", industries:"/industries", solutions:"/solutions" };
+    navigate(routes[p] || "/");
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(() => {
+    if (!menuOpen && !dropdown) return;
+    const h = () => { setMenu(false); setDropdown(null); };
+    document.addEventListener("click", h);
+    return () => document.removeEventListener("click", h);
+  }, [menuOpen, dropdown]);
+
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'Inter Tight', sans-serif" }}>
-      <style>{`        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
-
+      <style>{`
+        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
         ${FONTS}
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         html { scroll-behavior:smooth; }
         body { -webkit-font-smoothing:antialiased; }
         ::selection { background:${C.accent}; color:#fff; }
-        @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
+        @keyframes fadeUp  { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
         @keyframes blink   { 50%{opacity:0;} }
+        @keyframes dropIn  { from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);} }
+        @keyframes slideDown { from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);} }
         .nav-outer { padding-left:3rem; padding-right:3rem; }
         @media(max-width:600px){.nav-outer{padding-left:1rem!important;padding-right:1rem!important;}}
         .nav-link { transition:opacity 0.2s; } .nav-link:hover { opacity:0.45; }
@@ -311,7 +331,43 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
         .step-row:hover { border-color:${C.ink} !important; }
         .logo-full { display:block; } .logo-icon { display:none; }
         @media(max-width:768px){ .logo-full{display:none!important;} .logo-icon{display:block!important;} }
+        /* ── Nav dropdowns ── */
+        .nav-dropdown-btn {
+          display:inline-flex; align-items:center; gap:0.25rem;
+          background:none; border:none; cursor:pointer;
+          font-family:'Inter Tight',sans-serif; font-weight:500;
+          font-size:0.82rem; color:#333; padding:0.4rem 0.65rem; line-height:1;
+          transition:color 0.15s; white-space:nowrap;
+        }
+        .nav-dropdown-btn:hover { color:#000; }
+        .nav-dropdown-btn svg { display:block; flex-shrink:0; transition:transform 0.2s; }
+        .nav-dropdown-btn.open { color:#000; }
+        .nav-dropdown-btn.open svg { transform:rotate(180deg); }
+        .dropdown-panel { position:fixed; top:56px; left:0; right:0; padding:3rem 0 4rem; z-index:199; animation:dropIn 0.2s ease; }
+        .dropdown-inner { display:grid; gap:0; align-items:start; }
+        .dropdown-inner.cols-4 { grid-template-columns:repeat(4,1fr); }
+        .dropdown-inner.cols-3 { grid-template-columns:repeat(3,1fr); }
+        .dropdown-section-label { font-family:'Inter Tight',sans-serif; font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.5rem; padding-bottom:0.75rem; }
+        .dropdown-item { display:block; width:100%; padding:0.5rem 2rem 0.5rem 0; text-align:left; background:none; border:none; cursor:pointer; transition:opacity 0.15s; }
+        .dropdown-item:hover { opacity:0.6; }
+        .di-title { display:block; font-family:'Instrument Serif',serif; font-weight:400; font-size:1.6rem; line-height:1.15; transition:opacity 0.15s; margin-bottom:0.35rem; }
+        .di-sub { display:block; font-family:'Inter Tight',sans-serif; font-weight:300; font-size:0.78rem; line-height:1.55; }
+        .dropdown-overlay { position:fixed; top:56px; left:0; right:0; bottom:0; z-index:198; cursor:default; }
+        @media (prefers-color-scheme: light) {
+          .dropdown-panel { background:#FFFFFF; border-top:1px solid #E8E8E8; box-shadow:0 8px 32px rgba(0,0,0,0.08); }
+          .dropdown-section-label { color:#AAAAAA; border-bottom:1px solid #E8E8E8; }
+          .di-title { color:#0D0D0D; } .di-sub { color:#888888; }
+          .dropdown-overlay { background:rgba(0,0,0,0.15); }
+        }
+        @media (prefers-color-scheme: dark) {
+          .dropdown-panel { background:#0D0D0D; border-top:1px solid rgba(255,255,255,0.08); }
+          .dropdown-section-label { color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(255,255,255,0.08); }
+          .di-title { color:#FFFFFF; } .di-sub { color:rgba(255,255,255,0.55); }
+          .dropdown-overlay { background:rgba(0,0,0,0.5); }
+        }
         /* ── Responsive ── */
+        .desktop-nav { display:flex; }
+        .hamburger   { display:none !important; }
         .divine-hero-grid   { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
         .divine-how-grid    { display:grid; grid-template-columns:1fr 2fr; gap:5rem; align-items:start; }
         .divine-how-3       { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
@@ -328,41 +384,127 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
           .divine-thinker-grid { grid-template-columns:1fr !important; gap:3rem !important; }
           .divine-query-grid   { grid-template-columns:1fr !important; gap:1.5rem !important; }
         }
+        @media (max-width:768px) {
+          .desktop-nav { display:none !important; }
+          .hamburger   { display:flex !important; }
+        }
         @media (max-width:600px) {
           .divine-use-grid  { grid-template-columns:1fr !important; }
           .divine-stat-3    { grid-template-columns:1fr 1fr !important; }
           .divine-px        { padding-left:1rem !important; padding-right:1rem !important; }
           .divine-cta-row   { flex-direction:column !important; }
           .divine-cta-row a, .divine-cta-row button { width:100% !important; text-align:center !important; box-sizing:border-box; }
-          .divine-nav-links { display:none !important; }
         }
+        /* ── Mobile menu ── */
+        .mobile-menu { position:fixed; top:0; left:0; right:0; bottom:0; background:#0D0D0D; z-index:200; display:flex; flex-direction:column; padding:0 1rem; animation:slideDown 0.25s ease; }
+        .mobile-menu-header { height:56px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+        .mobile-menu-links  { flex:1; display:flex; flex-direction:column; justify-content:center; gap:0; }
+        .mobile-menu-item { font-family:'Instrument Serif',serif; font-weight:400; font-size:2.4rem; color:rgba(255,255,255,0.9); background:none; border:none; text-align:left; padding:0.6rem 0; cursor:pointer; transition:opacity 0.15s; line-height:1.2; }
+        .mobile-menu-item:hover { opacity:0.6; }
+        .mobile-menu-footer { padding-bottom:2.5rem; flex-shrink:0; border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem; }
+        .mobile-menu-signin { font-family:'Inter Tight',sans-serif; font-weight:400; font-size:0.95rem; color:rgba(255,255,255,0.45); text-decoration:none; display:block; }
       `}</style>
 
-      {/* Nav */}
-      <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"rgba(255,255,255,0.97)", backdropFilter:"blur(12px)", borderBottom:`1px solid ${C.border}`, padding:"0 3rem" }} className="nav-outer">
-        <div style={{ maxWidth:"1280px", margin:"0 auto", height:"68px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+      {/* ── NAV — matches homepage ── */}
+      <nav className="nav-outer" style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, backgroundColor:"#FFFFFF", borderBottom:"1px solid #FFFFFF", padding:"0 3rem" }}>
+        <div style={{ maxWidth:"1280px", margin:"0 auto", height:"56px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"1.5rem" }}>
-            <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
-              <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"40px", width:"auto", display:"block" }} />
-              <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"40px", width:"40px", display:"none" }} />
+            <button onClick={() => setPage("home")} style={{ background:"none", border:"none", cursor:"pointer", padding:0, flexShrink:0 }}>
+              <img src={LOGO_SRC} alt="Uncharted Ventures" className="logo-full" style={{ height:"40px", width:"auto", display:"block", imageRendering:"crisp-edges" }} />
+              <img src={ICON_SRC} alt="Uncharted Ventures" className="logo-icon" style={{ height:"32px", width:"32px", display:"none" }} />
             </button>
-            <div style={{ width:"1px", height:"16px", backgroundColor:C.border }} />
-            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600, fontSize:"1.05rem", color:C.ink }}>Divine</span>
-            <span style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:"0.6rem", color:C.inkSoft }}>v1.4</span>
+            <div style={{ position:"relative" }} className="desktop-nav" onClick={e => e.stopPropagation()}>
+              <button className={`nav-dropdown-btn${dropdown==="industries" ? " open" : ""}`} onClick={() => setDropdown(d => d==="industries" ? null : "industries")}>
+                Industries
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              {dropdown==="industries" && (<>
+                <div className="dropdown-overlay" onClick={() => setDropdown(null)} />
+                <div className="dropdown-panel" onClick={e => e.stopPropagation()}>
+                  <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 2.5rem" }}>
+                    <div className="dropdown-section-label" style={{ marginBottom:"2rem" }}>Industries</div>
+                    <div className="dropdown-inner cols-4">
+                      {[
+                        { label:"Professional Services", sub:"The billable hour is ending. The judgment economy is beginning." },
+                        { label:"Specialty Consumer",    sub:"Brand endures. Supply chain doesn't." },
+                        { label:"B2B Infrastructure",    sub:"Every mid-market company is reorganising around AI." },
+                        { label:"Thinking Economy",      sub:"When execution is automated, judgment becomes the product." },
+                      ].map(item => (
+                        <button key={item.label} className="dropdown-item" onClick={() => { setDropdown(null); setPage("industries"); }}>
+                          <span className="di-title">{item.label}</span>
+                          <span className="di-sub">{item.sub}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </>)}
+            </div>
+            <div style={{ position:"relative" }} className="desktop-nav" onClick={e => e.stopPropagation()}>
+              <button className={`nav-dropdown-btn${dropdown==="solutions" ? " open" : ""}`} onClick={() => setDropdown(d => d==="solutions" ? null : "solutions")}>
+                Solutions
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              {dropdown==="solutions" && (<>
+                <div className="dropdown-overlay" onClick={() => setDropdown(null)} />
+                <div className="dropdown-panel" onClick={e => e.stopPropagation()}>
+                  <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 2.5rem" }}>
+                    <div className="dropdown-section-label" style={{ marginBottom:"2rem" }}>Solutions</div>
+                    <div className="dropdown-inner cols-3">
+                      {[
+                        { label:"Divine AI",           sub:"Operator intelligence, on demand.",                                    action:"divine"    },
+                        { label:"Venture Foundry",     sub:"We don't just invest. We co-build AI-native firms.",                  action:"solutions" },
+                        { label:"Capital Stewardship", sub:"Capital that sequences correctly — internal first, external at proof.", action:"solutions" },
+                      ].map(item => (
+                        <button key={item.label} className="dropdown-item" onClick={() => { setDropdown(null); setPage(item.action); }}>
+                          <span className="di-title">{item.label}</span>
+                          <span className="di-sub">{item.sub}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </>)}
+            </div>
           </div>
-          <a href="https://divine.uncharted.ventures/?login=1"
-            target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily:"'Inter Tight',sans-serif", fontWeight:500,
-              fontSize:"0.82rem", padding:"0.4rem 1.1rem",
-              border:"1px solid #D0D0D0", borderRadius:"20px",
-              background:"#fff", color:"#111",
-              textDecoration:"none", display:"inline-flex", alignItems:"center",
-              transition:"all 0.15s ease", lineHeight:1 }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
-            Sign In
-          </a>
+          <div style={{ display:"flex", alignItems:"center", gap:"0.75rem" }}>
+            <a href="https://divine.uncharted.ventures/?login=1" target="_blank" rel="noopener noreferrer"
+              style={{ fontFamily:"'Inter Tight',sans-serif", fontWeight:500, fontSize:"0.82rem", padding:"0.4rem 1.1rem", border:"1px solid #D0D0D0", borderRadius:"20px", background:"#fff", color:"#111", textDecoration:"none", display:"inline-flex", alignItems:"center", transition:"all 0.15s ease", lineHeight:1 }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
+              Sign In
+            </a>
+            <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }}
+              style={{ display:"none", background:"none", border:"none", cursor:"pointer", padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
+              <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
+              <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
+            </button>
+          </div>
         </div>
+        {menuOpen && (
+          <div className="mobile-menu" onClick={e => e.stopPropagation()}>
+            <div className="mobile-menu-header">
+              <button onClick={() => { setPage("home"); setMenu(false); }} style={{ background:"none", border:"none", cursor:"pointer", padding:0 }}>
+                <img src="/logo-white.png" alt="Uncharted" style={{ height:"36px", width:"auto", display:"block" }} />
+              </button>
+              <button onClick={() => setMenu(false)} style={{ background:"none", border:"none", cursor:"pointer", padding:"4px", color:"rgba(255,255,255,0.7)", fontSize:"1.4rem", lineHeight:1 }}>✕</button>
+            </div>
+            <div className="mobile-menu-links">
+              {[
+                { label:"Industries", action:() => { setPage("industries"); setMenu(false); } },
+                { label:"Solutions",  action:() => { setPage("solutions");  setMenu(false); } },
+                { label:"Divine AI",  action:() => { setPage("divine");     setMenu(false); } },
+                { label:"Contact",    action:() => { setPage("contact");    setMenu(false); } },
+              ].map(item => (
+                <button key={item.label} className="mobile-menu-item" onClick={item.action}>{item.label}</button>
+              ))}
+            </div>
+            <div className="mobile-menu-footer">
+              <a href="https://divine.uncharted.ventures/?login=1" target="_blank" rel="noopener noreferrer" className="mobile-menu-signin" onClick={() => setMenu(false)}>Sign In →</a>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* ── HERO ── */}
