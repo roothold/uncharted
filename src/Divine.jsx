@@ -470,10 +470,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
               style={{ fontFamily:"'Inter Tight',sans-serif", fontWeight:500, fontSize:"0.82rem", padding:"0.4rem 1.1rem", border:"1px solid #D0D0D0", borderRadius:"20px", background:"#fff", color:"#111", textDecoration:"none", display:"inline-flex", alignItems:"center", transition:"all 0.15s ease", lineHeight:1 }}
               onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
-              Sign In
+              Log In
             </a>
-            <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }}
-              style={{ display:"none", background:"none", border:"none", cursor:"pointer", padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
               <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
               <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
               <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
@@ -499,7 +497,7 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
               ))}
             </div>
             <div className="mobile-menu-footer">
-              <a href="https://divine.uncharted.ventures/?login=1" target="_blank" rel="noopener noreferrer" className="mobile-menu-signin" onClick={() => setMenu(false)}>Sign In →</a>
+              <a href="https://divine.uncharted.ventures/?login=1" target="_blank" rel="noopener noreferrer" className="mobile-menu-signin" onClick={() => setMenu(false)}>Log In →</a>
             </div>
           </div>
         )}

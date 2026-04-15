@@ -402,7 +402,7 @@ function HomePage({ scrolled, activeQuote, menuOpen, setMenu, dropdown, setDropd
 
           </div>{/* end left group */}
 
-          {/* ── RIGHT: Sign In + Hamburger ── */}
+          {/* ── RIGHT: Log In + Hamburger ── */}
           <div style={{ display:"flex", alignItems:"center", gap:"0.75rem" }}>
             <a href="https://divine.uncharted.ventures/?login=1"
               target="_blank" rel="noopener noreferrer"
@@ -414,9 +414,8 @@ function HomePage({ scrolled, activeQuote, menuOpen, setMenu, dropdown, setDropd
                 transition:"all 0.15s ease", lineHeight:1 }}
               onMouseEnter={e => { e.currentTarget.style.borderColor="#111"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
-              Sign In
+              Log In
             </a>
-            <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }}
               style={{ display:"none", background:"none", border:"none", cursor:"pointer",
                 padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
               <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111",
@@ -461,13 +460,13 @@ function HomePage({ scrolled, activeQuote, menuOpen, setMenu, dropdown, setDropd
               ))}
             </div>
 
-            {/* Footer: Sign In */}
+            {/* Footer: Log In */}
             <div className="mobile-menu-footer">
               <a href="https://divine.uncharted.ventures/?login=1"
                 target="_blank" rel="noopener noreferrer"
                 className="mobile-menu-signin"
                 onClick={() => setMenu(false)}>
-                Sign In →
+                Log In →
               </a>
             </div>
 
