@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LOGO_SRC = "/logo.png";
 const ICON_SRC = "/icon.png";
@@ -96,14 +97,15 @@ We're not trying to build a fund. We're building a machine that generates instit
 ];
 
 export default function SolutionsPage({ onBack, onContact, onDivine, onBecomeThinker, onIndustries }) {
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const sol = SOLUTIONS[active];
 
   const handleCTA = (action) => {
-    if (action==="divine")         onDivine?.();
-    else if (action==="contact")   onContact?.();
-    else if (action==="become-thinker") onBecomeThinker?.();
-    else if (action==="industries")onIndustries?.();
+    if (action==="divine")         navigate("/divine");
+    else if (action==="contact")   navigate("/contact");
+    else if (action==="become-thinker") navigate("/thinker");
+    else if (action==="industries")navigate("/industries");
     else if (action==="solutions") setActive(1);
   };
 

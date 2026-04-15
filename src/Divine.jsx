@@ -337,10 +337,11 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
           font-size:0.82rem; color:#333; padding:0.4rem 0.65rem; line-height:1;
           transition:color 0.15s; white-space:nowrap;
         }
-        .nav-dropdown-btn:hover { color:#000; }
+        .nav-dropdown-btn:hover { color:#C8512A; background:rgba(200,81,42,0.06); border-radius:6px; }
+        .nav-dropdown-btn:hover svg { color:#C8512A; }
         .nav-dropdown-btn svg { display:block; flex-shrink:0; transition:transform 0.2s; }
-        .nav-dropdown-btn.open { color:#000; }
-        .nav-dropdown-btn.open svg { transform:rotate(180deg); }
+        .nav-dropdown-btn.open { color:#C8512A; background:rgba(200,81,42,0.06); border-radius:6px; }
+        .nav-dropdown-btn.open svg { transform:rotate(180deg); color:#C8512A; }
         .dropdown-panel { position:fixed; top:56px; left:0; right:0; padding:3rem 0 4rem; z-index:199; animation:dropIn 0.2s ease; }
         .dropdown-inner { display:grid; gap:0; align-items:start; }
         .dropdown-inner.cols-4 { grid-template-columns:repeat(4,1fr); }

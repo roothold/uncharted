@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LOGO_SRC = "/logo.png";
 const ICON_SRC = "/icon.png";
@@ -87,6 +88,7 @@ const TAG_STYLE = {
 };
 
 export default function IndustriesPage({ onBack, onContact, onSolutions }) {
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const ind = INDUSTRIES[active];
   const tc = TAG_STYLE[ind.tag] || {};
@@ -274,7 +276,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
 
           {/* CTAs */}
           <div style={{ display:"flex", gap:"0.75rem", flexWrap:"wrap" }}>
-            <button onClick={onContact}
+            <button onClick={() => navigate("/contact")}
               style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:600,
                 fontSize:"0.72rem", letterSpacing:"0.06em", color:"#fff",
                 backgroundColor:C.accent, border:"none", borderRadius:"20px",
@@ -283,7 +285,7 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
               onMouseLeave={e=>e.currentTarget.style.opacity="1"}>
               Build with us
             </button>
-            <button onClick={onSolutions}
+            <button onClick={() => navigate("/solutions")}
               style={{ fontFamily:"'Inter Tight', sans-serif", fontWeight:500,
                 fontSize:"0.72rem", letterSpacing:"0.06em", color:C.inkMid,
                 backgroundColor:"transparent", border:`1px solid ${C.border}`,
