@@ -551,7 +551,7 @@ function HomePage({ scrolled, activeQuote, menuOpen, setMenu, dropdown, setDropd
       <section id="portfolio" style={{ padding:"8rem 3rem", backgroundColor:"#BF452A" }}>
         <div style={{ maxWidth:"1280px", margin:"0 auto" }}>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"4rem", flexWrap:"wrap", gap:"1rem" }}>
-            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:"#fff", lineHeight:1.1 }}>Our companies.</h2>
+            <h2 style={{ fontFamily:"'Instrument Serif', serif", fontWeight:400, fontSize:"clamp(2rem, 5vw, 3.5rem)", color:"#fff", lineHeight:1.1 }}>Featured companies.</h2>
           </div>
           <div className="grid-3" style={{ gap:"1.5rem" }}>
             {PORTFOLIO.map(v => {
