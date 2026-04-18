@@ -473,6 +473,9 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
               onMouseLeave={e => { e.currentTarget.style.borderColor="#D0D0D0"; }}>
               Log In
             </a>
+            <button onClick={e => { e.stopPropagation(); setMenu(o => !o); }}
+              style={{ display:"none", background:"none", border:"none", cursor:"pointer",
+                padding:"4px", flexDirection:"column", gap:"5px" }} className="hamburger">
               <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
               <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", opacity: menuOpen ? 0 : 1 }} />
               <span style={{ display:"block", width:"22px", height:"2px", backgroundColor:"#111", transition:"all 0.2s ease", transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
