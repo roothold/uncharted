@@ -96,9 +96,9 @@ export default function IndustriesPage({ onBack, onContact, onSolutions }) {
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'Inter Tight', sans-serif" }}>
       <style>{`
+        ${FONTS}
         h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
         .nav-outer { padding-left:3rem; padding-right:3rem; }
-        ${FONTS}
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         body { -webkit-font-smoothing:antialiased; }
         ::selection { background:${C.accent}; color:#fff; }

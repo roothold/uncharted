@@ -308,8 +308,8 @@ export default function DivinePage({ onBack, onBecomeThinker }) {
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", fontFamily:"'Inter Tight', sans-serif" }}>
       <style>{`
-        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
         ${FONTS}
+        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         html { scroll-behavior:smooth; }
         body { -webkit-font-smoothing:antialiased; }

@@ -65,9 +65,9 @@ export default function BecomeThinker({ onBack }) {
   return (
     <div style={{ backgroundColor:C.bg, minHeight:"100vh", display:"flex",
       fontFamily:"'Inter Tight', sans-serif" }}>
-      <style>{`        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
+      <style>{`        ${FONTS}
+        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
 
-        ${FONTS}
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         body { -webkit-font-smoothing:antialiased; }
         ::selection { background:${C.accent}; color:#fff; }

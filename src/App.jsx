@@ -115,10 +115,10 @@ export default function App() {
 function HomePage({ scrolled, activeQuote, menuOpen, setMenu, dropdown, setDropdown, setPage }) {
   return (
     <div style={{ backgroundColor:C.bg, color:C.ink, minHeight:"100vh", overflowX:"hidden" }}>
-      <style>{`        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
+      <style>{`        ${FONTS}
+        h1, h2, h3 { -webkit-text-stroke: 0.3px currentColor; }
         .nav-outer { padding-left:3rem; padding-right:3rem; }
 
-        ${FONTS}
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         html { scroll-behavior:smooth; }
         body { -webkit-font-smoothing:antialiased; }
