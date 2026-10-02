@@ -3,9 +3,9 @@
    warm ink, ivory paper, antique gold, with image-led, editorial layout. */
 
 :root{
-  --ink:#0E0D08;          /* warm near-black */
+  --ink:#141109;          /* warm near-black */
   --ink-2:#17150E;        /* raised dark surface */
-  --paper:#F4EFE4;        /* warm ivory ground */
+  --paper:#F3EEE1;        /* warm ivory ground */
   --bone:#EBE3D2;         /* alt surface */
   --line:#DCD2BC;         /* hairline on paper */
   --line-dark:#30291B;    /* hairline on ink */
@@ -13,9 +13,10 @@
   --text-soft:#6A6250;    /* muted on paper */
   --text-dk:#ECE6D7;      /* body on ink */
   --text-dk-soft:#AFA78F;
-  --gold:#C2A15C;         /* antique gold */
+  --gold:#C6A052;         /* antique gold */
   --gold-2:#D8B86F;       /* lifted gold */
   --gold-ink:#1a1407;     /* text on gold */
+  --ochre:#9E7B33;         /* deep ochre: labels on light */
   --maxw:1240px;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
@@ -32,7 +33,8 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.02;l
 h1{font-size:clamp(44px,6.6vw,86px)}
 h2{font-size:clamp(34px,5vw,62px)}
 h3{font-size:clamp(20px,2.3vw,26px);line-height:1.1}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--ochre)}
+.hero .eyebrow{color:var(--gold-2)}
 .lede{font-size:clamp(16px,1.55vw,18.5px);line-height:1.6;color:var(--text-soft)}
 .muted{color:var(--text-soft)}
 em{font-style:italic;color:var(--gold)}
@@ -91,9 +93,10 @@ section{padding:112px 0}
 .feat .intro h2{margin-bottom:24px}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .c3 .img{aspect-ratio:4/3.3;background:#211d14 center/cover no-repeat;border-radius:3px}
-.c3 .no{font-size:13px;color:var(--gold);letter-spacing:.1em;margin:20px 0 10px;
+.c3 .no{font-size:13px;color:var(--ochre);letter-spacing:.1em;margin:20px 0 10px;
   display:flex;align-items:center;gap:12px}
 .c3 .no:after{content:"";height:1px;flex:1;background:var(--line)}
+.band .c3 .no{color:var(--gold-2)}
 .band .c3 .no:after{background:var(--line-dark)}
 .c3 h3{margin-bottom:9px}
 .c3 p{font-size:14.5px;color:var(--text-soft);line-height:1.55}
@@ -132,21 +135,22 @@ section{padding:112px 0}
 /* pillars (approach) */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:54px}
 .pillar{border-top:2px solid var(--gold);padding-top:22px}
-.pillar .idx{font-size:12.5px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+.pillar .idx{font-size:12.5px;letter-spacing:.12em;color:var(--ochre);text-transform:uppercase}
+.band .pillar .idx{color:var(--gold-2)}
 .pillar h3{margin:14px 0 10px}
 .pillar p{font-size:15px;color:var(--text-soft);line-height:1.6}
 .band .pillar p{color:var(--text-dk-soft)}
 
 /* split (generic) */
-.split{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
-.split .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:flex-start}
+.split .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre);margin-bottom:12px}
 .ticks{list-style:none;margin-top:24px;display:grid;gap:14px}
 .ticks li{display:flex;gap:14px;font-size:15.5px;line-height:1.5}
 .ticks li:before{content:"";flex:0 0 7px;height:7px;margin-top:9px;background:var(--gold);border-radius:1px}
 
 /* industries detail rows */
 .irow{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;padding:44px 0;border-top:1px solid var(--line);align-items:start}
-.irow .no{font-size:13px;color:var(--gold);letter-spacing:.1em}
+.irow .no{font-size:13px;color:var(--ochre);letter-spacing:.1em}
 .irow h3{margin:12px 0}
 
 /* stats band */
@@ -167,7 +171,7 @@ section{padding:112px 0}
   font-family:inherit;font-size:15px;color:var(--text);border-radius:2px}
 .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold)}
 .ccard{border:1px solid var(--line);padding:30px;background:#fff}
-.ccard .role{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.ccard .role{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ochre)}
 .ccard h3{margin:10px 0 4px}
 
 /* footer */
