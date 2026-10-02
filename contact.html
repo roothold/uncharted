@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talk to us · Uncharted Ventures</title>
+<meta name="description" content="Start a conversation with Uncharted Ventures. Bring us the problem that doesn't fit a template.">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" aria-label="Uncharted Ventures"><img src="logo-white.png" alt="Uncharted Ventures"></a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="approach.html">What We Do</a>
+      <a href="industries.html">Industries</a>
+      <a href="our-work.html">Our Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="mobile-only active">Talk to us</a>
+    </div>
+    <div class="nav-cta"><a href="contact.html" class="btn btn-primary">Talk to us <span class="arrow">→</span></a></div>
+  </div>
+</nav>
+
+<header class="hero hero-sm">
+  <div class="bg" style="background-image:url('https://loremflickr.com/1600/900/horizon,sunrise,mountains?lock=45')"></div>
+  <div class="wrap">
+    <span class="eyebrow">Talk to us</span>
+    <h1 style="max-width:15ch">Let's map the uncharted.</h1>
+    <p class="lede">Tell us the problem. The more it spans strategy and systems, old playbooks and new technology, the more it is ours to solve.</p>
+  </div>
+</header>
+
+<section style="padding-top:72px">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <!-- Replace the action below with your Formspree (or other) endpoint. See README. -->
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+          <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
+          <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" required></div>
+          <div class="field"><label for="company">Company</label><input id="company" name="company"></div>
+          <div class="field"><label for="industry">Industry</label>
+            <select id="industry" name="industry">
+              <option>Advanced Manufacturing</option><option>Energy &amp; Resources</option>
+              <option>Infrastructure &amp; Cities</option><option>Transportation &amp; Logistics</option>
+              <option>Healthcare &amp; Life Sciences</option><option>Agriculture &amp; Food Systems</option>
+              <option>Financial Services</option><option>Government &amp; Public Sector</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="message">What are you trying to solve?</label><textarea id="message" name="message" rows="5" required></textarea></div>
+          <button type="submit" class="btn btn-primary">Send <span class="arrow">→</span></button>
+        </form>
+      </div>
+      <div class="reveal">
+        <div class="ccard" style="margin-bottom:22px">
+          <div class="role">Managing Partner</div>
+          <h3>Michael Akindele</h3>
+          <p class="muted" style="font-size:15px">Use the form and your message reaches the Managing Partner's team directly. We reply within two business days.</p>
+        </div>
+        <div class="ccard">
+          <div class="role">What happens next</div>
+          <p class="muted" style="font-size:15px;margin-top:10px">We reply within two business days with a short read on your challenge and a proposed first step, whether that is a discovery sprint, a strategy engagement, or a build.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" style="margin-top:20px">
+  <div class="wrap">
+    <div class="top">
+      <div><img src="logo-white.png" alt="Uncharted Ventures"><p style="max-width:34ch;font-size:14.5px">A next-generation consultancy and solution provider for the age of AI, robotics, and automation.</p></div>
+      <div class="cols">
+        <div><h4>Firm</h4><a href="approach.html">What We Do</a><a href="industries.html">Industries</a><a href="our-work.html">Our Work</a><a href="about.html">About</a></div>
+        <div><h4>Contact</h4><a href="contact.html">Talk to us</a></div>
+      </div>
+    </div>
+    <div class="bottom"><span>© <span data-year>2026</span> Uncharted Ventures. All rights reserved.</span><span>Michael Akindele · Managing Partner</span></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
