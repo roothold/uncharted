@@ -213,3 +213,8 @@ section{padding:112px 0}
   .wrap{padding:0 24px}.nav-in{padding:16px 24px}
   .irow{gap:16px}
 }
+
+/* Contact form status message */
+.form-note{margin-top:14px;font-size:14px;line-height:1.5;min-height:1em}
+.form-note.err{color:#9E2B25}
+.form-note.ok{color:var(--ochre)}
